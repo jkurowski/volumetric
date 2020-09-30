@@ -11,11 +11,6 @@ class Investment extends Model
     const PLAN_WIDTH = 1280;
     const PLAN_HEIGHT = 560;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
     protected $fillable = [
         'name',
         'type',
