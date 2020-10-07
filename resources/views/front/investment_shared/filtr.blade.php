@@ -13,8 +13,8 @@
         <select name="status" id="filtr-status" class="form-control">
             <option value="">Wszystkie</option>
             <option value="1" @if(request()->input('status') == 1) selected @endif>Na sprzedaż</option>
-            <option value="2" @if(request()->input('status') == 2) selected @endif>Sprzedane</option>
-            <option value="3" @if(request()->input('status') == 3) selected @endif>Rezerwacja</option>
+            <option value="2" @if(request()->input('status') == 2) selected @endif>Rezerwacja</option>
+            <option value="3" @if(request()->input('status') == 3) selected @endif>Sprzedane</option>
         </select>
     </div>
     <div class="col-3">

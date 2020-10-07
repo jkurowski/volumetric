@@ -14,7 +14,8 @@ class InvestmentBuildingFloorController extends Controller
     public function index(Building $building)
     {
         $investment = Investment::find($building->investment_id);
-        $floors = Floor::where('building_id', $building->id)->get();
+        $floors = Floor::where('building_id', $building->id)->withCount('properties')->get();
+
         return view('admin.investment_building_floor.index', [
             'investment' => $investment,
             'list' => $floors,

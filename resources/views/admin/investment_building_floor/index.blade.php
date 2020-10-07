@@ -27,6 +27,7 @@
                         <tr>
                             <th>#</th>
                             <th>Nazwa</th>
+                            <th class="text-center">Ilość mieszkań</th>
                             <th>Data modyfikacji</th>
                             <th></th>
                         </tr>
@@ -36,6 +37,7 @@
                             <tr id="recordsArray_{{ $p->id }}">
                                 <th class="position" scope="row">{{ $index+1 }}</th>
                                 <td><a href="{{route('admin.developro.building.property.index', $p->id)}}">{{$p->name}}</a></td>
+                                <td class="text-center">{{$p->properties_count}}</a></td>
                                 <td>{{ $p->updated_at }}</td>
                                 <td class="option-120">
                                     <div class="btn-group">

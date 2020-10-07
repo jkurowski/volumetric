@@ -7,7 +7,7 @@
                 <h1 class="border-bottom pb-3 mb-3">Inwestycje</h1>
             </div>
             @foreach($list as $investment)
-            <div class="col-12 p-3">
+            <div class="col-4 p-3 text-center">
                 <a href="{{route('front.investment.show', $investment->id)}}">{{$investment->name}}</a>
             </div>
             @endforeach
