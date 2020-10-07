@@ -37,9 +37,18 @@ class Property extends Model
     public function planUpload($title, $file, $delete = null)
     {
         if($delete && $this->file) {
-            unlink(public_path('investment/property/' . $this->file));
-            unlink(public_path('investment/property/thumbs/' . $this->file));
-            unlink(public_path('investment/property/list/' . $this->file));
+            $image_path = public_path('investment/property/' . $this->file);
+            if (file_exists($image_path)) {
+                unlink($image_path);
+            }
+            $image_thumb_path = public_path('investment/property/thumbs/' . $this->file);
+            if (file_exists($image_thumb_path)) {
+                unlink($image_thumb_path);
+            }
+            $image_list_path = public_path('investment/property/list/' . $this->file);
+            if (file_exists($image_list_path)) {
+                unlink($image_list_path);
+            }
         }
 
         $name = Str::slug($title, '-') . '_' . Str::random(12) . '.' .$file->getClientOriginalExtension();
@@ -66,9 +75,20 @@ class Property extends Model
     public static function boot() {
         parent::boot();
         self::deleting(function($property) {
-            unlink(public_path('investment/property/' . $property->file));
-            unlink(public_path('investment/property/thumbs/' . $property->file));
-            unlink(public_path('investment/property/list/' . $property->file));
+            if($property->file) {
+                $image_path = public_path('investment/property/' . $property->file);
+                if (file_exists($image_path)) {
+                    unlink($image_path);
+                }
+                $image_thumb_path = public_path('investment/property/thumbs/' . $property->file);
+                if (file_exists($image_thumb_path)) {
+                    unlink($image_thumb_path);
+                }
+                $image_list_path = public_path('investment/property/list/' . $property->file);
+                if (file_exists($image_list_path)) {
+                    unlink($image_list_path);
+                }
+            }
         });
     }
 }

@@ -24,7 +24,11 @@
                     <div id="plan">
                         <div id="plan-holder"><img src="/investment/floor/{{$investment->floor->file}}" alt="{{$investment->floor->name}}" id="invesmentplan" usemap="#invesmentplan"></div>
                         <map name="invesmentplan">
-
+                            @if($properties)
+                                @foreach($properties as $r)
+                                    <area shape="poly" href="{{route('front.investment.property.index', ['investment' => $investment->id, 'floor' => $r->floor_id, 'property' => $r->id])}}" data-item="{{$r->id}}" title="{{$r->name}}" alt="{{$r->slug}}" data-roomnumber="{{$r->number}}" data-roomtype="{{$r->typ}}" data-roomstatus="{{$r->status}}" coords="@if($r->html) {{cords($r->html)}} @endif">
+                                @endforeach
+                            @endif
                         </map>
                     </div>
                 @endif
@@ -41,5 +45,6 @@
     </div>
 @endsection
 @push('scripts')
-
+    <script src="/js/plan/imagemapster.js" charset="utf-8"></script>
+    <script src="/js/plan/floor.js" charset="utf-8"></script>
 @endpush

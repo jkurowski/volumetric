@@ -2,7 +2,7 @@
     <nav class="nav">
         <a class="nav-link " href="{{route('admin.developro.edit', $investment->id)}}"><span class="fe-info"></span> {{$investment->name}}</a>
         @if ($investment->type == 1)
-            <a class="nav-link" href=""><span class="fe-package"></span> Lista budynków</a>
+            <a class="nav-link {{ Request::routeIs('admin.developro.building.index') ? ' active' : '' }}" href="{{route('admin.developro.building.index', $investment->id)}}"><span class="fe-package"></span> Lista budynków</a>
         @endif
 
         @if ($investment->type == 2)
@@ -15,6 +15,14 @@
 
         @if (Request::routeIs('admin.developro.property.index'))
             <a class="nav-link active" href=""><span class="fe-square"></span>Lista mieszkań</a>
+        @endif
+
+        @if (Request::routeIs('admin.developro.building.floor.index') || Request::routeIs('admin.developro.building.property.index'))
+            <a class="nav-link {{ Request::routeIs('admin.developro.building.floor.index') ? ' active' : '' }}" href="{{route('admin.developro.building.floor.index', $building)}}"><span class="fe-layers"></span>{{$building->name}} -  Lista kondygnacji</a>
+        @endif
+
+        @if (Request::routeIs('admin.developro.building.property.index'))
+            <a class="nav-link active" href=""><span class="fe-square"></span>{{$floor->name}} -  Lista mieszkań</a>
         @endif
 
         <a class="nav-link {{ Request::routeIs('admin.developro.plan.index') ? ' active' : '' }}" href="{{route('admin.developro.plan.index', $investment)}}"><span class="fe-image"></span> Plan</a>

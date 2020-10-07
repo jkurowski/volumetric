@@ -11,18 +11,22 @@
                 <a href="{{route('front.investment.show', $investment)}}" class="bttn bttn-right"><i class="las la-arrow-left"></i> Wróć do listy</a>
             </div>
         </div>
-
         <div class="row">
-            @foreach($investment->buildingFloors as $floor)
-                <div class="col-12 p-3">
-                    <a href="{{route('front.investment.building.floor.index', [$investment, $building, $floor])}}">{{$floor->name}}</a>
-                </div>
-            @endforeach
-        </div>
-
-        <div class="row mt-5">
             <div class="col-12">
-                <h2>Mieszkania w inwestycji</h2>
+                @if($building->file)
+                    <div id="plan">
+                        <div id="plan-holder"><img src="/investment/building/{{$building->file}}" alt="{{$building->name}}" id="invesmentplan" usemap="#invesmentplan"></div>
+                        <map name="invesmentplan">
+                            <map name="invesmentplan">
+                                @foreach($investment->buildingFloors as $floor)
+                                    @if($floor->html)
+                                        <area shape="poly" href="{{route('front.investment.building.floor.index', [$investment, $building, $floor])}}" data-item="{{$floor->id}}" title="{{$floor->name}}" alt="floor-{{$floor->id}}" data-floornumber="{{$floor->id}}" data-floortype="{{$floor->type}}" coords="{{cords($floor->html)}}">
+                                    @endif
+                                @endforeach
+                            </map>
+                        </map>
+                    </div>
+                @endif
             </div>
         </div>
 
@@ -36,5 +40,6 @@
     </div>
 @endsection
 @push('scripts')
-
+    <script src="/js/plan/imagemapster.js" charset="utf-8"></script>
+    <script src="/js/plan/plan.js" charset="utf-8"></script>
 @endpush

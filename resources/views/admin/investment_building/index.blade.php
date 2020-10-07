@@ -27,24 +27,25 @@
                         <tr>
                             <th>#</th>
                             <th>Nazwa</th>
+                            <th class="text-center">Numer</th>
                             <th>Data modyfikacji</th>
                             <th></th>
                         </tr>
                         </thead>
                         <tbody class="content">
-                        @foreach ($list as $index => $p)
+                        @foreach ($investment->buildings as $index => $p)
                             <tr id="recordsArray_{{ $p->id }}">
                                 <th class="position" scope="row">{{ $index+1 }}</th>
-                                <td><a href="{{route('admin.developro.property.index', [$investment, $p->id])}}">{{ $p->name }}</a></td>
+                                <td><a href="{{route('admin.developro.building.floor.index', $p->id)}}">{{ $p->name }}</a></td>
+                                <td class="text-center">{{ $p->number }}</td>
                                 <td>{{ $p->updated_at }}</td>
                                 <td class="option-120">
                                     <div class="btn-group">
-                                        <a href="{{route('admin.developro.property.index', [$investment, $p->id])}}" class="btn action-button mr-1" data-toggle="tooltip" data-placement="top" title="Pokaż piętro"><i class="fe-folder"></i></a>
-                                        <a href="{{route('admin.developro.floor.edit', $p->id)}}" class="btn action-button mr-1" data-toggle="tooltip" data-placement="top" title="Edytuj piętro"><i class="fe-edit"></i></a>
-                                        <form method="POST" action="{{route('admin.developro.floor.destroy', $p->id)}}">
+                                        <a href="{{route('admin.developro.building.edit', $p->id)}}" class="btn action-button mr-1" data-toggle="tooltip" data-placement="top" title="Edytuj budynek"><i class="fe-edit"></i></a>
+                                        <form method="POST" action="{{route('admin.developro.building.destroy', $p->id)}}">
                                             {{ csrf_field() }}
                                             {{ method_field('DELETE') }}
-                                            <button type="submit" class="btn action-button confirm" data-toggle="tooltip" data-placement="top" title="Usuń piętro" data-id="{{ $p->id }}"><i class="fe-trash-2"></i></button>
+                                            <button type="submit" class="btn action-button confirm" data-toggle="tooltip" data-placement="top" title="Usuń budynek" data-id="{{ $p->id }}"><i class="fe-trash-2"></i></button>
                                         </form>
                                     </div>
                                 </td>
@@ -60,9 +61,10 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12 d-flex justify-content-end">
-                    <a href="{{route('admin.developro.floor.create', $investment)}}" class="btn btn-primary">Dodaj piętro</a>
+                    <a href="{{route('admin.developro.building.create', $investment)}}" class="btn btn-primary">Dodaj budynek</a>
                 </div>
             </div>
         </div>
     </div>
+
 @endsection

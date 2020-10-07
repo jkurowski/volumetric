@@ -1,7 +1,12 @@
 <div class="container" id="roomsList">
+    @if($properties)
     @foreach($properties as $room)
         <div class="row">
             <div class="col">
+                @if($investment->type == 1)
+                        <a href="{{route('front.investment.building.property.index', ['investment' => $investment->id, 'floor' => $room->floor_id, 'building' => $room->building_id, 'property' => $room->id])}}">{{$room->name}}</a>
+                @endif
+
                 @if($investment->type == 2)
                         <a href="{{route('front.investment.property.index', ['investment' => $investment->id, 'floor' => $room->floor_id, 'property' => $room->id])}}">{{$room->name}}</a>
                 @endif
@@ -26,6 +31,10 @@
             </div>
             <div class="col justify-content-end">
 
+                @if($investment->type == 1)
+                <a href="{{route('front.investment.building.property.index', ['investment' => $investment->id, 'floor' => $room->floor_id, 'building' => $room->building_id, 'property' => $room->id])}}" class="bttn bttn-sm">Zobacz <i class="las la-arrow-right"></i></a>
+                @endif
+
                 @if($investment->type == 2)
                 <a href="{{route('front.investment.property.index', ['investment' => $investment->id, 'floor' => $room->floor_id, 'property' => $room->id])}}" class="bttn bttn-sm">Zobacz <i class="las la-arrow-right"></i></a>
                 @endif
@@ -37,12 +46,5 @@
             </div>
         </div>
     @endforeach
+    @endif
 </div>
-
-@if($investment->type == 1)
-    @foreach($investment->buildingRooms as $room)
-        <div class="col-12 p-3">
-            <a href="{{route('front.investment.building.property.index', ['investment' => $investment->id, 'building' => $room->building_id, 'floor' => $room->floor_id, 'property' => $room->id])}}">{{$room->name}} (pokoje: {{$room->rooms}}) (status: {{$room->status}})</a>
-        </div>
-    @endforeach
-@endif

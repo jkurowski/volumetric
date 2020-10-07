@@ -42,7 +42,10 @@ class InvestmentBuildingFloorController extends Controller
             }
         ));
 
-        return view('front.investment_building_floor.index', ['investment' => $investment_room]);
+        return view('front.investment_building_floor.index', [
+            'investment' => $investment_room,
+            'properties' => $investment->buildingRooms
+        ]);
     }
 
 }

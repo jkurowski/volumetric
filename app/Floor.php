@@ -43,7 +43,10 @@ class Floor extends Model
     public function planUpload($title, $file, $delete = null)
     {
         if($delete && $this->file) {
-            unlink(public_path('investment/floor/' . $this->file));
+            $image_path = public_path('investment/floor/' . $this->file);
+            if (file_exists($image_path)) {
+                unlink($image_path);
+            }
         }
 
         $name = Str::slug($title, '-') . '_' . Str::random(12) . '.' .$file->getClientOriginalExtension();
@@ -60,7 +63,12 @@ class Floor extends Model
     public static function boot() {
         parent::boot();
         self::deleting(function($floor) {
-            unlink(public_path('investment/floor/' . $floor->file));
+            if($floor->file) {
+                $image_path = public_path('investment/floor/' . $floor->file);
+                if (file_exists($image_path)) {
+                    unlink($image_path);
+                }
+            }
         });
     }
 }

@@ -35,8 +35,11 @@ class InvestmentController extends Controller
                         $direction = $order_param[1];
                         $query->orderBy($column, $direction);
                     }
-                }
+                },
+                'plan'
             ));
+
+            $properties = $investment_room->buildingRooms;
         }
 
         /**

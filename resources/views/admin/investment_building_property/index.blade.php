@@ -6,7 +6,7 @@
             <div class="card-head container-fluid">
                 <div class="row">
                     <div class="col-12 pl-0">
-                        <h4 class="page-title row"><i class="fe-home"></i><a href="{{route('admin.developro.index')}}">Inwestycje</a><span class="d-inline-flex ml-2 mr-2">/</span>{{$investment->name}}</h4>
+                        <h4 class="page-title row"><i class="fe-home"></i><a href="{{route('admin.developro.index')}}">Inwestycje</a><span class="d-inline-flex ml-2 mr-2">/</span>{{$investment->name}}<span class="d-inline-flex ml-2 mr-2">/</span>{{$building->name}}<span class="d-inline-flex ml-2 mr-2">/</span>{{$floor->name}}</h4>
                     </div>
                 </div>
             </div>
@@ -27,6 +27,9 @@
                         <tr>
                             <th>#</th>
                             <th>Nazwa</th>
+                            <th class="text-center">Status</th>
+                            <th class="text-center">Pokoje</th>
+                            <th class="text-center">Metraż</th>
                             <th>Data modyfikacji</th>
                             <th></th>
                         </tr>
@@ -35,16 +38,18 @@
                         @foreach ($list as $index => $p)
                             <tr id="recordsArray_{{ $p->id }}">
                                 <th class="position" scope="row">{{ $index+1 }}</th>
-                                <td><a href="{{route('admin.developro.property.index', [$investment, $p->id])}}">{{ $p->name }}</a></td>
+                                <td>{{ $p->name }}</td>
+                                <td><span class="badge room-list-status-{{ $p->status }}">{{ roomStatus($p->status) }}</span></td>
+                                <td class="text-center">{{ $p->rooms }}</td>
+                                <td class="text-center">{{ $p->area }} m<sup>2</sup></td>
                                 <td>{{ $p->updated_at }}</td>
                                 <td class="option-120">
                                     <div class="btn-group">
-                                        <a href="{{route('admin.developro.property.index', [$investment, $p->id])}}" class="btn action-button mr-1" data-toggle="tooltip" data-placement="top" title="Pokaż piętro"><i class="fe-folder"></i></a>
-                                        <a href="{{route('admin.developro.floor.edit', $p->id)}}" class="btn action-button mr-1" data-toggle="tooltip" data-placement="top" title="Edytuj piętro"><i class="fe-edit"></i></a>
-                                        <form method="POST" action="{{route('admin.developro.floor.destroy', $p->id)}}">
+                                        <a href="{{route('admin.developro.building.property.edit', $p->id)}}" class="btn action-button mr-1" data-toggle="tooltip" data-placement="top" title="Edytuj"><i class="fe-edit"></i></a>
+                                        <form method="POST" action="{{route('admin.developro.building.property.destroy', $p->id)}}">
                                             {{ csrf_field() }}
                                             {{ method_field('DELETE') }}
-                                            <button type="submit" class="btn action-button confirm" data-toggle="tooltip" data-placement="top" title="Usuń piętro" data-id="{{ $p->id }}"><i class="fe-trash-2"></i></button>
+                                            <button type="submit" class="btn action-button confirm" data-toggle="tooltip" data-placement="top" title="Usuń" data-id="{{ $p->id }}"><i class="fe-trash-2"></i></button>
                                         </form>
                                     </div>
                                 </td>
@@ -60,7 +65,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12 d-flex justify-content-end">
-                    <a href="{{route('admin.developro.floor.create', $investment)}}" class="btn btn-primary">Dodaj piętro</a>
+                    <a href="{{route('admin.developro.building.property.create', $floor)}}" class="btn btn-primary">Dodaj</a>
                 </div>
             </div>
         </div>

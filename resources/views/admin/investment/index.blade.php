@@ -36,7 +36,7 @@
                             <th class="position" scope="row">{{ $index+1 }}</th>
                             <td>
                                 @if ($p->type == 1)
-                                    <a href="">{{ $p->name }}</a>
+                                    <a href="{{route('admin.developro.building.index', $p->id)}}">{{ $p->name }}</a>
                                 @endif
                                 @if ($p->type == 2)
                                     <a href="{{route('admin.developro.floor.index', $p->id)}}">{{ $p->name }}</a>
@@ -52,7 +52,7 @@
                                 <div class="btn-group">
                                     <a href="{{route('admin.developro.plan.index', $p->id)}}" class="btn action-button mr-1" data-toggle="tooltip" data-placement="top" title="Plan inwestycji"><i class="fe-image"></i></a>
                                     @if ($p->type == 1)
-                                        <a href="" class="btn action-button mr-1" data-toggle="tooltip" data-placement="top" title="Lista budynków"><i class="fe-grid"></i></a>
+                                        <a href="{{route('admin.developro.building.index', $p->id)}}" class="btn action-button mr-1" data-toggle="tooltip" data-placement="top" title="Lista budynków"><i class="fe-grid"></i></a>
                                     @endif
                                     @if ($p->type == 2)
                                         <a href="{{route('admin.developro.floor.index', $p->id)}}" class="btn action-button mr-1" data-toggle="tooltip" data-placement="top" title="Lista kondygnacji"><i class="fe-layers"></i></a>

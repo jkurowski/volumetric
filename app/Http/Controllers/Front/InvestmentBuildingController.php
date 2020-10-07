@@ -35,7 +35,11 @@ class InvestmentBuildingController extends Controller
             }
         ));
 
-        return view('front.investment_building.index', ['investment' => $investment_room, 'building' => $building]);
+        return view('front.investment_building.index', [
+            'investment' => $investment_room,
+            'building' => $building,
+            'properties' => $investment->buildingRooms
+        ]);
     }
 
     public function show($id)

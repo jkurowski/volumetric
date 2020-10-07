@@ -47,7 +47,7 @@ class InvestmentHouseController extends Controller
             $property->planUpload($request->name, $request->file('file'));
         }
 
-        return redirect()->route('admin.developro.house.index', [$investment->id])->with('success', 'Domo zapisany');
+        return redirect()->route('admin.developro.house.index', [$investment->id])->with('success', 'Dom zapisany');
     }
 
     public function edit($id)
