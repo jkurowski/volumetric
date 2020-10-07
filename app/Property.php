@@ -36,7 +36,7 @@ class Property extends Model
 
     public function planUpload($title, $file, $delete = null)
     {
-        if($delete && $this->file) {
+        if ($delete && $this->file) {
             $image_path = public_path('investment/property/' . $this->file);
             if (file_exists($image_path)) {
                 unlink($image_path);
@@ -72,10 +72,11 @@ class Property extends Model
         $this->update(['file' => $name ]);
     }
 
-    public static function boot() {
+    public static function boot()
+    {
         parent::boot();
-        self::deleting(function($property) {
-            if($property->file) {
+        self::deleting(function ($property) {
+            if ($property->file) {
                 $image_path = public_path('investment/property/' . $property->file);
                 if (file_exists($image_path)) {
                     unlink($image_path);

@@ -26,7 +26,8 @@ class Floor extends Model
         'file'
     ];
 
-    public function properties(){
+    public function properties()
+    {
         return $this->hasMany('App\Property');
     }
 
@@ -42,7 +43,7 @@ class Floor extends Model
 
     public function planUpload($title, $file, $delete = null)
     {
-        if($delete && $this->file) {
+        if ($delete && $this->file) {
             $image_path = public_path('investment/floor/' . $this->file);
             if (file_exists($image_path)) {
                 unlink($image_path);
@@ -60,10 +61,11 @@ class Floor extends Model
         $this->update(['file' => $name ]);
     }
 
-    public static function boot() {
+    public static function boot()
+    {
         parent::boot();
-        self::deleting(function($floor) {
-            if($floor->file) {
+        self::deleting(function ($floor) {
+            if ($floor->file) {
                 $image_path = public_path('investment/floor/' . $floor->file);
                 if (file_exists($image_path)) {
                     unlink($image_path);

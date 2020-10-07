@@ -25,7 +25,8 @@ class Page extends Model
         'sort'
     ];
 
-    function uriGenerate($page){
+    function uriGenerate($page)
+    {
         if ($page->parent_id) {
 
             $array = self::ancestorsOf($page->id)->pluck('slug')->toArray();
@@ -39,7 +40,8 @@ class Page extends Model
         $page->save();
     }
 
-    public static function mainmenu(){
+    public static function mainmenu()
+    {
         return view('layouts.menu', [
             'pages' => self::withDepth()->defaultOrder()->get()->toTree()
         ]);

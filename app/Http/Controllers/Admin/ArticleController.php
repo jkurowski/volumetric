@@ -2,31 +2,21 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Article;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ArticleFormRequest;
-use Illuminate\Http\Request;
+
+use App\Article;
 
 class ArticleController extends Controller
 {
     protected $redirectTo = 'admin/article';
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
 
         return view('admin.article.index', ['list' => Article::orderBy('sort', 'asc')->get()]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         return view('admin.article.form', [
@@ -35,12 +25,6 @@ class ArticleController extends Controller
         ])->with('entry', Article::make());
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
-     */
     public function store(ArticleFormRequest $request)
     {
 
@@ -68,12 +52,6 @@ class ArticleController extends Controller
         return redirect($this->redirectTo)->with('success', 'Nowy artykuł dodany');
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
     public function edit($id)
     {
         $article = Article::where('id', $id)->first();
@@ -84,13 +62,6 @@ class ArticleController extends Controller
         ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
-     */
     public function update(ArticleFormRequest $request, Article $article)
     {
 
@@ -118,12 +89,6 @@ class ArticleController extends Controller
         return redirect($this->redirectTo)->with('success', 'Artykuł zaktualizowany');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\JsonResponse
-     */
     public function destroy(Article $article)
     {
         unlink(public_path('uploads/articles/' . $article->file));

@@ -29,16 +29,17 @@ class Building extends Model
      * Get your investment floors
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function floors(){
+    public function floors()
+    {
         return $this->hasMany('App\Floor');
     }
 
     public function planUpload($title, $file, $delete = null)
     {
-        if($delete && $this->file) {
+        if ($delete && $this->file) {
             $image_path = public_path('investment/building/' . $this->file);
             if (file_exists($image_path)) {
-                @unlink($image_path);
+                unlink($image_path);
             }
         }
 
@@ -53,12 +54,15 @@ class Building extends Model
         $this->update(['file' => $name ]);
     }
 
-    public static function boot() {
+    public static function boot()
+    {
         parent::boot();
-        self::deleting(function($building) {
-            $image_path = public_path('investment/building/' . $building->file);
-            if (file_exists($image_path)) {
-                @unlink($image_path);
+        self::deleting(function ($building) {
+            if ($building->file) {
+                $image_path = public_path('investment/building/' . $building->file);
+                if (file_exists($image_path)) {
+                    unlink($image_path);
+                }
             }
         });
     }

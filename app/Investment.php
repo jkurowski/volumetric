@@ -21,7 +21,8 @@ class Investment extends Model
      * Get the investment plan
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
-    public function plan(){
+    public function plan()
+    {
         return $this->hasOne('App\Plan');
     }
 
@@ -29,7 +30,8 @@ class Investment extends Model
      * Get your investment floors
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function floors(){
+    public function floors()
+    {
         return $this->hasMany('App\Floor');
     }
 
@@ -37,7 +39,8 @@ class Investment extends Model
      * Get the investment floor
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
-    public function floor(){
+    public function floor()
+    {
         return $this->hasOne('App\Floor');
     }
 
@@ -61,7 +64,8 @@ class Investment extends Model
      * Get your investment buildings
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function buildings(){
+    public function buildings()
+    {
         return $this->hasMany('App\Building');
     }
 
@@ -69,7 +73,8 @@ class Investment extends Model
      * Get the investment building
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
-    public function building(){
+    public function building()
+    {
         return $this->hasOne('App\Building');
     }
 
@@ -77,7 +82,8 @@ class Investment extends Model
      * Get your investment floors
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function buildingFloors(){
+    public function buildingFloors()
+    {
         return $this->hasMany('App\Floor');
     }
 

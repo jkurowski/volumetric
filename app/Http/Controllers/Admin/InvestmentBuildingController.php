@@ -42,7 +42,7 @@ class InvestmentBuildingController extends Controller
             $building->planUpload($request->name, $request->file('file'));
         }
 
-        return redirect()->route('admin.developro.building.index', [$investment->id])->with('success', 'Budynek zapisany');
+        return redirect()->route('admin.developro.building.index', $investment->id)->with('success', 'Budynek zapisany');
     }
 
     public function edit($id)
