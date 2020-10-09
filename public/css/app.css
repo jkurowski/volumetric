@@ -15,6 +15,9 @@ button, select {cursor: pointer}
 *:focus {
     box-shadow: 0 0 0 0 rgba(0,123,255,0) !important;
 }
+textarea {
+    resize: none;
+}
 * {
     border-radius: 0 !important;
 }
@@ -293,8 +296,8 @@ button, select {cursor: pointer}
 }
 .badge.room-list-status-1 {background:green}
 .badge.room-list-status-2 {background:#0063a9}
-.badge.room-list-status-3 {background:#940000}
-.badge.room-list-status-4 {background:#5800c5}
+.badge.room-list-status-3 {background:#b71c1c}
+.badge.room-list-status-4 {background:#e17f00}
 
 /* Karta mieszkania
 ================================================== */
@@ -305,6 +308,19 @@ button, select {cursor: pointer}
     font-weight: 700;
     color: #404040;
 }
+
+/* Rodo
+================================================== */
+.obowiazek {
+    padding-top: 20px;
+    padding-bottom: 20px
+}
+.obowiazek p {
+    font-size: 14px;
+    line-height: 17px;
+    color: #606060
+}
+
 
 /* RWD
 ================================================== */

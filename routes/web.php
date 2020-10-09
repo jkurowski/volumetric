@@ -15,21 +15,51 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-Route::get('/', 'Front\IndexController@index')->name('index');
+Route::get('/',
+    'Front\IndexController@index')->name('index');
+
+Route::post('/property-contact/{property}',
+    'Front\ContactController@property')->name('contact.property');
 
 // Developro
 Route::group(['namespace' => 'Front', 'prefix'=>'/inwestycje', 'as' => 'front.investment.'], function() {
-    Route::get('/',                             'InvestmentController@index')->name('index');
-    Route::get('/{investment}',                 'InvestmentController@show')->name('show');
 
-    Route::get('/{investment}/pietro/{floor}',  'InvestmentFloorController@index')->name('floor.index');
-    Route::get('/{investment}/pietro/{floor}/m/{property}',  'InvestmentPropertyController@index')->name('property.index');
+// Lista inwestycji
 
-    Route::get('/{investment}/b/{building}',  'InvestmentBuildingController@index')->name('building.index');
-    Route::get('/{investment}/b/{building}/pietro/{floor}',  'InvestmentBuildingFloorController@index')->name('building.floor.index');
-    Route::get('/{investment}/b/{building}/pietro/{floor}/m/{property}',  'InvestmentBuildingPropertyController@index')->name('building.property.index');
+    Route::get('/',
+        'InvestmentController@index')->name('index');
 
-    Route::get('/{investment}/d/{property}',  'InvestmentHouseController@index')->name('house.index');
+// Glowny plan inwestycji
+
+    Route::get('/{investment}',
+        'InvestmentController@show')->name('show');
+
+// Inwestycja budynkowa
+
+    Route::get('/{investment}/pietro/{floor}',
+        'InvestmentFloorController@index')->name('floor.index');
+
+    Route::get('/{investment}/pietro/{floor}/m/{property}',
+        'InvestmentPropertyController@index')->name('property.index');
+
+// Inwestycja osiedlowa
+
+    Route::group(['as' => 'building.'], function() {
+
+        Route::get('/{investment}/b/{building}',
+            'InvestmentBuildingController@index')->name('index');
+
+        Route::get('/{investment}/b/{building}/pietro/{floor}',
+            'InvestmentBuildingFloorController@index')->name('floor.index');
+
+        Route::get('/{investment}/b/{building}/pietro/{floor}/m/{property}',
+            'InvestmentBuildingPropertyController@index')->name('property.index');
+    });
+
+// Inwestycja domkowa
+
+    Route::get('/{investment}/d/{property}',
+        'InvestmentHouseController@index')->name('house.index');
 });
 
 

@@ -32,7 +32,7 @@
             <div class="row">
                 @foreach($investment->buildings as $building)
                     <div class="col-12 p-3">
-                        <a href="">{{$building->name}}</a>
+                        <a href="{{route('front.investment.building.index', [$investment, $building])}}">{{$building->name}}</a>
                     </div>
                 @endforeach
             </div>

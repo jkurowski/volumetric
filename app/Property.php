@@ -3,11 +3,15 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Str;
 use Intervention\Image\ImageManagerStatic as Image;
 
 class Property extends Model
 {
+
+    use Notifiable;
+
     const PLAN_WIDTH = 1024;
     const PLAN_HEIGHT = 1024;
     const PLAN_THUMB_WIDTH = 570;

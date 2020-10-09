@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+
 //GET	    /photos	                    index()         photos.index
 //GET	    /photos/create	            create()        photos.create
 //POST	    /photos	                    store()	        photos.store
