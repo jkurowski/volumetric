@@ -12,7 +12,7 @@ class ContactController extends Controller
 {
     function property(ContactFormRequest $request, $id){
 
-        Property::find($id)->notify(new ContactNotification($request->all()));
+        Property::find($id)->notify(new ContactNotification($request));
 
         return redirect()->back()->with('success', 'Twoja wiadomość została wysłana. W najbliższym czasie skontaktujemy się z Państwem celem omówienia szczegółów!');
     }

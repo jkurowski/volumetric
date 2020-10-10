@@ -195,7 +195,12 @@ p {margin:0}
 #content .content h4.page-title-middle {margin-top: 30px;margin-bottom: 0}
 .nav a.nav-link {color:#8a8a8a}
 .nav a.nav-link.active, a.nav-link:hover {color:#00acc1}
-.nav [class^=fe-] {margin-right:5px}
+.nav [class^="fe-"] {
+    margin-right: 5px;
+    font-size: 16px;
+    position: relative;
+    bottom: -1px;
+}
 
 .content h4 a {color:#00acc1;}
 
@@ -694,6 +699,45 @@ span.actionBtn {display:block;margin-right: 30px;padding: 8px 13px 7px;cursor:po
 .table tr.submenu.submenu-2 td:first-child:before {margin:0 20px 0 40px}
 .table tr.submenu.submenu-3 td:first-child:before {margin:0 20px 0 70px}
 .table tr.submenu.submenu-4 td:first-child:before {margin:0 20px 0 100px}
+
+.table tbody tr:hover td,
+.table tbody tr:hover th {
+    background: #f6f6ff
+}
+
+.collapsing {
+    -webkit-transition: none;
+    transition: none;
+    display: none;
+}
+
+
+.inbox-message-header .avatar-circle {
+    margin-right: 15px;
+    margin-top: 1px
+}
+.inbox-message {
+    padding: 25px
+}
+.inbox-message h2 {
+    font-size: 22px;
+    border-top: 1px solid #e8e8e8;
+    padding-top: 20px;
+    margin-top: 20px
+}
+
+.inbox-message h4, .inbox-message span {
+    font-size: 12px;
+    margin:0 !important;
+}
+
+.inbox-message-footer .btn.action-button {
+    font-size: 12px
+}
+
+.inbox-message-body {
+    padding: 15px 0 0
+}
 
 .list-category-1 {
     background: #e9ecfd;

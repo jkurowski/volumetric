@@ -61,7 +61,7 @@
                             </span>
                             @enderror
                         </div>
-                        <div class="col-4 col-input">
+                        <div class="col-4">
                             <label for="form_email">E-mail <span class="text-danger">*</span></label>
                             <input name="email" id="form_email" class="validate[required] form-control @error('email') is-invalid @enderror" type="text" value="{{ old('email') }}">
 
@@ -71,11 +71,23 @@
                             </span>
                             @enderror
                         </div>
-                        <div class="col-4 col-input">
+                        <div class="col-4">
                             <label for="form_phone">Telefon</label>
                             <input name="phone" id="form_phone" class="form-control" type="text" value="{{ old('phone') }}">
                         </div>
+
                         <div class="col-12 mt-2">
+                            <label for="form_subject">Temat wiadomości <span class="text-danger">*</span></label>
+                            <input name="subject" id="form_subject" class="validate[required] form-control @error('subject') is-invalid @enderror" type="text" value="{{ old('subject') }}">
+
+                            @error('subject')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
+                        </div>
+
+                        <div class="col-12 mt-3">
                             <label for="form_message">Treść wiadomości <span class="text-danger">*</span></label>
                             <textarea rows="5" cols="1" name="message" id="form_message" class="validate[required] form-control @error('message') is-invalid @enderror">{{ old('message') }}</textarea>
 

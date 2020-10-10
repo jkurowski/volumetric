@@ -26,7 +26,8 @@ class ContactFormRequest extends FormRequest
         return [
             'name' => 'required',
             'email' => 'required|email:rfc',
-            'message' => 'required'
+            'message' => 'required',
+            'subject' => 'required'
         ];
     }
 
@@ -36,7 +37,8 @@ class ContactFormRequest extends FormRequest
             'name.required' => 'To pole jest wymagane',
             'email.required' => 'To pole jest wymagane',
             'email.email' => 'Nieprawidłowy adres e-mail',
-            'message.required' => 'To pole jest wymagane'
+            'message.required' => 'To pole jest wymagane',
+            'subject.required' => 'To pole jest wymagane'
         ];
     }
 }

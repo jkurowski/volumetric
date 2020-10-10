@@ -10,6 +10,16 @@ use Illuminate\Support\Facades\Route;
 //PUT/PATCH	/photos/{photo}	            update()	    photos.update
 //DELETE	/photos/{photo}	            destroy()	    photos.destroy
 
+
+// Pages
+Route::group(['namespace' => 'Admin', 'prefix'=>'/admin/inbox', 'as' => 'admin.inbox.', 'middleware' => 'auth'], function() {
+
+    Route::get('/',
+        'InboxController@index')->name('index');
+
+    Route::get('/admin/inbox/message/{id}', 'InboxController@show')->name('show');
+});
+
 // Pages
 Route::group(['namespace' => 'Admin', 'prefix'=>'/admin/page', 'as' => 'admin.page.', 'middleware' => 'auth'], function() {
 
@@ -37,7 +47,6 @@ Route::group(['namespace' => 'Admin', 'prefix'=>'/admin/page', 'as' => 'admin.pa
     Route::put('/down/{page}',
         'PageController@down')->name('down');
 });
-
 
 // Slider
 Route::group(['namespace' => 'Admin', 'prefix'=>'/admin/slider', 'as' => 'admin.slider.', 'middleware' => 'auth'], function() {
@@ -85,7 +94,6 @@ Route::group(['namespace' => 'Admin', 'prefix'=>'/admin/article', 'as' => 'admin
     Route::delete('/{article}',
         'ArticleController@destroy')->name('destroy');
 });
-
 
 // DeveloPro
 Route::group(['namespace' => 'Admin', 'prefix'=>'/admin/developro', 'as' => 'admin.developro.', 'middleware' => 'auth'], function() {

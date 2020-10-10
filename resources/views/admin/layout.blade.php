@@ -35,12 +35,6 @@
                 </li>
                 <li class="">
                     <a href="">
-                        <i class="fe-hard-drive"></i>
-                        <span> RODO </span>
-                    </a>
-                </li>
-                <li class="">
-                    <a href="">
                         <i class="fe-users"></i>
                         <span> Użytkownicy </span>
                     </a>
@@ -73,6 +67,12 @@
                     <a href="">
                         <i class="fe-image"></i>
                         <span> Galeria </span>
+                    </a>
+                </li>
+                <li class="{{ Request::routeIs('admin.inbox.*') ? 'active' : '' }}">
+                    <a href="{{route('admin.inbox.index')}}">
+                        <i class="fe-inbox"></i>
+                        <span> Wiadomości </span>
                     </a>
                 </li>
             </ul>
