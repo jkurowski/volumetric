@@ -13,13 +13,6 @@ Route::group(['namespace' => 'Admin', 'prefix'=>'/admin/inbox', 'as' => 'admin.i
 
 });
 
-// RODO
-Route::group(['namespace' => 'Admin', 'prefix'=>'/admin/rodo', 'as' => 'admin.rodo.', 'middleware' => 'auth'], function() {
-
-    Route::get('/rules',
-        'RodoRulesController@index')->name('rules');
-});
-
 // kCMS
 Route::group(['namespace' => 'Admin', 'prefix'=>'/admin', 'as' => 'admin.', 'middleware' => 'auth'], function() {
 
@@ -35,6 +28,15 @@ Route::group(['namespace' => 'Admin', 'prefix'=>'/admin', 'as' => 'admin.', 'mid
         'article' => 'ArticleController',
         'slider' => 'SliderController'
     ]);
+
+    // RODO
+    Route::group(['prefix'=>'/rodo', 'as' => 'rodo.'], function() {
+
+        Route::resources([
+            'rules' => 'RodoRulesController'
+        ]);
+
+    });
 });
 
 // DeveloPro

@@ -14,7 +14,7 @@
             <div class="card-header border-bottom card-nav">
                 <nav class="nav">
                     <a class="nav-link {{ Request::routeIs('admin.inbox.index') ? ' active' : '' }}" href="{{ route('admin.inbox.index') }}"><span class="fe-list"></span> Lista wiadomości</a>
-                    <a class="nav-link {{ Request::routeIs('admin.rodo.rules') ? ' active' : '' }}" href="{{ route('admin.rodo.rules') }}"><span class="fe-check-square"></span> RODO: regułki</a>
+                    <a class="nav-link {{ Request::routeIs('admin.rodo.rules.index') ? ' active' : '' }}" href="{{ route('admin.rodo.rules.index') }}"><span class="fe-check-square"></span> RODO: regułki</a>
                     <a class="nav-link" href=""><span class="fe-users"></span> RODO: użytkownicy</a>
                     <a class="nav-link" href=""><span class="fe-settings"></span> RODO: ustawienia</a>
                 </nav>
@@ -24,6 +24,12 @@
         <div class="card mt-3">
             <div class="card-body card-body-rem p-0">
                 <div class="table-overflow">
+                    @if (session('success'))
+                        <div class="alert alert-success border-0 mb-0">
+                            {{ session('success') }}
+                            <script>window.setTimeout(function(){$(".alert").fadeTo(500,0).slideUp(500,function(){$(this).remove()})},3000);</script>
+                        </div>
+                    @endif
                     <table class="table mb-0" id="sortable">
                         <thead class="thead-default">
                         <tr>
@@ -49,8 +55,8 @@
                                 <td>{{ $p->updated_at }}</td>
                                 <td class="option-120">
                                     <div class="btn-group">
-                                        <a href="" class="btn action-button mr-1" data-toggle="tooltip" data-placement="top" title="Edytuj"><i class="fe-edit"></i></a>
-                                        <form method="POST" action="">
+                                        <a href="{{route('admin.rodo.rules.edit', $p)}}" class="btn action-button mr-1" data-toggle="tooltip" data-placement="top" title="Edytuj"><i class="fe-edit"></i></a>
+                                        <form method="POST" action="{{route('admin.rodo.rules.destroy', $p)}}">
                                             {{ csrf_field() }}
                                             {{ method_field('DELETE') }}
                                             <button type="submit" class="btn action-button confirm" data-toggle="tooltip" data-placement="top" title="Usuń wiadomość" data-id="{{ $p->id }}"><i class="fe-trash-2"></i></button>
@@ -61,6 +67,15 @@
                         @endforeach
                         </tbody>
                     </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group form-group-submit">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12 d-flex justify-content-end">
+                    <a href="{{route('admin.rodo.rules.create')}}" class="btn btn-primary">Dodaj regułkę</a>
                 </div>
             </div>
         </div>

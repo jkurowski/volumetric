@@ -3,8 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\RodoRules;
+use App\Http\Requests\RodoRulesFormRequest;
 use Illuminate\Http\Request;
+
+use App\RodoRules;
+use Illuminate\Support\Facades\Session;
 
 class RodoRulesController extends Controller
 {
@@ -15,31 +18,37 @@ class RodoRulesController extends Controller
 
     public function create()
     {
-        //
+        return view('admin.rodo_rules.form', [
+            'cardTitle' => 'Dodaj regułkę',
+            'backButton' => route('admin.rodo.rules.index')
+        ])->with('entry', RodoRules::make());
     }
 
-    public function store(Request $request)
+    public function store(RodoRulesFormRequest $request)
     {
-        //
+        RodoRules::create($request->except(['_token', 'submit']));
+        return redirect(route('admin.rodo.rules.index'))->with('success', 'Nowa regułka dodana');
     }
 
-    public function show(RodoRules $rodoRules)
+    public function edit($id)
     {
-        //
+        return view('admin.rodo_rules.form', [
+            'entry' => RodoRules::find($id),
+            'cardTitle' => 'Edytuj regułkę',
+            'backButton' => route('admin.rodo.rules.index')
+        ]);
     }
 
-    public function edit(RodoRules $rodoRules)
+    public function update(RodoRulesFormRequest $request, RodoRules $rodoRules)
     {
-        //
+        $rodoRules->update($request->except(['_token', 'submit']));
+        return redirect(route('admin.rodo.rules.index'))->with('success', 'Regułka zaktualizowana');
     }
 
-    public function update(Request $request, RodoRules $rodoRules)
+    public function destroy($id)
     {
-        //
-    }
-
-    public function destroy(RodoRules $rodoRules)
-    {
-        //
+        RodoRules::find($id)->delete();
+        Session::flash('success', 'Regułka usunięta');
+        return response()->json('Deleted', 200);
     }
 }
