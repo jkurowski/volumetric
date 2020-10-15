@@ -10,14 +10,7 @@ class InboxController extends Controller
 {
     public function index()
     {
-
-        $get = Notification::orderBy('id', 'desc')->get();
-        $list = $get->map(function($m) {
-            $m->data = json_decode($m->data);
-            return $m;
-        });
-
-        return view('admin.inbox.index', ['list' => $list]);
+        return view('admin.inbox.index', ['list' => Notification::orderBy('id', 'desc')->get()]);
     }
     public function create()
     {
@@ -31,13 +24,7 @@ class InboxController extends Controller
 
     public function show($id)
     {
-        $get = Notification::whereId($id)->get();
-        $message = $get->map(function($m) {
-            $m->data = json_decode($m->data);
-            return $m;
-        });
-
-        return view('admin.inbox.show', ['message' => $message]);
+        return view('admin.inbox.show', ['message' => Notification::whereId($id)->get()]);
     }
 
     public function edit($id)

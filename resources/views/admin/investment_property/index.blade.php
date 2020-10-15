@@ -6,7 +6,7 @@
             <div class="card-head container-fluid">
                 <div class="row">
                     <div class="col-12 pl-0">
-                        <h4 class="page-title row"><i class="fe-home"></i><a href="{{route('admin.developro.index')}}">Inwestycje</a><span class="d-inline-flex ml-2 mr-2">/</span>{{$investment->name}}</h4>
+                        <h4 class="page-title row"><i class="fe-home"></i><a href="{{route('admin.developro.index')}}">Inwestycje</a><span class="d-inline-flex ml-2 mr-2">/</span>{{$investment->name}} - {{ $floor->name }}</h4>
                     </div>
                 </div>
             </div>
@@ -17,7 +17,7 @@
             <div class="card-body card-body-rem p-0">
                 <div class="table-overflow">
                     @if (session('success'))
-                        <div class="alert alert-success border-0">
+                        <div class="alert alert-success border-0 mb-0">
                             {{ session('success') }}
                             <script>window.setTimeout(function(){$(".alert").fadeTo(500,0).slideUp(500,function(){$(this).remove()})},3000);</script>
                         </div>
@@ -45,8 +45,8 @@
                                 <td>{{ $p->updated_at }}</td>
                                 <td class="option-120">
                                     <div class="btn-group">
-                                        <a href="{{route('admin.developro.property.edit', $p->id)}}" class="btn action-button mr-1" data-toggle="tooltip" data-placement="top" title="Edytuj"><i class="fe-edit"></i></a>
-                                        <form method="POST" action="{{route('admin.developro.property.destroy', $p->id)}}">
+                                        <a href="{{route('admin.developro.investment.floor.property.edit', [$investment, $floor, $p])}}" class="btn action-button mr-1" data-toggle="tooltip" data-placement="top" title="Edytuj"><i class="fe-edit"></i></a>
+                                        <form method="POST" action="{{route('admin.developro.investment.floor.property.destroy', [$investment, $floor, $p])}}">
                                             {{ csrf_field() }}
                                             {{ method_field('DELETE') }}
                                             <button type="submit" class="btn action-button confirm" data-toggle="tooltip" data-placement="top" title="Usuń" data-id="{{ $p->id }}"><i class="fe-trash-2"></i></button>
@@ -65,7 +65,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12 d-flex justify-content-end">
-                    <a href="{{route('admin.developro.property.create', $floor)}}" class="btn btn-primary">Dodaj</a>
+                    <a href="{{route('admin.developro.investment.floor.property.create', [$investment, $floor])}}" class="btn btn-primary">Dodaj</a>
                 </div>
             </div>
         </div>

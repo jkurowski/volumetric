@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Building;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\BuildingFormRequest;
+use Illuminate\Support\Facades\Session;
+
 use App\Investment;
+use App\Building;
 
 class InvestmentBuildingController extends Controller
 {
@@ -19,7 +21,7 @@ class InvestmentBuildingController extends Controller
     {
         return view('admin.investment_building.form', [
             'cardTitle' => 'Dodaj budynek',
-            'backButton' => route('admin.developro.building.index', $investment),
+            'backButton' => route('admin.developro.investment.building.index', $investment),
             'investment' => $investment,
             'planwidth' => Building::PLAN_WIDTH,
             'planheight' => Building::PLAN_HEIGHT,
@@ -42,25 +44,24 @@ class InvestmentBuildingController extends Controller
             $building->planUpload($request->name, $request->file('file'));
         }
 
-        return redirect()->route('admin.developro.building.index', $investment->id)->with('success', 'Budynek zapisany');
+        return redirect()->route('admin.developro.investment.building.index', $investment->id)->with('success', 'Budynek zapisany');
     }
 
-    public function edit($id)
+    public function edit(Investment $investment, $id)
     {
-        $building = Building::where('id', $id)->first();
-        $investment = Investment::find($building->investment_id)->load('plan');
+        $building = Building::find($id);
 
         return view('admin.investment_building.form', [
             'cardTitle' => 'Edytuj budynek',
-            'backButton' => route('admin.developro.building.index', $investment),
-            'investment' => $investment,
+            'backButton' => route('admin.developro.investment.building.index', $investment),
+            'investment' => $investment->load('plan'),
             'entry' => $building,
             'planwidth' => Building::PLAN_WIDTH,
             'planheight' => Building::PLAN_HEIGHT,
         ]);
     }
 
-    public function update(BuildingFormRequest $request, Building $building)
+    public function update(BuildingFormRequest $request, Investment $investment, Building $building)
     {
         $building->update($request->only([
             'name',
@@ -73,12 +74,14 @@ class InvestmentBuildingController extends Controller
             $building->planUpload($request->name, $request->file('file'), true);
         }
 
-        return redirect()->route('admin.developro.building.index', $building->investment_id)->with('success', 'Budynek zaktualizowane');
+        return redirect()->route('admin.developro.investment.building.index', $investment)->with('success', 'Budynek zaktualizowany');
     }
 
-    public function destroy(Building $building)
+    public function destroy($investment, $id)
     {
+        $building = Building::find($id);
         $building->delete();
-        return response()->json(['success' => 'Budynek usnięty']);
+        Session::flash('success', 'Budynek usunięty');
+        return response()->json('Deleted', 200);
     }
 }

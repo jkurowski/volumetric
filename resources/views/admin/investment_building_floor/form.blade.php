@@ -1,10 +1,10 @@
 @extends('admin.layout')
 @section('content')
-    @if(Route::is('admin.developro.building.floor.edit'))
-        <form method="POST" action="{{route('admin.developro.building.floor.update', $entry->id)}}" enctype="multipart/form-data" class="mappa">
+    @if(Route::is('admin.developro.investment.building.floor.edit'))
+        <form method="POST" action="{{route('admin.developro.investment.building.floor.update', [$investment, $building, $entry])}}" enctype="multipart/form-data" class="mappa">
             {{method_field('PUT')}}
             @else
-                <form method="POST" action="{{route('admin.developro.building.floor.store', $building)}}" enctype="multipart/form-data" class="mappa">
+                <form method="POST" action="{{route('admin.developro.investment.building.floor.store', [$investment, $building])}}" enctype="multipart/form-data" class="mappa">
                     @endif
                     @csrf
                     <div class="container">

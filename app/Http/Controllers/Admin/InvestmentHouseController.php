@@ -4,14 +4,13 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PropertyFormRequest;
+use Illuminate\Support\Facades\Session;
+
 use App\Investment;
 use App\Property;
-use Illuminate\Http\Request;
 
 class InvestmentHouseController extends Controller
 {
-    protected $redirectTo = 'admin/developro/investment/';
-
     public function index(Investment $investment)
     {
         return view('admin.investment_house.index', ['investment' => $investment]);
@@ -20,8 +19,8 @@ class InvestmentHouseController extends Controller
     public function create(Investment $investment)
     {
         return view('admin.investment_house.form', [
-            'cardTitle' => 'Dodaj mieszkanie',
-            'backButton' => route('admin.developro.house.index', $investment),
+            'cardTitle' => 'Dodaj dom',
+            'backButton' => route('admin.developro.investment.house.index', $investment),
             'investment' => $investment,
             'planwidth' => Property::PLAN_WIDTH,
             'planheight' => Property::PLAN_HEIGHT,
@@ -47,26 +46,25 @@ class InvestmentHouseController extends Controller
             $property->planUpload($request->name, $request->file('file'));
         }
 
-        return redirect()->route('admin.developro.house.index', [$investment->id])->with('success', 'Dom zapisany');
+        return redirect()->route('admin.developro.investment.house.index', [$investment->id])->with('success', 'Dom poprawnie zapisany');
     }
 
-    public function edit($id)
+    public function edit(Investment $investment, $id)
     {
-        $property = Property::where('id', $id)->first();
-        $investment = Investment::find($property->investment_id)->load('plan');
-
         return view('admin.investment_house.form', [
-            'cardTitle' => 'Edytuj mieszkanie',
-            'backButton' => route('admin.developro.house.index', $investment),
+            'cardTitle' => 'Edytuj dom',
+            'backButton' => route('admin.developro.investment.house.index', $investment),
             'investment' => $investment,
-            'entry' => $property,
+            'entry' => Property::find($id),
             'planwidth' => Property::PLAN_WIDTH,
             'planheight' => Property::PLAN_HEIGHT,
         ]);
     }
 
-    public function update(PropertyFormRequest $request, Property $property)
+    public function update(PropertyFormRequest $request, Investment $investment, $id)
     {
+        $property = Property::find($id);
+
         $property->update($request->only([
             'rooms',
             'status',
@@ -80,12 +78,14 @@ class InvestmentHouseController extends Controller
             $property->planUpload($request->name, $request->file('file'), true);
         }
 
-        return redirect()->route('admin.developro.house.index', $property->investment_id)->with('success', 'Dom zaktualizowane');
+        return redirect()->route('admin.developro.investment.house.index', $investment->id)->with('success', 'Dom zaktualizowany');
     }
 
-    public function destroy(Property $property)
+    public function destroy($investment, $id)
     {
+        $property = Property::find($id);
         $property->delete();
-        return response()->json(['success' => 'Dom usnięty']);
+        Session::flash('success', 'Dom usnięty');
+        return response()->json('Deleted', 200);
     }
 }

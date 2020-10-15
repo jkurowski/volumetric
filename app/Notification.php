@@ -14,4 +14,8 @@ class Notification extends Model
     protected $casts = [
         'id' => 'string'
     ];
+
+    public function getDataAttribute($value) {
+        return json_decode($value);
+    }
 }

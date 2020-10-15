@@ -13,8 +13,8 @@
 
             <div class="card-header border-bottom card-nav">
                 <nav class="nav">
-                    <a class="nav-link {{ Request::routeIs('admin.inbox.index') ? ' active' : '' }}" href=""><span class="fe-list"></span> Lista wiadomości</a>
-                    <a class="nav-link" href="{{ route('admin.rodo.rules') }}"><span class="fe-check-square"></span> RODO: regułki</a>
+                    <a class="nav-link {{ Request::routeIs('admin.inbox.index') ? ' active' : '' }}" href="{{ route('admin.inbox.index') }}"><span class="fe-list"></span> Lista wiadomości</a>
+                    <a class="nav-link {{ Request::routeIs('admin.rodo.rules') ? ' active' : '' }}" href="{{ route('admin.rodo.rules') }}"><span class="fe-check-square"></span> RODO: regułki</a>
                     <a class="nav-link" href=""><span class="fe-users"></span> RODO: użytkownicy</a>
                     <a class="nav-link" href=""><span class="fe-settings"></span> RODO: ustawienia</a>
                 </nav>
@@ -28,11 +28,12 @@
                         <thead class="thead-default">
                         <tr>
                             <th>#</th>
-                            <th>Imię</th>
-                            <th>E-mail</th>
-                            <th>Temat</th>
-                            <th>Miejsce</th>
-                            <th>Data</th>
+                            <th>Nazwa</th>
+                            <th class="text-center">Czas trwania</th>
+                            <th class="text-center">Wymagane</th>
+                            <th class="text-center">Status</th>
+                            <th>Data utworzenia</th>
+                            <th>Data edycji</th>
                             <th></th>
                         </tr>
                         </thead>
@@ -40,14 +41,15 @@
                         @foreach ($list as $index => $p)
                             <tr>
                                 <th class="position" scope="row">{{ $index+1 }}</th>
-                                <td>{{ $p->data->name }}</td>
-                                <td>{{ $p->data->email }}</td>
-                                <td>{{ $p->data->subject }}</td>
-                                <td>@isset($p->data->url)<a href="{{ $p->data->url }}" target="_blank">{{ $p->data->page }}</a>@endisset</td>
+                                <td>{{ $p->title }}</td>
+                                <td class="text-center">{{ $p->time }}</td>
+                                <td class="text-center">{!! required($p->required) !!}</td>
+                                <td class="text-center">{!! status($p->status) !!} </td>
+                                <td>{{ $p->created_at }}</td>
                                 <td>{{ $p->updated_at }}</td>
                                 <td class="option-120">
                                     <div class="btn-group">
-                                        <a href="{{route('admin.inbox.show', $p->id)}}" class="btn action-button mr-1" data-toggle="tooltip"data-placement="top" title="Pokaż wiadomość"><i class="fe-mail"></i></a>
+                                        <a href="" class="btn action-button mr-1" data-toggle="tooltip" data-placement="top" title="Edytuj"><i class="fe-edit"></i></a>
                                         <form method="POST" action="">
                                             {{ csrf_field() }}
                                             {{ method_field('DELETE') }}

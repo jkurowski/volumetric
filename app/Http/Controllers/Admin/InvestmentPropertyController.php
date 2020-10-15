@@ -4,16 +4,15 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PropertyFormRequest;
+use Illuminate\Support\Facades\Session;
+
 use App\Investment;
 use App\Floor;
-
 use App\Property;
-use Illuminate\Http\Request;
+
 
 class InvestmentPropertyController extends Controller
 {
-    protected $redirectTo = 'admin/developro/investment/';
-
     public function index(Investment $investment, Floor $floor)
     {
         $list = $investment->load(array(
@@ -30,14 +29,11 @@ class InvestmentPropertyController extends Controller
         ]);
     }
 
-    public function create(Floor $floor)
+    public function create(Investment $investment, Floor $floor)
     {
-
-        $investment = Investment::find($floor->investment_id);
-
         return view('admin.investment_property.form', [
-            'cardTitle' => 'Dodaj mieszkanie',
-            'backButton' => $this->redirectTo.$floor->investment_id,
+            'cardTitle' => 'Dodaj powierzchnię',
+            'backButton' => route('admin.developro.investment.floor.property.index', [$investment, $floor]),
             'floor' => $floor,
             'investment' => $investment,
             'planwidth' => Property::PLAN_WIDTH,
@@ -45,10 +41,10 @@ class InvestmentPropertyController extends Controller
         ])->with('entry', Property::make());
     }
 
-    public function store(PropertyFormRequest $request, Floor $floor)
+    public function store(PropertyFormRequest $request, Investment $investment, Floor $floor)
     {
         $property = Property::create($request->merge([
-            'investment_id' => $floor->investment_id,
+            'investment_id' => $investment->id,
             'floor_id' => $floor->id
         ])->only([
             'investment_id',
@@ -66,18 +62,16 @@ class InvestmentPropertyController extends Controller
             $property->planUpload($request->name, $request->file('file'));
         }
 
-        return redirect()->route('admin.developro.property.index', [$floor->investment_id, $floor->id])->with('success', 'Mieszkanie zapisane');
+        return redirect()->route('admin.developro.investment.floor.property.index', [$investment, $floor])->with('success', 'Powierzchnia zapisana');
     }
 
-    public function edit($id)
+    public function edit(Investment $investment, Floor $floor, $id)
     {
-        $property = Property::where('id', $id)->first();
-        $floor = Floor::where('id', $property->floor_id)->first();
-        $investment = Investment::find($property->investment_id);
+        $property = Property::find($id);
 
         return view('admin.investment_property.form', [
-            'cardTitle' => 'Edytuj mieszkanie',
-            'backButton' => $this->redirectTo.$property->investment_id,
+            'cardTitle' => 'Edytuj powierzchnię',
+            'backButton' => route('admin.developro.investment.floor.property.index', [$investment, $floor]),
             'floor' => $floor,
             'investment' => $investment,
             'entry' => $property,
@@ -86,7 +80,7 @@ class InvestmentPropertyController extends Controller
         ]);
     }
 
-    public function update(PropertyFormRequest $request, Property $property)
+    public function update(PropertyFormRequest $request, Investment $investment, Floor $floor, Property $property)
     {
         $property->update($request->only([
             'rooms',
@@ -101,12 +95,14 @@ class InvestmentPropertyController extends Controller
             $property->planUpload($request->name, $request->file('file'), true);
         }
 
-        return redirect()->route('admin.developro.property.index', [$property->investment_id, $property->floor_id])->with('success', 'Mieszkanie zaktualizowane');
+        return redirect()->route('admin.developro.investment.floor.property.index', [$investment, $floor])->with('success', 'Powierzchnia zaktualizowana');
     }
 
-    public function destroy(Property $property)
+    public function destroy($investment, $floor, $id)
     {
+        $property = Property::find($id);
         $property->delete();
-        return response()->json(['success' => 'Mieszkanie usnięte']);
+        Session::flash('success', 'Powierzchnia usunięta');
+        return response()->json('Deleted', 200);
     }
 }

@@ -110,6 +110,13 @@ class Investment extends Model
 
     public function planUpload($file)
     {
+        if ($this->file) {
+            $image_path = public_path('investment/plan/' . $this->file);
+            if (file_exists($image_path)) {
+                unlink($image_path);
+            }
+        }
+
         $name = Str::slug($this->name) . '.' . $file->getClientOriginalExtension();
         $file->storeAs('plan', $name, 'investment_uploads');
 

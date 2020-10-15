@@ -4,13 +4,13 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\FloorFormRequest;
+use Illuminate\Support\Facades\Session;
+
 use App\Investment;
 use App\Floor;
 
 class InvestmentFloorController extends Controller
 {
-    protected $redirectTo = 'admin/developro/floors/';
-
     public function index(Investment $investment)
     {
         return view('admin.investment_floor.index', ['investment' => $investment, 'list' => $investment->floors]);
@@ -21,7 +21,7 @@ class InvestmentFloorController extends Controller
         $investment->load('plan');
         return view('admin.investment_floor.form', [
             'cardTitle' => 'Dodaj pietro',
-            'backButton' => $this->redirectTo.$investment->id,
+            'backButton' => route('admin.developro.investment.floor.index', $investment),
             'planwidth' => Floor::PLAN_WIDTH,
             'planheight' => Floor::PLAN_HEIGHT,
             'investment' => $investment,
@@ -44,26 +44,24 @@ class InvestmentFloorController extends Controller
             $floor->planUpload($request->name, $request->file('file'));
         }
 
-        return redirect()->route('admin.developro.floor.index', $investment->id)->with('success', 'Nowe piętro dodane');
+        return redirect()->route('admin.developro.investment.floor.index', $investment)->with('success', 'Nowe piętro dodane');
     }
 
-    public function edit($id)
+    public function edit(Investment $investment, $id)
     {
-        $floor = Floor::where('id', $id)->first();
-        $investment = Investment::where('id', $floor->investment_id)->first();
-
         return view('admin.investment_floor.form', [
             'cardTitle' => 'Edytuj pietro',
-            'backButton' => $this->redirectTo.$investment->id,
+            'backButton' => route('admin.developro.investment.floor.index', $investment),
             'planwidth' => Floor::PLAN_WIDTH,
             'planheight' => Floor::PLAN_HEIGHT,
-            'entry' => $floor,
+            'entry' => Floor::find($id),
             'investment' => $investment
         ]);
     }
 
-    public function update(FloorFormRequest $request, Floor $floor)
+    public function update(FloorFormRequest $request, Investment $investment, $id)
     {
+        $floor = Floor::find($id);
         $floor->update($request->only(
             [
                 'type',
@@ -77,12 +75,14 @@ class InvestmentFloorController extends Controller
             $floor->planUpload($request->name, $request->file('file'), true);
         }
 
-        return redirect()->route('admin.developro.floor.index', $floor->investment_id)->with('success', 'Pietro zaktualizowane');
+        return redirect()->route('admin.developro.investment.floor.index', $investment)->with('success', 'Pietro zaktualizowane');
     }
 
-    public function destroy(Floor $floor)
+    public function destroy($investment, $id)
     {
+        $floor = Floor::find($id);
         $floor->delete();
-        return response()->json(['success' => 'Piętro usniete']);
+        Session::flash('success', 'Piętro usunięte');
+        return response()->json('Deleted', 200);
     }
 }

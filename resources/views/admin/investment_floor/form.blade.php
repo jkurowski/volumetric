@@ -1,10 +1,10 @@
 @extends('admin.layout')
 @section('content')
-    @if(Route::is('admin.developro.floor.edit'))
-    <form method="POST" action="{{route('admin.developro.floor.update', $entry->id)}}" enctype="multipart/form-data" class="mappa">
+    @if(Route::is('admin.developro.investment.floor.edit'))
+    <form method="POST" action="{{route('admin.developro.investment.floor.update', [$investment, $entry])}}" enctype="multipart/form-data" class="mappa">
         {{method_field('PUT')}}
     @else
-    <form method="POST" action="{{route('admin.developro.floor.store', $investment->id)}}" enctype="multipart/form-data" class="mappa">
+    <form method="POST" action="{{route('admin.developro.investment.floor.store', $investment)}}" enctype="multipart/form-data" class="mappa">
     @endif
     @csrf
     <div class="container">
@@ -12,11 +12,11 @@
             <div class="card-head container">
                 <div class="row">
                     <div class="col-12 pl-0">
-                        <h4 class="page-title row"><i class="fe-home"></i><a href="{{route('admin.developro.index')}}">Inwestycje</a><span class="d-inline-flex ml-2 mr-2">/</span>{{$investment->name}}<span class="d-inline-flex ml-2 mr-2">-</span><a href="{{route('admin.developro.floor.index', $investment)}}">Lista kondygnacji</a><span class="d-inline-flex ml-2 mr-2">/</span>{{ $cardTitle }}</h4>
+                        <h4 class="page-title row"><i class="fe-home"></i><a href="{{route('admin.developro.index')}}">Inwestycje</a><span class="d-inline-flex ml-2 mr-2">/</span>{{$investment->name}}<span class="d-inline-flex ml-2 mr-2">-</span>{{ $cardTitle }}</h4>
                     </div>
                 </div>
             </div>
-            @include('form-elements.back-button')
+            @include('form-elements.back-route-button')
             <div class="card-body">
                 <div class="mappa-tool">
                     <div class="mappa-workspace">

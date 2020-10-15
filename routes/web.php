@@ -15,6 +15,11 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
+Route::get('routes', function() {
+    \Artisan::call('route:list');
+    return '<pre>' . \Artisan::output() . '</pre>';
+});
+
 Route::get('/',
     'Front\IndexController@index')->name('index');
 

@@ -26,12 +26,21 @@ class Building extends Model
     ];
 
     /**
-     * Get your investment floors
+     * Get your building floors
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function floors()
     {
         return $this->hasMany('App\Floor');
+    }
+
+    /**
+     * Get your building rooms
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function rooms()
+    {
+        return $this->hasMany('App\Property');
     }
 
     public function planUpload($title, $file, $delete = null)

@@ -4,36 +4,34 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PropertyFormRequest;
-use App\Property;
+use Illuminate\Support\Facades\Session;
 
 use App\Investment;
 use App\Building;
 use App\Floor;
+use App\Property;
 
 class InvestmentBuildingPropertyController extends Controller
 {
 
-    public function index(Floor $floor)
+    public function index(Investment $investment, Building $building, Floor $floor)
     {
         $properties = Property::where('floor_id', $floor->id)->get();
-        $investment = Investment::find($floor->investment_id);
 
         return view('admin.investment_building_property.index', [
             'investment' => $investment,
-            'building' => Building::find($floor->building_id),
+            'building' => $building,
             'floor' => $floor,
             'list' => $properties
         ]);
     }
 
-    public function create(Floor $floor)
+    public function create(Investment $investment, Building $building, Floor $floor)
     {
-        $investment = Investment::find($floor->investment_id);
-        $building = Building::find($floor->building_id);
 
         return view('admin.investment_building_property.form', [
             'cardTitle' => 'Dodaj mieszkanie',
-            'backButton' => route('admin.developro.building.property.index', [$investment, $building, $floor]),
+            'backButton' => route('admin.developro.investment.building.floor.property.index', [$investment, $building, $floor]),
             'floor' => $floor,
             'building' => $building,
             'investment' => $investment,
@@ -42,11 +40,11 @@ class InvestmentBuildingPropertyController extends Controller
         ])->with('entry', Property::make());
     }
 
-    public function store(PropertyFormRequest $request, Floor $floor)
+    public function store(PropertyFormRequest $request, Investment $investment, Building $building, Floor $floor)
     {
         $property = Property::create($request->merge([
-            'investment_id' => $floor->investment_id,
-            'building_id' => $floor->building_id,
+            'investment_id' => $investment->id,
+            'building_id' => $building->id,
             'floor_id' => $floor->id
         ])->only([
             'investment_id',
@@ -65,19 +63,17 @@ class InvestmentBuildingPropertyController extends Controller
             $property->planUpload($request->name, $request->file('file'));
         }
 
-        return redirect()->route('admin.developro.building.property.index', [$floor->investment_id, $floor->building_id, $floor->id])->with('success', 'Mieszkanie zapisane');
+        return redirect()->route('admin.developro.investment.building.floor.property.index', [$investment, $building, $floor])->with('success', 'Powierzchnia zapisana');
     }
 
-    public function edit(Property $property)
+    public function edit(Investment $investment, Building $building, Floor $floor, $id)
     {
 
-        $floor = Floor::where('id', $property->floor_id)->first();
-        $investment = Investment::find($property->investment_id);
-        $building = Building::find($property->building_id);
+        $property = Property::find($id);
 
         return view('admin.investment_building_property.form', [
             'cardTitle' => 'Edytuj mieszkanie',
-            'backButton' => route('admin.developro.building.property.index', [$investment, $building, $floor]),
+            'backButton' => route('admin.developro.investment.building.floor.property.index', [$investment, $building, $floor]),
             'floor' => $floor,
             'building' => $building,
             'investment' => $investment,
@@ -87,7 +83,7 @@ class InvestmentBuildingPropertyController extends Controller
         ]);
     }
 
-    public function update(PropertyFormRequest $request, Property $property)
+    public function update(PropertyFormRequest $request, Investment $investment, Building $building, Floor $floor,Property $property)
     {
         $property->update($request->only([
             'rooms',
@@ -102,18 +98,14 @@ class InvestmentBuildingPropertyController extends Controller
             $property->planUpload($request->name, $request->file('file'), true);
         }
 
-        return redirect()->route('admin.developro.building.property.index',
-            [
-                $property->investment_id,
-                $property->building_id,
-                $property->floor_id
-            ]
-        )->with('success', 'Mieszkanie zapisane');
+        return redirect()->route('admin.developro.investment.building.floor.property.index', [$investment, $building, $floor])->with('success', 'Powierzchnia zaktualizowana');
     }
 
-    public function destroy(Property $property)
+    public function destroy($investment, $building, $floor, $id)
     {
+        $property = Property::find($id);
         $property->delete();
-        return response()->json(['success' => 'Mieszkanie usnięte']);
+        Session::flash('success', 'Powierzchnia usunięta');
+        return response()->json('Deleted', 200);
     }
 }

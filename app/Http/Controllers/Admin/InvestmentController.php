@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\InvestmentFormRequest;
+
 use App\Investment;
 
 class InvestmentController extends Controller
@@ -36,8 +37,10 @@ class InvestmentController extends Controller
         return redirect($this->redirectTo)->with('success', 'Inwestycja zaktualizowana');
     }
 
-    public function edit(Investment $investment)
+    public function edit($id)
     {
+        $investment = Investment::find($id);
+
         return view('admin.investment.form', [
             'entry' => $investment,
             'cardTitle' => 'Edytuj inwestycję',

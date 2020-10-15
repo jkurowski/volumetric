@@ -1,10 +1,10 @@
 @extends('admin.layout')
 @section('content')
-    @if(Route::is('admin.developro.house.edit'))
-        <form method="POST" action="{{route('admin.developro.house.update', $entry->id)}}" enctype="multipart/form-data" class="mappa">
+    @if(Route::is('admin.developro.investment.house.edit'))
+        <form method="POST" action="{{route('admin.developro.investment.house.update', [$investment, $entry])}}" enctype="multipart/form-data" class="mappa">
             {{method_field('PUT')}}
             @else
-                <form method="POST" action="{{route('admin.developro.house.store', $investment)}}" enctype="multipart/form-data" class="mappa">
+                <form method="POST" action="{{route('admin.developro.investment.house.store', $investment)}}" enctype="multipart/form-data" class="mappa">
                     @endif
                     @csrf
                     <div class="container">
@@ -12,7 +12,7 @@
                             <div class="card-head container">
                                 <div class="row">
                                     <div class="col-12 pl-0">
-                                        <h4 class="page-title row"><i class="fe-home"></i><a href="{{route('admin.developro.index')}}">Inwestycje</a><span class="d-inline-flex ml-2 mr-2">/</span>{{$investment->name}}</h4>
+                                        <h4 class="page-title row"><i class="fe-home"></i><a href="{{route('admin.developro.index')}}">Inwestycje</a><span class="d-inline-flex ml-2 mr-2">/</span>{{$investment->name}}<span class="d-inline-flex ml-2 mr-2">-</span>{{ $cardTitle }}</h4>
                                     </div>
                                 </div>
                             </div>

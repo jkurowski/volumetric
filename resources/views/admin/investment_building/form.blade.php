@@ -1,10 +1,10 @@
 @extends('admin.layout')
 @section('content')
-    @if(Route::is('admin.developro.building.edit'))
-<form method="POST" action="{{route('admin.developro.building.update', $entry->id)}}" enctype="multipart/form-data" class="mappa">
+    @if(Route::is('admin.developro.investment.building.edit'))
+<form method="POST" action="{{route('admin.developro.investment.building.update', [$investment, $entry])}}" enctype="multipart/form-data" class="mappa">
 {{method_field('PUT')}}
     @else
-<form method="POST" action="{{route('admin.developro.building.store', $investment->id)}}" enctype="multipart/form-data" class="mappa">
+<form method="POST" action="{{route('admin.developro.investment.building.store', $investment)}}" enctype="multipart/form-data" class="mappa">
     @endif
     @csrf
     <div class="container">
@@ -16,7 +16,7 @@
                     </div>
                 </div>
             </div>
-            @include('form-elements.back-button')
+            @include('form-elements.back-route-button')
             <div class="card-body">
                 <div class="mappa-tool">
                     <div class="mappa-workspace">

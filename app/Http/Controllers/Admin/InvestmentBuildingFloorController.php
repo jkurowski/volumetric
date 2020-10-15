@@ -2,34 +2,32 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
+use App\Http\Requests\FloorFormRequest;
+use Illuminate\Support\Facades\Session;
+
 use App\Building;
 use App\Floor;
 use App\Investment;
 
-use App\Http\Controllers\Controller;
-use App\Http\Requests\FloorFormRequest;
-
 class InvestmentBuildingFloorController extends Controller
 {
-    public function index(Building $building)
+    public function index(Investment $investment, Building $building)
     {
-        $investment = Investment::find($building->investment_id);
         $floors = Floor::where('building_id', $building->id)->withCount('properties')->get(['id', 'name']);
 
         return view('admin.investment_building_floor.index', [
             'investment' => $investment,
-            'list' => $floors,
-            'building' => $building
+            'building' => $building,
+            'list' => $floors
         ]);
     }
 
-    public function create(Building $building)
+    public function create(Investment $investment, Building $building)
     {
-        $investment = Investment::find($building->investment_id);
-
         return view('admin.investment_building_floor.form', [
             'cardTitle' => 'Dodaj pietro',
-            'backButton' => route('admin.developro.building.floor.index', $building),
+            'backButton' => route('admin.developro.investment.building.floor.index', [$investment, $building]),
             'planwidth' => Building::PLAN_WIDTH,
             'planheight' => Building::PLAN_HEIGHT,
             'building' => $building,
@@ -37,10 +35,10 @@ class InvestmentBuildingFloorController extends Controller
         ])->with('entry', Building::make());
     }
 
-    public function store(FloorFormRequest $request, Building $building)
+    public function store(FloorFormRequest $request, Investment $investment, Building $building)
     {
         $floor = Floor::create($request->merge([
-            'investment_id' => $building->investment_id,
+            'investment_id' => $investment->id,
             'building_id' => $building->id,
         ])->only([
             'investment_id',
@@ -55,17 +53,14 @@ class InvestmentBuildingFloorController extends Controller
             $floor->planUpload($request->name, $request->file('file'));
         }
 
-        return redirect()->route('admin.developro.building.floor.index', $building)->with('success', 'Nowe piętro dodane');
+        return redirect()->route('admin.developro.investment.building.floor.index', [$investment, $building])->with('success', 'Nowe piętro dodane');
     }
 
-    public function edit(Floor $floor)
+    public function edit(Investment $investment, Building $building, Floor $floor)
     {
-        $investment = Investment::where('id', $floor->investment_id)->first();
-        $building = Building::where('id', $floor->building_id)->first();
-
         return view('admin.investment_building_floor.form', [
             'cardTitle' => 'Edytuj pietro',
-            'backButton' => route('admin.developro.building.floor.index', $floor->building_id),
+            'backButton' => route('admin.developro.investment.building.floor.index', [$investment, $building]),
             'planwidth' => Floor::PLAN_WIDTH,
             'planheight' => Floor::PLAN_HEIGHT,
             'entry' => $floor,
@@ -74,7 +69,7 @@ class InvestmentBuildingFloorController extends Controller
         ]);
     }
 
-    public function update(FloorFormRequest $request, Floor $floor)
+    public function update(FloorFormRequest $request, Investment $investment, Building $building, Floor $floor)
     {
         $floor->update($request->only(
             [
@@ -89,12 +84,14 @@ class InvestmentBuildingFloorController extends Controller
             $floor->planUpload($request->name, $request->file('file'), true);
         }
 
-        return redirect()->route('admin.developro.building.floor.index', $floor->building_id)->with('success', 'Pietro zaktualizowane');
+        return redirect()->route('admin.developro.investment.building.floor.index', [$investment, $building])->with('success', 'Pietro zaktualizowane');
     }
 
-    public function destroy(Floor $floor)
+    public function destroy($investment, $building, $id)
     {
+        $floor = Floor::find($id);
         $floor->delete();
-        return response()->json(['success' => 'Piętro usniete']);
+        Session::flash('success', 'Piętro usunięte');
+        return response()->json('Deleted', 200);
     }
 }
