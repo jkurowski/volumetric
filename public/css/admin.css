@@ -672,6 +672,10 @@ span.actionBtn {display:block;margin-right: 30px;padding: 8px 13px 7px;cursor:po
 .badge.room-list-status-3 {background:#940000}
 .badge.room-list-status-4 {background:#5800c5}
 
+.table td .badge.badge-method {display: inline-flex}
+.table td .badge.badge-method-put {background: #35aab6}
+.table td .badge.badge-method-delete {background: #ef6956}
+.table td .badge.badge-method-post {background: #76bd5c}
 
 /* Tabelki
 ================================================== */

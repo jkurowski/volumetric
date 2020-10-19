@@ -3,15 +3,21 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Str;
 use Intervention\Image\ImageManagerStatic as Image;
+use Spatie\Activitylog\Traits\LogsActivity;
 
 class Article extends Model
 {
+
+    use LogsActivity;
+
+    protected static $logName = 'Aktualności';
+
     const IMG_WIDTH = 1110;
     const IMG_HEIGHT = 600;
     const THUMB_WIDTH = 350;
     const THUMB_HEIGHT = 189;
+
     /**
      * The attributes that are mass assignable.
      *

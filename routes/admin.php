@@ -28,7 +28,8 @@ Route::group(['namespace' => 'Admin', 'prefix'=>'/admin', 'as' => 'admin.', 'mid
         'article' => 'ArticleController',
         'slider' => 'SliderController',
         'user' => 'UserController',
-        'role' => 'RoleController'
+        'role' => 'RoleController',
+        'logs' => 'LogController'
     ]);
 
     // RODO

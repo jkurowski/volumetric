@@ -75,6 +75,12 @@
                         <span> Wiadomości </span>
                     </a>
                 </li>
+                <li class="{{ Request::routeIs('admin.logs.*') ? 'active' : '' }}">
+                    <a href="{{route('admin.logs.index')}}">
+                        <i class="fe-activity"></i>
+                        <span> Logi </span>
+                    </a>
+                </li>
             </ul>
         </div>
         <div class="clearfix"></div>

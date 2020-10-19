@@ -6,7 +6,7 @@
             <div class="card-head container-fluid">
                 <div class="row">
                     <div class="col-12 pl-0">
-                        <h4 class="page-title row"><i class="fe-inbox"></i>Wiadomości</h4>
+                        <h4 class="page-title row"><i class="fe-inbox"></i>RODO: regułki</h4>
                     </div>
                 </div>
             </div>

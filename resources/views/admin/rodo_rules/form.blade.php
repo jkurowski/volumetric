@@ -29,7 +29,7 @@
                                 </div>
                             </div>
                         </div>
-                        @include('form-elements.submit', ['name' => 'submit', 'value' => 'Zapisz piętro'])
+                        @include('form-elements.submit', ['name' => 'submit', 'value' => 'Zapisz regułkę'])
                     </div>
                 </form>
         @include('form-elements.tintmce')
