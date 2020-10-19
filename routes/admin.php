@@ -26,14 +26,17 @@ Route::group(['namespace' => 'Admin', 'prefix'=>'/admin', 'as' => 'admin.', 'mid
     Route::resources([
         'page' => 'PageController',
         'article' => 'ArticleController',
-        'slider' => 'SliderController'
+        'slider' => 'SliderController',
+        'user' => 'UserController',
+        'role' => 'RoleController'
     ]);
 
     // RODO
     Route::group(['prefix'=>'/rodo', 'as' => 'rodo.'], function() {
 
         Route::resources([
-            'rules' => 'RodoRulesController'
+            'rules' => 'RodoRulesController',
+            'settings' => 'RodoSettingsController'
         ]);
 
     });

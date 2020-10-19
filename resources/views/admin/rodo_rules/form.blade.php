@@ -1,6 +1,6 @@
 @extends('admin.layout')
 @section('content')
-    @if(Route::is('admin.rodo.rules.update'))
+    @if(Route::is('admin.rodo.rules.edit'))
         <form method="POST" action="{{route('admin.rodo.rules.update', $entry)}}" enctype="multipart/form-data">
             @method('PUT')
             @else
@@ -31,7 +31,6 @@
                         </div>
                         @include('form-elements.submit', ['name' => 'submit', 'value' => 'Zapisz piętro'])
                     </div>
-                    @include('form-elements.submit', ['name' => 'submit', 'value' => 'Zapisz'])
                 </form>
         @include('form-elements.tintmce')
 @endsection

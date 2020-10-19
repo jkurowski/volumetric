@@ -16,7 +16,7 @@
                     <a class="nav-link {{ Request::routeIs('admin.inbox.index') ? ' active' : '' }}" href=""><span class="fe-list"></span> Lista wiadomości</a>
                     <a class="nav-link" href="{{ route('admin.rodo.rules.index') }}"><span class="fe-check-square"></span> RODO: regułki</a>
                     <a class="nav-link" href=""><span class="fe-users"></span> RODO: użytkownicy</a>
-                    <a class="nav-link" href=""><span class="fe-settings"></span> RODO: ustawienia</a>
+                    <a class="nav-link" href="{{ route('admin.rodo.settings.index') }}"><span class="fe-settings"></span> RODO: ustawienia</a>
                 </nav>
             </div>
 

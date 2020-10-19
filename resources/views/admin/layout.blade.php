@@ -33,8 +33,8 @@
                         <span> Ustawienia </span>
                     </a>
                 </li>
-                <li class="">
-                    <a href="">
+                <li class="{{ Request::routeIs('admin.user.*') ? 'active' : '' }}">
+                    <a href="{{route('admin.user.index')}}">
                         <i class="fe-users"></i>
                         <span> Użytkownicy </span>
                     </a>

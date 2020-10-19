@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\RodoRulesFormRequest;
-use Illuminate\Http\Request;
 
 use App\RodoRules;
 use Illuminate\Support\Facades\Session;
@@ -13,7 +12,7 @@ class RodoRulesController extends Controller
 {
     public function index()
     {
-        return view('admin.rodo_rules.index', ['list'=>RodoRules::all()]);
+        return view('admin.rodo_rules.index', ['list' => RodoRules::all()]);
     }
 
     public function create()
@@ -39,8 +38,9 @@ class RodoRulesController extends Controller
         ]);
     }
 
-    public function update(RodoRulesFormRequest $request, RodoRules $rodoRules)
+    public function update(RodoRulesFormRequest $request, $id)
     {
+        $rodoRules = RodoRules::find($id);
         $rodoRules->update($request->except(['_token', 'submit']));
         return redirect(route('admin.rodo.rules.index'))->with('success', 'Regułka zaktualizowana');
     }
