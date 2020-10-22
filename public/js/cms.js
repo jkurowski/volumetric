@@ -46,18 +46,18 @@ jQuery.fn.sortuj = function(a) {
                 type: "POST",
                 url: a,
                 success: function(c) {
-                    $(".card").prepend('<div class="alert alert-success none mb-0" role="alert">Zmiana zapisana</div>');
-                    $(".alert").fadeIn("slow");
+                    $("#jqalert").prepend('<div class="alert alert-success border-0 none mb-0" role="alert">Zmiana zapisana</div>');
+                    $(".alert").fadeIn(500);
                     setTimeout(function() {
-                        $(".alert").fadeOut("slow").remove()
-                    }, 2500)
+                        $(".alert").slideUp(500,function(){$(this).remove()})
+                    }, 3000)
                 },
                 error: function() {
-                    $(".card").prepend('<div class="alert alert-danger none mb-0" role="alert">Wystąpił błąd</div>');
-                    $(".alert").fadeIn("slow");
+                    $("#jqalert").prepend('<div class="alert alert-danger border-0 none mb-0" role="alert">Wystąpił błąd</div>');
+                    $(".alert").fadeIn(500);
                     setTimeout(function() {
-                        $(".alert").fadeOut("slow").remove()
-                    }, 2500)
+                        $(".alert").slideUp(500,function(){$(this).remove()})
+                    }, 3000)
                 }
             })
         }
@@ -65,7 +65,47 @@ jQuery.fn.sortuj = function(a) {
 };
 
 // Sortowanie galerii
-jQuery.fn.sortujGal=function(a){this.sortable({cursor:"move",handle:".move-button",zIndex:9999,containment:"#sortable",dropOnEmpty:false,start:function(d,c){var b=$(this).sortable("instance");b.containment[3]+=c.helper.height()*1.5-b.offset.click.top;b.containment[1]-=b.offset.click.top},update:function(){var b=$(this).sortable("serialize");$.ajaxSetup({headers:{"X-CSRF-TOKEN":$('meta[name="csrf-token"]').attr("content")}});$.ajax({data:b,type:"POST",url:a,success:function(c){$(".page-title").append('<div class="alert alert-success none" role="alert">Zmiana zapisana</div>');$(".alert").fadeIn("slow");setTimeout(function(){$(".alert").fadeOut("slow").remove()},1500)},error:function(){$(".page-title").append('<div class="alert alert-danger none" role="alert">Wystąpił błąd</div>');$(".alert").fadeIn("slow");setTimeout(function(){$(".alert").fadeOut("slow").remove()},1500)}})}}).disableSelection()};
+jQuery.fn.sortujGal = function(a) {
+    this.sortable({
+        cursor: "move",
+        handle: ".move-button",
+        zIndex: 9999,
+        containment: "#sortable",
+        dropOnEmpty: false,
+        start: function(d, c) {
+            var b = $(this).sortable("instance");
+            b.containment[3] += c.helper.height() * 1.5 - b.offset.click.top;
+            b.containment[1] -= b.offset.click.top
+        },
+        update: function() {
+            var b = $(this).sortable("serialize");
+            $.ajaxSetup({
+                headers: {
+                    "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
+                }
+            });
+            $.ajax({
+                data: b,
+                type: "POST",
+                url: a,
+                success: function(c) {
+                    // $("#jqalert").append('<div class="alert alert-success none" role="alert">Zmiana zapisana</div>');
+                    // $(".alert").fadeIn("slow");
+                    // setTimeout(function() {
+                    //     $(".alert").fadeOut("slow").remove()
+                    // }, 1500)
+                },
+                error: function() {
+                    $("#jqalert").append('<div class="alert alert-danger none" role="alert">Wystąpił błąd</div>');
+                    $(".alert").fadeIn("slow");
+                    setTimeout(function() {
+                        $(".alert").fadeOut("slow").remove()
+                    }, 1500)
+                }
+            })
+        }
+    }).disableSelection()
+};
 
 $(document).ready(function(){
 	$('#togglemenu').click(function(e) {

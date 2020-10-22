@@ -9,7 +9,6 @@ class RodoRules extends Model
 {
 
     use LogsActivity;
-
     protected static $logName = 'Regułki RODO';
 
     /**

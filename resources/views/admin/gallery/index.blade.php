@@ -6,39 +6,48 @@
             <div class="card-head container-fluid">
                 <div class="row">
                     <div class="col-6 pl-0">
-                        <h4 class="page-title row"><i class="fe-shield"></i>Role użytkowników</h4>
+                        <h4 class="page-title row"><i class="fe-image"></i>Galeria</h4>
                     </div>
                 </div>
             </div>
             <div class="table-overflow">
+                <div id="jqalert"></div>
                 @if (session('success'))
                     <div class="alert alert-success border-0 mb-0">
                         {{ session('success') }}
                         <script>setTimeout(function(){$(".alert").slideUp(500,function(){$(this).remove()})},3000)</script>
                     </div>
                 @endif
-                <table class="table mb-0">
+                <table id="sortable" class="table mb-0">
                     <thead class="thead-default">
                     <tr>
                         <th>Nazwa</th>
-                        <th>Data utworzenia</th>
-                        <th>Data edycji</th>
+                        <th>Opis</th>
+                        <th>Data modyfikacji</th>
                         <th></th>
                     </tr>
                     </thead>
                     <tbody class="content">
                     @foreach ($list as $p)
-                        <tr>
+                        <tr id="recordsArray_{{ $p->id }}">
                             <td>{{ $p->name }}</td>
-                            <td>{{ $p->created_at }}</td>
+                            <td>@if($p->text){{ $p->text }}@endif</td>
                             <td>{{ $p->updated_at }}</td>
                             <td class="option-120">
                                 <div class="btn-group">
-                                    <a href="{{ route('admin.role.edit', $p) }}" class="btn action-button mr-1" data-toggle="tooltip" data-placement="top" title="Edytuj"><i class="fe-edit"></i></a>
-                                    <form method="POST" action="{{ route('admin.role.destroy', $p) }}">
+                                    <span class="btn action-button move-button mr-1"><i class="fe-move"></i></span>
+                                    <a href="{{route('admin.gallery.edit', $p->id)}}" class="btn action-button mr-1" data-toggle="tooltip" data-placement="top" title="Edytuj wpis"><i class="fe-edit"></i></a>
+                                    <form method="POST" action="{{route('admin.gallery.destroy', $p->id)}}">
                                         {{ csrf_field() }}
                                         {{ method_field('DELETE') }}
-                                        <button type="submit" class="btn action-button confirm" data-toggle="tooltip" data-placement="top" title="Usuń" data-id="{{ $p->id }}"><i class="fe-trash-2"></i></button>
+                                        <button
+                                            type="submit"
+                                            class="btn action-button confirm"
+                                            data-toggle="tooltip"
+                                            data-placement="top"
+                                            title="Usuń wpis"
+                                            data-id="{{ $p->id }}"
+                                        ><i class="fe-trash-2"></i></button>
                                     </form>
                                 </div>
                             </td>
@@ -53,9 +62,18 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12 d-flex justify-content-end">
-                    <a href="{{ route('admin.role.create') }}" class="btn btn-primary">Dodaj grupę</a>
+                    <a href="{{route('admin.gallery.create')}}" class="btn btn-primary">Dodaj galerię</a>
                 </div>
             </div>
         </div>
     </div>
 @endsection
+@push('scripts')
+    <script type="text/javascript" language="javascript">
+        //<![CDATA[
+        $(document).ready(function(){
+            $("#sortable tbody.content").sortuj('{{route('admin.gallery.sort')}}');
+        });
+        //]]>
+    </script>
+@endpush

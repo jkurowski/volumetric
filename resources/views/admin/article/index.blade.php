@@ -8,14 +8,6 @@
                     <div class="col-6 pl-0">
                         <h4 class="page-title row"><i class="fe-book-open"></i>Przeglądaj wpisy</h4>
                     </div>
-                    <div class="col-6 d-flex align-items-center justify-content-center">
-                        @if (session('success'))
-                            <div class="alert alert-success border-0 mb-0 w-100 text-center">
-                                {{ session('success') }}
-                                <script>window.setTimeout(function(){$(".alert").fadeTo(500,0).slideUp(500,function(){$(this).remove()})},33000);</script>
-                            </div>
-                        @endif
-                    </div>
                 </div>
             </div>
             <div class="table-overflow">

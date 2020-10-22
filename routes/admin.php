@@ -22,6 +22,7 @@ Route::group(['namespace' => 'Admin', 'prefix'=>'/admin', 'as' => 'admin.', 'mid
 
     // Slider
     Route::post('slider/set', 'SliderController@sort')->name('slider.sort');
+    Route::post('gallery/set', 'GalleryController@sort')->name('gallery.sort');
 
     Route::resources([
         'page' => 'PageController',
@@ -29,7 +30,8 @@ Route::group(['namespace' => 'Admin', 'prefix'=>'/admin', 'as' => 'admin.', 'mid
         'slider' => 'SliderController',
         'user' => 'UserController',
         'role' => 'RoleController',
-        'logs' => 'LogController'
+        'logs' => 'LogController',
+        'gallery' => 'GalleryController'
     ]);
 
     // RODO

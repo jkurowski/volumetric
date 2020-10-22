@@ -4,12 +4,15 @@ namespace App;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Spatie\Activitylog\Traits\LogsActivity;
 use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
     use Notifiable;
     use HasRoles;
+    use LogsActivity;
+    protected static $logName = 'Użytkownicy';
 
     /**
      * The attributes that are mass assignable.

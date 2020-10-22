@@ -63,8 +63,8 @@
                         <span> Inwestycje </span>
                     </a>
                 </li>
-                <li class="">
-                    <a href="">
+                <li class="{{ Request::routeIs('admin.gallery.*') ? 'active' : '' }}">
+                    <a href="{{route('admin.gallery.index')}}">
                         <i class="fe-image"></i>
                         <span> Galeria </span>
                     </a>

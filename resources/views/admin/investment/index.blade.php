@@ -8,17 +8,15 @@
                     <div class="col-6 pl-0">
                         <h4 class="page-title row"><i class="fe-home"></i>Przeglądaj inwestycje</h4>
                     </div>
-                    <div class="col-6 d-flex align-items-center justify-content-center">
-                        @if (session('success'))
-                            <div class="alert alert-success border-0 mb-0 w-100 text-center">
-                                {{ session('success') }}
-                                <script>window.setTimeout(function(){$(".alert").fadeTo(500,0).slideUp(500,function(){$(this).remove()})},3000);</script>
-                            </div>
-                        @endif
-                    </div>
                 </div>
             </div>
             <div class="table-overflow">
+                @if (session('success'))
+                    <div class="alert alert-success border-0 mb-0">
+                        {{ session('success') }}
+                        <script>window.setTimeout(function(){$(".alert").fadeTo(500,0).slideUp(500,function(){$(this).remove()})},3000);</script>
+                    </div>
+                @endif
                 <table class="table mb-0" id="sortable">
                     <thead class="thead-default">
                     <tr>
