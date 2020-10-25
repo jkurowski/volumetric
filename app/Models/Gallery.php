@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Activitylog\Traits\LogsActivity;
@@ -29,7 +29,7 @@ class Gallery extends Model
      */
     public function photos()
     {
-        return $this->hasMany('App\Image')->orderBy('sort');
+        return $this->hasMany('App\Models\Image')->orderBy('sort');
     }
 
     public function sort(object $array)

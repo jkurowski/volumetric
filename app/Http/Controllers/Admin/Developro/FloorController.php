@@ -6,8 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\FloorFormRequest;
 use Illuminate\Support\Facades\Session;
 
-use App\Investment;
-use App\Floor;
+use App\Models\Investment;
+use App\Models\Floor;
 
 class FloorController extends Controller
 {

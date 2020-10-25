@@ -3,8 +3,9 @@
 namespace App\Http\Controllers\Admin\Inbox;
 
 use App\Http\Controllers\Controller;
-use App\Notification;
 use Illuminate\Http\Request;
+
+use App\Models\Notification;
 
 class IndexController extends Controller
 {

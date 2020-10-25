@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
-use App\Page;
+use App\Models\Page;
 
 class MenuController extends Controller
 {

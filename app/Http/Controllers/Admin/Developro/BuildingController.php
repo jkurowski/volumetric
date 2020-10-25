@@ -6,8 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\BuildingFormRequest;
 use Illuminate\Support\Facades\Session;
 
-use App\Investment;
-use App\Building;
+use App\Models\Investment;
+use App\Models\Building;
 
 class BuildingController extends Controller
 {

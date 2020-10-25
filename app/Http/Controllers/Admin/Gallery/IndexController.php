@@ -8,7 +8,7 @@ use App\Http\Requests\GalleryFormRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
-use App\Gallery;
+use App\Models\Gallery;
 
 class IndexController extends Controller
 {

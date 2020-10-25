@@ -45,6 +45,16 @@ Route::group(['namespace' => 'Admin', 'prefix'=>'/admin', 'as' => 'admin.', 'mid
         ]);
 
     });
+
+    // Dashboard
+    Route::group(['prefix'=>'/dashboard', 'as' => 'dashboard.'], function() {
+
+        Route::resources([
+            'seo' => 'Dashboard\SeoController',
+            'social' => 'Dashboard\SocialController'
+        ]);
+
+    });
 });
 
 // DeveloPro

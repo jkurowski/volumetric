@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin\Developro;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\InvestmentFormRequest;
 
-use App\Investment;
+use App\Models\Investment;
 
 class IndexController extends Controller
 {

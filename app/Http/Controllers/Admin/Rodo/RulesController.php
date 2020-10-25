@@ -7,7 +7,7 @@ use App\Http\Requests\RodoRulesFormRequest;
 
 use Illuminate\Support\Facades\Session;
 
-use App\RodoRules;
+use App\Models\RodoRules;
 
 class RulesController extends Controller
 {

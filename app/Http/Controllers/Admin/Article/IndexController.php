@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\ArticleFormRequest;
 use Illuminate\Support\Facades\Session;
 
-use App\Article;
+use App\Models\Article;
 
 class IndexController extends Controller
 {

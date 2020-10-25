@@ -19,7 +19,8 @@
         "laravel/tinker": "^2.0",
         "laravel/ui": "^2.1",
         "spatie/laravel-activitylog": "^3.16",
-        "spatie/laravel-permission": "^3.17"
+        "spatie/laravel-permission": "^3.17",
+        "spatie/valuestore": "^1.2"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.4",

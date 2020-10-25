@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin\Rodo;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-use App\RodoSettings;
+use App\Models\RodoSettings;
 
 class SettingsController extends Controller
 {

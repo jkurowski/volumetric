@@ -9,12 +9,19 @@
         @csrf
         <div class="container">
             <div class="card">
-                @include('form-elements.card-header')
+                <div class="card-head container">
+                    <div class="row">
+                        <div class="col-12 pl-0">
+                            <h4 class="page-title row"><i class="fe-airplay"></i><a href="{{route('admin.slider.index')}}">Slider</a><span class="d-inline-flex ml-2 mr-2">/</span>{{ $cardTitle }}</h4>
+                        </div>
+                    </div>
+                </div>
+                @include('form-elements.back-route-button')
                 <div class="card-body">
                     <div class="row">
                         <div class="col-12">
                             @include('form-elements.input-text', ['label' => 'Nazwa', 'name' => 'title', 'value' => $entry->title, 'required' => 1])
-                            @include('form-elements.input-file', ['label' => 'Plik', 'sublabel' => '(wymiary: '.\App\Slider::IMG_WIDTH.'px / '.\App\Slider::IMG_HEIGHT.'px)', 'name' => 'file'])
+                            @include('form-elements.input-file', ['label' => 'Plik', 'sublabel' => '(wymiary: '.\App\Models\Slider::IMG_WIDTH.'px / '.\App\Models\Slider::IMG_HEIGHT.'px)', 'name' => 'file'])
                             @include('form-elements.input-text', ['label' => 'CTA link', 'name' => 'link', 'value' => $entry->link])
                             @include('form-elements.input-text', ['label' => 'CTA button', 'name' => 'link_button', 'value' => $entry->link_button])
                         </div>

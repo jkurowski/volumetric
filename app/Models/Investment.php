@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
@@ -23,7 +23,7 @@ class Investment extends Model
      */
     public function plan()
     {
-        return $this->hasOne('App\Plan');
+        return $this->hasOne('App\Models\Plan');
     }
 
     /**
@@ -32,7 +32,7 @@ class Investment extends Model
      */
     public function floors()
     {
-        return $this->hasMany('App\Floor');
+        return $this->hasMany('App\Models\Floor');
     }
 
     /**
@@ -41,7 +41,7 @@ class Investment extends Model
      */
     public function floor()
     {
-        return $this->hasOne('App\Floor');
+        return $this->hasOne('App\Models\Floor');
     }
 
     /**
@@ -66,7 +66,7 @@ class Investment extends Model
      */
     public function buildings()
     {
-        return $this->hasMany('App\Building');
+        return $this->hasMany('App\Models\Building');
     }
 
     /**
@@ -75,7 +75,7 @@ class Investment extends Model
      */
     public function building()
     {
-        return $this->hasOne('App\Building');
+        return $this->hasOne('App\Models\Building');
     }
 
     /**
@@ -84,7 +84,7 @@ class Investment extends Model
      */
     public function buildingFloors()
     {
-        return $this->hasMany('App\Floor');
+        return $this->hasMany('App\Models\Floor');
     }
 
     /**
@@ -105,7 +105,7 @@ class Investment extends Model
 
     public function houses()
     {
-        return $this->hasMany('App\Property');
+        return $this->hasMany('App\Models\Property');
     }
 
     public function planUpload($file)

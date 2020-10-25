@@ -1,12 +1,12 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 use Intervention\Image\ImageManagerStatic as Image;
 
-class Floor extends Model
+class Building extends Model
 {
     const PLAN_WIDTH = 1280;
     const PLAN_HEIGHT = 560;
@@ -18,42 +18,44 @@ class Floor extends Model
      */
     protected $fillable = [
         'investment_id',
-        'building_id',
         'name',
-        'type',
+        'number',
+        'file',
         'html',
-        'cords',
-        'file'
+        'cords'
     ];
 
-    public function properties()
+    /**
+     * Get your building floors
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function floors()
     {
-        return $this->hasMany('App\Property');
+        return $this->hasMany('App\Models\Floor');
     }
 
-    public function findNext($id)
+    /**
+     * Get your building rooms
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function rooms()
     {
-        return $this->where('id', '>', $id)->first();
-    }
-
-    public function findPrev($id)
-    {
-        return $this->where('id', '<', $id)->first();
+        return $this->hasMany('App\Models\Property');
     }
 
     public function planUpload($title, $file, $delete = null)
     {
         if ($delete && $this->file) {
-            $image_path = public_path('investment/floor/' . $this->file);
+            $image_path = public_path('investment/building/' . $this->file);
             if (file_exists($image_path)) {
                 unlink($image_path);
             }
         }
 
         $name = Str::slug($title, '-') . '_' . Str::random(12) . '.' .$file->getClientOriginalExtension();
-        $file->storeAs('floor', $name, 'investment_uploads');
+        $file->storeAs('building', $name, 'investment_uploads');
 
-        $filepath = public_path('investment/floor/' . $name);
+        $filepath = public_path('investment/building/' . $name);
         Image::make($filepath)->resize(self::PLAN_WIDTH, self::PLAN_HEIGHT, function ($constraint) {
             $constraint->aspectRatio();
         })->save($filepath);
@@ -64,9 +66,9 @@ class Floor extends Model
     public static function boot()
     {
         parent::boot();
-        self::deleting(function ($floor) {
-            if ($floor->file) {
-                $image_path = public_path('investment/floor/' . $floor->file);
+        self::deleting(function ($building) {
+            if ($building->file) {
+                $image_path = public_path('investment/building/' . $building->file);
                 if (file_exists($image_path)) {
                     unlink($image_path);
                 }

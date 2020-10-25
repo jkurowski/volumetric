@@ -1,26 +1,25 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class RodoSettings extends Model
+class Plan extends Model
 {
     /**
-     * Indicates if the model should be timestamped.
+     * The table associated with the model.
      *
-     * @var bool
+     * @var string
      */
-
-    public $timestamps = false;
+    protected $table = 'investments_plans';
 
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
-
     protected $fillable = [
-        'obligation'
+        'investment_id',
+        'file'
     ];
 }

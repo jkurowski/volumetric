@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Front;
 
-use App\Article;
 use App\Http\Controllers\Controller;
-use App\Slider;
+
+use App\Models\Article;
+use App\Models\Slider;
 
 class IndexController extends Controller
 {

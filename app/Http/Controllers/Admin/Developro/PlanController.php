@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin\Developro;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-use App\Investment;
+use App\Models\Investment;
 
 class PlanController extends Controller
 {

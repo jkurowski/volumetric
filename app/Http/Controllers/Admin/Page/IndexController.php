@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin\Page;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PageFormRequest;
 use App\Http\Requests\PageUpdateFormRequest;
-use App\Page;
+use App\Models\Page;
 
 class IndexController extends Controller
 {

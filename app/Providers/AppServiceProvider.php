@@ -2,20 +2,20 @@
 
 namespace App\Providers;
 
-
-
 use Request;
 use Illuminate\Support\ServiceProvider;
 use Spatie\Activitylog\Models\Activity;
 
-use App\Gallery;
+use App\Models\Gallery;
 use App\Observers\GalleryObserver;
 
-use App\Image;
+use App\Models\Image;
 use App\Observers\ImageObserver;
 
-use App\Article;
+use App\Models\Article;
 use App\Observers\ArticleObserver;
+
+use App\Models\Settings;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -26,7 +26,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->singleton(Settings::class, function () {
+            return Settings::make(storage_path('app/settings.json'));
+        });
     }
 
     /**

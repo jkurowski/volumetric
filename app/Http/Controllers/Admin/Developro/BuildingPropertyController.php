@@ -6,10 +6,10 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\PropertyFormRequest;
 use Illuminate\Support\Facades\Session;
 
-use App\Investment;
-use App\Building;
-use App\Floor;
-use App\Property;
+use App\Models\Investment;
+use App\Models\Building;
+use App\Models\Floor;
+use App\Models\Property;
 
 class BuildingPropertyController extends Controller
 {

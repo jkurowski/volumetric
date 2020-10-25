@@ -6,12 +6,11 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\SliderFormRequest;
 use Illuminate\Http\Request;
 
-use App\Slider;
+use App\Models\Slider;
+use Illuminate\Support\Facades\Session;
 
 class IndexController extends Controller
 {
-    protected $redirectTo = 'admin/slider';
-
     public function index()
     {
         return view('admin.slider.index', ['list' => Slider::all()->sortBy("sort")]);
@@ -22,7 +21,7 @@ class IndexController extends Controller
         return view('admin.slider.form',
             [
                 'cardTitle' => 'Dodaj obrazek',
-                'backButton' => $this->redirectTo
+                'backButton' => route('admin.slider.index')
             ])
             ->with('entry', Slider::make());
     }
@@ -35,15 +34,15 @@ class IndexController extends Controller
             $slider->upload($request->title, $request->file('file'));
         }
 
-        return redirect($this->redirectTo)->with('success', 'Nowy obrazek dodany');
+        return redirect(route('admin.slider.index'))->with('success', 'Nowy obrazek dodany');
     }
 
-    public function edit(Slider $slider)
+    public function edit($id)
     {
         return view('admin.slider.form', [
-            'entry' => $slider,
+            'entry' => Slider::find($id),
             'cardTitle' => 'Edytuj obrazek',
-            'backButton' => $this->redirectTo
+            'backButton' => route('admin.slider.index')
         ]);
     }
 
@@ -55,13 +54,14 @@ class IndexController extends Controller
             $slider->upload($request->title, $request->file('file'), true);
         }
 
-        return redirect($this->redirectTo)->with('success', 'Obrazek zaktualizowany');
+        return redirect(route('admin.slider.index'))->with('success', 'Obrazek zaktualizowany');
     }
 
-    public function destroy(Slider $slider)
+    public function destroy($id)
     {
-        $slider->delete();
-        return response()->json(['success' => 'Obrazek usniety']);
+        Slider::find($id)->delete();
+        Session::flash('success', 'Obrazek usunięty');
+        return response()->json('Deleted', 200);
     }
 
     public function sort(Request $request, Slider $slider)

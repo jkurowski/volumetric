@@ -6,8 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\PropertyFormRequest;
 use Illuminate\Support\Facades\Session;
 
-use App\Investment;
-use App\Property;
+use App\Models\Investment;
+use App\Models\Property;
 
 class HouseController extends Controller
 {

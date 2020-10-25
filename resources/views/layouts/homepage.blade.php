@@ -1,16 +1,18 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
+    <title>{{ settings()->get("page_title") }}</title>
+
     <meta charset="utf-8">
+    <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="{{ settings()->get("page_description") }}">
+    <meta name="robots" content="{{ settings()->get("page_robots") }}">
+    <meta name="author" content="{{ settings()->get("page_author") }}">
+
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
-    <title>@hasSection('seo_title')@yield('seo_title')@else{{ 'Naza z ustawienia' }} - @yield('meta_title')@endif</title>
-
-    <meta name="description" content="@hasSection('seo_description')@yield('seo_description')@else{{ 'opis z ustawienia'}}@endif">
-    <meta name="robots" content="@hasSection('seo_robots')@yield('seo_robots')@else{{ 'indeksowanie z ustawienia'}}@endif">
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
