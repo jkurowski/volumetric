@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Admin\Developro;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\InvestmentFormRequest;
 
 use App\Investment;
 
-class InvestmentController extends Controller
+class IndexController extends Controller
 {
 
     protected $redirectTo = 'admin/developro';

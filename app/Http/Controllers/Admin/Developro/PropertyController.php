@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Admin\Developro;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PropertyFormRequest;
@@ -11,7 +11,7 @@ use App\Floor;
 use App\Property;
 
 
-class InvestmentPropertyController extends Controller
+class PropertyController extends Controller
 {
     public function index(Investment $investment, Floor $floor)
     {

@@ -1,15 +1,16 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Admin\Gallery;
 
 use App\Http\Controllers\Controller;
-
-use App\Gallery;
 use App\Http\Requests\GalleryFormRequest;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
-class GalleryController extends Controller
+use App\Gallery;
+
+class IndexController extends Controller
 {
     public function index()
     {
@@ -32,7 +33,7 @@ class GalleryController extends Controller
 
     public function show($id)
     {
-        //
+        return view('admin.gallery.show', ['gallery' => Gallery::with('photos')->find($id)]);
     }
 
     public function edit($id)

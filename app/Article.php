@@ -40,8 +40,15 @@ class Article extends Model
     public function upload($slug, $file, $delete = null)
     {
         if($delete && $this->file) {
-            unlink(public_path('uploads/articles/' . $this->file));
-            unlink(public_path('uploads/articles/thumbs/' . $this->file));
+            $article_img = public_path('uploads/articles/' . $this->file);
+            $article_thumb_img = public_path('uploads/articles/thumbs/' . $this->file);
+
+            if (file_exists($article_img)) {
+                unlink($article_img);
+            }
+            if (file_exists($article_thumb_img)) {
+                unlink($article_thumb_img);
+            }
         }
 
         $name = $slug.'.' . $file->getClientOriginalExtension();

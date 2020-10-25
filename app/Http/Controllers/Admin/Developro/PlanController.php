@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Admin\Developro;
 
-use App\Investment;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class InvestmentPlanController extends Controller
+use App\Investment;
+
+class PlanController extends Controller
 {
 
     public function index(Investment $investment)

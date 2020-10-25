@@ -5,8 +5,11 @@
         <div class="card">
             <div class="card-head container-fluid">
                 <div class="row">
-                    <div class="col-12 pl-0">
+                    <div class="col-6 pl-0">
                         <h4 class="page-title row"><i class="fe-inbox"></i>RODO: regułki</h4>
+                    </div>
+                    <div class="col-6 d-flex justify-content-end align-items-center form-group-submit">
+                        <a href="{{route('admin.rodo.rules.create')}}" class="btn btn-primary">Dodaj regułkę</a>
                     </div>
                 </div>
             </div>

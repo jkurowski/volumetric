@@ -23,6 +23,15 @@ class Gallery extends Model
         'file'
     ];
 
+    /**
+     * Get images
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function photos()
+    {
+        return $this->hasMany('App\Image')->orderBy('sort');
+    }
+
     public function sort(object $array)
     {
         $updateRecordsArray = $array->get('recordsArray');
@@ -34,4 +43,5 @@ class Gallery extends Model
             $listingCounter = $listingCounter + 1;
         }
     }
+
 }

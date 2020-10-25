@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Admin\Developro;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\BuildingFormRequest;
@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Session;
 use App\Investment;
 use App\Building;
 
-class InvestmentBuildingController extends Controller
+class BuildingController extends Controller
 {
 
     public function index(Investment $investment)

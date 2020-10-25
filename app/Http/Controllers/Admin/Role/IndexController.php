@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Admin\Role;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Session;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 
-class RoleController extends Controller
+class IndexController extends Controller
 {
     function __construct(){
 //        $this->middleware('permission:role-list|role-create|role-edit|role-delete', ['only' => ['index','store']]);

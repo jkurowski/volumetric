@@ -37,7 +37,7 @@
                 <div class="modal-header">
                     <h5 class="modal-title" id="uploadlabel">Dodaj plan</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
+                        <i class="fe-x-square"></i>
                     </button>
                 </div>
                 <div class="modal-body">

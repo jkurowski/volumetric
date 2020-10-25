@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Admin\Developro;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PropertyFormRequest;
@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Session;
 use App\Investment;
 use App\Property;
 
-class InvestmentHouseController extends Controller
+class HouseController extends Controller
 {
     public function index(Investment $investment)
     {

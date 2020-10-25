@@ -346,10 +346,20 @@ p {margin:0}
 }
 .form-group-submit .btn:hover,
 #login .btn:hover,
-.card-title .btn-back:hover
+.card-title .btn-back:hover,
+.form-group-submit .btn:active,
+#login .btn:active,
+.card-title .btn-back:active
 {
     background:#008595;
     color:white
+}
+.btn-primary:not(:disabled):not(.disabled).active,
+.btn-primary:not(:disabled):not(.disabled):active,
+.show > .btn-primary.dropdown-toggle {
+    color: #fff;
+    background-color: #008595;
+    border-color: #008595;
 }
 .btn.focus, .btn:focus, .form-control:focus {
     outline: 0;
@@ -377,15 +387,20 @@ p {margin:0}
     -webkit-transition: all 0s ease-in-out;
     -moz-transition: all 0s ease-in-out;
     -o-transition: all 0s ease-in-out;
-    border:0;
-    margin:0
+    margin:0;
+    border: 1px solid #454557;
 }
 .thumb-card img {
     -webkit-transition: all .2s;
     transition: all .2s;
-    height:150px;
     width:100%
 }
+
+.container-gallery {
+    background: #1a1a27;
+    padding: 10px 15px 30px;
+}
+
 .thumb-card .card-body {
     position: absolute;
     opacity: 0;
@@ -487,6 +502,11 @@ span.actionBtn {display:block;margin-right: 30px;padding: 8px 13px 7px;cursor:po
     background: rgba(0,0,0,0.8);
     z-index: 1040
 }
+.close, .close:hover {
+    color: #fff;
+    text-shadow: 0 0 0 #fff;
+    opacity: 1;
+}
 
 /* Upload
 ================================================== */
@@ -528,7 +548,7 @@ span.actionBtn {display:block;margin-right: 30px;padding: 8px 13px 7px;cursor:po
     color: #fff;
     cursor: pointer;
     font-size: 11px;
-    font-weight: bold;
+    font-weight: 400;
     line-height: 12px;
     padding: 7px 14px;
     margin-bottom: 1px;
@@ -770,14 +790,14 @@ span.actionBtn {display:block;margin-right: 30px;padding: 8px 13px 7px;cursor:po
 
 #sortable li.ui-sortable-helper {
     padding: 15px !important;
-    height: 180px !important;
+    height: 267px !important;
     display: block;
 }
 #sortable li.ui-sortable-helper .card {
     margin:0
 }
 #sortable.sortable-row .ui-sortable-helper {display: block}
-#sortable li.ui-sortable-placeholder {visibility:visible!important;background-color:#fff1b0;float:left;width:16.666667%;height:150px;margin:20px 0 0 0;border:1px dashed #d5d5d5;padding:0 15px;position: relative}
+#sortable li.ui-sortable-placeholder {visibility:visible!important;background-color:#fff1b0;float:left;width:16.666667%;height:237px;margin:20px 0 0 0;border:1px dashed #d5d5d5;padding:0 15px;position: relative}
 ul#sortable li {padding-top:20px}
 #sortable li {width:16.666667%;padding:0 15px;float:left}
 
@@ -810,6 +830,7 @@ ul#sortable li {padding-top:20px}
     font-weight: bold;
 }
 .namelist {padding: 7px 0;float: left}
+
 
 @media screen and (max-width:768px) {
     .col-form-label {

@@ -1,14 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Admin\Rodo;
 
-use App\Floor;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 use App\RodoSettings;
 
-class RodoSettingsController extends Controller
+class SettingsController extends Controller
 {
 
     public function index()

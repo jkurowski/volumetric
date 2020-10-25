@@ -1,13 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Admin\Slider;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\SliderFormRequest;
-use App\Slider;
 use Illuminate\Http\Request;
 
-class SliderController extends Controller
+use App\Slider;
+
+class IndexController extends Controller
 {
     protected $redirectTo = 'admin/slider';
 

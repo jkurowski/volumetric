@@ -2,9 +2,20 @@
 
 namespace App\Providers;
 
+
+
 use Request;
 use Illuminate\Support\ServiceProvider;
 use Spatie\Activitylog\Models\Activity;
+
+use App\Gallery;
+use App\Observers\GalleryObserver;
+
+use App\Image;
+use App\Observers\ImageObserver;
+
+use App\Article;
+use App\Observers\ArticleObserver;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -37,5 +48,9 @@ class AppServiceProvider extends ServiceProvider
             ]);
 
         });
+
+        Image::observe(ImageObserver::class);
+        Gallery::observe(GalleryObserver::class);
+        Article::observe(ArticleObserver::class);
     }
 }

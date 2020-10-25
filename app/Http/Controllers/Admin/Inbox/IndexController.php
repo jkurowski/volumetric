@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Admin\Inbox;
 
 use App\Http\Controllers\Controller;
 use App\Notification;
 use Illuminate\Http\Request;
 
-class InboxController extends Controller
+class IndexController extends Controller
 {
     public function index()
     {

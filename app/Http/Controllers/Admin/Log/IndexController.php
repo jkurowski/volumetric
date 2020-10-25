@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Admin\Log;
 
 use App\Http\Controllers\Controller;
 use Spatie\Activitylog\Models\Activity;
 
-class LogController extends Controller
+class IndexController extends Controller
 {
 
     public function index()

@@ -1,14 +1,15 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Admin\Rodo;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\RodoRulesFormRequest;
 
-use App\RodoRules;
 use Illuminate\Support\Facades\Session;
 
-class RodoRulesController extends Controller
+use App\RodoRules;
+
+class RulesController extends Controller
 {
     public function index()
     {

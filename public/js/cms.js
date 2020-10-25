@@ -89,18 +89,18 @@ jQuery.fn.sortujGal = function(a) {
                 type: "POST",
                 url: a,
                 success: function(c) {
-                    // $("#jqalert").append('<div class="alert alert-success none" role="alert">Zmiana zapisana</div>');
-                    // $(".alert").fadeIn("slow");
-                    // setTimeout(function() {
-                    //     $(".alert").fadeOut("slow").remove()
-                    // }, 1500)
+                    $("#jqalert").prepend('<div class="alert alert-success border-0 none mb-0" role="alert">Zmiana zapisana</div>');
+                    $(".alert").fadeIn(500);
+                    setTimeout(function() {
+                        $(".alert").slideUp(500,function(){$(this).remove()})
+                    }, 3000)
                 },
                 error: function() {
-                    $("#jqalert").append('<div class="alert alert-danger none" role="alert">Wystąpił błąd</div>');
-                    $(".alert").fadeIn("slow");
+                    $("#jqalert").prepend('<div class="alert alert-danger border-0 none mb-0" role="alert">Wystąpił błąd</div>');
+                    $(".alert").fadeIn(500);
                     setTimeout(function() {
-                        $(".alert").fadeOut("slow").remove()
-                    }, 1500)
+                        $(".alert").slideUp(500,function(){$(this).remove()})
+                    }, 3000)
                 }
             })
         }

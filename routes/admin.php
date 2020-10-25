@@ -3,13 +3,13 @@
 use Illuminate\Support\Facades\Route;
 
 // Inbox
-Route::group(['namespace' => 'Admin', 'prefix'=>'/admin/inbox', 'as' => 'admin.inbox.', 'middleware' => 'auth'], function() {
+Route::group(['namespace' => 'Admin\Inbox', 'prefix'=>'/admin/inbox', 'as' => 'admin.inbox.', 'middleware' => 'auth'], function() {
 
     Route::get('/',
-        'InboxController@index')->name('index');
+        'IndexController@index')->name('index');
 
     Route::get('/admin/inbox/message/{id}',
-        'InboxController@show')->name('show');
+        'IndexController@show')->name('show');
 
 });
 
@@ -21,61 +21,63 @@ Route::group(['namespace' => 'Admin', 'prefix'=>'/admin', 'as' => 'admin.', 'mid
     });
 
     // Slider
-    Route::post('slider/set', 'SliderController@sort')->name('slider.sort');
-    Route::post('gallery/set', 'GalleryController@sort')->name('gallery.sort');
+    Route::post('slider/set', 'Slider\IndexController@sort')->name('slider.sort');
+    Route::post('gallery/set', 'Gallery\IndexController@sort')->name('gallery.sort');
+    Route::post('image/set', 'Gallery\ImageController@sort')->name('image.sort');
 
     Route::resources([
-        'page' => 'PageController',
-        'article' => 'ArticleController',
-        'slider' => 'SliderController',
-        'user' => 'UserController',
-        'role' => 'RoleController',
-        'logs' => 'LogController',
-        'gallery' => 'GalleryController'
+        'page' => 'Page\IndexController',
+        'article' => 'Article\IndexController',
+        'slider' => 'Slider\IndexController',
+        'user' => 'User\IndexController',
+        'role' => 'Role\IndexController',
+        'logs' => 'Log\IndexController',
+        'gallery' => 'Gallery\IndexController',
+        'image' => 'Gallery\ImageController'
     ]);
 
     // RODO
     Route::group(['prefix'=>'/rodo', 'as' => 'rodo.'], function() {
 
         Route::resources([
-            'rules' => 'RodoRulesController',
-            'settings' => 'RodoSettingsController'
+            'rules' => 'Rodo\RulesController',
+            'settings' => 'Rodo\SettingsController'
         ]);
 
     });
 });
 
 // DeveloPro
-Route::group(['namespace' => 'Admin', 'prefix'=>'/admin', 'as' => 'admin.', 'middleware' => 'auth'], function() {
+Route::group(['namespace' => 'Admin\Developro', 'prefix'=>'/admin', 'as' => 'admin.', 'middleware' => 'auth'], function() {
 
     // Inwestycje
 
-    Route::resource('developro', 'InvestmentController')->except('show');
+    Route::resource('developro', 'IndexController')->except('show');
 
     // Plan inwestycji
 
     Route::group(['prefix'=>'/plan', 'as' => 'developro.plan.'], function() {
 
         Route::get('{investment}',
-            'InvestmentPlanController@index')->name('index');
+            'PlanController@index')->name('index');
 
         Route::post('{investment}/update',
-            'InvestmentPlanController@update')->name('update');
+            'PlanController@update')->name('update');
     });
 
     Route::group(['as' => 'developro.'], function() {
         Route::resources([
             // Inwestycja budynkowa
-            'investment.floor' => 'InvestmentFloorController',
-            'investment.floor.property' => 'InvestmentPropertyController',
+            'investment.floor' => 'FloorController',
+            'investment.floor.property' => 'PropertyController',
 
             // Inwestycja osiedlowa
-            'investment.building' => 'InvestmentBuildingController',
-            'investment.building.floor' => 'InvestmentBuildingFloorController',
-            'investment.building.floor.property' => 'InvestmentBuildingPropertyController',
+            'investment.building' => 'BuildingController',
+            'investment.building.floor' => 'BuildingFloorController',
+            'investment.building.floor.property' => 'BuildingPropertyController',
 
             // Inwestycja domkowa
-            'investment.house' => 'InvestmentHouseController'
+            'investment.house' => 'HouseController'
         ]);
     });
 });

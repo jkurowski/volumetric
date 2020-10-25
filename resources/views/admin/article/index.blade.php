@@ -8,6 +8,9 @@
                     <div class="col-6 pl-0">
                         <h4 class="page-title row"><i class="fe-book-open"></i>Przeglądaj wpisy</h4>
                     </div>
+                    <div class="col-6 d-flex justify-content-end align-items-center form-group-submit">
+                        <a href="{{route('admin.article.create')}}" class="btn btn-primary">Dodaj wpis</a>
+                    </div>
                 </div>
             </div>
             <div class="table-overflow">

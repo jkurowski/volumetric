@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Admin\Developro;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\FloorFormRequest;
@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Session;
 use App\Investment;
 use App\Floor;
 
-class InvestmentFloorController extends Controller
+class FloorController extends Controller
 {
     public function index(Investment $investment)
     {

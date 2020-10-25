@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Admin\Developro;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\FloorFormRequest;
@@ -10,7 +10,7 @@ use App\Building;
 use App\Floor;
 use App\Investment;
 
-class InvestmentBuildingFloorController extends Controller
+class BuildingFloorController extends Controller
 {
     public function index(Investment $investment, Building $building)
     {

@@ -1,14 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Admin\Page;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PageFormRequest;
 use App\Http\Requests\PageUpdateFormRequest;
 use App\Page;
-use Illuminate\Http\Request;
 
-class PageController extends Controller
+class IndexController extends Controller
 {
 
     protected $redirectTo = 'admin/page';
