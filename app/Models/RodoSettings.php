@@ -11,8 +11,8 @@ class RodoSettings extends Model
      *
      * @var bool
      */
-
-    public $timestamps = false;
+    const UPDATED_AT = null;
+    const CREATED_AT = null;
 
     /**
      * The attributes that are mass assignable.

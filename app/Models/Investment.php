@@ -51,8 +51,8 @@ class Investment extends Model
     public function floorRooms()
     {
         return $this->hasManyThrough(
-            'App\Property',
-            'App\Floor',
+            'App\Models\Property',
+            'App\Models\Floor',
             'investment_id',
             'floor_id',
             'id',
@@ -94,8 +94,8 @@ class Investment extends Model
     public function buildingRooms()
     {
         return $this->hasManyThrough(
-            'App\Property',
-            'App\Building',
+            'App\Models\Property',
+            'App\Models\Building',
             'investment_id',
             'building_id',
             'id',

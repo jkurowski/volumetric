@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers\Front;
 
-use App\Article;
+use App\Models\Article;
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 
 class ArticleController extends Controller
 {

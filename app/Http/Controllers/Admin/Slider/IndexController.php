@@ -11,6 +11,13 @@ use Illuminate\Support\Facades\Session;
 
 class IndexController extends Controller
 {
+    function __construct(){
+        $this->middleware('permission:slider-list|slider-create|slider-edit|slider-delete', ['only' => ['index','store']]);
+        $this->middleware('permission:slider-create', ['only' => ['create','store']]);
+        $this->middleware('permission:slider-edit', ['only' => ['edit','update']]);
+        $this->middleware('permission:slider-delete', ['only' => ['destroy']]);
+    }
+
     public function index()
     {
         return view('admin.slider.index', ['list' => Slider::all()->sortBy("sort")]);

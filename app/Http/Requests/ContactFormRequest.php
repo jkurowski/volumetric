@@ -24,21 +24,21 @@ class ContactFormRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required',
-            'email' => 'required|email:rfc',
-            'message' => 'required',
-            'subject' => 'required'
+            'form_name' => 'required',
+            'form_email' => 'required|email:rfc',
+            'form_message' => 'required',
+            'form_subject' => 'required'
         ];
     }
 
     public function messages()
     {
         return [
-            'name.required' => 'To pole jest wymagane',
-            'email.required' => 'To pole jest wymagane',
-            'email.email' => 'Nieprawidłowy adres e-mail',
-            'message.required' => 'To pole jest wymagane',
-            'subject.required' => 'To pole jest wymagane'
+            'form_name.required' => 'To pole jest wymagane',
+            'form_email.required' => 'To pole jest wymagane',
+            'form_email.email' => 'Nieprawidłowy adres e-mail',
+            'form_message.required' => 'To pole jest wymagane',
+            'form_subject.required' => 'To pole jest wymagane'
         ];
     }
 }

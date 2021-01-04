@@ -12,6 +12,12 @@
             </div>
         </div>
 
+        <div class="row pb-4">
+            <div class="col-4">@if($prev_floor) <a href="{{route('front.investment.building.floor.index', [$investment, $investment->building, $prev_floor])}}" class="bttn bttn-right"><i class="las la-arrow-left"></i> {{$prev_floor->name}}</a> @endif</div>
+            <div class="col-4"></div>
+            <div class="col-4 text-right">@if($next_floor) <a href="{{route('front.investment.building.floor.index', [$investment, $investment->building, $next_floor])}}" class="bttn">{{$next_floor->name}} <i class="las la-arrow-right"></i></a> @endif</div>
+        </div>
+
         <div class="row">
             <div class="col-12">
                 @if($investment->floor->file)

@@ -4,9 +4,9 @@ namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
 
-use App\Investment;
-use App\Building;
-use App\Floor;
+use App\Models\Investment;
+use App\Models\Building;
+use App\Models\Floor;
 use Illuminate\Http\Request;
 
 class InvestmentBuildingFloorController extends Controller
@@ -44,7 +44,9 @@ class InvestmentBuildingFloorController extends Controller
 
         return view('front.investment_building_floor.index', [
             'investment' => $investment_room,
-            'properties' => $investment->buildingRooms
+            'properties' => $investment->buildingRooms,
+            'next_floor' => $floor->findNext($investment->id, $building->id, $floor->id),
+            'prev_floor' => $floor->findPrev($investment->id, $building->id, $floor->id)
         ]);
     }
 

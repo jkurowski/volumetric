@@ -49,8 +49,14 @@
                             <tr>
                                 <th class="position" scope="row">{{ $index+1 }}</th>
                                 <td>{{ $p->name }}</td>
-                                <td>{{ $p->name }}</td>
-                                <td>{{ $p->name }}</td>
+                                <td>{{ $p->email }}</td>
+                                <td>
+                                    @if(!empty($p->getRoleNames()))
+                                        @foreach($p->getRoleNames() as $v)
+                                            <label class="badge badge-role">{{ $v }}</label>
+                                        @endforeach
+                                    @endif
+                                </td>
                                 <td>{{ $p->name }}</td>
                                 <td>{{ $p->created_at }}</td>
                                 <td>{{ $p->updated_at }}</td>

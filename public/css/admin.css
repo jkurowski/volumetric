@@ -66,7 +66,7 @@ p {margin:0}
     color: #fff;
 }
 .sidemenu-holder {
-    width:200px;
+    width:210px;
     z-index:10;
     background:#1e1e2d;
     bottom:0;
@@ -85,7 +85,7 @@ p {margin:0}
     position:relative;
     -webkit-transition:all .4s;
     transition:all .4s;
-    width:200px
+    width:210px
 }
 #sidemenu ul > li > a:active,
 #sidemenu ul > li > a:focus,
@@ -161,7 +161,7 @@ p {margin:0}
 /* Content
 ================================================== */
 #content {
-    margin-left: 200px;
+    margin-left: 210px;
     overflow: hidden;
     padding: 5px 20px;
     min-height: 80vh;
@@ -322,7 +322,7 @@ p {margin:0}
     position: fixed;
     bottom: 0;
     background: white;
-    left: 200px;
+    left: 210px;
     right: 0;
     z-index: 999;
     padding: 1rem 20px !important;
@@ -696,6 +696,15 @@ span.actionBtn {display:block;margin-right: 30px;padding: 8px 13px 7px;cursor:po
 .table td .badge.badge-method-put {background: #35aab6}
 .table td .badge.badge-method-delete {background: #ef6956}
 .table td .badge.badge-method-post {background: #76bd5c}
+
+.table td .badge.badge-role {
+    display: inline-flex;
+    font-size: 11px;
+    padding: 0 9px;
+    height: 28px;
+    margin: 3px 1px;
+    background: #3d3d5e
+}
 
 /* Tabelki
 ================================================== */

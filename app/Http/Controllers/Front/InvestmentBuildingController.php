@@ -5,8 +5,8 @@ namespace App\Http\Controllers\Front;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-use App\Building;
-use App\Investment;
+use App\Models\Building;
+use App\Models\Investment;
 
 class InvestmentBuildingController extends Controller
 {

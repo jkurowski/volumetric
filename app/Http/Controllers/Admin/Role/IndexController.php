@@ -14,10 +14,10 @@ use Spatie\Permission\Models\Permission;
 class IndexController extends Controller
 {
     function __construct(){
-//        $this->middleware('permission:role-list|role-create|role-edit|role-delete', ['only' => ['index','store']]);
-//        $this->middleware('permission:role-create', ['only' => ['create','store']]);
-//        $this->middleware('permission:role-edit', ['only' => ['edit','update']]);
-//        $this->middleware('permission:role-delete', ['only' => ['destroy']]);
+        $this->middleware('permission:role-list|role-create|role-edit|role-delete', ['only' => ['index','store']]);
+        $this->middleware('permission:role-create', ['only' => ['create','store']]);
+        $this->middleware('permission:role-edit', ['only' => ['edit','update']]);
+        $this->middleware('permission:role-delete', ['only' => ['destroy']]);
     }
 
     public function index()
@@ -33,7 +33,6 @@ class IndexController extends Controller
             'backButton' => route('admin.role.index'),
             'rolePermissions' => array()
         ])->with('entry', Role::make());
-
     }
 
     public function store(Request $request)

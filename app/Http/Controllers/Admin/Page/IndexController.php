@@ -9,6 +9,12 @@ use App\Models\Page;
 
 class IndexController extends Controller
 {
+    function __construct(){
+        $this->middleware('permission:page-list|page-create|page-edit|page-delete', ['only' => ['index','store']]);
+        $this->middleware('permission:page-create', ['only' => ['create','store']]);
+        $this->middleware('permission:page-edit', ['only' => ['edit','update']]);
+        $this->middleware('permission:page-delete', ['only' => ['destroy']]);
+    }
 
     protected $redirectTo = 'admin/page';
 

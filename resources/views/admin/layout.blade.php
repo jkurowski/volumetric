@@ -39,6 +39,12 @@
                         <span> Użytkownicy </span>
                     </a>
                 </li>
+                <li class="{{ Request::routeIs('admin.greylist.*') ? 'active' : '' }}">
+                    <a href="{{route('admin.greylist.index')}}">
+                        <i class="fe-shield"></i>
+                        <span> Blokada dostępu </span>
+                    </a>
+                </li>
                 <li class="{{ Request::routeIs('admin.page.*') ? 'active' : '' }}">
                     <a href="{{route('admin.page.index')}}">
                         <i class="fe-file-text"></i>

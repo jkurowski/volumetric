@@ -38,6 +38,16 @@ class Property extends Model
         'file'
     ];
 
+    public function findNext(int $investment, int $id)
+    {
+        return $this->where('investment_id', $investment)->where('id', '>', $id)->first();
+    }
+
+    public function findPrev(int $investment, int $id)
+    {
+        return $this->where('investment_id', $investment)->where('id', '<', $id)->first();
+    }
+
     public function planUpload($title, $file, $delete = null)
     {
         if ($delete && $this->file) {

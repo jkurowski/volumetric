@@ -15,7 +15,7 @@
                 <nav class="nav">
                     <a class="nav-link {{ Request::routeIs('admin.inbox.index') ? ' active' : '' }}" href=""><span class="fe-list"></span> Lista wiadomości</a>
                     <a class="nav-link" href="{{ route('admin.rodo.rules.index') }}"><span class="fe-check-square"></span> RODO: regułki</a>
-                    <a class="nav-link" href=""><span class="fe-users"></span> RODO: użytkownicy</a>
+                    <a class="nav-link" href="{{ route('admin.rodo.clients.index') }}"><span class="fe-users"></span> RODO: użytkownicy</a>
                     <a class="nav-link" href="{{ route('admin.rodo.settings.index') }}"><span class="fe-settings"></span> RODO: ustawienia</a>
                 </nav>
             </div>
@@ -40,10 +40,10 @@
                         @foreach ($list as $index => $p)
                             <tr>
                                 <th class="position" scope="row">{{ $index+1 }}</th>
-                                <td>{{ $p->data->name }}</td>
-                                <td>{{ $p->data->email }}</td>
-                                <td>{{ $p->data->subject }}</td>
-                                <td>@isset($p->data->url)<a href="{{ $p->data->url }}" target="_blank">{{ $p->data->page }}</a>@endisset</td>
+                                <td>{{ $p->data->form_name }}</td>
+                                <td>{{ $p->data->form_email }}</td>
+                                <td>{{ isset($p->data->form_subject) ? $p->data->form_subject : '-' }}</td>
+                                <td>@isset($p->data->url)<a href="{{ $p->data->url }}" target="_blank">{{ $p->data->page_name }}</a>@endisset</td>
                                 <td>{{ $p->updated_at }}</td>
                                 <td class="option-120">
                                     <div class="btn-group">

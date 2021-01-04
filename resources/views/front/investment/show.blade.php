@@ -21,7 +21,15 @@
                             <map name="invesmentplan">
                                 @if($investment->buildings)
                                     @foreach($investment->buildings as $building)
-                                        <area shape="poly" href="{{route('front.investment.building.index', [$investment, $building])}}" data-item="{{$building->id}}" title="{{$building->name}}" alt="{{$building->slug}}" data-roomnumber="{{$building->number}}" data-roomtype="{{$building->typ}}" data-roomstatus="{{$building->status}}" coords="@if($building->html) {{cords($building->html)}} @endif">
+                                        <area
+                                            shape="poly"
+                                            href="{{route('front.investment.building.index', [$investment, $building])}}"
+                                            alt="{{$building->slug}}"
+                                            data-item="{{$building->id}}" title="{{$building->name}}"
+                                            data-roomnumber="{{$building->number}}"
+                                            data-roomtype="{{$building->typ}}"
+                                            data-roomstatus="{{$building->status}}"
+                                            coords="@if($building->html) {{cords($building->html)}} @endif">
                                     @endforeach
                                 @endif
                             </map>
@@ -47,7 +55,15 @@
                         <map name="invesmentplan">
                             @foreach($investment->floors as $floor)
                                 @if($floor->html)
-                                <area shape="poly" href="{{route('front.investment.floor.index', [$investment, $floor])}}" data-item="{{$floor->id}}" title="{{$floor->name}}" alt="floor-{{$floor->id}}" data-floornumber="{{$floor->id}}" data-floortype="{{$floor->type}}" coords="{{cords($floor->html)}}">
+                                <area
+                                    shape="poly"
+                                    href="{{route('front.investment.floor.index', [$investment, $floor])}}"
+                                    title="{{$floor->name}}"
+                                    alt="floor-{{$floor->id}}"
+                                    data-item="{{$floor->id}}"
+                                    data-floornumber="{{$floor->id}}"
+                                    data-floortype="{{$floor->type}}"
+                                    coords="@if($floor->html) {{cords($floor->html)}} @endif">
                                 @endif
                             @endforeach
                         </map>
@@ -64,7 +80,20 @@
                     <div id="plan">
                         <div id="plan-holder"><img src="/investment/plan/{{$investment->plan->file}}" alt="{{$investment->name}}" id="invesmentplan" usemap="#invesmentplan"></div>
                         <map name="invesmentplan">
-
+                            @if($investment->houses)
+                                @foreach($investment->houses as $house)
+                                    <area
+                                        shape="poly"
+                                        href="{{route('front.investment.house.index', [$investment, $house])}}"
+                                        title="{{$house->name}}"
+                                        alt="{{$house->slug}}"
+                                        data-item="{{$house->id}}"
+                                        data-roomnumber="{{$house->number}}"
+                                        data-roomtype="{{$house->typ}}"
+                                        data-roomstatus="{{$house->status}}"
+                                        coords="@if($house->html) {{cords($house->html)}} @endif">
+                                @endforeach
+                            @endif
                         </map>
                     </div>
                 @endif
@@ -82,8 +111,6 @@
     </div>
 @endsection
 @push('scripts')
-    @if($investment->type == 2)
     <script src="/js/plan/imagemapster.js" charset="utf-8"></script>
     <script src="/js/plan/plan.js" charset="utf-8"></script>
-    @endif
 @endpush

@@ -32,6 +32,7 @@ Route::group(['namespace' => 'Admin', 'prefix'=>'/admin', 'as' => 'admin.', 'mid
         'user' => 'User\IndexController',
         'role' => 'Role\IndexController',
         'logs' => 'Log\IndexController',
+        'greylist' => 'Greylist\IndexController',
         'gallery' => 'Gallery\IndexController',
         'image' => 'Gallery\ImageController'
     ]);
@@ -41,7 +42,8 @@ Route::group(['namespace' => 'Admin', 'prefix'=>'/admin', 'as' => 'admin.', 'mid
 
         Route::resources([
             'rules' => 'Rodo\RulesController',
-            'settings' => 'Rodo\SettingsController'
+            'settings' => 'Rodo\SettingsController',
+            'clients' => 'Rodo\ClientController'
         ]);
 
     });

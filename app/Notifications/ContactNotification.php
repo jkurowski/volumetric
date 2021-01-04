@@ -3,9 +3,7 @@
 namespace App\Notifications;
 
 use Illuminate\Bus\Queueable;
-use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
-use Illuminate\Support\HtmlString;
 
 class ContactNotification extends Notification
 {
@@ -31,23 +29,7 @@ class ContactNotification extends Notification
      */
     public function via($notifiable)
     {
-        return ['mail','database'];
-    }
-
-    /**
-     * Get the mail representation of the notification.
-     *
-     * @param  mixed  $notifiable
-     * @return \Illuminate\Notifications\Messages\MailMessage
-     */
-    public function toMail($notifiable)
-    {
-        return (new MailMessage)
-                    ->subject('Formularz kontaktowy - nowa wiadomość')
-                    ->greeting('Witaj!')
-                    ->line($this->request->input('name'). ' wysłał wiadomość dnia '.date('Y:m:d H:i'))
-                    ->line('E-mail: '.$this->request->input('email'))
-                    ->line(new HtmlString('Wiadomość: '.new HtmlString('<br>').$this->request->input('message')));
+        return ['database'];
     }
 
     /**
@@ -59,13 +41,13 @@ class ContactNotification extends Notification
     public function toDatabase($notifiable)
     {
         return [
-            'name' => $this->request->input('name'),
-            'email' => $this->request->input('email'),
-            'message' => $this->request->input('message'),
-            'subject' => $this->request->input('subject'),
+            'page_name' => $this->request->input('form_page'),
+            'form_name' => $this->request->input('form_name'),
+            'form_email' => $this->request->input('form_email'),
+            'form_message' => $this->request->input('form_message'),
+            'form_subject' => $this->request->input('form_subject'),
             'ip' => $this->request->ip(),
-            'url' => $this->request->headers->get('referer'),
-            'page' => $notifiable->name
+            'url' => $this->request->headers->get('referer')
         ];
     }
 }
