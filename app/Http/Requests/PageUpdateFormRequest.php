@@ -37,7 +37,7 @@ class PageUpdateFormRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|string|min:5|max:100|unique:pages,title,'.$this->page->id,
+            'title' => 'required|string|min:2|max:100|unique:pages,title,'.$this->page->id,
             'content' => 'required|string|min:5',
             'menu' => 'boolean'
         ];

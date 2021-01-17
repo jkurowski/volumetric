@@ -26,7 +26,8 @@ Route::middleware(['restrictIp'])->group(function () {
     Route::post('/property-contact/{property}',
         'Front\ContactController@property')->name('contact.property');
 
-
+    Route::get('mapa',
+        'Front\MapController@index')->name('map.index');
 
     Route::get('kontakt',
         'Front\ContactController@index')->name('contact.index');
@@ -79,5 +80,12 @@ Route::middleware(['restrictIp'])->group(function () {
     Route::group(['namespace' => 'Front', 'prefix'=>'/aktualnosci/', 'as' => 'front.news.'], function() {
         Route::get('/',         'ArticleController@index')->name('index');
         Route::get('/{slug}',   'ArticleController@show')->name('show');
+    });
+
+    // Inline
+    Route::group(['namespace' => 'Front', 'prefix'=>'/inline/', 'as' => 'front.inline.'], function() {
+        Route::get('/', 'InlineController@index')->name('index');
+        Route::get('/loadinline/{inline}', 'InlineController@show')->name('show');
+        Route::post('/update/{inline}', 'InlineController@update')->name('update');
     });
 });

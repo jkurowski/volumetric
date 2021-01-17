@@ -17,6 +17,11 @@
 @section('content')
     <div class="container">
         <div class="row mt-5 pt-2">
+            <div class="col-12">
+                <div class="p-5 text-center">
+                    {!! $page->content !!}
+                </div>
+            </div>
             <div class="col-12 text-center pb-4">
                 <h3>- Wyślij zapytanie -</h3>
             </div>

@@ -12,6 +12,7 @@
         "ext-json": "*",
         "fideloper/proxy": "^4.2",
         "fruitcake/laravel-cors": "^2.0",
+        "geoip/geoip": "~1.14",
         "guzzlehttp/guzzle": "^7.0.1",
         "intervention/image": "^2.5",
         "kalnoy/nestedset": "^5.0",
@@ -19,9 +20,11 @@
         "laravel/tinker": "^2.0",
         "laravel/ui": "^3.0",
         "laravelcollective/html": "^6.2",
+        "pragmarx/tracker": "^4.0",
         "spatie/laravel-activitylog": "^3.16",
         "spatie/laravel-permission": "^3.17",
-        "spatie/valuestore": "^1.2"
+        "spatie/valuestore": "^1.2",
+        "yajra/laravel-datatables-oracle": "~9.0"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.4",

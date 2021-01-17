@@ -17,6 +17,11 @@ class IndexController extends Controller
         return view('admin.gallery.index', ['list'=>Gallery::all()->sortBy('sort')]);
     }
 
+    public function ajaxGetGalleries()
+    {
+        return Gallery::all('id','name')->toJson();
+    }
+
     public function create()
     {
         return view('admin.gallery.form', [

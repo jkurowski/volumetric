@@ -429,6 +429,106 @@ p {margin:0}
     margin: 1rem -20px;
 }
 
+/* Sortable
+================================================== */
+#sortable_paginate, #sortable_info {
+    padding: 0 8px;
+    width: 50%;
+    float: left;
+    border-top: 1px solid #dee2e6;
+}
+#sortable_paginate, #sortable_filter {
+    text-align: right;
+}
+#sortable_length {
+    display: none;
+}
+#sortable_filter {
+    padding:15px 0
+}
+#sortable_filter label {margin: 0}
+#sortable_filter input {
+    display: inline-block;
+    width: auto;
+    height: calc(1.5em + .75rem + 2px);
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    margin-left: 15px;
+}
+
+#sortable_info {
+    padding: 12px;
+}
+#sortable_paginate a.paginate_button {
+    padding: .375rem 2.95rem;
+    border-radius: 0;
+    border: 0;
+    background: #00acc1;
+    display: inline-block;
+    font-size: 13px;
+    margin: 8px 0 8px 8px;
+    color: white;
+    cursor: pointer;
+}
+#sortable_paginate span a.paginate_button {
+    padding: .375rem 12px;
+}
+#sortable_paginate a.disabled {
+    display: none
+}
+#sortable_processing {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 200px;
+    margin-left: -100px;
+    margin-top: -26px;
+    text-align: center;
+    padding: 1em 0;
+    background: white;
+    border: 1px solid #dee2e6;
+}
+
+/* Mapa
+================================================== */
+#map {height:400px}
+
+#gallery .col-3 .card {
+    position: relative !important;
+    display: -ms-flexbox !important;
+    display: flex !important;
+    -ms-flex-direction: column !important;
+    flex-direction: column !important;
+    min-width: 0 !important;
+    word-wrap: break-word !important;
+    background-color: #fff !important;
+    background-clip: border-box !important;
+    border: 1px solid rgba(0,0,0,.125) !important;
+    border-radius: .25rem !important;
+}
+#gallery .col-3 {
+    -ms-flex: 0 0 25% !important;
+    flex: 0 0 25% !important;
+    max-width: 25% !important;
+}
+#gallery .card-title {
+    color: #484848;
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+#gallery .card-body {
+    padding: 15px
+}
 /* Mappa
 ================================================== */
 .mappa-tool {padding:10px}

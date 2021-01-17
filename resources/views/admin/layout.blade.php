@@ -33,7 +33,7 @@
                         <span> Ustawienia </span>
                     </a>
                 </li>
-                <li class="{{ Request::routeIs('admin.user.*' || 'admin.role.*') ? 'active' : '' }}">
+                <li class="{{ Request::routeIs('admin.user.*') ? 'active' : '' }}">
                     <a href="{{route('admin.user.index')}}">
                         <i class="fe-users"></i>
                         <span> Użytkownicy </span>
@@ -75,6 +75,12 @@
                         <span> Galeria </span>
                     </a>
                 </li>
+                <li class="{{ Request::routeIs('admin.map.*') ? 'active' : '' }}">
+                    <a href="{{route('admin.map.index')}}">
+                        <i class="fe-map-pin"></i>
+                        <span> Mapa </span>
+                    </a>
+                </li>
                 <li class="{{ Request::routeIs('admin.inbox.*') ? 'active' : '' }}">
                     <a href="{{route('admin.inbox.index')}}">
                         <i class="fe-inbox"></i>
@@ -83,8 +89,14 @@
                 </li>
                 <li class="{{ Request::routeIs('admin.logs.*') ? 'active' : '' }}">
                     <a href="{{route('admin.logs.index')}}">
+                        <i class="fe-hard-drive"></i>
+                        <span> Logi PA</span>
+                    </a>
+                </li>
+                <li class="{{ Request::routeIs('admin.tracker.*') ? 'active' : '' }}">
+                    <a href="{{route('admin.tracker.index')}}">
                         <i class="fe-activity"></i>
-                        <span> Logi </span>
+                        <span> Statystyki </span>
                     </a>
                 </li>
             </ul>

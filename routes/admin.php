@@ -25,6 +25,9 @@ Route::group(['namespace' => 'Admin', 'prefix'=>'/admin', 'as' => 'admin.', 'mid
     Route::post('gallery/set', 'Gallery\IndexController@sort')->name('gallery.sort');
     Route::post('image/set', 'Gallery\ImageController@sort')->name('image.sort');
 
+    // Galeria
+    Route::get('ajaxGetGalleries', 'Gallery\IndexController@ajaxGetGalleries')->name('ajaxGetGalleries');
+
     Route::resources([
         'page' => 'Page\IndexController',
         'article' => 'Article\IndexController',
@@ -34,7 +37,8 @@ Route::group(['namespace' => 'Admin', 'prefix'=>'/admin', 'as' => 'admin.', 'mid
         'logs' => 'Log\IndexController',
         'greylist' => 'Greylist\IndexController',
         'gallery' => 'Gallery\IndexController',
-        'image' => 'Gallery\ImageController'
+        'image' => 'Gallery\ImageController',
+        'map' => 'Map\IndexController'
     ]);
 
     // RODO
@@ -45,6 +49,21 @@ Route::group(['namespace' => 'Admin', 'prefix'=>'/admin', 'as' => 'admin.', 'mid
             'settings' => 'Rodo\SettingsController',
             'clients' => 'Rodo\ClientController'
         ]);
+
+    });
+
+    // Tracker
+    Route::group(['prefix'=>'/tracker', 'as' => 'tracker.'], function() {
+
+        Route::get('/', 'Tracker\IndexController@index')->name('index');
+        Route::get('errors', 'Tracker\IndexController@errors')->name('errors');
+        Route::get('apiErrors', 'Tracker\IndexController@apiErrors')->name('apiErrors');
+        Route::get('events', 'Tracker\IndexController@events')->name('events');
+        Route::get('apiEvents', 'Tracker\IndexController@apiEvents')->name('apiEvents');
+        Route::get('event/{id}', 'Tracker\IndexController@event')->name('event');
+        Route::get('apiVisits', 'Tracker\IndexController@apiVisits')->name('apiVisits');
+        Route::get('log/{uuid}', 'Tracker\IndexController@log')->name('log');
+        Route::get('apiLog/{uuid}', 'Tracker\IndexController@apiLog')->name('apiLog');
 
     });
 
