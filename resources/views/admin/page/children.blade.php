@@ -2,13 +2,22 @@
 <tr>
     <td><i class="fe-corner-down-right" style="margin-left: {{$page->depth * 10}}px;margin-right: 15px"></i> {{$page->title}}</td>
     <td class="text-center">{!! status($page->menu) !!}</td>
+    <td class="text-center">{!! page_type($page->type) !!}</td>
     <td>
-        @foreach($page->ancestors->pluck('title') as $path){{$path}} <i class="fe-chevrons-right"></i> @endforeach{{$page->title}}
+        @if($page->type == 1)
+            @foreach($page->ancestors->pluck('title') as $path){{$path}} <i class="fe-chevrons-right"></i> @endforeach{{$page->title}}
+        @else
+            {{$page->url}}@if($page->url_target) ({{$page->url_target}})@endif
+        @endif
     </td>
     <td class="text-center">{{$page->created_at->format('Y-m-d H:i')}}</td>
     <td class="option-120">
         <div class="btn-group">
-            <a href="{{route('admin.page.edit', $page->id)}}" class="btn action-button mr-1" data-toggle="tooltip" data-placement="top" title="Edytuj"><i class="fe-edit"></i></a>
+            @if($page->type == 1)
+                <a href="{{route('admin.page.edit', $page->id)}}" class="btn action-button mr-1" data-toggle="tooltip" data-placement="top" title="Edytuj"><i class="fe-edit"></i></a>
+            @else
+                <a href="{{route('admin.url.edit', $page->id)}}" class="btn action-button mr-1" data-toggle="tooltip" data-placement="top" title="Edytuj"><i class="fe-edit"></i></a>
+            @endif
             <form method="POST" action="{{route('admin.page.destroy', $page->id)}}">
                 {{ csrf_field() }}
                 {{ method_field('DELETE') }}

@@ -10,7 +10,8 @@ class MenuController extends Controller
     public function index($uri = null)
     {
         $page = Page::where('uri', $uri)->firstOrFail();
-        return view('front.menupage.index')->with('page', $page);
-    }
+        $parent = Page::ancestorsOf($page->id)->first();
 
+        return view('front.menupage.index')->with(['page' => $page, 'parent' => $parent]);
+    }
 }

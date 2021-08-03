@@ -22,6 +22,7 @@
                     <tr>
                         <th>Nazwa</th>
                         <th class="text-center">Status</th>
+                        <th class="text-center">Typ</th>
                         <th>Ścieżka</th>
                         <th class="text-center">Data utworzenia</th>
                         <th></th>
@@ -32,11 +33,20 @@
                             <tr>
                                 <td>{{$page->title}}</td>
                                 <td class="text-center">{!! status($page->menu) !!}</td>
-                                <td>{{$page->title}}</td>
+                                <td class="text-center">{!! page_type($page->type) !!}</td>
+                                @if($page->type == 1)
+                                    <td>{{$page->title}}</td>
+                                @else
+                                    <td>{{$page->url}}@if($page->url_target) ({{$page->url_target}})@endif</td>
+                                @endif
                                 <td class="text-center">{{$page->created_at->format('Y-m-d H:i')}}</td>
                                 <td class="option-120">
                                     <div class="btn-group">
+                                        @if($page->type == 1)
                                         <a href="{{route('admin.page.edit', $page->id)}}" class="btn action-button mr-1" data-toggle="tooltip" data-placement="top" title="Edytuj"><i class="fe-edit"></i></a>
+                                        @else
+                                        <a href="{{route('admin.url.edit', $page->id)}}" class="btn action-button mr-1" data-toggle="tooltip" data-placement="top" title="Edytuj"><i class="fe-edit"></i></a>
+                                        @endif
                                         <form method="POST" action="{{route('admin.page.destroy', $page->id)}}">
                                             {{ csrf_field() }}
                                             {{ method_field('DELETE') }}
@@ -58,8 +68,8 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12 d-flex justify-content-end">
-                    <a href="{{route('admin.page.create')}}" class="btn btn-primary">Dodaj strone</a>
-                    <a href="" class="ml-3 btn btn-primary">Dodaj link</a>
+                    <a href="{{route('admin.page.create')}}" class="btn btn-primary">Dodaj stronę</a>
+                    <a href="{{route('admin.url.create')}}" class="ml-3 btn btn-primary">Dodaj link</a>
                 </div>
             </div>
         </div>

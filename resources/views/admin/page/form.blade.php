@@ -15,9 +15,6 @@
                     <div class="row">
                         <div class="col-12">
                             @include('form-elements.status', ['label' => 'Status', 'name' => 'menu', 'selected' => $entry->menu, 'options' => ['1' => 'Pokaż na liście']])
-                            @include('form-elements.target-select', ['label' => 'Okno docelowe', 'name' => 'url_target', 'selected' => $entry->url_target])
-                            @include('form-elements.input-text', ['label' => 'Adres url', 'sublabel'=> 'Zew. linki, moduł strony', 'name' => 'url', 'value' => $entry->url])
-                            @include('form-elements.status', ['label' => 'Status', 'name' => 'menu', 'selected' => $entry->menu, 'options' => ['1' => 'Pokaż na liście']])
                             @include('form-elements.page-select', [
                                 'label' => 'Podstrona',
                                 'name' => 'parent_id',

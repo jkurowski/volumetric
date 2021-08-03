@@ -1,11 +1,12 @@
 body {
-    font-family: 'Source Sans Pro', sans-serif;
+    font-family: 'Poppins', sans-serif;
     line-height: 1.6;
 }
 img {display:block;max-width: 100%;height: auto}
 a, a:hover, a:focus {text-decoration: none}
+a:hover, a.active {color:#ff5421 !important;}
 a:focus {outline: none}
-p {font-size:19px; line-height: 33px;margin:0}
+p {font-size:17px;line-height:33px;margin:0}
 b, strong {
     font-weight: 600;
 }
@@ -118,6 +119,37 @@ textarea {
 }
 .breadcrumb-item.active {
     color: #a4a4a4;
+}
+
+.sidemenu {
+    -webkit-box-shadow: 0 6px 25px rgba(0, 0, 0, 0.07);
+    -moz-box-shadow: 0 6px 25px rgba(0, 0, 0, 0.07);
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.07);
+    padding: 30px;
+}
+.sidemenu .submenu {
+    padding-left: 20px;
+    padding-top: 6px;
+    width: 100%;
+}
+.sidemenu li {
+    border: none;
+    position: relative;
+    padding: 6px 0;
+    margin: 0;
+    font-size: 16px;
+}
+.sidemenu li.gotsub {
+    padding-bottom: 0
+}
+.sidemenu li a {
+    color: #505050
+}
+.sidemenu li a:before {
+    font-family: 'Line Awesome Free';
+    font-weight: 900;
+    content:"\f105";
+    margin-right: 6px;
 }
 
 /* Mapa
@@ -291,14 +323,14 @@ button:focus {
     -o-transition: all 200ms linear;
     transition: all 200ms linear;
     text-align: center;
-    background: #222;
+    background: #ff5421;
     line-height: normal;
     margin: 0;
     letter-spacing: 1px;
 }
 .bttn:hover {
-    background: #000;
-    color:white
+    background: #ed3600;
+    color:white !important;
 }
 .bttn i {
     font-size: 24px;
@@ -379,6 +411,57 @@ button:focus {
     margin:0;
     padding:15px 15px;background: rgba(0, 0, 0, 0.4)
 }
+
+
+/* Galeria
+================================================== */
+.col-gallery-thumb {margin-top:30px;-webkit-transition:all 200ms linear;-moz-transition:all 200ms linear;-o-transition:all 200ms linear;transition:all 200ms linear}
+.col-gallery-thumb img, .col-gallery-thumb a {display: block;position: relative}
+.col-gallery-thumb img {
+    border:4px solid white
+}
+.col-gallery-thumb:hover {
+    -webkit-box-shadow: 0 0 10px 0 #707070;
+    box-shadow: 0 0 10px 0 #707070;
+}
+.col-gallery-thumb a {overflow: hidden}
+.col-gallery-thumb div {position: absolute;background:rgba(255, 205, 0, 0.8);width: 100%;height: 100%}
+.col-gallery-thumb div:before {font-family:'FontAwesome', sans-serif;content:"\f002";position:absolute;top:0;bottom:0;left:0;right:0;margin:auto;width:40px;height:60px;font-size:40px;color:#fff}
+
+.textSlider {position:relative}
+.textSlider ul {display:none}
+.textSlider .rslides {display:block;position: relative;list-style: none;overflow: hidden;width: 100%;padding: 0;margin: 0}
+.textSlider .rslides li {-webkit-backface-visibility: hidden;position: absolute;display: none;width: 100%;left: 0;top: 0}
+.textSlider .rslides li:first-child {position: relative;display: block;float: left}
+.textSlider .rslides img {display: block;height: auto;float: left;width: 100%;border: 0}
+.textSlider img, .textSlider a {display:block;margin:0 auto}
+
+.textSlider .rslides_nav {width:40px;height:40px;background:rgba(0,0,0,0.5);position:absolute;top:0;bottom:0;margin:auto;z-index:90;color:white;text-align:center;padding:5px 0;-webkit-transition:all 100ms linear;-moz-transition:all 100ms linear;-o-transition:all 100ms linear;transition:all 100ms linear}
+.textSlider .rslides_nav:hover {background:rgba(255, 205, 0, 0.8);width:60px}
+.textSlider .rslides_nav.next {right:0}
+.textSlider .rslides_nav.next:before,
+.textSlider .rslides_nav.prev:after {
+    font-family:'Line Awesome Free', sans-serif;
+    font-weight:900;
+    font-size:20px
+}
+.textSlider .rslides_nav.next:before {content:"\f061"}
+.textSlider .rslides_nav.prev:after {content:"\f060"}
+.textSlider .rslides_nav.next:hover:before,
+.textSlider .rslides_nav.prev:hover:after {
+    color:black
+}
+
+/* Swipebox
+================================================== */
+html.swipebox-html.swipebox-touch{overflow:hidden!important}#swipebox-overlay img{border:5px solid white}#swipebox-overlay{width:100%;height:100%;position:fixed;top:0;left:0;z-index:99999!important;overflow:hidden;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}#swipebox-container{position:relative;width:100%;height:100%}#swipebox-slider{-webkit-transition:-webkit-transform .4s ease;transition:transform .4s ease;height:100%;left:0;top:0;width:100%;white-space:nowrap;position:absolute;display:none;cursor:pointer}#swipebox-slider .slide{height:100%;width:100%;line-height:1px;text-align:center;display:inline-block}#swipebox-slider .slide:before{content:"";display:inline-block;height:50%;width:1px;margin-right:-1px}#swipebox-slider .slide .swipebox-inline-container,#swipebox-slider .slide .swipebox-video-container,#swipebox-slider .slide img{display:inline-block;max-height:100%;max-width:100%;margin:0;padding:0;width:auto;height:auto;vertical-align:middle}#swipebox-slider .slide .swipebox-video-container{background:0 0;max-width:1140px;max-height:100%;width:100%;padding:5%;-webkit-box-sizing:border-box;box-sizing:border-box}#swipebox-slider .slide .swipebox-video-container .swipebox-video{width:100%;height:0;padding-bottom:56.25%;overflow:hidden;position:relative}#swipebox-slider .slide .swipebox-video-container .swipebox-video iframe{width:100%!important;height:100%!important;position:absolute;top:0;left:0}#swipebox-slider .slide-loading{background:url('../../gfx/template/loader.gif') center center no-repeat}#swipebox-bottom-bar,#swipebox-top-bar{-webkit-transition:.5s;transition:.5s;position:absolute;left:0;z-index:999;height:50px;width:100%}#swipebox-bottom-bar{top:50%}#swipebox-bottom-bar.visible-bars{-webkit-transform:translate3d(0,-50px,0);transform:translate3d(0,-50px,0)}#swipebox-top-bar{top:-50px}#swipebox-top-bar.visible-bars{-webkit-transform:translate3d(0,50px,0);transform:translate3d(0,50px,0)}#swipebox-title{display:block;width:100%;text-align:center}#swipebox-close {border:none!important;text-decoration:none!important;cursor:pointer;width:32px;height:32px}#swipebox-arrows{display:block;margin:0 auto;width:100%;height:50px}#swipebox-close{top:20px;right:50px !important;position:absolute;z-index:9999}.swipebox-no-close-button #swipebox-close{display:none}#swipebox-next.disabled,#swipebox-prev.disabled{opacity:.3}.swipebox-no-touch #swipebox-overlay.rightSpring #swipebox-slider{-webkit-animation:rightSpring .3s;animation:rightSpring .3s}.swipebox-no-touch #swipebox-overlay.leftSpring #swipebox-slider{-webkit-animation:leftSpring .3s;animation:leftSpring .3s}.swipebox-touch #swipebox-container:after,.swipebox-touch #swipebox-container:before{-webkit-backface-visibility:hidden;backface-visibility:hidden;-webkit-transition:all .3s ease;transition:all .3s ease;content:' ';position:absolute;z-index:999;top:0;height:100%;width:20px;opacity:0}.swipebox-touch #swipebox-container:before{left:0;-webkit-box-shadow:inset 10px 0 10px -8px #656565;box-shadow:inset 10px 0 10px -8px #656565}.swipebox-touch #swipebox-container:after{right:0;-webkit-box-shadow:inset -10px 0 10px -8px #656565;box-shadow:inset -10px 0 10px -8px #656565}.swipebox-touch #swipebox-overlay.leftSpringTouch #swipebox-container:before,.swipebox-touch #swipebox-overlay.rightSpringTouch #swipebox-container:after{opacity:1}@-webkit-keyframes rightSpring{0%{left:0}50%{left:-30px}100%{left:0}}@keyframes rightSpring{0%{left:0}50%{left:-30px}100%{left:0}}@-webkit-keyframes leftSpring{0%{left:0}50%{left:30px}100%{left:0}}@keyframes leftSpring{0%{left:0}50%{left:30px}100%{left:0}}@media screen and (min-width:800px){#swipebox-close{right:30px}#swipebox-arrows{width:90%}}#swipebox-bottom-bar,#swipebox-top-bar{opacity:.95}#swipebox-top-bar{color:#fff!important;font-size:15px;line-height:43px;font-family:Helvetica,Arial,sans-serif}
+
+#swipebox-overlay{background:#000000;background:rgba(0,0,0,0.9)}
+#swipebox-prev:before, #swipebox-next:before, #swipebox-close:before {font-family:'FontAwesome', sans-serif;font-size:50px;color:#afafaf;background-image:none !important;cursor:pointer}
+#swipebox-prev:hover:before, #swipebox-next:hover:before, #swipebox-close:hover:before {color:#fff}
+#swipebox-prev:before {float:left;content:"\f053"}
+#swipebox-next:before {float:right;content:"\f054"}
+#swipebox-close:before {float:right;content:"\f00d";font-size:30px}
 
 /* Main articles
 ================================================== */
@@ -496,8 +579,11 @@ button:focus {
 
 /* RWD
 ================================================== */
-@media (max-width: 1500px) {
-
+@media only screen and (min-width: 1440px) {
+    .container {
+        max-width: 1270px;
+        width: 100%;
+    }
 }
 
 @media (max-width: 1199.98px) {

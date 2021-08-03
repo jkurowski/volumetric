@@ -19,8 +19,14 @@
     <div id="page-content">
         <div class="container">
             <div class="row">
-                <div class="col-12">
-                    {!! $page->content !!}
+                @if($parent && $parent->id)
+                    <div class="col-4 pr-5">
+                        {!! App\Models\Page::sidemenu($parent->id) !!}
+                    </div>
+                @endif
+
+                <div @if($parent && $parent->id) class="col-8" @else class="col-12" @endif>
+                    {!! parse_text($page->content) !!}
                 </div>
             </div>
         </div>

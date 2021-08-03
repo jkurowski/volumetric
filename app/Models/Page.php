@@ -21,6 +21,7 @@ class Page extends Model
         'meta_title',
         'meta_description',
         'meta_robots',
+        'type',
         'menu',
         'sort'
     ];
@@ -44,6 +45,13 @@ class Page extends Model
     {
         return view('layouts.menu', [
             'pages' => self::withDepth()->defaultOrder()->get()->toTree()
+        ]);
+    }
+
+    public static function sidemenu(int $id)
+    {
+        return view('layouts.sidemenu', [
+            'pages' => self::descendantsOf($id)->toTree()
         ]);
     }
 

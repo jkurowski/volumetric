@@ -30,6 +30,7 @@ Route::group(['namespace' => 'Admin', 'prefix'=>'/admin', 'as' => 'admin.', 'mid
 
     Route::resources([
         'page' => 'Page\IndexController',
+        'url' => 'Url\IndexController',
         'article' => 'Article\IndexController',
         'slider' => 'Slider\IndexController',
         'user' => 'User\IndexController',
