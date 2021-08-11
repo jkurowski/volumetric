@@ -18,8 +18,8 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
 
     <!-- Styles -->
-    <link href="/css/bootstrap.css" rel="stylesheet">
-    <link href="/css/app.css" rel="stylesheet">
+    <link href="{{ asset('/css/bootstrap.css') }}" rel="stylesheet">
+    <link href="{{ asset('/css/app.css') }}" rel="stylesheet">
 
     @stack('style')
 </head>
@@ -82,8 +82,8 @@
 @include('layouts.cookies')
 
 <!-- jQuery -->
-<script src="/js/jquery.min.js" charset="utf-8"></script>
-<script src="/js/app.js" charset="utf-8"></script>
+<script src="{{ asset('/js/jquery.min.js') }}" charset="utf-8"></script>
+<script src="{{ asset('/js/app.js') }}" charset="utf-8"></script>
 
 @stack('scripts')
 
