@@ -29,7 +29,7 @@
             </div>
             <div class="col-6 d-flex align-items-center justify-content-center pl-5">
                 @if($property->file)
-                    <a href="/investment/property/{{$property->file}}"><img src="/investment/property/thumbs/{{$property->file}}" alt="{{$property->name}}"></a>
+                    <a href="/investment/property/{{$property->file}}"><img src="{{ asset('/investment/property/thumbs/'.$property->file.'') }}" alt="{{$property->name}}" alt="{{$property->name}}"></a>
                 @endif
             </div>
         </div>
@@ -125,8 +125,8 @@
     </div>
 @endsection
 @push('scripts')
-    <script src="{{ asset('js/validation.js') }}" charset="utf-8"></script>
-    <script src="{{ asset('js/pl.js') }}" charset="utf-8"></script>
+    <script src="{{ asset('/js/validation.js') }}" charset="utf-8"></script>
+    <script src="{{ asset('/js/pl.js') }}" charset="utf-8"></script>
     <script type="text/javascript">
         $(document).ready(function(){
             $(".validateForm").validationEngine({

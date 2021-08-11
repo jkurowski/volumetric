@@ -22,7 +22,7 @@
             <div class="col-12">
                 @if($investment->floor->file)
                     <div id="plan">
-                        <div id="plan-holder"><img src="/investment/floor/{{$investment->floor->file}}" alt="{{$investment->floor->name}}" id="invesmentplan" usemap="#invesmentplan"></div>
+                        <div id="plan-holder"><img src="{{ asset('/investment/floor/'.$investment->floor->file.'') }}" alt="{{$investment->floor->name}}" id="invesmentplan" usemap="#invesmentplan"></div>
                         <map name="invesmentplan">
                             @if($properties)
                                 @foreach($properties as $r)
@@ -45,6 +45,6 @@
     </div>
 @endsection
 @push('scripts')
-    <script src="/js/plan/imagemapster.js" charset="utf-8"></script>
-    <script src="/js/plan/floor.js" charset="utf-8"></script>
+    <script src="{{ asset('/js/plan/imagemapster.js') }}" charset="utf-8"></script>
+    <script src="{{ asset('/js/plan/floor.js') }}" charset="utf-8"></script>
 @endpush

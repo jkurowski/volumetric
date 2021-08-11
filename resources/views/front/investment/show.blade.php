@@ -51,7 +51,7 @@
             <div class="col-12">
                 @if($investment->plan)
                     <div id="plan">
-                        <div id="plan-holder"><img src="/investment/plan/{{$investment->plan->file}}" alt="{{$investment->name}}" id="invesmentplan" usemap="#invesmentplan"></div>
+                        <div id="plan-holder"><img src="{{ asset('/investment/plan/'.$investment->plan->file.'') }}" alt="{{$investment->name}}" id="invesmentplan" usemap="#invesmentplan"></div>
                         <map name="invesmentplan">
                             @foreach($investment->floors as $floor)
                                 @if($floor->html)
@@ -78,7 +78,7 @@
             <div class="col-12 p-0">
                 @if($investment->plan)
                     <div id="plan">
-                        <div id="plan-holder"><img src="/investment/plan/{{$investment->plan->file}}" alt="{{$investment->name}}" id="invesmentplan" usemap="#invesmentplan"></div>
+                        <div id="plan-holder"><img src="{{ asset('/investment/plan/'.$investment->plan->file.'') }}" alt="{{$investment->name}}" id="invesmentplan" usemap="#invesmentplan"></div>
                         <map name="invesmentplan">
                             @if($investment->houses)
                                 @foreach($investment->houses as $house)
