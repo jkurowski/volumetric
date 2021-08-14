@@ -4,7 +4,7 @@
     @else
         {!! Form::label($name, '<div class="text-right">'.$label.'</div>', ['class' => 'col-2 col-form-label control-label required'], false) !!}
     @endisset
-    <div class="col-4">
+    <div class="@isset($class) {{ $class }} @else {{ 'col-4' }} @endisset">
         @isset($value)
             {!! Form::text($name, old($name, $value), ['class' => 'form-control']) !!}
         @else

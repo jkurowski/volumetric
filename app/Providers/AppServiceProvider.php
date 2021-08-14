@@ -32,6 +32,9 @@ class AppServiceProvider extends ServiceProvider
         $this->app->singleton(Settings::class, function () {
             return Settings::make(storage_path('app/settings.json'));
         });
+        $this->app->bind('App\Repositories\EloquentRepositoryInterface', 'App\Repositories\BaseRepository');
+        $this->app->bind('App\Repositories\UserRepositoryInterface', 'App\Repositories\UserRepository');
+        $this->app->bind('App\Repositories\SliderRepositoryInterface', 'App\Repositories\SliderRepository');
     }
 
     /**
@@ -51,7 +54,6 @@ class AppServiceProvider extends ServiceProvider
                     "referer"       => Request::header('referer'),
                     "methodType"    => Request::method()
             ]);
-
         });
 
         Image::observe(ImageObserver::class);

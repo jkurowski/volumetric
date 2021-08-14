@@ -20,8 +20,10 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-12">
-                                        @include('form-elements.input-text', ['label' => 'Nazwa', 'name' => 'name', 'value' => $entry->name, 'required' => 1])
-                                        @include('form-elements.input-text', ['label' => 'E-mail', 'name' => 'email', 'value' => $entry->email, 'required' => 1])
+                                        @include('form-elements.html-select', ['label' => 'Status', 'name' => 'active', 'selected' => $entry->active, 'select' => ['1' => 'Aktywny', '2' => 'Nieaktywny']])
+                                        @include('form-elements.html-input-text', ['label' => 'Imię', 'name' => 'name', 'value' => $entry->name, 'required' => 1])
+                                        @include('form-elements.html-input-text', ['label' => 'Nazwisko', 'name' => 'surname', 'value' => $entry->surname, 'required' => 1])
+                                        @include('form-elements.html-input-text', ['label' => 'E-mail', 'name' => 'email', 'value' => $entry->email, 'required' => 1])
                                         @include('form-elements.html-password', ['label' => 'Hasło', 'name' => 'password', 'value' => $entry->password, 'required' => 1])
                                         @include('form-elements.html-password', ['label' => 'Powtórz hasło', 'name' => 'confirm-password', 'required' => 1])
 

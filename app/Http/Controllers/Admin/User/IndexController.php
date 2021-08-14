@@ -3,13 +3,13 @@
 namespace App\Http\Controllers\Admin\User;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\UserFormRequest;
-
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Session;
 
+// CMS
+use App\Http\Requests\UserFormRequest;
+use App\Repositories\UserRepositoryInterface;
 use App\Models\User;
 
 //Importing laravel-permission models
@@ -17,20 +17,37 @@ use Spatie\Permission\Models\Role;
 
 class IndexController extends Controller
 {
-    public function __construct() {
+    private $repository;
 
+    public function __construct(UserRepositoryInterface $repository)
+    {
+        $this->middleware('permission:user-list|user-create|user-edit|user-delete', [
+            'only' => ['index','store']
+        ]);
+        $this->middleware('permission:user-create', [
+            'only' => ['create','store']
+        ]);
+        $this->middleware('permission:user-edit', [
+            'only' => ['edit','update']
+        ]);
+        $this->middleware('permission:user-delete', [
+            'only' => ['destroy']
+        ]);
+        $this->repository = $repository;
     }
 
     public function index()
     {
-        return view('admin.user.index', ['list' => User::all()]);
+        return view('admin.user.index', [
+            'list' => $this->repository->all()
+        ]);
     }
 
     public function create()
     {
         return view('admin.user.form', [
             'cardTitle' => 'Dodaj użytkownika',
-            'roles' => Role::pluck('name','name')->all(),
+            'roles' => $this->repository->getRoles(),
             'backButton' => route('admin.user.index'),
             'selected' => ''
         ])->with('entry', User::make());
@@ -49,13 +66,12 @@ class IndexController extends Controller
 
     public function edit($id)
     {
-        $user = User::find($id);
-        $roles = Role::pluck('name', 'name')->all();
+        $user = $this->repository->find($id);
         $userRole = $user->roles->pluck('name', 'name')->all();
 
         return view('admin.user.form', [
             'cardTitle' => 'Edytuj użytkownika: '.$user->name,
-            'roles' => $roles,
+            'roles' => $this->repository->getRoles(),
             'selected' => $userRole,
             'backButton' => route('admin.user.index'),
             'entry' => $user
@@ -65,13 +81,13 @@ class IndexController extends Controller
     public function update(UserFormRequest $request, $id)
     {
         $input = $request->all();
-        if(!empty($input['password'])){
+        if (!empty($input['password'])) {
             $input['password'] = Hash::make($input['password']);
-        }else{
+        } else {
             $input = Arr::except($input, array('password'));
         }
 
-        $user = User::find($id);
+        $user = $this->repository->find($id);
         $user->update($input);
 
         DB::table('model_has_roles')->where('model_id', $id)->delete();
@@ -84,8 +100,7 @@ class IndexController extends Controller
 
     public function destroy($id)
     {
-        User::find($id)->delete();
-        Session::flash('success', 'Użytkownik usunięty');
-        return response()->json('Deleted', 200);
+        $this->repository->delete($id);
+        return response()->json('Deleted');
     }
 }

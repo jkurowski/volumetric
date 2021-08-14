@@ -4,23 +4,20 @@
     <meta charset="utf-8">
     <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-    <title>kCMS</title>
+    <title>DeveloPro</title>
     <meta name="description" content="">
     <meta name="keywords" content="">
     <meta name="robots" content="noindex, nofollow">
 
     <meta name="csrf-token" content="{{ csrf_token() }}" />
 
-    <!-- Wylaczenie numeru tel. -->
-    <meta name="format-detection" content="telephone=no">
-
     <!-- Prefetch -->
     <link rel="dns-prefetch" href="//fonts.googleapis.com">
 
     <!-- Styles -->
-    <link rel="stylesheet" href="/css/bootstrap.css">
-    <link rel="stylesheet" href="/css/jquery-ui.min.css">
-    <link rel="stylesheet" href="/css/admin.css">
+    <link rel="stylesheet" href="{{ asset('/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('/css/jquery-ui.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('/css/admin.css') }}">
 </head>
 <body class="lang-pl">
 <div id="admin">
@@ -137,10 +134,10 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <!-- jQuery -->
-<script src="/js/jquery.min.js" charset="utf-8"></script>
-<script src="/js/bootstrap.bundle.min.js" charset="utf-8"></script>
-<script src="/js/jquery-ui.min.js" charset="utf-8"></script>
-<script src="/js/cms.js" charset="utf-8"></script>
+<script src="{{ asset('/js/jquery.min.js') }}" charset="utf-8"></script>
+<script src="{{ asset('/js/bootstrap.bundle.min.js') }}" charset="utf-8"></script>
+<script src="{{ asset('/js/jquery-ui.min.js') }}" charset="utf-8"></script>
+<script src="{{ asset('/js/cms.js') }}" charset="utf-8"></script>
 
 @stack('scripts')
 

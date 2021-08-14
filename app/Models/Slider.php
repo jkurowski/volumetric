@@ -27,17 +27,17 @@ class Slider extends Model
         'sort'
     ];
 
-    public static function boot ()
+    public static function boot()
     {
         parent::boot();
 
         self::deleting(function ($slider) {
             $file = public_path('uploads/slider/' . $slider->file);
-            if(File::isFile($file)){
+            if (File::isFile($file)) {
                 File::delete($file);
             }
             $file_thumb = public_path('uploads/slider/thumbs/' . $slider->file);
-            if(File::isFile($file_thumb)){
+            if (File::isFile($file_thumb)) {
                 File::delete($file_thumb);
             }
         });
@@ -45,7 +45,7 @@ class Slider extends Model
 
     public function upload($title, $file, $delete = null)
     {
-        if($delete && $this->file) {
+        if ($delete && $this->file) {
             unlink(public_path('uploads/slider/' . $this->file));
             unlink(public_path('uploads/slider/thumbs/' . $this->file));
         }
@@ -59,17 +59,5 @@ class Slider extends Model
         Image::make($filepath)->fit(self::THUMB_WIDTH, self::THUMB_HEIGHT)->save($thumb_filepath);
 
         $this->update(['file' => $name ]);
-    }
-
-    public function sort($array)
-    {
-        $updateRecordsArray = $array->get('recordsArray');
-        $listingCounter = 1;
-        foreach ($updateRecordsArray as $recordIDValue) {
-            $entry = self::find($recordIDValue);
-            $entry->sort = $listingCounter;
-            $entry->save();
-            $listingCounter = $listingCounter + 1;
-        }
     }
 }

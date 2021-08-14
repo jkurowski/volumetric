@@ -2,7 +2,7 @@
 @section('content')
 @if(Route::is('admin.slider.edit'))
     <form method="POST" action="{{route('admin.slider.update', $entry->id)}}" enctype="multipart/form-data">
-        @method('PUT')
+    @method('PUT')
 @else
     <form method="POST" action="{{route('admin.slider.store')}}" enctype="multipart/form-data">
 @endif
@@ -20,10 +20,10 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-12">
-                            @include('form-elements.input-text', ['label' => 'Nazwa', 'name' => 'title', 'value' => $entry->title, 'required' => 1])
-                            @include('form-elements.input-file', ['label' => 'Plik', 'sublabel' => '(wymiary: '.\App\Models\Slider::IMG_WIDTH.'px / '.\App\Models\Slider::IMG_HEIGHT.'px)', 'name' => 'file'])
-                            @include('form-elements.input-text', ['label' => 'CTA link', 'name' => 'link', 'value' => $entry->link])
-                            @include('form-elements.input-text', ['label' => 'CTA button', 'name' => 'link_button', 'value' => $entry->link_button])
+                            @include('form-elements.html-input-text', ['label' => 'Nazwa', 'name' => 'title', 'value' => $entry->title, 'required' => 1])
+                            @include('form-elements.html-input-file', ['label' => 'Plik', 'sublabel' => '(wymiary: '.\App\Models\Slider::IMG_WIDTH.'px / '.\App\Models\Slider::IMG_HEIGHT.'px)', 'name' => 'file'])
+                            @include('form-elements.html-input-text', ['label' => 'CTA link', 'name' => 'link', 'value' => $entry->link])
+                            @include('form-elements.html-input-text', ['label' => 'CTA button', 'name' => 'link_button', 'value' => $entry->link_button])
                         </div>
                     </div>
                 </div>

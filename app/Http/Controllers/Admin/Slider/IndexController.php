@@ -3,39 +3,51 @@
 namespace App\Http\Controllers\Admin\Slider;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\SliderFormRequest;
 use Illuminate\Http\Request;
 
+// CMS
 use App\Models\Slider;
-use Illuminate\Support\Facades\Session;
+use App\Http\Requests\SliderFormRequest;
+use App\Repositories\SliderRepository;
 
 class IndexController extends Controller
 {
-    function __construct(){
-        $this->middleware('permission:slider-list|slider-create|slider-edit|slider-delete', ['only' => ['index','store']]);
-        $this->middleware('permission:slider-create', ['only' => ['create','store']]);
-        $this->middleware('permission:slider-edit', ['only' => ['edit','update']]);
-        $this->middleware('permission:slider-delete', ['only' => ['destroy']]);
+    private $repository;
+
+    public function __construct(SliderRepository $repository)
+    {
+        $this->middleware('permission:slider-list|slider-create|slider-edit|slider-delete', [
+            'only' => ['index','store']
+        ]);
+        $this->middleware('permission:slider-create', [
+            'only' => ['create','store']
+        ]);
+        $this->middleware('permission:slider-edit', [
+            'only' => ['edit','update']
+        ]);
+        $this->middleware('permission:slider-delete', [
+            'only' => ['destroy']
+        ]);
+
+        $this->repository = $repository;
     }
 
     public function index()
     {
-        return view('admin.slider.index', ['list' => Slider::all()->sortBy("sort")]);
+        return view('admin.slider.index', ['list' => $this->repository->allSort('ASC')]);
     }
 
     public function create()
     {
-        return view('admin.slider.form',
-            [
-                'cardTitle' => 'Dodaj obrazek',
-                'backButton' => route('admin.slider.index')
-            ])
-            ->with('entry', Slider::make());
+        return view('admin.slider.form', [
+            'cardTitle' => 'Dodaj obrazek',
+            'backButton' => route('admin.slider.index')
+        ])->with('entry', Slider::make());
     }
 
     public function store(SliderFormRequest $request)
     {
-        $slider = Slider::create($request->only(['title', 'link', 'link_button']));
+        $slider = $this->repository->create($request->validated());
 
         if ($request->hasFile('file')) {
             $slider->upload($request->title, $request->file('file'));
@@ -44,10 +56,10 @@ class IndexController extends Controller
         return redirect(route('admin.slider.index'))->with('success', 'Nowy obrazek dodany');
     }
 
-    public function edit($id)
+    public function edit(int $id)
     {
         return view('admin.slider.form', [
-            'entry' => Slider::find($id),
+            'entry' => $this->repository->find($id),
             'cardTitle' => 'Edytuj obrazek',
             'backButton' => route('admin.slider.index')
         ]);
@@ -55,7 +67,7 @@ class IndexController extends Controller
 
     public function update(SliderFormRequest $request, Slider $slider)
     {
-        $slider->update($request->only(['title', 'link', 'link_button']));
+        $this->repository->update($request->validated(), $slider);
 
         if ($request->hasFile('file')) {
             $slider->upload($request->title, $request->file('file'), true);
@@ -66,13 +78,12 @@ class IndexController extends Controller
 
     public function destroy($id)
     {
-        Slider::find($id)->delete();
-        Session::flash('success', 'Obrazek usunięty');
-        return response()->json('Deleted', 200);
+        $this->repository->delete($id);
+        return response()->json('Deleted');
     }
 
-    public function sort(Request $request, Slider $slider)
+    public function sort(Request $request)
     {
-        $slider->sort($request);
+        $this->repository->updateOrder($request->get('recordsArray'));
     }
 }

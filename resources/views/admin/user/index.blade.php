@@ -38,7 +38,7 @@
                             <th>Imię</th>
                             <th>Adres e-mail</th>
                             <th>Typ konta</th>
-                            <th>Status</th>
+                            <th class="text-center">Status</th>
                             <th>Data utworzenia</th>
                             <th>Data edycji</th>
                             <th></th>
@@ -57,12 +57,12 @@
                                         @endforeach
                                     @endif
                                 </td>
-                                <td>{{ $p->name }}</td>
+                                <td class="text-center">{!! status($p->active) !!}</td>
                                 <td>{{ $p->created_at }}</td>
                                 <td>{{ $p->updated_at }}</td>
                                 <td class="option-120">
                                     <div class="btn-group">
-                                        <a href="{{route('admin.user.edit', $p)}}" class="btn action-button mr-1" data-toggle="tooltip" data-placement="top" title="Edytuj"><i class="fe-edit"></i></a>
+                                        <a href="{{route('admin.user.edit', $p)}}" class="btn action-button me-1" data-toggle="tooltip" data-placement="top" title="Edytuj"><i class="fe-edit"></i></a>
                                         <form method="POST" action="{{route('admin.user.destroy', $p)}}">
                                             {{ csrf_field() }}
                                             {{ method_field('DELETE') }}
