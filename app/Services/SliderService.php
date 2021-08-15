@@ -12,7 +12,7 @@ use App\Models\Slider;
 
 class SliderService
 {
-    public function upload(string $title, UploadedFile $file, Slider $model, bool $delete = false)
+    public function upload(string $title, UploadedFile $file, object $model, bool $delete = false)
     {
 
         if ($delete) {
@@ -24,7 +24,7 @@ class SliderService
             }
         }
 
-        $name = date('His').'_'.Str::slug($title, '-').'.' . $file->getClientOriginalExtension();
+        $name = date('His').'_'.Str::slug($title).'.' . $file->getClientOriginalExtension();
         $file->storeAs('slider', $name, 'public_uploads');
 
         $filepath = public_path('uploads/slider/' . $name);
