@@ -14,7 +14,7 @@ class ArticleObserver
      */
     public function deleted(Article $article)
     {
-        if($article->file) {
+        if ($article->file) {
             $article_img = public_path('uploads/articles/' . $article->file);
             $article_thumb_img = public_path('uploads/articles/thumbs/' . $article->file);
 

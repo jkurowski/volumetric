@@ -18,6 +18,9 @@ use App\Observers\ArticleObserver;
 use App\Models\RodoClient;
 use App\Observers\RodoClientObserver;
 
+use App\Models\Slider;
+use App\Observers\SliderObserver;
+
 use App\Models\Settings;
 
 class AppServiceProvider extends ServiceProvider
@@ -60,5 +63,6 @@ class AppServiceProvider extends ServiceProvider
         Gallery::observe(GalleryObserver::class);
         Article::observe(ArticleObserver::class);
         RodoClient::observe(RodoClientObserver::class);
+        Slider::observe(SliderObserver::class);
     }
 }

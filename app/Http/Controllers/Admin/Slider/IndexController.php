@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin\Slider;
 
 use App\Http\Controllers\Controller;
+use App\Services\SliderService;
 use Illuminate\Http\Request;
 
 // CMS
@@ -13,8 +14,9 @@ use App\Repositories\SliderRepository;
 class IndexController extends Controller
 {
     private $repository;
+    private $service;
 
-    public function __construct(SliderRepository $repository)
+    public function __construct(SliderRepository $repository, SliderService $service)
     {
         $this->middleware('permission:slider-list|slider-create|slider-edit|slider-delete', [
             'only' => ['index','store']
@@ -30,6 +32,7 @@ class IndexController extends Controller
         ]);
 
         $this->repository = $repository;
+        $this->service = $service;
     }
 
     public function index()
@@ -50,7 +53,7 @@ class IndexController extends Controller
         $slider = $this->repository->create($request->validated());
 
         if ($request->hasFile('file')) {
-            $slider->upload($request->title, $request->file('file'));
+            $this->service->upload($request->title, $request->file('file'), $slider);
         }
 
         return redirect(route('admin.slider.index'))->with('success', 'Nowy obrazek dodany');
@@ -70,7 +73,7 @@ class IndexController extends Controller
         $this->repository->update($request->validated(), $slider);
 
         if ($request->hasFile('file')) {
-            $slider->upload($request->title, $request->file('file'), true);
+            $this->service->upload($request->title, $request->file('file'), $slider, 1);
         }
 
         return redirect(route('admin.slider.index'))->with('success', 'Obrazek zaktualizowany');
