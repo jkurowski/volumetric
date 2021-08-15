@@ -3,13 +3,13 @@
 namespace App\Http\Controllers\Admin\Slider;
 
 use App\Http\Controllers\Controller;
-use App\Services\SliderService;
 use Illuminate\Http\Request;
 
 // CMS
 use App\Models\Slider;
 use App\Http\Requests\SliderFormRequest;
 use App\Repositories\SliderRepository;
+use App\Services\SliderService;
 
 class IndexController extends Controller
 {

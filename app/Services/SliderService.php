@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
 use Intervention\Image\ImageManagerStatic as Image;
@@ -11,8 +12,9 @@ use App\Models\Slider;
 
 class SliderService
 {
-    public function upload(string $title, object $file, $model, bool $delete = null)
+    public function upload(string $title, UploadedFile $file, Slider $model, bool $delete = false)
     {
+
         if ($delete) {
             if (File::isFile(public_path('uploads/slider/' . $model->file))) {
                 File::delete(public_path('uploads/slider/' . $model->file));
