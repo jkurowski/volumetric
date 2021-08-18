@@ -25,8 +25,13 @@ class SliderFormRequest extends FormRequest
     {
         return [
             'title' => 'required|string|min:5|max:100',
+            'file_alt' => '',
             'link' => '',
-            'link_button' => ''
+            'link_button' => '',
+            'link_target' => '',
+            'opacity' => '',
+            'active' => '',
+            'sort' => ''
         ];
     }
 

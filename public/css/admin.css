@@ -242,7 +242,7 @@ p {margin:0}
     margin-top: 2px;
 }
 .col-form-label i {font-weight:400}
-.form-control {
+.form-control, .form-select {
     font-size: 14px;
     border: 1px solid #D5D5D5;
     border-radius: 3px;
@@ -362,12 +362,16 @@ p {margin:0}
     background-color: #008595;
     border-color: #008595;
 }
-.btn.focus, .btn:focus, .form-control:focus {
+.btn.focus,
+.btn:focus,
+.form-control:focus,
+.form-select:focus {
     outline: 0;
     box-shadow: 0 0 0 0 rgba(0,123,255,.25) !important;
 }
-.form-control:focus {
-    border-color: #00acc1;
+.form-control:focus,
+.form-select:focus {
+    border-color: #0db5ca;
 }
 .card-header .alert {
     position: absolute;

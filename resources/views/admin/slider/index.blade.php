@@ -24,6 +24,7 @@
                     <thead class="thead-default">
                     <tr>
                         <th>Nazwa</th>
+                        <th class="text-center">Status</th>
                         <th>Miniaturka</th>
                         <th>Data modyfikacji</th>
                         <th></th>
@@ -33,6 +34,7 @@
                     @foreach ($list as $item)
                         <tr id="recordsArray_{{ $item->id }}">
                             <td>{{ $item->title }}</td>
+                            <td class="text-center">{!! status($item->active) !!}</td>
                             <td>@if($item->file)<img src="/uploads/slider/thumbs/{{$item->file}}" alt="{{ $item->name }}">@endif</td>
                             <td>{{ $item->updated_at }}</td>
                             <td class="option-120">

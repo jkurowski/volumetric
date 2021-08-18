@@ -14,7 +14,7 @@ class GalleryObserver
      */
     public function deleted(Gallery $gallery)
     {
-        foreach($gallery->photos as $photo) {
+        foreach ($gallery->photos as $photo) {
             if ($photo->file) {
                 $image_path = public_path('uploads/gallery/images/' . $photo->file);
                 $image_thumb_path = public_path('uploads/gallery/images/thumbs/' . $photo->file);

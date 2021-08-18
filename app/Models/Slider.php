@@ -19,8 +19,12 @@ class Slider extends Model
     protected $fillable = [
         'title',
         'file',
+        'file_alt',
         'link',
         'link_button',
+        'link_target',
+        'opacity',
+        'active',
         'sort'
     ];
 }
