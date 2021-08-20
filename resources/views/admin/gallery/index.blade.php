@@ -40,8 +40,8 @@
                             <td>{{ $p->updated_at }}</td>
                             <td class="option-120">
                                 <div class="btn-group">
-                                    <span class="btn action-button move-button mr-1"><i class="fe-move"></i></span>
-                                    <a href="{{route('admin.gallery.edit', $p->id)}}" class="btn action-button mr-1" data-toggle="tooltip" data-placement="top" title="Edytuj wpis"><i class="fe-edit"></i></a>
+                                    <span class="btn action-button move-button me-1"><i class="fe-move"></i></span>
+                                    <a href="{{route('admin.gallery.edit', $p->id)}}" class="btn action-button me-1" data-toggle="tooltip" data-placement="top" title="Edytuj wpis"><i class="fe-edit"></i></a>
                                     <form method="POST" action="{{route('admin.gallery.destroy', $p->id)}}">
                                         {{ csrf_field() }}
                                         {{ method_field('DELETE') }}

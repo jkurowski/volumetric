@@ -72,8 +72,9 @@ jQuery.fn.sortujGal = function(a) {
         zIndex: 9999,
         containment: "#sortable",
         dropOnEmpty: false,
-        start: function(d, c) {
-            var b = $(this).sortable("instance");
+        start: function(d, c)
+        {
+            const b = $(this).sortable("instance");
             b.containment[3] += c.helper.height() * 1.5 - b.offset.click.top;
             b.containment[1] -= b.offset.click.top
         },
@@ -106,6 +107,8 @@ jQuery.fn.sortujGal = function(a) {
         }
     }).disableSelection()
 };
+
+!function(t,n,e,i){"use strict";var a,s="inputCharCount",u={enableMaxAttributeName:"data-input-char-count-enable-max",displayMaxValue:!1,labelClasses:"form-control-character-count",maxValue:-1},r={toBoolean:function(t,n){return!!function(t,n){var e,i,a=t.toLowerCase();for(n=n?[].concat(n):[],e=0;e<n.length;e+=1)if(i=n[e]){if(i.test&&i.test(t))return!0;if(i.toLowerCase()===a)return!0}return!1}(a(t),n||["true","1"])},toString:a=function(t){return null==t?"":function(t){if("string"==typeof t)return t;var n=t+"";return"0"===n&&1/t===-1/0?"-0":n}(t)}},o=function(t, n){var e=n.val().length,i=t.displayMaxValue?t.maxValue:void 0;return i?e+" / "+i:e};function l(n, e){this.$el=n instanceof jQuery?n:t(n),this.settings=t.extend({},u,e),this._defaults=u,this._name=s,this.init()}t.extend(l.prototype,{init:function(){this.initializeSettings();var n,e,i=o(this.settings,this.$el),a=(n=this.settings,e=i,t('<span class="'+n.labelClasses+'">'+e+"</span>")),s=this;this.$el.after(a),this.$el.on("input",function(){a.html(o(s.settings,s.$el))})},initializeSettings:function(){var t=this.$el.attr("maxlength"),n=this.$el.attr(this.settings.enableMaxAttributeName),e=!n||r.toBoolean(n);this.settings.maxValue=t,this.settings.displayMaxValue=t&&e}}),t.fn[s]=function(n){return this.each(function(){t.data(this,"plugin_"+s)||t.data(this,"plugin_"+s,new l(this,n))})},t(function(){t('input[type="text"].input-char-count, textarea.input-char-count').inputCharCount()})}(jQuery,window,document);
 
 $(document).ready(function(){
 	$('#togglemenu').click(function(e) {

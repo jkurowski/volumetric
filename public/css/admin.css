@@ -8,7 +8,7 @@ font-family: 'Muli', sans-serif;
 ================================================== */
 body, html {background:#eef0f8;height:100%}
 body {font-family: 'Poppins', sans-serif;font-size: 14px}
-a {color:#00acc1}
+a {color:#00acc1;text-decoration: none}
 b, strong {
     font-weight: 600;
 }
@@ -231,6 +231,7 @@ p {margin:0}
     padding: 0 15px;
     font-size: 14px;
     line-height: 15px;
+    text-align: end;
 }
 .col-form-label span {
     font-weight: 400;
@@ -335,7 +336,8 @@ p {margin:0}
 #login {background:#f1f2f7}
 .form-group-submit .btn,
 #login .btn,
-.card-title .btn-back
+.card-title .btn-back,
+.btn.btn-primary
 {
     padding: 8px 23px;
     border-radius: 3px;
@@ -350,7 +352,9 @@ p {margin:0}
 .card-title .btn-back:hover,
 .form-group-submit .btn:active,
 #login .btn:active,
-.card-title .btn-back:active
+.card-title .btn-back:active,
+.btn.btn-primary:hover,
+.btn.btn-primary:active
 {
     background:#008595;
     color:white
@@ -431,6 +435,31 @@ p {margin:0}
     font-size: 20px;
     padding: 20px 30px;
     margin: 1rem -20px;
+}
+span.form-control-character-count {
+    display: inline;
+    padding: .2em .6em .3em;
+    font-size: 71%;
+    font-weight: 600;
+    line-height: 1;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25em;
+    background-color: #00acc1;
+    position: absolute;
+    right: 12px;
+    top: -7px;
+}span.form-control-character-count:hover,span.form-control-character-count:focus{color:#fff;text-decoration:none;cursor:pointer}span.form-control-character-count:empty{display:none}.btn span.form-control-character-count{position:relative;top:-1px}span.form-control-character-count[href]:hover,span.form-control-character-count[href]:focus{background-color:#00acc1}
+
+
+/* Open Graph
+================================================== */
+#graph {
+    width: 600px;
+    height: 314px;
+    background: #c7c7c7;
 }
 
 /* Sortable

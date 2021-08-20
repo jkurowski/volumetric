@@ -9,7 +9,7 @@
                         <h4 class="page-title row"><i class="fe-image"></i><a href="{{route('admin.gallery.index')}}">Galeria</a><span class="d-inline-flex ml-2 mr-2">/</span>{{$gallery->name}}</h4>
                     </div>
                     <div class="col-6 d-flex justify-content-end align-items-center form-group-submit">
-                        <button data-toggle="modal" data-target="#bootstrapmodal" class="btn btn-primary">Dodaj zdjęcie</button>
+                        <button data-bs-toggle="modal" data-bs-target="#bootstrapmodal" class="btn btn-primary">Dodaj zdjęcie</button>
                     </div>
                 </div>
             </div>
@@ -29,8 +29,8 @@
                                     <img class="img-fluid" src="/uploads/gallery/images/thumbs/{{$p->file}}" alt="{{ $p->name }}">
                                     <div class="card-body">
                                         <div class="btn-group">
-                                            <!--<a href="" class="btn action-button action-small mr-1" data-toggle="tooltip" data-placement="top" title="Edytuj zdjęcie"><i class="fe-edit"></i></a>-->
-                                            <a href="" class="btn action-button move-button action-small mr-1"><i class="fe-move"></i></a>
+                                            <a href="" class="btn action-button action-small me-1" data-toggle="tooltip" data-placement="top" title="Edytuj zdjęcie"><i class="fe-edit"></i></a>
+                                            <a href="" class="btn action-button move-button action-small me-1"><i class="fe-move"></i></a>
                                             <form method="POST" action="{{route('admin.image.destroy', $p->id)}}">
                                                 {{ csrf_field() }}
                                                 {{ method_field('DELETE') }}
@@ -50,7 +50,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12 d-flex justify-content-end">
-                    <button data-toggle="modal" data-target="#bootstrapmodal" class="btn btn-primary">Dodaj zdjęcie</button>
+                    <button data-bs-toggle="modal" data-bs-target="#bootstrapmodal" class="btn btn-primary">Dodaj zdjęcie</button>
                 </div>
             </div>
         </div>

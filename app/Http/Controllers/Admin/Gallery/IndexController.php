@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin\Gallery;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\GalleryFormRequest;
 
+use App\Repositories\GalleryRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
@@ -12,14 +13,16 @@ use App\Models\Gallery;
 
 class IndexController extends Controller
 {
-    public function index()
+    private $repository;
+
+    public function __construct(GalleryRepository $repository)
     {
-        return view('admin.gallery.index', ['list'=>Gallery::all()->sortBy('sort')]);
+        $this->repository = $repository;
     }
 
-    public function ajaxGetGalleries()
+    public function index()
     {
-        return Gallery::all('id','name')->toJson();
+        return view('admin.gallery.index', ['list' => $this->repository->allSort('ASC')]);
     }
 
     public function create()
@@ -32,7 +35,7 @@ class IndexController extends Controller
 
     public function store(GalleryFormRequest $request)
     {
-        Gallery::create($request->except(['_token', 'submit']));
+        $this->repository->create($request->validated());
         return redirect(route('admin.gallery.index'))->with('success', 'Nowa galeria dodana');
     }
 
@@ -50,22 +53,20 @@ class IndexController extends Controller
         ]);
     }
 
-    public function update(GalleryFormRequest $request, $id)
+    public function update(GalleryFormRequest $request, Gallery $gallery)
     {
-        $gallery = Gallery::find($id);
-        $gallery->update($request->except(['_token', 'submit']));
+        $this->repository->update($request->validated(), $gallery);
         return redirect(route('admin.gallery.index'))->with('success', 'Galeria zaktualizowana');
     }
 
     public function destroy($id)
     {
-        Gallery::find($id)->delete();
-        Session::flash('success', 'Galeria usunięta');
-        return response()->json('Deleted', 200);
+        $this->repository->delete($id);
+        return response()->json('Deleted');
     }
 
-    public function sort(Request $request, Gallery $gallery)
+    public function sort(Request $request)
     {
-        $gallery->sort($request);
+        $this->repository->updateOrder($request->get('recordsArray'));
     }
 }

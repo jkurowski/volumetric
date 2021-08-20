@@ -24,9 +24,15 @@ class SocialFormRequest extends FormRequest
     public function rules()
     {
         return [
-            'social_facebook' => 'max:255',
-            'social_instagram' => 'max:255',
-            'social_linkedin' => 'max:255',
+            'social_facebook' => 'max:255|nullable|url',
+            'social_instagram' => 'max:255|nullable|url',
+            'social_linkedin' => 'max:255|nullable|url',
+            'social_youtube' => 'max:255|nullable|url',
+            'social_twitter' => 'max:255|nullable|url',
+            'social_vimeo' => 'max:255|nullable|url',
+            'og_title' => 'max:90|nullable',
+            'og_description' => 'max:200|nullable',
+            'og_type' => 'max:200|nullable',
         ];
     }
 }

@@ -84,12 +84,6 @@
                         <span> Wiadomości </span>
                     </a>
                 </li>
-                <li class="{{ Request::routeIs('admin.logs.*') ? 'active' : '' }}">
-                    <a href="{{route('admin.logs.index')}}">
-                        <i class="fe-hard-drive"></i>
-                        <span> Logi PA</span>
-                    </a>
-                </li>
                 <li class="{{ Request::routeIs('admin.tracker.*') ? 'active' : '' }}">
                     <a href="{{route('admin.tracker.index')}}">
                         <i class="fe-activity"></i>

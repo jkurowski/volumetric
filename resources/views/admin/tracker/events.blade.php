@@ -6,7 +6,7 @@
             <div class="card-head container-fluid">
                 <div class="row">
                     <div class="col-6 pl-0">
-                        <h4 class="page-title row"><i class="fe-bar-chart-line-"></i>Wydarzenia</h4>
+                        <h4 class="page-title row"><i class="fe-activity"></i>Statystyki</h4>
                     </div>
                 </div>
             </div>
