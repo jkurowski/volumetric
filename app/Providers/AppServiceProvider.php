@@ -6,6 +6,9 @@ use Request;
 use Illuminate\Support\ServiceProvider;
 use Spatie\Activitylog\Models\Activity;
 
+use App\Models\Boxes;
+use App\Observers\BoxObserver;
+
 use App\Models\Gallery;
 use App\Observers\GalleryObserver;
 
@@ -38,6 +41,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind('App\Repositories\EloquentRepositoryInterface', 'App\Repositories\BaseRepository');
         $this->app->bind('App\Repositories\UserRepositoryInterface', 'App\Repositories\UserRepository');
         $this->app->bind('App\Repositories\SliderRepositoryInterface', 'App\Repositories\SliderRepository');
+        $this->app->bind('App\Repositories\BoxRepositoryInterface', 'App\Repositories\BoxRepository');
     }
 
     /**
@@ -64,5 +68,6 @@ class AppServiceProvider extends ServiceProvider
         Article::observe(ArticleObserver::class);
         RodoClient::observe(RodoClientObserver::class);
         Slider::observe(SliderObserver::class);
+        Boxes::observe(BoxObserver::class);
     }
 }

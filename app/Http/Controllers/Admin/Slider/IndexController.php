@@ -79,7 +79,7 @@ class IndexController extends Controller
         return redirect(route('admin.slider.index'))->with('success', 'Obrazek zaktualizowany');
     }
 
-    public function destroy($id)
+    public function destroy(int $id)
     {
         $this->repository->delete($id);
         return response()->json('Deleted');

@@ -90,6 +90,12 @@
                         <span> Statystyki </span>
                     </a>
                 </li>
+                <li class="{{ Request::routeIs('admin.box.*') ? 'active' : '' }}">
+                    <a href="{{route('admin.box.index')}}">
+                        <i class="fe-grid"></i>
+                        <span> Boksy </span>
+                    </a>
+                </li>
             </ul>
         </div>
         <div class="clearfix"></div>
