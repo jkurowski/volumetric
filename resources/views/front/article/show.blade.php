@@ -5,9 +5,12 @@
 @section('seo_description', $article->meta_description)
 @section('seo_robots', $article->meta_robots)
 @section('schema')
-
-    <!-- Schema.org -->
-    {!! $schema->toScript() !!}
+<!-- Schema.org -->
+{!! $schema->toScript() !!}
+@stop
+@section('opengraph')
+<!-- Open Graph -->
+{!! $opengraph->renderTags() !!}
 @stop
 
 @section('pagheader')

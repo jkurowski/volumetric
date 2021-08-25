@@ -231,8 +231,8 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Image' => Intervention\Image\Facades\Image::class,
         'Tracker' => 'PragmaRX\Tracker\Vendor\Laravel\Facade',
-        'DataTables' => Yajra\DataTables\Facades\DataTables::class
-
+        'DataTables' => Yajra\DataTables\Facades\DataTables::class,
+        'OpenGraph' => 'ChrisKonnertz\OpenGraph\OpenGraph'
     ],
 
 ];

@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Article;
 
 // CMS
-use Illuminate\Database\Eloquent\Model;
+use OpenGraph;
 use Spatie\SchemaOrg\Schema;
 
 class ArticleController extends Controller
@@ -32,11 +32,20 @@ class ArticleController extends Controller
                 ->height(Article::IMG_HEIGHT)
                 ->width(Article::IMG_WIDTH))
             ->author(Schema::person()->name('Autor'));
-        ;
+
+        $og = OpenGraph::title($article->title)
+            ->type('article')
+            ->image(asset('uploads/articles/'.$article->file), [
+                'width' => 600,
+                'height' => 314
+            ])
+            ->description($article->content_entry)
+            ->url();
 
         return view('front.article.show', [
             'article' => $article,
-            'schema' => $schemaBlog
+            'schema' => $schemaBlog,
+            'opengraph' => $og
         ]);
     }
 }

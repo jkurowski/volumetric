@@ -10,6 +10,9 @@
     <meta name="robots" content="@hasSection('seo_robots')@yield('seo_robots')@else{{ settings()->get("page_robots") }}@endif">
     <meta name="author" content="{{ settings()->get("page_author") }}">
 
+    @hasSection('opengraph')@yield('opengraph')@endif
+    @hasSection('schema')@yield('schema')@endif
+
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -22,9 +25,6 @@
 
     @stack('style')
 
-    @hasSection('schema')
-        @yield('schema')
-    @endif
 </head>
 <body class="{{ !empty($body_class) ? $body_class : '' }}">
 <div class="page-header">

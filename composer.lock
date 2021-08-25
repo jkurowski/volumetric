@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "783d4fc7f1190b81f58bbc1a38d0da1d",
+    "content-hash": "d051ba35febb2f8500a8c4703f5835d3",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -117,6 +117,65 @@
                 }
             ],
             "time": "2021-01-20T22:51:39+00:00"
+        },
+        {
+            "name": "chriskonnertz/open-graph",
+            "version": "v2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/chriskonnertz/open-graph.git",
+                "reference": "75d2b5afeddd255bcf5d823cbe64f3623da3e01c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/chriskonnertz/open-graph/zipball/75d2b5afeddd255bcf5d823cbe64f3623da3e01c",
+                "reference": "75d2b5afeddd255bcf5d823cbe64f3623da3e01c",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.0"
+            },
+            "require-dev": {
+                "nesbot/carbon": "~1"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "ChrisKonnertz\\OpenGraph\\OpenGraphServiceProvider"
+                    ],
+                    "aliases": {
+                        "OpenGraph": "ChrisKonnertz\\OpenGraph\\OpenGraphFacade"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "ChrisKonnertz\\OpenGraph": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Chris Konnertz"
+                }
+            ],
+            "description": "Class that assists in building Open Graph meta tags",
+            "keywords": [
+                "laravel",
+                "laravel5",
+                "ogp",
+                "open graph",
+                "opengraph"
+            ],
+            "support": {
+                "issues": "https://github.com/chriskonnertz/open-graph/issues",
+                "source": "https://github.com/chriskonnertz/open-graph/tree/v2.0.0"
+            },
+            "time": "2019-06-19T09:00:04+00:00"
         },
         {
             "name": "composer/ca-bundle",
