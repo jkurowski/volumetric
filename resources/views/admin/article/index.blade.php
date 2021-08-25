@@ -34,7 +34,7 @@
                     @foreach ($list as $item)
                         <tr id="recordsArray_{{ $item->id }}" class="list-category-{{$item->category_id}}">
                             <td>{{ $item->title }}</td>
-                            <td>@if($item->file)<img src="/uploads/articles/thumbs/{!! $item->file !!}" alt="{{ $item->title }}" style="width: 150px;border-radius: 5px;border:1px solid white">@endif</td>
+                            <td>@if($item->file)<img src="{{asset('uploads/articles/thumbs/'.$item->file)}}" alt="{{ $item->title }}" style="width: 150px;border-radius: 5px;border:1px solid white">@endif</td>
                             <td class="text-center">{{ $item->created_at }}</td>
                             <td class="text-center">{!! status($item->status) !!}</td>
                             <td class="option-120">
