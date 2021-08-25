@@ -8,18 +8,6 @@ use Illuminate\Support\Str;
 class ArticleFormRequest extends FormRequest
 {
     /**
-     * Prepare the data for validation.
-     *
-     * @return void
-     */
-    protected function prepareForValidation()
-    {
-        $this->merge([
-            'slug' => Str::slug($this->title, '-')
-        ]);
-    }
-
-    /**
      * Determine if the user is authorized to make this request.
      *
      * @return bool
@@ -37,10 +25,14 @@ class ArticleFormRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|string|min:5|max:100|unique:articles,title,'.$this->article_id,
+            'title' => 'required|string|min:5|max:100|unique:articles,title,'.$this->route()->article,
             'content_entry' => 'required|string|min:5',
             'content' => 'required|string|min:5',
-            'status' => 'boolean'
+            'status' => 'boolean',
+            'file_alt' => '',
+            'meta_title' => '',
+            'meta_description' => '',
+            'meta_robots' => ''
         ];
     }
 

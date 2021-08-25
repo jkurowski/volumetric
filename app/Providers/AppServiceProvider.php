@@ -42,6 +42,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind('App\Repositories\UserRepositoryInterface', 'App\Repositories\UserRepository');
         $this->app->bind('App\Repositories\SliderRepositoryInterface', 'App\Repositories\SliderRepository');
         $this->app->bind('App\Repositories\BoxRepositoryInterface', 'App\Repositories\BoxRepository');
+        $this->app->bind('App\Repositories\ArticleRepositoryInterface', 'App\Repositories\ArticleRepository');
     }
 
     /**
@@ -69,5 +70,6 @@ class AppServiceProvider extends ServiceProvider
         RodoClient::observe(RodoClientObserver::class);
         Slider::observe(SliderObserver::class);
         Boxes::observe(BoxObserver::class);
+        Article::observe(ArticleObserver::class);
     }
 }

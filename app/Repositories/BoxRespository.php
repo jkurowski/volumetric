@@ -2,7 +2,7 @@
 
 use App\Models\Boxes;
 
-class BoxRespository extends BaseRepository
+class BoxRepository extends BaseRepository
 {
     protected $model;
 

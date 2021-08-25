@@ -23,6 +23,7 @@
         "pragmarx/tracker": "^4.0",
         "spatie/laravel-activitylog": "^3.16",
         "spatie/laravel-permission": "^3.17",
+        "spatie/schema-org": "^3.4",
         "spatie/valuestore": "^1.2",
         "yajra/laravel-datatables-oracle": "~9.0"
     },

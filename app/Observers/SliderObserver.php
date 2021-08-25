@@ -9,6 +9,12 @@ use App\Models\Slider;
 
 class SliderObserver
 {
+    /**
+     * Handle the slider "deleted" event.
+     *
+     * @param Slider $slider
+     * @return void
+     */
     public function deleted(Slider $slider)
     {
         $file = public_path('uploads/slider/' . $slider->file);

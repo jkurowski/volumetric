@@ -4,6 +4,11 @@
 @section('seo_title', $article->meta_title)
 @section('seo_description', $article->meta_description)
 @section('seo_robots', $article->meta_robots)
+@section('schema')
+
+    <!-- Schema.org -->
+    {!! $schema->toScript() !!}
+@stop
 
 @section('pagheader')
     <div id="page-header">

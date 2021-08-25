@@ -27,7 +27,7 @@ class BaseRepository implements EloquentRepositoryInterface
     public function find($id): ?Model
     {
         if (null == $entry = $this->model->find($id)) {
-            throw new ModelNotFoundException("Image not found");
+            throw new ModelNotFoundException("Entry not found");
         }
         return $entry;
     }

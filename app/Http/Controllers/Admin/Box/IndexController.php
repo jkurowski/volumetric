@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 // CMS
 use App\Models\Boxes;
 use App\Http\Requests\BoxFormRequest;
-use App\Repositories\BoxRespository;
+use App\Repositories\BoxRepository;
 use App\Services\BoxService;
 
 class IndexController extends Controller
@@ -16,7 +16,7 @@ class IndexController extends Controller
     private $repository;
     private $service;
 
-    public function __construct(BoxRespository $repository, BoxService $service)
+    public function __construct(BoxRepository $repository, BoxService $service)
     {
 //        $this->middleware('permission:box-list|box-create|box-edit|box-delete', [
 //            'only' => ['index','store']

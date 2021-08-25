@@ -21,6 +21,10 @@
     <link href="{{ asset('/css/app.css') }}" rel="stylesheet">
 
     @stack('style')
+
+    @hasSection('schema')
+        @yield('schema')
+    @endif
 </head>
 <body class="{{ !empty($body_class) ? $body_class : '' }}">
 <div class="page-header">

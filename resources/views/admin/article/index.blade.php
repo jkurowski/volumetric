@@ -39,7 +39,8 @@
                             <td class="text-center">{!! status($item->status) !!}</td>
                             <td class="option-120">
                                 <div class="btn-group">
-                                    <a href="{{route('admin.article.edit', $item->id)}}" class="btn action-button mr-1" data-toggle="tooltip" data-placement="top" title="Edytuj wpis"><i class="fe-edit"></i></a>
+                                    <a href="{{route('admin.article.edit', $item->id)}}" class="btn action-button me-1" data-toggle="tooltip" data-placement="top" title="Edytuj wpis"><i class="fe-edit"></i></a>
+                                    <a href="{{route('admin.article.edit', $item->id)}}" class="btn action-button me-1" data-toggle="tooltip" data-placement="top" title="Edytuj wpis"><i class="fe-edit"></i></a>
                                     <form method="POST" action="{{route('admin.article.destroy', $item->id)}}">
                                         {{ csrf_field() }}
                                         {{ method_field('DELETE') }}

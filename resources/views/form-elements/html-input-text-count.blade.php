@@ -1,8 +1,15 @@
 <div class="form-group row">
+    @php
+        if(isset($sublabel)){
+            $sublabel = '<span>'.$sublabel.'</span>';
+        } else {
+            $sublabel = '';
+        }
+    @endphp
     @isset($required)
         {!! Form::label($name, '<div class="text-right">'.$label.' <span class="text-danger d-inline">*</span><span>'.$sublabel.'</span></div>', ['class' => 'col-3 col-form-label control-label required'], false) !!}
     @else
-        {!! Form::label($name, '<div class="text-right">'.$label.'</div>', ['class' => 'col-3 col-form-label control-label required'], false) !!}
+        {!! Form::label($name, '<div class="text-right">'.$label.''.$sublabel.'</div>', ['class' => 'col-3 col-form-label control-label required'], false) !!}
     @endisset
     <div class="@isset($class) {{ $class }} @else {{ 'col-4 position-relative' }} @endisset">
         @isset($value)
