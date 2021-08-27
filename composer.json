@@ -21,6 +21,7 @@
         "laravel/tinker": "^2.0",
         "laravel/ui": "^3.0",
         "laravelcollective/html": "^6.2",
+        "octoper/lighthouse-php": "^0.0.4",
         "pragmarx/tracker": "^4.0",
         "spatie/laravel-activitylog": "^3.16",
         "spatie/laravel-permission": "^3.17",

@@ -1,4 +1,6 @@
 @extends('admin.layout')
+@section('meta_title', '- '.$cardTitle)
+
 @section('content')
     @if(Route::is('admin.gallery.edit'))
         <form method="POST" action="{{route('admin.gallery.update', $entry)}}" enctype="multipart/form-data">
@@ -12,7 +14,7 @@
                     <div class="card-head container">
                         <div class="row">
                             <div class="col-12 pl-0">
-                                <h4 class="page-title row"><i class="fe-home"></i><a href="{{route('admin.gallery.index')}}">Galeria</a><span class="d-inline-flex ml-2 mr-2">/</span>{{ $cardTitle }}</h4>
+                                <h4 class="page-title row"><i class="fe-home"></i><a href="{{route('admin.gallery.index')}}" class="p-0">Galeria</a><span class="d-inline-flex ml-2 mr-2">/</span>{{ $cardTitle }}</h4>
                             </div>
                         </div>
                     </div>

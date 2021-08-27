@@ -8,18 +8,6 @@ use Illuminate\Support\Str;
 class UrlFormRequest extends FormRequest
 {
     /**
-     * Prepare the data for validation.
-     *
-     * @return void
-     */
-    protected function prepareForValidation()
-    {
-        $this->merge([
-            'type' => 2
-        ]);
-    }
-
-    /**
      * Determine if the user is authorized to make this request.
      *
      * @return bool
@@ -37,8 +25,15 @@ class UrlFormRequest extends FormRequest
     public function rules()
     {
         return [
+            'active' => 'boolean',
+            'parent_id' => 'integer',
             'title' => 'required|string|min:2|max:100',
-            'menu' => 'boolean'
+            'url' => '',
+            'url_target' => '',
+            'content_header' => '',
+            'meta_title' => '',
+            'meta_description' => '',
+            'meta_robots' => '',
         ];
     }
 

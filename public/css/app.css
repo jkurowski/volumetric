@@ -6,7 +6,7 @@ img {display:block;max-width: 100%;height: auto}
 a, a:hover, a:focus {text-decoration: none}
 a:hover, a.active {color:#ff5421 !important;}
 a:focus {outline: none}
-p {font-size:17px;line-height:33px;margin:0}
+p {font-size:17px;line-height:33px}
 b, strong {
     font-weight: 600;
 }
@@ -492,7 +492,7 @@ html.swipebox-html.swipebox-touch{overflow:hidden!important}#swipebox-overlay im
 
 /* Pages
 ================================================== */
-#page {padding: 60px 0}
+#page {}
 
 
 /* List filtr

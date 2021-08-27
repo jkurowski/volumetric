@@ -6,7 +6,11 @@
             <div class="card-head container-fluid">
                 <div class="row">
                     <div class="col-6 pl-0">
-                        <h4 class="page-title row"><i class="fe-file-text"></i>Strony</h4>
+                        <h4 class="page-title row"><i class="fe-file-text"></i>Menu</h4>
+                    </div>
+                    <div class="col-6 d-flex justify-content-end align-items-center form-group-submit">
+                        <a href="{{route('admin.page.create')}}" class="me-3 btn btn-primary">Dodaj stronę</a>
+                        <a href="{{route('admin.url.create')}}" class="btn btn-primary">Dodaj link</a>
                     </div>
                 </div>
             </div>
@@ -32,7 +36,7 @@
                         @foreach($list as $page)
                             <tr>
                                 <td>{{$page->title}}</td>
-                                <td class="text-center">{!! status($page->menu) !!}</td>
+                                <td class="text-center">{!! status($page->active) !!}</td>
                                 <td class="text-center">{!! page_type($page->type) !!}</td>
                                 @if($page->type == 1)
                                     <td>{{$page->title}}</td>
@@ -43,9 +47,9 @@
                                 <td class="option-120">
                                     <div class="btn-group">
                                         @if($page->type == 1)
-                                        <a href="{{route('admin.page.edit', $page->id)}}" class="btn action-button mr-1" data-toggle="tooltip" data-placement="top" title="Edytuj"><i class="fe-edit"></i></a>
+                                        <a href="{{route('admin.page.edit', $page->id)}}" class="btn action-button me-1" data-toggle="tooltip" data-placement="top" title="Edytuj"><i class="fe-edit"></i></a>
                                         @else
-                                        <a href="{{route('admin.url.edit', $page->id)}}" class="btn action-button mr-1" data-toggle="tooltip" data-placement="top" title="Edytuj"><i class="fe-edit"></i></a>
+                                        <a href="{{route('admin.url.edit', $page->id)}}" class="btn action-button me-1" data-toggle="tooltip" data-placement="top" title="Edytuj"><i class="fe-edit"></i></a>
                                         @endif
                                         <form method="POST" action="{{route('admin.page.destroy', $page->id)}}">
                                             {{ csrf_field() }}
@@ -68,8 +72,8 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12 d-flex justify-content-end">
-                    <a href="{{route('admin.page.create')}}" class="btn btn-primary">Dodaj stronę</a>
-                    <a href="{{route('admin.url.create')}}" class="ml-3 btn btn-primary">Dodaj link</a>
+                    <a href="{{route('admin.page.create')}}" class="me-3 btn btn-primary">Dodaj stronę</a>
+                    <a href="{{route('admin.url.create')}}" class="btn btn-primary">Dodaj link</a>
                 </div>
             </div>
         </div>

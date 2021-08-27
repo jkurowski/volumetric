@@ -36,11 +36,29 @@ class PageFormRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            'title' => 'required|string|min:2|max:100|unique:pages',
-            'content' => 'required|string|min:5',
-            'menu' => 'boolean'
-        ];
+        if ($this->request->get('_method') == 'PUT') {
+            return [
+                'active' => 'boolean',
+                'parent_id' => 'integer',
+                'title' => 'required|string|min:2|max:100|unique:pages,id,' . $this->route()->page,
+                'content' => 'required|string|min:5',
+                'content_header' => '',
+                'meta_title' => '',
+                'meta_description' => '',
+                'meta_robots' => '',
+            ];
+        } else {
+            return [
+                'active' => 'boolean',
+                'parent_id' => 'integer',
+                'title' => 'required|string|min:2|max:100|unique:pages',
+                'content' => 'required|string|min:5',
+                'content_header' => '',
+                'meta_title' => '',
+                'meta_description' => '',
+                'meta_robots' => '',
+            ];
+        }
     }
 
     public function messages()

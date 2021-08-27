@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-    <title>DeveloPro</title>
+    <title>DeveloPro @yield('meta_title')</title>
     <meta name="description" content="">
     <meta name="keywords" content="">
     <meta name="robots" content="noindex, nofollow">
@@ -45,7 +45,7 @@
                 <li class="{{ Request::routeIs('admin.page.*') ? 'active' : '' }}">
                     <a href="{{route('admin.page.index')}}">
                         <i class="fe-file-text"></i>
-                        <span> Strony </span>
+                        <span> Menu </span>
                     </a>
                 </li>
                 <li class="{{ Request::routeIs('admin.slider.*') ? 'active' : '' }}">

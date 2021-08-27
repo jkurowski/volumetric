@@ -1,7 +1,7 @@
 @foreach ($pages as $page)
 <tr>
     <td><i class="fe-corner-down-right" style="margin-left: {{$page->depth * 10}}px;margin-right: 15px"></i> {{$page->title}}</td>
-    <td class="text-center">{!! status($page->menu) !!}</td>
+    <td class="text-center">{!! status($page->active) !!}</td>
     <td class="text-center">{!! page_type($page->type) !!}</td>
     <td>
         @if($page->type == 1)
@@ -14,9 +14,9 @@
     <td class="option-120">
         <div class="btn-group">
             @if($page->type == 1)
-                <a href="{{route('admin.page.edit', $page->id)}}" class="btn action-button mr-1" data-toggle="tooltip" data-placement="top" title="Edytuj"><i class="fe-edit"></i></a>
+                <a href="{{route('admin.page.edit', $page->id)}}" class="btn action-button me-1" data-toggle="tooltip" data-placement="top" title="Edytuj"><i class="fe-edit"></i></a>
             @else
-                <a href="{{route('admin.url.edit', $page->id)}}" class="btn action-button mr-1" data-toggle="tooltip" data-placement="top" title="Edytuj"><i class="fe-edit"></i></a>
+                <a href="{{route('admin.url.edit', $page->id)}}" class="btn action-button me-1" data-toggle="tooltip" data-placement="top" title="Edytuj"><i class="fe-edit"></i></a>
             @endif
             <form method="POST" action="{{route('admin.page.destroy', $page->id)}}">
                 {{ csrf_field() }}

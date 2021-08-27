@@ -1,4 +1,5 @@
 @extends('admin.layout')
+@section('meta_title', '- '.$cardTitle)
 
 @section('content')
     @if(Route::is('admin.url.edit'))
@@ -10,19 +11,28 @@
             @csrf
             <div class="container">
                 <div class="card">
-                    @include('form-elements.card-header')
+                    <div class="card-head container">
+                        <div class="row">
+                            <div class="col-12 pl-0">
+                                <h4 class="page-title row"><i class="fe-file-text"></i><a href="{{route('admin.page.index')}}" class="p-0">Menu</a><span class="d-inline-flex ml-2 mr-2">/</span>{{ $cardTitle }}</h4>
+                            </div>
+                        </div>
+                    </div>
+                    @include('form-elements.back-route-button')
                     <div class="card-body">
                         <div class="row">
                             <div class="col-12">
-                                @include('form-elements.status', ['label' => 'Status', 'name' => 'menu', 'selected' => $entry->menu, 'options' => ['1' => 'Pokaż na liście']])
-                                @include('form-elements.target-select', ['label' => 'Okno docelowe', 'name' => 'url_target', 'selected' => $entry->url_target])
+                                @include('form-elements.html-select', ['label' => 'Status', 'name' => 'active', 'selected' => $entry->active, 'select' => ['1' => 'Pokaż na liście', '0' => 'Ukryj na liście']])
+                                @include('form-elements.html-select', ['label' => 'Okno docelowe', 'name' => 'url_target', 'selected' => $entry->url_target, 'select' => ['_self' => 'Ta samo okno', '_blank' => 'Nowe okno', '_domain' => 'Link w domenie']])
                                 @include('form-elements.html-input-text', ['label' => 'Adres url', 'sublabel'=> 'Zew. linki, moduł strony', 'name' => 'url', 'value' => $entry->url])
-                                @include('form-elements.page-select', [
-                                    'label' => 'Podstrona',
-                                    'name' => 'parent_id',
-                                    'selected' => $entry->parent_id,
-                                    'options' => $selectMenu
-                                ])
+                                @if($selectMenu->count() > 0)
+                                    @include('form-elements.html-select', [
+                                        'label' => 'Podstrona',
+                                        'name' => 'parent_id',
+                                        'selected' => $entry->parent_id,
+                                        'select' => $selectMenu
+                                    ])
+                                @endif
                                 @include('form-elements.html-input-text', ['label' => 'Tytuł strony', 'name' => 'title', 'value' => $entry->title, 'required' => 1])
                                 @include('form-elements.html-input-text', ['label' => 'Nagłówek H1', 'name' => 'content_header', 'value' => $entry->content_header])
                                 @include('form-elements.html-input-text', ['label' => 'Nagłówek strony', 'sublabel'=> 'Meta tag - title', 'name' => 'meta_title', 'value' => $entry->meta_title])

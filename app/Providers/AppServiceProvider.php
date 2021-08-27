@@ -6,6 +6,12 @@ use Request;
 use Illuminate\Support\ServiceProvider;
 use Spatie\Activitylog\Models\Activity;
 
+use App\Models\Url;
+use App\Observers\UrlObserver;
+
+use App\Models\Page;
+use App\Observers\PageObserver;
+
 use App\Models\Boxes;
 use App\Observers\BoxObserver;
 
@@ -43,6 +49,8 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind('App\Repositories\SliderRepositoryInterface', 'App\Repositories\SliderRepository');
         $this->app->bind('App\Repositories\BoxRepositoryInterface', 'App\Repositories\BoxRepository');
         $this->app->bind('App\Repositories\ArticleRepositoryInterface', 'App\Repositories\ArticleRepository');
+        $this->app->bind('App\Repositories\PageRepositoryInterface', 'App\Repositories\PageRepository');
+        $this->app->bind('App\Repositories\UrlRepositoryInterface', 'App\Repositories\UrlRepository');
     }
 
     /**
@@ -71,5 +79,7 @@ class AppServiceProvider extends ServiceProvider
         Slider::observe(SliderObserver::class);
         Boxes::observe(BoxObserver::class);
         Article::observe(ArticleObserver::class);
+        Page::observe(PageObserver::class);
+        Url::observe(UrlObserver::class);
     }
 }

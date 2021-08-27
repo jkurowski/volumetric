@@ -9,37 +9,21 @@ class Page extends Model
 {
     use NodeTrait;
 
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
     protected $fillable = [
+        'active',
         'parent_id',
         'title',
-        'slug',
-        'uri',
-        'url',
-        'url_target',
         'content',
         'content_header',
         'meta_title',
         'meta_description',
-        'meta_robots',
-        'type',
-        'menu',
-        'sort'
+        'meta_robots'
     ];
-
-    function uriGenerate($page)
-    {
-        if ($page->parent_id) {
-
-            $array = self::ancestorsOf($page->id)->pluck('slug')->toArray();
-            array_push($array, $page->slug);
-            $page->uri = implode('/', $array);
-
-        } else {
-            $page->uri = $page->slug;
-        }
-
-        $page->save();
-    }
 
     public static function mainmenu()
     {
@@ -54,5 +38,4 @@ class Page extends Model
             'pages' => self::descendantsOf($id)->toTree()
         ]);
     }
-
 }

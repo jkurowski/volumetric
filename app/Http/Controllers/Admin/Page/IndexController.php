@@ -3,133 +3,97 @@
 namespace App\Http\Controllers\Admin\Page;
 
 use App\Http\Controllers\Controller;
+
+// CMS
 use App\Http\Requests\PageFormRequest;
-use App\Http\Requests\PageUpdateFormRequest;
 use App\Models\Page;
+use App\Repositories\PageRepository;
+use Octoper\Lighthouse\Lighthouse;
 
 class IndexController extends Controller
 {
-    function __construct(){
-        $this->middleware('permission:page-list|page-create|page-edit|page-delete', ['only' => ['index','store']]);
-        $this->middleware('permission:page-create', ['only' => ['create','store']]);
-        $this->middleware('permission:page-edit', ['only' => ['edit','update']]);
-        $this->middleware('permission:page-delete', ['only' => ['destroy']]);
-    }
+    private $repository;
 
-    protected $redirectTo = 'admin/page';
+    public function __construct(PageRepository $repository)
+    {
+//        $this->middleware('permission:page-list|page-create|page-edit|page-delete', ['only' => ['index','store']]);
+//        $this->middleware('permission:page-create', ['only' => ['create','store']]);
+//        $this->middleware('permission:page-edit', ['only' => ['edit','update']]);
+//        $this->middleware('permission:page-delete', ['only' => ['destroy']]);
+
+        $this->repository = $repository;
+    }
 
     public function index()
     {
         //Page::fixTree();
         $tree = Page::withDepth()->defaultOrder()->get()->toTree();
-
         return view('admin.page.index', ['list' => $tree]);
     }
 
     public function create()
     {
         return view('admin.page.form', [
-            'selectMenu' => Page::pluck('title', 'id'),
+            'selectMenu' => Page::pluck('title', 'id')->prepend('Brak podstrony', 0),
             'cardTitle' => 'Dodaj stronę',
-            'backButton' => $this->redirectTo
+            'backButton' => route('admin.page.index')
         ])->with('entry', Page::make());
     }
 
     public function store(PageFormRequest $request)
     {
-        $page = Page::create($request->only(
-            [
-                'parent_id',
-                'title',
-                'slug',
-                'url',
-                'url_target',
-                'content',
-                'content_header',
-                'meta_title',
-                'meta_description',
-                'meta_robots',
-                'menu'
-            ]
-        ));
-
-        if ($request->parent_id) {
-
-            $node = Page::find($request->parent_id);
-            $node->appendNode($page);
-
-        }
-
-        $page->uriGenerate($page);
-
-//        if ($request->hasFile('file')) {
-//            $article->upload($request->slug, $request->file('file'));
-//        }
-
-        return redirect($this->redirectTo)->with('success', 'Strona dodana');
+        $this->repository->create($request->validated());
+        return redirect(route('admin.page.index'))->with('success', 'Strona dodana');
     }
 
     public function edit(Page $page)
     {
         return view('admin.page.form', [
             'entry' => $page,
-            'selectMenu' => Page::where('id', '!=', $page->id)->pluck('title', 'id'),
+            'selectMenu' => Page::where('id', '!=', $page->id)->pluck('title', 'id')->prepend('Brak podstrony', 0),
             'cardTitle' => 'Edytuj strone',
-            'backButton' => $this->redirectTo
+            'backButton' => route('admin.page.index')
         ]);
     }
 
-    public function update(PageUpdateFormRequest $request, Page $page)
+    public function update(PageFormRequest $request, int $id)
     {
-        $page->update($request->only(
-            [
-                'parent_id',
-                'title',
-                'slug',
-                'url',
-                'url_target',
-                'content',
-                'content_header',
-                'meta_title',
-                'meta_description',
-                'meta_robots',
-                'menu'
-            ]
-        ));
+        $page = $this->repository->find($id);
+        $this->repository->update($request->validated(), $page);
 
-        if ($request->parent_id) {
-
-            $node = Page::find($request->parent_id);
-            $node->appendNode($page);
-
-        }
-
-        $page->uriGenerate($page);
-
-//        if ($request->hasFile('file')) {
-//            $article->upload($request->slug, $request->file('file'), true);
-//        }
-
-        return redirect($this->redirectTo)->with('success', 'Strona zaktualizowana');
+        return redirect(route('admin.page.index'))->with('success', 'Strona zaktualizowana');
     }
 
     public function up(Page $page)
     {
         $node = Page::findOrFail($page->id);
         $node->up();
-        return redirect($this->redirectTo)->with('success', 'Strona zaktualizowana');
+        return redirect(route('admin.page.index'))->with('success', 'Strona zaktualizowana');
     }
 
     public function down(Page $page)
     {
         $node = Page::findOrFail($page->id);
         $node->down();
-        return redirect($this->redirectTo)->with('success', 'Strona zaktualizowana');
+        return redirect(route('admin.page.index'))->with('success', 'Strona zaktualizowana');
     }
 
-    public function destroy(Page $page)
+    public function destroy(int $id)
     {
-        $page->delete();
-        return response()->json(['success' => 'Artykuł usniety']);
+        $this->repository->delete($id);
+        return response()->json('Deleted');
+    }
+
+    public function show(int $id)
+    {
+        $page = $this->repository->find($id);
+        (new Lighthouse())
+            ->setOutput('report.json')
+            ->accessibility()
+            ->bestPractices()
+            ->performance()
+            ->pwa()
+            ->seo()
+            ->audit(settings()->get("page_url").$page->uri);
     }
 }

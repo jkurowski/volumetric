@@ -29,9 +29,6 @@ $(document).ready(function () {
         });
     }
 
-// Lightbox
-    $( '.swipebox' ).swipebox({useSVG : false});
-
 // Ruchoma galeria
     $('.col-gallery-thumb').each( function() { $(this).hoverdir(); } );
 
