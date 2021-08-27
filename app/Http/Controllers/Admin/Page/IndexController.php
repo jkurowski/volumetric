@@ -94,6 +94,6 @@ class IndexController extends Controller
             ->performance()
             ->pwa()
             ->seo()
-            ->audit(settings()->get("page_url").$page->uri);
+            ->audit('http://developro.4dl-dev.pl/'.$page->uri);
     }
 }
