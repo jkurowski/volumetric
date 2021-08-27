@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "56d049590a2f85b4556efa494c5172ea",
+    "content-hash": "7ebf2b00da168effe2f8fa77a1470143",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -836,61 +836,6 @@
                 }
             ],
             "time": "2020-11-24T19:55:57+00:00"
-        },
-        {
-            "name": "dzava/lighthouse",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/dzava/lighthouse-php.git",
-                "reference": "5949ee4efe22b7d2d7317160717a0ecca71115b5"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/dzava/lighthouse-php/zipball/5949ee4efe22b7d2d7317160717a0ecca71115b5",
-                "reference": "5949ee4efe22b7d2d7317160717a0ecca71115b5",
-                "shasum": ""
-            },
-            "require": {
-                "ext-json": "*",
-                "php": ">=7.4",
-                "symfony/process": "^4.0|^5.0"
-            },
-            "require-dev": {
-                "dms/phpunit-arraysubset-asserts": "^0.2.0",
-                "phpunit/phpunit": "^8.4|^9.0"
-            },
-            "default-branch": true,
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Dzava\\Lighthouse\\": "src/"
-                }
-            },
-            "autoload-dev": {
-                "psr-4": {
-                    "Dzava\\Lighthouse\\Tests\\": "tests/"
-                }
-            },
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Dimitris Zavantias",
-                    "email": "dzavantias@gmail.com"
-                }
-            ],
-            "description": "Interface for the Google Lighthouse project",
-            "homepage": "https://github.com/dzava/lighthouse-php",
-            "keywords": [
-                "lighthouse"
-            ],
-            "support": {
-                "source": "https://github.com/dzava/lighthouse-php/tree/master",
-                "issues": "https://github.com/dzava/lighthouse-php/issues"
-            },
-            "time": "2020-12-18T17:20:52+00:00"
         },
         {
             "name": "egulias/email-validator",
@@ -2658,64 +2603,6 @@
                 "source": "https://github.com/nikic/PHP-Parser/tree/v4.12.0"
             },
             "time": "2021-07-21T10:44:31+00:00"
-        },
-        {
-            "name": "octoper/lighthouse-php",
-            "version": "0.0.4",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/octoper/lighthouse-php.git",
-                "reference": "8f935c140c9e0f57994bcdf4b5840e0f55275f4a"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/octoper/lighthouse-php/zipball/8f935c140c9e0f57994bcdf4b5840e0f55275f4a",
-                "reference": "8f935c140c9e0f57994bcdf4b5840e0f55275f4a",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^7.4",
-                "symfony/process": "^5.1"
-            },
-            "require-dev": {
-                "dms/phpunit-arraysubset-asserts": "^0.2.0",
-                "friendsofphp/php-cs-fixer": "^2.16",
-                "pestphp/pest": "^0.1.5",
-                "phpunit/phpunit": "^9.0",
-                "vimeo/psalm": "^3.11"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Octoper\\Lighthouse\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Vaggelis Yfantis",
-                    "email": "me@octoper.me"
-                }
-            ],
-            "description": "Interface for the Google Lighthouse",
-            "homepage": "https://github.com/octoper/lighthouse-php",
-            "keywords": [
-                "lighthouse"
-            ],
-            "support": {
-                "issues": "https://github.com/octoper/lighthouse-php/issues",
-                "source": "https://github.com/octoper/lighthouse-php/tree/master"
-            },
-            "funding": [
-                {
-                    "url": "https://github.com/octoper",
-                    "type": "github"
-                }
-            ],
-            "time": "2020-06-24T14:11:29+00:00"
         },
         {
             "name": "opis/closure",
@@ -9449,9 +9336,7 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": {
-        "dzava/lighthouse": 20
-    },
+    "stability-flags": [],
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {

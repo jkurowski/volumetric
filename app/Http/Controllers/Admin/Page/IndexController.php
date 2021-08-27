@@ -8,8 +8,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\PageFormRequest;
 use App\Models\Page;
 use App\Repositories\PageRepository;
-use Dzava\Lighthouse\Exceptions\AuditFailedException;
-use Dzava\Lighthouse\Lighthouse;
 
 class IndexController extends Controller
 {
@@ -87,15 +85,6 @@ class IndexController extends Controller
 
     public function show(int $id)
     {
-        $page = $this->repository->find($id);
-        try {
-            (new Lighthouse())
-            ->setOutput('report.json')
-            ->setLighthousePath('node_modules/lighthouse/lighthouse-cli/index.js')
-            ->seo()
-            ->audit('http://developro.4dl-dev.pl/'.$page->uri);
-        } catch (AuditFailedException $e) {
-            echo $e->getOutput();
-        }
+
     }
 }

@@ -27,14 +27,12 @@
         "laravel/tinker": "^2.0",
         "laravel/ui": "^3.0",
         "laravelcollective/html": "^6.2",
-        "octoper/lighthouse-php": "^0.0.4",
         "pragmarx/tracker": "^4.0",
         "spatie/laravel-activitylog": "^3.16",
         "spatie/laravel-permission": "^3.17",
         "spatie/schema-org": "^3.4",
         "spatie/valuestore": "^1.2",
-        "yajra/laravel-datatables-oracle": "~9.0",
-        "dzava/lighthouse": "dev-master"
+        "yajra/laravel-datatables-oracle": "~9.0"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.4",
