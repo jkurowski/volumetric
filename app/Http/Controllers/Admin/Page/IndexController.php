@@ -91,7 +91,7 @@ class IndexController extends Controller
         try {
             (new Lighthouse())
             ->setOutput('report.json')
-            ->setLighthousePath('node_modules/lighthouse/lighthouse-cli/index.js')
+            ->setLighthousePath('./node_modules/lighthouse/lighthouse-cli/index.js')
             ->setChromePath('node_modules/lighthouse/chrome.exe')
             ->accessibility()
             ->bestPractices()
