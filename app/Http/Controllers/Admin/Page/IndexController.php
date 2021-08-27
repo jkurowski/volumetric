@@ -92,10 +92,6 @@ class IndexController extends Controller
             (new Lighthouse())
             ->setOutput('report.html')
             ->setLighthousePath('node_modules/lighthouse/lighthouse-cli/index.js')
-            ->accessibility()
-            ->bestPractices()
-            ->performance()
-            ->pwa()
             ->seo()
             ->audit('http://developro.4dl-dev.pl/'.$page->uri);
         } catch (AuditFailedException $e) {
