@@ -9,6 +9,7 @@ use App\Http\Requests\PageFormRequest;
 use App\Models\Page;
 use App\Repositories\PageRepository;
 use Octoper\Lighthouse\Lighthouse;
+use Octoper\Lighthouse\Exceptions\AuditFailedException;
 
 class IndexController extends Controller
 {
@@ -87,7 +88,8 @@ class IndexController extends Controller
     public function show(int $id)
     {
         $page = $this->repository->find($id);
-        (new Lighthouse())
+        try {
+            (new Lighthouse())
             ->setOutput('report.json')
             ->accessibility()
             ->bestPractices()
@@ -95,5 +97,8 @@ class IndexController extends Controller
             ->pwa()
             ->seo()
             ->audit('http://developro.4dl-dev.pl/'.$page->uri);
+        } catch (AuditFailedException $e) {
+            echo $e->getOutput();
+        }
     }
 }
