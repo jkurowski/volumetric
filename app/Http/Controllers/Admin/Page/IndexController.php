@@ -92,7 +92,7 @@ class IndexController extends Controller
             (new Lighthouse())
             ->setOutput('report.html')
             ->setLighthousePath('node_modules/lighthouse/lighthouse-cli/index.js')
-            ->setNodePath('/domains/developro.4dl-dev.pl/public_html/public/node_modules')
+            ->setNodePath('/public/node_modules')
             ->seo()
             ->audit('http://developro.4dl-dev.pl/'.$page->uri);
         } catch (AuditFailedException $e) {
