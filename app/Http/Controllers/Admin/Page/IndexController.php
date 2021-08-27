@@ -8,8 +8,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\PageFormRequest;
 use App\Models\Page;
 use App\Repositories\PageRepository;
-use Octoper\Lighthouse\Lighthouse;
-use Octoper\Lighthouse\Exceptions\AuditFailedException;
+use Dzava\Lighthouse\Exceptions\AuditFailedException;
+use Dzava\Lighthouse\Lighthouse;
 
 class IndexController extends Controller
 {
