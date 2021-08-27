@@ -8,8 +8,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\PageFormRequest;
 use App\Models\Page;
 use App\Repositories\PageRepository;
-use Octoper\Lighthouse\Lighthouse;
-use Octoper\Lighthouse\Exceptions\AuditFailedException;
+use Dzava\Lighthouse\Exceptions\AuditFailedException;
+use Dzava\Lighthouse\Lighthouse;
 
 class IndexController extends Controller
 {
@@ -90,7 +90,7 @@ class IndexController extends Controller
         $page = $this->repository->find($id);
         try {
             (new Lighthouse())
-            ->setOutput('uploads/report.json')
+            ->setOutput('report.json')
             ->setLighthousePath('node_modules/lighthouse/lighthouse-cli/index.js')
             ->setChromePath('node_modules/lighthouse/chrome.exe')
             ->accessibility()
