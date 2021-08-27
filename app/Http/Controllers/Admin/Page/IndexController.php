@@ -90,8 +90,13 @@ class IndexController extends Controller
         $page = $this->repository->find($id);
         try {
             (new Lighthouse())
-            ->setOutput('report.html')
+            ->setOutput('uploads/report.json')
             ->setLighthousePath('node_modules/lighthouse/lighthouse-cli/index.js')
+            ->setChromePath('node_modules/lighthouse/chrome.exe')
+            ->accessibility()
+            ->bestPractices()
+            ->performance()
+            ->pwa()
             ->seo()
             ->audit('http://developro.4dl-dev.pl/'.$page->uri);
         } catch (AuditFailedException $e) {
