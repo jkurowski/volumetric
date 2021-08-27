@@ -90,7 +90,7 @@ class IndexController extends Controller
         $page = $this->repository->find($id);
         try {
             (new Lighthouse())
-            ->setOutput('report.json')
+            ->setOutput('report.html')
             ->setLighthousePath('node_modules/lighthouse/lighthouse-cli/index.js')
             ->accessibility()
             ->bestPractices()
