@@ -27,17 +27,16 @@
 
 </head>
 <body class="{{ !empty($body_class) ? $body_class : '' }}">
-<div class="page-header">
-    @include('layouts.header')
+@include('layouts.partials.header')
 
-    @yield('pagheader')
-</div>
+@yield('pageheader')
+
 <div id="page">
     @yield('content')
 </div>
-@include('layouts.footer')
+@include('layouts.partials.footer')
 
-@include('layouts.cookies')
+@include('layouts.partials.cookies')
 
 <!-- jQuery -->
 <script src="{{ asset('/js/jquery.min.js') }}" charset="utf-8"></script>
@@ -50,10 +49,5 @@
 
     });
 </script>
-<!-- Google fonts -->
-<link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-
-<!-- jQuery -->
 </body>
 </html>

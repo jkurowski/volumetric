@@ -3,15 +3,24 @@
 namespace App\Http\Controllers\Admin\Gallery;
 
 use App\Http\Controllers\Controller;
-
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Session;
 
+// CMS
 use App\Models\Image;
-
+use App\Http\Requests\ImageFormRequest;
+use App\Repositories\ImageRepository;
+use App\Services\ImageService;
 
 class ImageController extends Controller
 {
+    private $repository;
+    private $service;
+
+    public function __construct(ImageRepository $repository, ImageService $service)
+    {
+        $this->repository = $repository;
+        $this->service = $service;
+    }
 
     public function store(Request $request)
     {
@@ -22,20 +31,42 @@ class ImageController extends Controller
         ]));
 
         if ($request->hasFile('qqfile')) {
-            $image->imageUpload($request->file('qqfile'));
+            $this->service->upload($request->file('qqfile'), $image);
         }
         return response()->json(['success' => true]);
     }
 
-    public function destroy($id)
+    public function edit($id)
     {
-        Image::find($id)->delete();
-        Session::flash('success', 'Obrazek usunięty');
-        return response()->json('Deleted', 200);
+        $image = Image::find($id);
+        return view('admin.image.form', [
+            'entry' => $image,
+            'cardTitle' => 'Edytuj zdjęcie',
+            'backButton' => route('admin.gallery.show', $image->gallery_id)
+        ]);
     }
 
-    public function sort(Request $request, Image $image)
+    public function update(ImageFormRequest $request, int $id)
     {
-        $image->sort($request);
+
+        $image = $this->repository->find($id);
+        $this->repository->update($request->only('file_alt'), $image);
+
+        if ($request->hasFile('file')) {
+            $this->service->upload($request->file('file'), $image, true);
+        }
+
+        return redirect(route('admin.gallery.show', $image->gallery_id))->with('success', 'Obrazek zapisany');
+    }
+
+    public function destroy($id)
+    {
+        $this->repository->delete($id);
+        return response()->json('Deleted');
+    }
+
+    public function sort(Request $request)
+    {
+        $this->repository->updateOrder($request->get('recordsArray'));
     }
 }

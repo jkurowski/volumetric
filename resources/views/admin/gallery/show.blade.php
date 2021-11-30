@@ -29,7 +29,7 @@
                                     <img class="img-fluid" src="/uploads/gallery/images/thumbs/{{$p->file}}" alt="{{ $p->name }}">
                                     <div class="card-body">
                                         <div class="btn-group">
-                                            <a href="" class="btn action-button action-small me-1" data-toggle="tooltip" data-placement="top" title="Edytuj zdjęcie"><i class="fe-edit"></i></a>
+                                            <a href="{{route('admin.image.edit', $p->id)}}" class="btn action-button action-small me-1" data-toggle="tooltip" data-placement="top" title="Edytuj zdjęcie"><i class="fe-edit"></i></a>
                                             <a href="" class="btn action-button move-button action-small me-1"><i class="fe-move"></i></a>
                                             <form method="POST" action="{{route('admin.image.destroy', $p->id)}}">
                                                 {{ csrf_field() }}
@@ -60,7 +60,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="uploadlabel">Dodaj zdjęcia</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                         <i class="fe-x-square"></i>
                     </button>
                 </div>
@@ -68,14 +68,14 @@
                     <div id="jquery-wrapped-fine-uploader"></div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Zamknij</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Zamknij</button>
                 </div>
             </div>
         </div>
     </div>
 @endsection
 @push('scripts')
-    <script src="/js/fineuploader.js" charset="utf-8"></script>
+    <script src="{{ asset('/js/fineuploader.js') }}" charset="utf-8"></script>
     <script type="text/javascript">
         //<![CDATA[
         $(document).ready(function(){

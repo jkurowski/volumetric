@@ -8,6 +8,9 @@
                     <div class="col-6 pl-0">
                         <h4 class="page-title row"><i class="fe-home"></i>Przeglądaj inwestycje</h4>
                     </div>
+                    <div class="col-6 d-flex justify-content-end align-items-center form-group-submit">
+                        <a href="{{route('admin.developro.create')}}" class="btn btn-primary">Dodaj inwestycje</a>
+                    </div>
                 </div>
             </div>
             <div class="table-overflow">
@@ -48,18 +51,18 @@
                             <td>{{ $p->updated_at }}</td>
                             <td class="option-120">
                                 <div class="btn-group">
-                                    <a href="{{route('admin.developro.plan.index', $p->id)}}" class="btn action-button mr-1" data-toggle="tooltip" data-placement="top" title="Plan inwestycji"><i class="fe-image"></i></a>
+                                    <a href="{{route('admin.developro.plan.index', $p->id)}}" class="btn action-button me-1" data-toggle="tooltip" data-placement="top" title="Plan inwestycji"><i class="fe-image"></i></a>
                                     @if ($p->type == 1)
-                                        <a href="{{route('admin.developro.investment.building.index', $p->id)}}" class="btn action-button mr-1" data-toggle="tooltip" data-placement="top" title="Lista budynków"><i class="fe-grid"></i></a>
+                                        <a href="{{route('admin.developro.investment.building.index', $p->id)}}" class="btn action-button me-1" data-toggle="tooltip" data-placement="top" title="Lista budynków"><i class="fe-grid"></i></a>
                                     @endif
                                     @if ($p->type == 2)
-                                        <a href="{{route('admin.developro.investment.floor.index', $p->id)}}" class="btn action-button mr-1" data-toggle="tooltip" data-placement="top" title="Lista kondygnacji"><i class="fe-layers"></i></a>
+                                        <a href="{{route('admin.developro.investment.floor.index', $p->id)}}" class="btn action-button me-1" data-toggle="tooltip" data-placement="top" title="Lista kondygnacji"><i class="fe-layers"></i></a>
                                     @endif
                                     @if ($p->type == 3)
-                                        <a href="{{route('admin.developro.investment.house.index', $p->id)}}" class="btn action-button mr-1" data-toggle="tooltip" data-placement="top" title="Lista domów"><i class="fe-archive"></i></a>
+                                        <a href="{{route('admin.developro.investment.house.index', $p->id)}}" class="btn action-button me-1" data-toggle="tooltip" data-placement="top" title="Lista domów"><i class="fe-archive"></i></a>
                                     @endif
 
-                                    <a href="{{route('admin.developro.edit', $p->id)}}" class="btn action-button mr-1" data-toggle="tooltip" data-placement="top" title="Edytuj"><i class="fe-edit"></i></a>
+                                    <a href="{{route('admin.developro.edit', $p->id)}}" class="btn action-button me-1" data-toggle="tooltip" data-placement="top" title="Edytuj"><i class="fe-edit"></i></a>
                                     <form method="POST" action="{{route('admin.developro.destroy', $p->id)}}">
                                         {{ csrf_field() }}
                                         {{ method_field('DELETE') }}

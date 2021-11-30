@@ -16,7 +16,6 @@ class Gallery extends Model
      *
      * @var array
      */
-
     protected $fillable = [
         'name',
         'text',
@@ -31,17 +30,4 @@ class Gallery extends Model
     {
         return $this->hasMany('App\Models\Image')->orderBy('sort');
     }
-
-    public function sort(object $array)
-    {
-        $updateRecordsArray = $array->get('recordsArray');
-        $listingCounter = 1;
-        foreach ($updateRecordsArray as $recordIDValue) {
-            $entry = self::find($recordIDValue);
-            $entry->sort = $listingCounter;
-            $entry->save();
-            $listingCounter = $listingCounter + 1;
-        }
-    }
-
 }

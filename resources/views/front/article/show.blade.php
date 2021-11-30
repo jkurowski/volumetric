@@ -12,30 +12,23 @@
 <!-- Open Graph -->
 {!! $opengraph->renderTags() !!}
 @stop
-
-@section('pagheader')
-    <div id="page-header">
-        <div class="container">
-            <div class="row">
-                <div class="col-12 text-center">
-                    <h1>Aktualności</h1>
-                </div>
-            </div>
-        </div>
-    </div>
-@endsection
+@section('pageheader')
+    @include('layouts.partials.page-header', ['page' => $page])
+@stop
 
 @section('content')
-    <div class="container post-container">
-        <div class="row">
-            <div class="col-12">
-                <h1>{{ $article->title }}</a></h1>
-                <div class="post-entry"><p><b>{{$article->content_entry}}</b></p></div>
-                <img src="/uploads/articles/{!! $article->file !!}" alt="{{ $article->title }}" class="mb-5">
-                <div class="post-text pb-5">
+    <div class="container">
+        <div class="row d-flex justify-content-center">
+            <div class="col-11">
+                <img src="/uploads/articles/{!! $article->file !!}" alt="{{ $article->title }}">
+                <div class="post-details-entry mt-5">
+                    <h1 class="post-details-title">{{ $article->title }}</a></h1>
+                    <p><b>{{$article->content_entry}}</b></p>
+                </div>
+                <div class="post-details-text pb-5">
                     <p>{!! $article->content !!}</p>
                 </div>
-                <a href="{{route('front.news.index')}}" class="bttn bttn-right"><i class="las la-arrow-left"></i> Wróć do listy</a>
+                <a href="{{route('front.news.index')}}" class="bttn bttn-sm">Wróć do listy</a>
             </div>
         </div>
     </div>

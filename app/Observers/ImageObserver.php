@@ -3,13 +3,14 @@
 namespace App\Observers;
 
 use App\Models\Image;
+use Illuminate\Http\Request;
 
 class ImageObserver
 {
     /**
      * Handle the image "deleted" event.
      *
-     * @param  \App\Image  $image
+     * @param  Image $image
      * @return void
      */
     public function deleted(Image $image)

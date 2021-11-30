@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Article;
 
 // CMS
+use App\Models\Page;
 use OpenGraph;
 use Spatie\SchemaOrg\Schema;
 
@@ -14,13 +15,16 @@ class ArticleController extends Controller
 
     public function index()
     {
-        return view('front.article.index', ['articles' => Article::orderBy('sort', 'asc')->get()]);
+        $page = Page::where('uri', 'aktualnosci')->firstOrFail();
+        $articles = Article::orderBy('sort', 'asc')->get();
+        return view('front.article.index', ['page' => $page, 'articles' => $articles]);
     }
 
     public function show($slug)
     {
 
         $article = Article::where('slug', $slug)->first();
+        $page = Page::where('uri', 'aktualnosci')->firstOrFail();
 
         $schemaBlog = Schema::BlogPosting()
             ->mainEntityOfPage(Schema::WebPage()->identifier(route('front.news.show', $article->slug)))
@@ -43,6 +47,7 @@ class ArticleController extends Controller
             ->url();
 
         return view('front.article.show', [
+            'page' => $page,
             'article' => $article,
             'schema' => $schemaBlog,
             'opengraph' => $og

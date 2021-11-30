@@ -27,14 +27,14 @@ class Page extends Model
 
     public static function mainmenu()
     {
-        return view('layouts.menu', [
+        return view('layouts.partials.menu', [
             'pages' => self::withDepth()->defaultOrder()->get()->toTree()
         ]);
     }
 
     public static function sidemenu(int $id)
     {
-        return view('layouts.sidemenu', [
+        return view('layouts.partials.sidemenu', [
             'pages' => self::descendantsOf($id)->toTree()
         ]);
     }

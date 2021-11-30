@@ -1,7 +1,7 @@
 @extends('admin.layout')
 @section('content')
     @if(Route::is('admin.developro.investment.building.edit'))
-<form method="POST" action="{{route('admin.developro.investment.building.update', [$investment, $entry])}}" enctype="multipart/form-data" class="mappa">
+<form method="POST" action="{{route('admin.developro.investment.building.update', [$investment, $entry->id])}}" enctype="multipart/form-data" class="mappa">
 {{method_field('PUT')}}
     @else
 <form method="POST" action="{{route('admin.developro.investment.building.store', $investment)}}" enctype="multipart/form-data" class="mappa">
@@ -45,15 +45,17 @@
                             @include('form-elements.mappa', ['label' => 'Współrzędne punktów', 'name' => 'cords', 'value' => $entry->cords, 'rows' => 10, 'class' => 'mappa-html'])
                             @include('form-elements.mappa', ['label' => 'Współrzędne punktów HTML', 'name' => 'html', 'value' => $entry->html, 'rows' => 10, 'class' => 'mappa-area'])
                         </div>
-
-                        @include('form-elements.input-text', ['label' => 'Nazwa budynku', 'name' => 'name', 'value' => $entry->name, 'required' => 1])
-                        @include('form-elements.input-text', ['label' => 'Nagłówek strony', 'sublabel'=> 'Meta tag - title', 'name' => 'meta_title', 'value' => $entry->meta_title])
-                        @include('form-elements.input-text', ['label' => 'Opis strony', 'sublabel'=> 'Meta tag - description', 'name' => 'meta_description', 'value' => $entry->meta_description])
-                        @include('form-elements.input-text', ['label' => 'Numer budynku', 'name' => 'number', 'value' => $entry->number, 'required' => 1])
-                        @include('form-elements.input-text', ['label' => 'Zakres powierzchni w wyszukiwarce xx-xx', 'sublabel' => '(zakresy oddzielone przecinkiem)', 'name' => 'area_range', 'value' => $entry->area_range])
-                        @include('form-elements.input-text', ['label' => 'Zakres pokoi w wyszukiwarce', 'sublabel' => '(liczby oddzielone przecinkiem)', 'name' => 'rooms_range', 'value' => $entry->rooms_range])
-                        @include('form-elements.input-text', ['label' => 'Zakres cen w wyszukiwarce xx-xx', 'sublabel' => '(zakresy oddzielone przecinkiem)', 'name' => 'price_range', 'value' => $entry->price_range])
-                        @include('form-elements.input-file', ['label' => 'Rzut pietra', 'sublabel' => '(wymiary: '.$planwidth.'px / '.$planheight.'px)', 'name' => 'file'])
+                        @include('form-elements.html-select', ['label' => 'Status', 'name' => 'active', 'selected' => $entry->active, 'select' => ['1' => 'Widoczny', '2' => 'Ukryty']])
+                        @include('form-elements.html-input-text', ['label' => 'Nazwa budynku', 'name' => 'name', 'value' => $entry->name, 'required' => 1])
+                        @include('form-elements.html-input-text-count', ['label' => 'Nagłówek strony', 'sublabel'=> 'Meta tag - title', 'name' => 'meta_title', 'value' => $entry->meta_title, 'maxlength' => 60])
+                        @include('form-elements.html-input-text-count', ['label' => 'Opis strony', 'sublabel'=> 'Meta tag - description', 'name' => 'meta_description', 'value' => $entry->meta_description, 'maxlength' => 158])
+                        @include('form-elements.html-input-text', ['label' => 'Indeksowanie', 'sublabel'=> 'Meta tag - robots', 'name' => 'meta_robots', 'value' => $entry->meta_robots])
+                        @include('form-elements.html-input-text', ['label' => 'Numer budynku', 'name' => 'number', 'value' => $entry->number, 'required' => 1])
+                        @include('form-elements.html-input-text', ['label' => 'Zakres powierzchni w wyszukiwarce xx-xx', 'sublabel' => '(zakresy oddzielone przecinkiem)', 'name' => 'area_range', 'value' => $entry->area_range])
+                        @include('form-elements.html-input-text', ['label' => 'Zakres pokoi w wyszukiwarce', 'sublabel' => '(liczby oddzielone przecinkiem)', 'name' => 'rooms_range', 'value' => $entry->rooms_range])
+                        @include('form-elements.html-input-text', ['label' => 'Zakres cen w wyszukiwarce xx-xx', 'sublabel' => '(zakresy oddzielone przecinkiem)', 'name' => 'price_range', 'value' => $entry->price_range])
+                        @include('form-elements.html-input-file', ['label' => 'Rzut pietra', 'sublabel' => '(wymiary: '.config('images.building.width').'px / '.config('images.building.height').'px)', 'name' => 'file'])
+                        @include('form-elements.textarea-fullwidth', ['label' => 'Treść artukułu', 'name' => 'content', 'value' => $entry->content, 'rows' => 11, 'class' => 'tinymce', 'required' => 1])
                     </div>
                 </div>
             </div>
@@ -61,20 +63,21 @@
         @include('form-elements.submit', ['name' => 'submit', 'value' => 'Zapisz budynek'])
     </div>
 </form>
+@include('form-elements.tintmce')
 @endsection
 @push('scripts')
-    <script src="/js/plan/underscore.js" charset="utf-8"></script>
-    <script src="/js/plan/mappa-backbone.js" charset="utf-8"></script>
-    <script type="text/javascript">
-        const map = {
-            "name":"imagemap",
-            "areas":[{!! $entry->cords !!}]
-        };
-        $(document).ready(function() {
-            const mapview = new MapView({el: '.mappa'}, map);
-            @if($investment->plan)
-            mapview.loadImage('/investment/plan/{{$investment->plan->file}}');
-            @endif
-        });
-    </script>
+<script src="{{ asset('/js/plan/underscore.js') }}" charset="utf-8"></script>
+<script src="{{ asset('/js/plan/mappa-backbone.js') }}" charset="utf-8"></script>
+<script type="text/javascript">
+    const map = {
+        "name":"imagemap",
+        "areas":[{!! $entry->cords !!}]
+    };
+    $(document).ready(function() {
+        const mapview = new MapView({el: '.mappa'}, map);
+        @if($investment->plan)
+        mapview.loadImage('/investment/plan/{{$investment->plan->file}}');
+        @endif
+    });
+</script>
 @endpush

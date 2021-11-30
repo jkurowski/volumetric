@@ -24,7 +24,21 @@ class InvestmentFormRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|string|min:5|max:100'
+            'type' => 'integer',
+            'status' => 'integer',
+            'name' => 'required|string|min:5|max:100',
+            'address' => '',
+            'city' => '',
+            'date_start' => '',
+            'date_end' => '',
+            'areas_amount' => '',
+            'office_address' => '',
+            'meta_title' => '',
+            'meta_description' => '',
+            'meta_robots' => '',
+            'entry_content' => '',
+            'content' => '',
+            'end_content' => '',
         ];
     }
 

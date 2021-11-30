@@ -3,18 +3,30 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Str;
-use Intervention\Image\ImageManagerStatic as Image;
 
 class Investment extends Model
 {
-    const PLAN_WIDTH = 1280;
-    const PLAN_HEIGHT = 560;
-
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
     protected $fillable = [
-        'name',
         'type',
-        'status'
+        'status',
+        'name',
+        'address',
+        'city',
+        'date_start',
+        'date_end',
+        'areas_amount',
+        'office_address',
+        'meta_title',
+        'meta_description',
+        'meta_robots',
+        'entry_content',
+        'content',
+        'end_content',
     ];
 
     /**
@@ -106,26 +118,5 @@ class Investment extends Model
     public function houses()
     {
         return $this->hasMany('App\Models\Property');
-    }
-
-    public function planUpload($file)
-    {
-        if ($this->file) {
-            $image_path = public_path('investment/plan/' . $this->file);
-            if (file_exists($image_path)) {
-                unlink($image_path);
-            }
-        }
-
-        $name = Str::slug($this->name) . '.' . $file->getClientOriginalExtension();
-        $file->storeAs('plan', $name, 'investment_uploads');
-
-        $filepath = public_path('investment/plan/' . $name);
-        Image::make($filepath)->fit(self::PLAN_WIDTH, self::PLAN_HEIGHT)->save($filepath);
-
-        Plan::updateOrCreate(
-            ['investment_id' => $this->id],
-            ['file' => $name]
-        );
     }
 }

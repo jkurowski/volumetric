@@ -21,9 +21,9 @@ use PragmaRX\Tracker\Vendor\Laravel\Facade as Tracker;
 
 class ContactController extends Controller
 {
-    function index(){
-
-        $page = Page::where('id', 9)->first();
+    function index()
+    {
+        $page = Page::where('id', 12)->first();
 
         return view('front.contact.index', [
             'rules' => RodoRules::orderBy('sort')->whereStatus(1)->get(),
@@ -31,23 +31,37 @@ class ContactController extends Controller
         ]);
     }
 
-    function property(ContactFormRequest $request, $id){
+    function property(ContactFormRequest $request, $id)
+    {
 
         Property::find($id)->notify(new PropertyNotification($request));
         Mail::to(config('mail.from.address'))->send(new MailSend($request));
 
-        return redirect()->back()->with('success', 'Twoja wiadomość została wysłana. W najbliższym czasie skontaktujemy się z Państwem celem omówienia szczegółów!');
+        return redirect()->back()->with(
+            'success',
+            'Twoja wiadomość została wysłana. W najbliższym czasie skontaktujemy się z Państwem celem omówienia szczegółów!'
+        );
     }
 
-    function send(ContactFormRequest $request, Recipient $recipient){
+    function send(ContactFormRequest $request, Recipient $recipient)
+    {
         $recipient->notify(new ContactNotification($request));
 
         Mail::to(config('mail.from.address'))->send(new MailSend($request));
 
         (new \App\Models\RodoClient)->saveOrCreate($request);
 
-        Tracker::trackEvent(['event' => 'contact.form:contact', 'object' => json_encode($request->only(['form_name', 'form_email', 'form_message'], true))]);
+        Tracker::trackEvent([
+            'event' => 'contact.form:contact',
+            'object' => json_encode($request->only([
+                'form_name',
+                'form_email',
+                'form_message'], true))
+        ]);
 
-        return redirect()->back()->with('success', 'Twoja wiadomość została wysłana. W najbliższym czasie skontaktujemy się z Państwem celem omówienia szczegółów!');
+        return redirect()->back()->with(
+            'success',
+            'Twoja wiadomość została wysłana. W najbliższym czasie skontaktujemy się z Państwem celem omówienia szczegółów!'
+        );
     }
 }

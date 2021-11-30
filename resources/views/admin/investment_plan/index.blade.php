@@ -15,7 +15,7 @@
         </div>
         <div class="card mt-3">
             <div class="card-body card-body-rem">
-                <div class="alert alert-info" role="alert">Rzut planu inwestycji: 1200px szerokości / 560px wysokości</div>
+                <div class="alert alert-info" role="alert">Rzut planu inwestycji: {{ config('images.plan.width') }}px szerokości / {{ config('images.plan.height') }}px wysokości</div>
                 @if($investment->plan)
                     <img class="img-fluid" src="/investment/plan/{{$investment->plan->file}}" alt="{{ $investment->name }}">
                 @endif
@@ -26,7 +26,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12 d-flex justify-content-end">
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#bootstrapmodal">Zmień plan inwestycji</button>
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#bootstrapmodal">Zmień plan inwestycji</button>
                 </div>
             </div>
         </div>
@@ -36,7 +36,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="uploadlabel">Dodaj plan</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                         <i class="fe-x-square"></i>
                     </button>
                 </div>
@@ -44,13 +44,13 @@
                     <div id="jquery-wrapped-fine-uploader"></div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Zamknij</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Zamknij</button>
                 </div>
             </div>
         </div>
     </div>
     @push('scripts')
-    <script src="/js/fineuploader.js" charset="utf-8"></script>
+    <script src="{{ asset('/js/fineuploader.js') }}" charset="utf-8"></script>
     <script type="text/javascript">
         $(window).on('shown.bs.modal', function () {
             $('#bootstrapmodal').modal('show');

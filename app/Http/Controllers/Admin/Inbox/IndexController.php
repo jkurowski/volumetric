@@ -11,7 +11,7 @@ class IndexController extends Controller
 {
     public function index()
     {
-        return view('admin.inbox.index', ['list' => Notification::orderBy('id', 'desc')->get()]);
+        return view('admin.inbox.index', ['list' => Notification::orderBy('created_at', 'desc')->get()]);
     }
     public function create()
     {

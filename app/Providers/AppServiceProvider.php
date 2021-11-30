@@ -6,6 +6,9 @@ use Request;
 use Illuminate\Support\ServiceProvider;
 use Spatie\Activitylog\Models\Activity;
 
+use App\Models\Investment;
+use App\Observers\InvestmentObserver;
+
 use App\Models\Url;
 use App\Observers\UrlObserver;
 
@@ -51,6 +54,8 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind('App\Repositories\ArticleRepositoryInterface', 'App\Repositories\ArticleRepository');
         $this->app->bind('App\Repositories\PageRepositoryInterface', 'App\Repositories\PageRepository');
         $this->app->bind('App\Repositories\UrlRepositoryInterface', 'App\Repositories\UrlRepository');
+        $this->app->bind('App\Repositories\ImageRepositoryInterface', 'App\Repositories\ImageRepository');
+        $this->app->bind('App\Repositories\InvestmentRepositoryInterface', 'App\Repositories\InvestmentRepository');
     }
 
     /**
@@ -81,5 +86,7 @@ class AppServiceProvider extends ServiceProvider
         Article::observe(ArticleObserver::class);
         Page::observe(PageObserver::class);
         Url::observe(UrlObserver::class);
+        Image::observe(ImageObserver::class);
+        Investment::observe(InvestmentObserver::class);
     }
 }

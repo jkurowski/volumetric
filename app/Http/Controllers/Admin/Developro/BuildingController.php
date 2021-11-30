@@ -3,9 +3,10 @@
 namespace App\Http\Controllers\Admin\Developro;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\BuildingFormRequest;
 use Illuminate\Support\Facades\Session;
 
+// CMS
+use App\Http\Requests\BuildingFormRequest;
 use App\Models\Investment;
 use App\Models\Building;
 
@@ -23,8 +24,6 @@ class BuildingController extends Controller
             'cardTitle' => 'Dodaj budynek',
             'backButton' => route('admin.developro.investment.building.index', $investment),
             'investment' => $investment,
-            'planwidth' => Building::PLAN_WIDTH,
-            'planheight' => Building::PLAN_HEIGHT,
         ])->with('entry', Building::make());
     }
 

@@ -3,12 +3,11 @@
 namespace App\Http\Controllers\Admin\Gallery;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\GalleryFormRequest;
-
-use App\Repositories\GalleryRepository;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Session;
 
+// CMS
+use App\Repositories\GalleryRepository;
+use App\Http\Requests\GalleryFormRequest;
 use App\Models\Gallery;
 
 class IndexController extends Controller
@@ -39,12 +38,12 @@ class IndexController extends Controller
         return redirect(route('admin.gallery.index'))->with('success', 'Nowa galeria dodana');
     }
 
-    public function show($id)
+    public function show(int $id)
     {
         return view('admin.gallery.show', ['gallery' => Gallery::with('photos')->find($id)]);
     }
 
-    public function edit($id)
+    public function edit(int $id)
     {
         return view('admin.gallery.form', [
             'entry' => Gallery::find($id),
@@ -59,7 +58,7 @@ class IndexController extends Controller
         return redirect(route('admin.gallery.index'))->with('success', 'Galeria zaktualizowana');
     }
 
-    public function destroy($id)
+    public function destroy(int $id)
     {
         $this->repository->delete($id);
         return response()->json('Deleted');

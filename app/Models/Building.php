@@ -8,9 +8,6 @@ use Intervention\Image\ImageManagerStatic as Image;
 
 class Building extends Model
 {
-    const PLAN_WIDTH = 1280;
-    const PLAN_HEIGHT = 560;
-
     /**
      * The attributes that are mass assignable.
      *
@@ -20,9 +17,13 @@ class Building extends Model
         'investment_id',
         'name',
         'number',
-        'file',
         'html',
-        'cords'
+        'cords',
+        'meta_title',
+        'meta_description',
+        'meta_robots',
+        'active',
+        'content',
     ];
 
     /**

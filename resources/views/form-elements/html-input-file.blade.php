@@ -2,6 +2,8 @@
     @php
         if(isset($sublabel)){
             $sublabel = '<span>'.$sublabel.'</span>';
+        } else {
+            $sublabel = '';
         }
     @endphp
     @isset($required)

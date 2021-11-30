@@ -116,10 +116,10 @@ $(document).ready(function(){
 		$('body').toggleClass('icon-menu');
 	});
 
-	$('[data-toggle="tooltip"]').tooltip();
-    $('[data-toggle="tooltip"]').click(function () {
-        $('[data-toggle="tooltip"]').tooltip("hide");
-    });
+	// $('[data-toggle="tooltip"]').tooltip();
+    // $('[data-toggle="tooltip"]').click(function () {
+    //     $('[data-toggle="tooltip"]').tooltip("hide");
+    // });
 
     $(".confirm").click(function(d) {
         d.preventDefault();
@@ -154,13 +154,15 @@ $(document).ready(function(){
         })
     });
 
-    $('#toggleparam').click(function(e){
+    $('#toggleparam').click(function(e)
+    {
         e.preventDefault();
         $('.toggleRow').toggle();
     });
 
-    $('#form_metry').keyup(function() {
-        var number = $(this).val().replace(/,/g, '.')
+    $('#form_metry').keyup(function()
+    {
+        const number = $(this).val().replace(/,/g, '.');
         $('#form_szukaj_metry').val(Math.round(number));
     });
 

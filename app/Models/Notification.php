@@ -15,7 +15,8 @@ class Notification extends Model
         'id' => 'string'
     ];
 
-    public function getDataAttribute($value) {
+    public function getDataAttribute($value)
+    {
         return json_decode($value);
     }
 }

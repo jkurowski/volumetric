@@ -3,66 +3,72 @@
 namespace App\Http\Controllers\Admin\Developro;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\InvestmentFormRequest;
 
+// CMS
+use App\Http\Requests\InvestmentFormRequest;
 use App\Models\Investment;
+use App\Repositories\InvestmentRepository;
 
 class IndexController extends Controller
 {
+    private $repository;
 
-    protected $redirectTo = 'admin/developro';
+    public function __construct(InvestmentRepository $repository)
+    {
+//        $this->middleware('permission:box-list|box-create|box-edit|box-delete', [
+//            'only' => ['index','store']
+//        ]);
+//        $this->middleware('permission:box-create', [
+//            'only' => ['create','store']
+//        ]);
+//        $this->middleware('permission:box-edit', [
+//            'only' => ['edit','update']
+//        ]);
+//        $this->middleware('permission:box-delete', [
+//            'only' => ['destroy']
+//        ]);
+
+        $this->repository = $repository;
+    }
 
     public function index()
     {
-        return view('admin.investment.index', ['list' => Investment::all()]);
+        return view('admin.investment.index', ['list' => $this->repository->all()]);
     }
 
     public function create()
     {
         return view('admin.investment.form', [
             'cardTitle' => 'Dodaj inwestycje',
-            'backButton' => $this->redirectTo
+            'backButton' => route('admin.developro.index')
         ])->with('entry', Investment::make());
     }
 
     public function store(InvestmentFormRequest $request)
     {
-        Investment::create($request->only(
-            [
-                'name',
-                'type',
-                'status'
-            ]
-        ));
-        return redirect($this->redirectTo)->with('success', 'Inwestycja zaktualizowana');
+        $this->repository->create($request->validated());
+        return redirect(route('admin.developro.index'))->with('success', 'Inwestycja zapisana');
     }
 
-    public function edit($id)
+    public function edit(int $id)
     {
-        $investment = Investment::find($id);
-
         return view('admin.investment.form', [
-            'entry' => $investment,
+            'entry' => $this->repository->find($id),
             'cardTitle' => 'Edytuj inwestycję',
-            'backButton' => $this->redirectTo
+            'backButton' => route('admin.developro.index')
         ]);
     }
 
-    public function update(InvestmentFormRequest $request, Investment $investment)
+    public function update(InvestmentFormRequest $request, int $id)
     {
-        $investment->update($request->only(
-            [
-                'name',
-                'type',
-                'status'
-            ]
-        ));
-        return redirect($this->redirectTo)->with('success', 'Inwestycja zaktualizowana');
+        $investment = $this->repository->find($id);
+        $this->repository->update($request->validated(), $investment);
+        return redirect(route('admin.developro.index'))->with('success', 'Inwestycja zaktualizowana');
     }
 
-    public function destroy(Investment $investment)
+    public function destroy(int $id)
     {
-        $investment->delete();
-        return response()->json(['success' => 'Wpis usniety']);
+        $this->repository->delete($id);
+        return response()->json('Deleted');
     }
 }

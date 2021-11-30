@@ -9,7 +9,7 @@ class GalleryObserver
     /**
      * Handle the gallery "deleted" event.
      *
-     * @param  \App\Gallery  $gallery
+     * @param  \App\Models\Gallery  $gallery
      * @return void
      */
     public function deleted(Gallery $gallery)

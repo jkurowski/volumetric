@@ -184,12 +184,14 @@ p {margin:0}
     margin: 0;
 }
 #content .content h4.page-title i {
-    margin-right: 15px;
+    margin-right: 12px;
     padding: 0;
 }
 #content .content h4.page-title span {
     color: #caccd7;
     font-weight: 400;
+    font-size: 12px;
+    align-items: center;
 }
 #content .content .card-header h4, #content .content .card-body h5 {margin-top:0}
 #content .content .card-body h5 {margin-bottom:20px}
@@ -297,6 +299,9 @@ p {margin:0}
     -moz-transition: all 0.3s ease-in-out;
     -o-transition: all 0.3s ease-in-out;
     box-shadow: 0 10px 40px 0 rgba(62, 57, 107, 0.07), 0 2px 9px 0 rgba(62, 57, 107, 0.06);
+}
+.card-head .row a {
+    padding:0
 }
 
 .card.card-shadow {
@@ -639,6 +644,11 @@ span.actionBtn {display:block;margin-right: 30px;padding: 8px 13px 7px;cursor:po
     color: #fff;
     text-shadow: 0 0 0 #fff;
     opacity: 1;
+    background: none;
+    border: 0;
+    font-size: 17px;
+    padding: 0;
+    font-weight: normal;
 }
 
 /* Upload
