@@ -20,6 +20,7 @@ class Investment extends Model
         'date_start',
         'date_end',
         'areas_amount',
+        'area_range',
         'office_address',
         'meta_title',
         'meta_description',
@@ -27,6 +28,7 @@ class Investment extends Model
         'entry_content',
         'content',
         'end_content',
+        'file_thumb'
     ];
 
     /**
@@ -115,7 +117,7 @@ class Investment extends Model
         );
     }
 
-    public function houses()
+    public function properties()
     {
         return $this->hasMany('App\Models\Property');
     }

@@ -18,18 +18,18 @@ class IndexController extends Controller
 
     public function __construct(BoxRepository $repository, BoxService $service)
     {
-//        $this->middleware('permission:box-list|box-create|box-edit|box-delete', [
-//            'only' => ['index','store']
-//        ]);
-//        $this->middleware('permission:box-create', [
-//            'only' => ['create','store']
-//        ]);
-//        $this->middleware('permission:box-edit', [
-//            'only' => ['edit','update']
-//        ]);
-//        $this->middleware('permission:box-delete', [
-//            'only' => ['destroy']
-//        ]);
+        $this->middleware('permission:box-list|box-create|box-edit|box-delete', [
+            'only' => ['index','store']
+        ]);
+        $this->middleware('permission:box-create', [
+            'only' => ['create','store']
+        ]);
+        $this->middleware('permission:box-edit', [
+            'only' => ['edit','update']
+        ]);
+        $this->middleware('permission:box-delete', [
+            'only' => ['destroy']
+        ]);
 
         $this->repository = $repository;
         $this->service = $service;

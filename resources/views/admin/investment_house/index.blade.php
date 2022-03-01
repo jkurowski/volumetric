@@ -35,7 +35,7 @@
                         </tr>
                         </thead>
                         <tbody class="content">
-                        @foreach ($investment->houses as $index => $p)
+                        @foreach ($investment->properties as $index => $p)
                             <tr id="recordsArray_{{ $p->id }}">
                                 <th class="position" scope="row">{{ $index+1 }}</th>
                                 <td>{{ $p->name }}</td>
@@ -45,7 +45,7 @@
                                 <td>{{ $p->updated_at }}</td>
                                 <td class="option-120">
                                     <div class="btn-group">
-                                        <a href="{{route('admin.developro.investment.house.edit', [$investment, $p])}}" class="btn action-button mr-1" data-toggle="tooltip" data-placement="top" title="Edytuj dom"><i class="fe-edit"></i></a>
+                                        <a href="{{route('admin.developro.investment.house.edit', [$investment, $p])}}" class="btn action-button me-1" data-toggle="tooltip" data-placement="top" title="Edytuj dom"><i class="fe-edit"></i></a>
                                         <form method="POST" action="{{route('admin.developro.investment.house.destroy', [$investment, $p])}}">
                                             {{ csrf_field() }}
                                             {{ method_field('DELETE') }}
@@ -70,5 +70,4 @@
             </div>
         </div>
     </div>
-
 @endsection

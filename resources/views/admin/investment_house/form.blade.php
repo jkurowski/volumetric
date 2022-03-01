@@ -21,7 +21,7 @@
                                 <div class="mappa-tool">
                                     <div class="mappa-workspace">
                                         <div id="overflow" style="overflow:auto;width:100%;">
-                                            <canvas class="mappa-canvas"></canvas>
+                                            <canvas id="elmzoom" class="mappa-canvas"></canvas>
                                         </div>
                                         <div class="mappa-toolbars">
                                             <ul class="mappa-drawers list-unstyled mb-0">
@@ -45,14 +45,45 @@
                                             @include('form-elements.mappa', ['label' => 'Współrzędne punktów HTML', 'name' => 'html', 'value' => $entry->html, 'rows' => 10, 'class' => 'mappa-area'])
                                         </div>
 
-                                        @include('form-elements.select', ['label' => 'Status', 'name' => 'status', 'selected' => $entry->status, 'options' => ['1' => 'Na sprzedaż', '2' => 'Rezerwacja', '3' => 'Sprzedane', '4' => 'Wynajęte']])
+                                        @include('form-elements.html-select', ['label' => 'Status', 'name' => 'status', 'selected' => $entry->status, 'select' => [
+                                            '1' => 'Na sprzedaż',
+                                            '2' => 'Rezerwacja',
+                                            '3' => 'Sprzedane',
+                                            '4' => 'Wynajęte'
+                                            ]
+                                        ])
 
                                         @include('form-elements.input-text', ['label' => 'Nazwa', 'name' => 'name', 'value' => $entry->name, 'required' => 1])
-                                        @include('form-elements.input-text', ['label' => 'Nagłówek strony', 'sublabel'=> 'Meta tag - title', 'name' => 'meta_title', 'value' => $entry->meta_title])
-                                        @include('form-elements.input-text', ['label' => 'Opis strony', 'sublabel'=> 'Meta tag - description', 'name' => 'meta_description', 'value' => $entry->meta_description])
-                                        @include('form-elements.input-text', ['label' => 'Pokoje', 'name' => 'rooms', 'value' => $entry->rooms, 'required' => 1])
-                                        @include('form-elements.input-text', ['label' => 'Powierzchnia', 'name' => 'area', 'value' => $entry->area, 'required' => 1])
-                                        @include('form-elements.input-file', ['label' => 'Plan mieszkania', 'sublabel' => '(wymiary: '.$planwidth.'px / '.$planheight.'px)', 'name' => 'file'])
+                                        @include('form-elements.input-text', ['label' => 'Nazwa na liście', 'sublabel'=> 'Mieszkanie, Apartament itp', 'name' => 'name_list', 'value' => $entry->name_list, 'required' => 1])
+                                        @include('form-elements.input-text', ['label' => 'Numer', 'name' => 'number', 'value' => $entry->number, 'required' => 1])
+                                        @include('form-elements.input-text', ['label' => 'Kolejność na liście', 'sublabel'=> 'Tylko liczby', 'name' => 'number_order', 'value' => $entry->number_order, 'required' => 1])
+
+                                        @include('form-elements.html-select', ['label' => 'Pokoje', 'name' => 'rooms', 'selected' => $entry->rooms, 'select' => [
+                                            '1' => '1',
+                                            '2' => '2',
+                                            '3' => '3',
+                                            '4' => '4',
+                                            '5' => '5',
+                                            '6' => '6'
+                                            ]
+                                        ])
+
+                                        @include('form-elements.html-input-text', ['label' => 'Powierzchnia', 'name' => 'area', 'value' => $entry->area, 'required' => 1])
+                                        @include('form-elements.input-text', ['label' => 'Cena', 'sublabel'=> 'Tylko liczby', 'name' => 'price', 'value' => $entry->price])
+
+                                        @include('form-elements.input-text', ['label' => 'Ogródek', 'sublabel'=> 'Pow. w m<sup>2</sup>, tylko liczby', 'name' => 'garden_area', 'value' => $entry->garden_area])
+                                        @include('form-elements.input-text', ['label' => 'Balkon', 'sublabel'=> 'Pow. w m<sup>2</sup>, tylko liczby', 'name' => 'balcony_area', 'value' => $entry->balcony_area])
+                                        @include('form-elements.input-text', ['label' => 'Taras', 'sublabel'=> 'Pow. w m<sup>2</sup>, tylko liczby', 'name' => 'terrace_area', 'value' => $entry->terrace_area])
+                                        @include('form-elements.input-text', ['label' => 'Loggia', 'sublabel'=> 'Pow. w m<sup>2</sup>, tylko liczby', 'name' => 'loggia_area', 'value' => $entry->loggia_area])
+
+                                        @include('form-elements.input-text', ['label' => 'Garaż', 'name' => 'garage', 'value' => $entry->garage])
+                                        @include('form-elements.input-text', ['label' => 'Miejsce postojowe', 'name' => 'parking_space', 'value' => $entry->parking_space])
+
+                                        @include('form-elements.html-input-text-count', ['label' => 'Nagłówek strony', 'sublabel'=> 'Meta tag - title', 'name' => 'meta_title', 'value' => $entry->meta_title, 'maxlength' => 60])
+                                        @include('form-elements.html-input-text-count', ['label' => 'Opis strony', 'sublabel'=> 'Meta tag - description', 'name' => 'meta_description', 'value' => $entry->meta_description, 'maxlength' => 158])
+
+                                        @include('form-elements.html-input-file', ['label' => 'Plan mieszkania', 'sublabel' => '(wymiary: '.config('images.property_plan.width').'px / '.config('images.property_plan.height').'px)', 'name' => 'file'])
+                                        @include('form-elements.html-input-file', ['label' => 'Plan .pdf', 'sublabel' => 'Plan do pobrania', 'name' => 'file_pdf'])
                                     </div>
                                 </div>
                             </div>
@@ -61,19 +92,19 @@
                     </div>
                 </form>
                 @endsection
-                @push('scripts')
-                    <script src="/js/plan/underscore.js" charset="utf-8"></script>
-                    <script src="/js/plan/mappa-backbone.js" charset="utf-8"></script>
-                    <script type="text/javascript">
-                        const map = {
-                            "name":"imagemap",
-                            "areas":[{!! $entry->cords !!}]
-                        };
-                        $(document).ready(function() {
-                            const mapview = new MapView({el: '.mappa'}, map);
-                            @if($investment->plan)
-                            mapview.loadImage('/investment/plan/{{$investment->plan->file}}');
-                            @endif
-                        });
-                    </script>
-        @endpush
+@push('scripts')
+    <script src="/js/plan/underscore.js" charset="utf-8"></script>
+    <script src="/js/plan/mappa-backbone.js" charset="utf-8"></script>
+    <script type="text/javascript">
+        const map = {
+            "name":"imagemap",
+            "areas":[{!! $entry->cords !!}]
+        };
+        $(document).ready(function() {
+            const mapview = new MapView({el: '.mappa'}, map);
+            @if($investment->plan)
+            mapview.loadImage('/investment/plan/{{$investment->plan->file}}');
+            @endif
+        });
+    </script>
+@endpush

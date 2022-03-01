@@ -19,8 +19,14 @@
                 <div class="row">
                     <div class="col-12">
                         @include('form-elements.html-input-text', ['label' => 'Nazwa', 'name' => 'name', 'value' => $entry->name])
-                        @include('form-elements.html-input-file', ['label' => 'Zdjęcie', 'name' => 'file'])
-                        @include('form-elements.html-input-text', ['label' => 'Atrybut ALT zdjęcia', 'name' => 'file_alt', 'value' => $entry->file_alt])
+                        @include('form-elements.html-input-file', [
+                            'label' => 'Zdjęcie',
+                            'sublabel' => '(wymiary: '.config('images.gallery.big_width').'px / '.config('images.gallery.big_height').'px)',
+                            'name' => 'file',
+                            'file' => $entry->file,
+                            'file_preview' => config('images.gallery.preview_file_path')
+                            ])
+                        @include('form-elements.html-input-text-count', ['label' => 'Atrybut ALT zdjęcia', 'name' => 'file_alt', 'value' => $entry->file_alt, 'maxlength' => 100])
                     </div>
                 </div>
             </div>

@@ -1,17 +1,13 @@
 @extends('layouts.page', ['body_class' => 'investments'])
-@section('meta_title', $investment->name)
+
+@section('meta_title', 'Inwestycje - '.$investment->name)
+
+@section('pageheader')
+    @include('layouts.partials.page-header', ['page' => $page])
+@stop
 
 @section('content')
     <div class="container">
-        <div class="row border-bottom pb-3 mb-3">
-            <div class="col-8">
-                <h1>{{$investment->name}}</h1>
-            </div>
-            <div class="col-4 text-right">
-                <a href="{{route('front.investment.index')}}" class="bttn bttn-right"><i class="las la-arrow-left"></i> Wróć do listy</a>
-            </div>
-        </div>
-
         @if($investment->type == 1)
             <div class="row">
                 <div class="col-12">
@@ -101,7 +97,7 @@
         </div>
         @endif
 
-        @include('front.investment_shared.filtr')
+        @include('front.investment_shared.filtr', ['area_range' => $investment->area_range])
 
         @include('front.investment_shared.sort')
 

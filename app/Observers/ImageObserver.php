@@ -2,8 +2,10 @@
 
 namespace App\Observers;
 
+use Illuminate\Support\Facades\File;
+
+// CMS
 use App\Models\Image;
-use Illuminate\Http\Request;
 
 class ImageObserver
 {
@@ -16,13 +18,15 @@ class ImageObserver
     public function deleted(Image $image)
     {
         if ($image->file) {
-            $image_path = public_path('uploads/gallery/images/' . $image->file);
-            $image_thumb_path = public_path('uploads/gallery/images/thumbs/' . $image->file);
-            if (file_exists($image_path)) {
-                unlink($image_path);
+            $image_path = public_path(config('images.gallery.file_path') . $image->file);
+            $image_thumb_path = public_path(config('images.gallery.thumb_file_path') . $image->file);
+
+            if (File::isFile($image_path)) {
+                File::delete($image_path);
             }
-            if (file_exists($image_thumb_path)) {
-                unlink($image_thumb_path);
+
+            if (File::isFile($image_thumb_path)) {
+                File::delete($image_thumb_path);
             }
         }
     }

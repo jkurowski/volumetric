@@ -10,4 +10,9 @@ class InvestmentRepository extends BaseRepository
     {
         parent::__construct($model);
     }
+
+    public function getUniqueRooms(object $query)
+    {
+        return $query->unique('rooms')->pluck('rooms');
+    }
 }

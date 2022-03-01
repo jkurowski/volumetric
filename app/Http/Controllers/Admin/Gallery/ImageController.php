@@ -50,7 +50,7 @@ class ImageController extends Controller
     {
 
         $image = $this->repository->find($id);
-        $this->repository->update($request->only('file_alt'), $image);
+        $this->repository->update($request->only(['file_alt', 'name']), $image);
 
         if ($request->hasFile('file')) {
             $this->service->upload($request->file('file'), $image, true);

@@ -15,4 +15,11 @@
         {!! Form::file($name, ['class' => 'form-control']) !!}
         @if($errors->first($name))<div class="invalid-feedback d-block">{{ $errors->first($name) }}</div>@endif
     </div>
+    @if($file)
+        <div class="col-4 offset-3">
+            <div class="file-preview">
+                <img src="{{asset($file_preview.$file) }}">
+            </div>
+        </div>
+    @endif
 </div>

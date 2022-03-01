@@ -14,13 +14,6 @@
                 </div>
             </div>
             <div class="table-overflow">
-                <div id="jqalert"></div>
-                @if (session('success'))
-                    <div class="alert alert-success border-0 mb-0">
-                        {{ session('success') }}
-                        <script>setTimeout(function(){$(".alert").slideUp(500,function(){$(this).remove()})},3000)</script>
-                    </div>
-                @endif
                 <table id="sortable" class="table mb-0">
                     <thead class="thead-default">
                     <tr>

@@ -24,6 +24,7 @@
     <div class="sidemenu-holder">
         <div id="sidemenu">
             <ul class="list-unstyled mb0">
+                <!--
                 <li class="">
                     <a href="{{route('admin.dashboard.seo.index')}}">
                         <i class="fe-sliders"></i>
@@ -36,46 +37,17 @@
                         <span> Użytkownicy </span>
                     </a>
                 </li>
-                <li class="{{ Request::routeIs('admin.greylist.*') ? 'active' : '' }}">
-                    <a href="{{route('admin.greylist.index')}}">
-                        <i class="fe-shield"></i>
-                        <span> Blokada dostępu </span>
-                    </a>
-                </li>
+
                 <li class="{{ Request::routeIs('admin.page.*') ? 'active' : '' }}">
                     <a href="{{route('admin.page.index')}}">
                         <i class="fe-file-text"></i>
                         <span> Menu </span>
                     </a>
                 </li>
-                <li class="{{ Request::routeIs('admin.slider.*') ? 'active' : '' }}">
-                    <a href="{{route('admin.slider.index')}}">
-                        <i class="fe-airplay"></i>
-                        <span> Slider </span>
-                    </a>
-                </li>
-                <li class="{{ Request::routeIs('admin.article.*') ? 'active' : '' }}">
-                    <a href="{{route('admin.article.index')}}">
-                        <i class="fe-book-open"></i>
-                        <span> Aktualności </span>
-                    </a>
-                </li>
                 <li class="{{ Request::routeIs('admin.developro.*') ? 'active' : '' }}">
                     <a href="{{route('admin.developro.index')}}">
                         <i class="fe-home"></i>
                         <span> Inwestycje </span>
-                    </a>
-                </li>
-                <li class="{{ Request::routeIs('admin.gallery.*') ? 'active' : '' }}">
-                    <a href="{{route('admin.gallery.index')}}">
-                        <i class="fe-image"></i>
-                        <span> Galeria </span>
-                    </a>
-                </li>
-                <li class="{{ Request::routeIs('admin.map.*') ? 'active' : '' }}">
-                    <a href="{{route('admin.map.index')}}">
-                        <i class="fe-map-pin"></i>
-                        <span> Mapa </span>
                     </a>
                 </li>
                 <li class="{{ Request::routeIs('admin.inbox.*') ? 'active' : '' }}">
@@ -88,6 +60,38 @@
                     <a href="{{route('admin.tracker.index')}}">
                         <i class="fe-activity"></i>
                         <span> Statystyki </span>
+                    </a>
+                </li>
+
+                -->
+                <li class="{{ Request::routeIs('admin.map.*') ? 'active' : '' }}">
+                    <a href="{{route('admin.map.index')}}">
+                        <i class="fe-map-pin"></i>
+                        <span> Mapa </span>
+                    </a>
+                </li>
+                <li class="{{ Request::routeIs('admin.greylist.*') ? 'active' : '' }}">
+                    <a href="{{route('admin.greylist.index')}}">
+                        <i class="fe-shield"></i>
+                        <span> Blokada dostępu </span>
+                    </a>
+                </li>
+                <li class="{{ Request::routeIs('admin.gallery.*') ? 'active' : '' }}">
+                    <a href="{{route('admin.gallery.index')}}">
+                        <i class="fe-image"></i>
+                        <span> Galeria </span>
+                    </a>
+                </li>
+                <li class="{{ Request::routeIs('admin.article.*') ? 'active' : '' }}">
+                    <a href="{{route('admin.article.index')}}">
+                        <i class="fe-book-open"></i>
+                        <span> Aktualności </span>
+                    </a>
+                </li>
+                <li class="{{ Request::routeIs('admin.slider.*') ? 'active' : '' }}">
+                    <a href="{{route('admin.slider.index')}}">
+                        <i class="fe-airplay"></i>
+                        <span> Slider </span>
                     </a>
                 </li>
                 <li class="{{ Request::routeIs('admin.box.*') ? 'active' : '' }}">
@@ -103,7 +107,7 @@
 
     <div id="content">
         <header id="header-navbar">
-            <h1><a href="" class="logo"><span>kCMS v4.2</span></a></h1>
+            <h1><a href="" class="logo"><span>kCMS v4.3</span></a></h1>
 
             <a href="#" id="togglemenu"><span class="fe-menu"></span></a>
 
@@ -139,6 +143,53 @@
 <script src="{{ asset('/js/jquery-ui.min.js') }}" charset="utf-8"></script>
 <script src="{{ asset('/js/cms.js') }}" charset="utf-8"></script>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+
+<script>
+    @if(count($errors) > 0)
+        toastr.options =
+        {
+            "closeButton" : true,
+            "progressBar" : true
+        }
+    toastr.error("Formularz zawiera błędy");
+    @endif
+    @if(Session::has('success'))
+        toastr.options =
+        {
+            "closeButton" : true,
+            "progressBar" : true
+        }
+    toastr.success("{{ session('success') }}");
+    @endif
+
+        @if(Session::has('error'))
+        toastr.options =
+        {
+            "closeButton" : true,
+            "progressBar" : true
+        }
+    toastr.error("{{ session('error') }}");
+    @endif
+
+        @if(Session::has('info'))
+        toastr.options =
+        {
+            "closeButton" : true,
+            "progressBar" : true
+        }
+    toastr.info("{{ session('info') }}");
+    @endif
+
+        @if(Session::has('warning'))
+        toastr.options =
+        {
+            "closeButton" : true,
+            "progressBar" : true
+        }
+    toastr.warning("{{ session('warning') }}");
+    @endif
+</script>
 @stack('scripts')
 
 </body>

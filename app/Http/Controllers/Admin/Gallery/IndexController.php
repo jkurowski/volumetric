@@ -16,6 +16,19 @@ class IndexController extends Controller
 
     public function __construct(GalleryRepository $repository)
     {
+        $this->middleware('permission:gallery-list|gallery-create|gallery-edit|gallery-delete', [
+            'only' => ['index','store']
+        ]);
+        $this->middleware('permission:gallery-create', [
+            'only' => ['create','store']
+        ]);
+        $this->middleware('permission:gallery-edit', [
+            'only' => ['edit','update']
+        ]);
+        $this->middleware('permission:gallery-delete', [
+            'only' => ['destroy']
+        ]);
+
         $this->repository = $repository;
     }
 

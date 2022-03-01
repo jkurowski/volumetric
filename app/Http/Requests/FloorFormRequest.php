@@ -24,7 +24,14 @@ class FloorFormRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|string|max:255'
+            'name' => 'required|string|max:255',
+            'type' => '',
+            'area_range' => '',
+            'cords' => '',
+            'html' => '',
+            'file' => 'image',
+            'meta_title' => '',
+            'meta_description' => ''
         ];
     }
 }

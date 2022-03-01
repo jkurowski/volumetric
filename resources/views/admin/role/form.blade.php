@@ -23,10 +23,10 @@
                                         @include('form-elements.input-text', ['label' => 'Nazwa', 'name' => 'name', 'value' => $entry->name, 'required' => 1])
 
                                         <div class="form-group row">
-                                            <label for="form_permission" class="col-2 col-form-label control-label"><div class="text-right">Zezwolenie na:</div></label>
-                                            <div class="col-6">
+                                            <label for="form_permission" class="col-3 col-form-label control-label"><div class="text-right">Zezwolenie na:</div></label>
+                                            <div class="col-9 d-flex role-list">
                                                 @foreach($permission as $value)
-                                                <div class="form-check form-check-inline p-3">
+                                                <div class="form-check">
                                                         <input
                                                             class="form-check-input"
                                                             name="permission[]"
@@ -37,7 +37,7 @@
                                                             checked
                                                         @endif
                                                         >
-                                                        <label class="form-check-label" for="permission_{{ $value->id }}">{{ $value->name }}</label>
+                                                    <label class="form-check-label" for="permission_{{ $value->id }}">{!! __('role.'.$value->name) !!}</label>
                                                     </div>
                                                 @endforeach
                                                 @if($errors->first('permission'))<div class="invalid-feedback d-block">{{ $errors->first('permission') }}</div>@endif

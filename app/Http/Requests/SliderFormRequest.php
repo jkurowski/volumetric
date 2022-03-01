@@ -25,7 +25,7 @@ class SliderFormRequest extends FormRequest
     {
         return [
             'title' => 'required|string|min:5|max:100',
-            'file_alt' => '',
+            'file_alt' => 'max:100',
             'link' => '',
             'link_button' => '',
             'link_target' => '',
@@ -35,6 +35,11 @@ class SliderFormRequest extends FormRequest
         ];
     }
 
+    /**
+     * Get the error messages for the defined validation rules.
+     *
+     * @return array
+     */
     public function messages()
     {
         return [

@@ -8,12 +8,14 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\InvestmentFormRequest;
 use App\Models\Investment;
 use App\Repositories\InvestmentRepository;
+use App\Services\InvestmentService;
 
 class IndexController extends Controller
 {
     private $repository;
+    private $service;
 
-    public function __construct(InvestmentRepository $repository)
+    public function __construct(InvestmentRepository $repository, InvestmentService $service)
     {
 //        $this->middleware('permission:box-list|box-create|box-edit|box-delete', [
 //            'only' => ['index','store']
@@ -29,6 +31,7 @@ class IndexController extends Controller
 //        ]);
 
         $this->repository = $repository;
+        $this->service = $service;
     }
 
     public function index()
@@ -46,7 +49,12 @@ class IndexController extends Controller
 
     public function store(InvestmentFormRequest $request)
     {
-        $this->repository->create($request->validated());
+        $investment = $this->repository->create($request->validated());
+
+        if ($request->hasFile('file')) {
+            $this->service->uploadThumb($request->name, $request->file('file'), $investment);
+        }
+
         return redirect(route('admin.developro.index'))->with('success', 'Inwestycja zapisana');
     }
 
@@ -63,6 +71,11 @@ class IndexController extends Controller
     {
         $investment = $this->repository->find($id);
         $this->repository->update($request->validated(), $investment);
+
+        if ($request->hasFile('file')) {
+            $this->service->uploadThumb($request->name, $request->file('file'), $investment, true);
+        }
+
         return redirect(route('admin.developro.index'))->with('success', 'Inwestycja zaktualizowana');
     }
 

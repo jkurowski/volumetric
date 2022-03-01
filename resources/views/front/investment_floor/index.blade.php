@@ -1,21 +1,23 @@
 @extends('layouts.page', ['body_class' => 'investments'])
-@section('meta_title', $investment->name .' - '.$investment->floor->name)
+
+@section('meta_title', 'Inwestycje - '.$investment->name .' - '.$investment->floor->name)
+
+@section('pageheader')
+    @include('layouts.partials.page-header', ['page' => $page])
+@stop
 
 @section('content')
     <div class="container">
         <div class="row border-bottom pb-3 mb-3">
-            <div class="col-8">
-                <h1>{{$investment->name}} - {{$investment->floor->name}}</h1>
-            </div>
-            <div class="col-4 text-right">
-                <a href="{{route('front.investment.show', $investment->id)}}" class="bttn bttn-right"><i class="las la-arrow-left"></i> Wróć do listy</a>
+            <div class="col-12 text-center">
+                <h1>{{$investment->floor->name}}</h1>
             </div>
         </div>
 
         <div class="row pb-4">
-            <div class="col-4">@if($prev_floor) <a href="{{route('front.investment.floor.index', [$investment, $prev_floor->id])}}" class="bttn bttn-right"><i class="las la-arrow-left"></i> {{$prev_floor->name}}</a> @endif</div>
-            <div class="col-4"></div>
-            <div class="col-4 text-right">@if($next_floor) <a href="{{route('front.investment.floor.index', [$investment, $next_floor->id])}}" class="bttn">{{$next_floor->name}} <i class="las la-arrow-right"></i></a> @endif</div>
+            <div class="col-4">@if($prev_floor) <a href="{{route('front.investment.floor.index', [$investment, $prev_floor->id])}}" class="bttn bttn-sm w-100">{{$prev_floor->name}}</a> @endif</div>
+            <div class="col-4"><a href="{{route('front.investment.show', $investment->id)}}" class="bttn bttn-sm w-100">Plan budunku</a></div>
+            <div class="col-4 text-right">@if($next_floor) <a href="{{route('front.investment.floor.index', [$investment, $next_floor->id])}}" class="bttn bttn-sm w-100">{{$next_floor->name}}</a> @endif</div>
         </div>
 
         <div class="row">
@@ -26,7 +28,9 @@
                         <map name="invesmentplan">
                             @if($properties)
                                 @foreach($properties as $r)
-                                    <area shape="poly" href="{{route('front.investment.property.index', ['investment' => $investment->id, 'floor' => $r->floor_id, 'property' => $r->id])}}" data-item="{{$r->id}}" title="{{$r->name}}" alt="{{$r->slug}}" data-roomnumber="{{$r->number}}" data-roomtype="{{$r->typ}}" data-roomstatus="{{$r->status}}" coords="@if($r->html) {{cords($r->html)}} @endif">
+                                    @if($r->html)
+                                    <area shape="poly" href="{{route('front.investment.property.index', ['investment' => $investment->id, 'floor' => $r->floor_id, 'property' => $r->id])}}" data-item="{{$r->id}}" title="{{$r->name}}" alt="{{$r->slug}}" data-roomnumber="{{$r->number}}" data-roomtype="{{$r->typ}}" data-roomstatus="{{$r->status}}" coords="{{cords($r->html)}}">
+                                    @endif
                                 @endforeach
                             @endif
                         </map>
@@ -35,7 +39,7 @@
             </div>
         </div>
 
-        @include('front.investment_shared.filtr')
+        @include('front.investment_shared.filtr', ['area_range' => $investment->floor->area_range])
 
         @include('front.investment_shared.sort')
 

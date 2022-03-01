@@ -24,10 +24,16 @@ class GreylistFormRequest extends FormRequest
     public function rules()
     {
         return [
-            'address' => 'required'
+            'address' => 'required',
+            'reason' => 'nullable'
         ];
     }
 
+    /**
+     * Get the error messages for the defined validation rules.
+     *
+     * @return array
+     */
     public function messages()
     {
         return [

@@ -44,15 +44,22 @@
                                             @include('form-elements.mappa', ['label' => 'Współrzędne punktów', 'name' => 'cords', 'value' => $entry->cords, 'rows' => 10, 'class' => 'mappa-html'])
                                             @include('form-elements.mappa', ['label' => 'Współrzędne punktów HTML', 'name' => 'html', 'value' => $entry->html, 'rows' => 10, 'class' => 'mappa-area'])
                                         </div>
-
-                                        @include('form-elements.select', ['label' => 'Status', 'name' => 'status', 'selected' => $entry->status, 'options' => ['1' => 'Na sprzedaż', '2' => 'Rezerwacja', '3' => 'Sprzedane', '4' => 'Wynajęte']])
-
+                                        @include('form-elements.html-select', [
+                                            'label' => 'Status',
+                                            'name' => 'status',
+                                            'selected' => $entry->status,
+                                            'select' => [
+                                                '1' => 'Na sprzedaż',
+                                                '2' => 'Rezerwacja',
+                                                '3' => 'Sprzedane',
+                                                '4' => 'Wynajęte'
+                                        ]])
                                         @include('form-elements.input-text', ['label' => 'Nazwa', 'name' => 'name', 'value' => $entry->name, 'required' => 1])
-                                        @include('form-elements.input-text', ['label' => 'Nagłówek strony', 'sublabel'=> 'Meta tag - title', 'name' => 'meta_title', 'value' => $entry->meta_title])
-                                        @include('form-elements.input-text', ['label' => 'Opis strony', 'sublabel'=> 'Meta tag - description', 'name' => 'meta_description', 'value' => $entry->meta_description])
+                                        @include('form-elements.html-input-text-count', ['label' => 'Nagłówek strony', 'sublabel'=> 'Meta tag - title', 'name' => 'meta_title', 'value' => $entry->meta_title, 'maxlength' => 60])
+                                        @include('form-elements.html-input-text-count', ['label' => 'Opis strony', 'sublabel'=> 'Meta tag - description', 'name' => 'meta_description', 'value' => $entry->meta_description, 'maxlength' => 158])
                                         @include('form-elements.input-text', ['label' => 'Pokoje', 'name' => 'rooms', 'value' => $entry->rooms, 'required' => 1])
                                         @include('form-elements.input-text', ['label' => 'Powierzchnia', 'name' => 'area', 'value' => $entry->area, 'required' => 1])
-                                        @include('form-elements.input-file', ['label' => 'Plan mieszkania', 'sublabel' => '(wymiary: '.$planwidth.'px / '.$planheight.'px)', 'name' => 'file'])
+                                        @include('form-elements.html-input-file', ['label' => 'Miniaturka', 'sublabel' => '(wymiary: '.config('images.floor_plan.width').'px / '.config('images.floor_plan.height').'px)', 'name' => 'file'])
                                     </div>
                                 </div>
                             </div>

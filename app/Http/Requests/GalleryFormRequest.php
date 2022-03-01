@@ -28,4 +28,18 @@ class GalleryFormRequest extends FormRequest
             'text' => 'max:255|nullable'
         ];
     }
+
+    /**
+     * Get the error messages for the defined validation rules.
+     *
+     * @return array
+     */
+    public function messages()
+    {
+        return [
+            'name.required' => 'To pole jest wymagane',
+            'name.max.string' => 'Maksymalna ilość znaków: 255',
+            'text.max.string' => 'Maksymalna ilość znaków: 255'
+        ];
+    }
 }

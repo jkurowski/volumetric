@@ -14,12 +14,6 @@
                 </div>
             </div>
             <div class="table-overflow">
-                @if (session('success'))
-                    <div class="alert alert-success border-0 mb-0">
-                        {{ session('success') }}
-                        <script>setTimeout(function(){$(".alert").slideUp(500,function(){$(this).remove()})},3000)</script>
-                    </div>
-                @endif
                 <table id="sortable" class="table mb-0">
                     <thead class="thead-default">
                     <tr>
@@ -35,7 +29,7 @@
                         <tr id="recordsArray_{{ $item->id }}">
                             <td>{{ $item->title }}</td>
                             <td class="text-center">{!! status($item->active) !!}</td>
-                            <td>@if($item->file)<img src="/uploads/slider/thumbs/{{$item->file}}" alt="{{ $item->name }}">@endif</td>
+                            <td>@if($item->file)<img src="/uploads/slider/thumbs/{{$item->file}}" alt="{{ $item->name }}" style="border-radius: 5px">@endif</td>
                             <td>{{ $item->updated_at }}</td>
                             <td class="option-120">
                                 <div class="btn-group">

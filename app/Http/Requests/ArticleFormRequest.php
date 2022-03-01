@@ -29,13 +29,18 @@ class ArticleFormRequest extends FormRequest
             'content_entry' => 'required|string|min:5',
             'content' => 'required|string|min:5',
             'status' => 'boolean',
-            'file_alt' => '',
+            'file_alt' => 'max:100',
             'meta_title' => '',
             'meta_description' => '',
             'meta_robots' => ''
         ];
     }
 
+    /**
+     * Get the error messages for the defined validation rules.
+     *
+     * @return array
+     */
     public function messages()
     {
         return [
@@ -45,6 +50,7 @@ class ArticleFormRequest extends FormRequest
             'title.min.string' => 'Minimalna ilość znaków: 5',
             'content_entry.required' => 'To pole jest wymagane',
             'content.required' => 'To pole jest wymagane',
+            'file_alt.max.string' => 'Maksymalna ilość znaków: 100',
         ];
     }
 }

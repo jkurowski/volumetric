@@ -14,12 +14,6 @@
                 </div>
             </div>
             <div class="table-overflow">
-                @if (session('success'))
-                    <div class="alert alert-success border-0 mb-0">
-                        {{ session('success') }}
-                        <script>window.setTimeout(function(){$(".alert").fadeTo(500,0).slideUp(500,function(){$(this).remove()})},3000);</script>
-                    </div>
-                @endif
                 <table class="table mb-0">
                     <thead class="thead-default">
                     <tr>

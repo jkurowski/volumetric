@@ -3,15 +3,27 @@
 namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
-use App\Models\Investment;
 use Illuminate\Http\Request;
+use App\Repositories\InvestmentRepository;
+use App\Models\Investment;
+use App\Models\Page;
 
 class InvestmentController extends Controller
 {
+    private $repository;
+
+    public function __construct(InvestmentRepository $repository)
+    {
+        $this->repository = $repository;
+    }
 
     public function index()
     {
-        return view('front.investment.index', ['list' => Investment::all()]);
+        $page = Page::where('id', 13)->first();
+        return view('front.investment.index', [
+            'list' => Investment::all(),
+            'page' => $page
+        ]);
     }
 
     public function show(Investment $investment, Request $request)
@@ -21,13 +33,18 @@ class InvestmentController extends Controller
          */
         if ($investment->type == 1) {
             $investment_room = $investment->load(array(
-                'buildingRooms' => function($query) use ($request)
-                {
+                'buildingRooms' => function ($query) use ($request) {
                     if ($request->input('rooms')) {
                         $query->where('rooms', $request->input('rooms'));
                     }
                     if ($request->input('status')) {
                         $query->where('status', $request->input('status'));
+                    }
+                    if ($request->input('area')) {
+                        $area_param = explode('-', $request->input('area'));
+                        $min = $area_param[0];
+                        $max = $area_param[1];
+                        $query->whereBetween('area', [$min, $max]);
                     }
                     if ($request->input('sort')) {
                         $order_param = explode(':', $request->input('sort'));
@@ -47,13 +64,18 @@ class InvestmentController extends Controller
          */
         if ($investment->type == 2) {
             $investment_room = $investment->load(array(
-                'floorRooms' => function($query) use ($request)
-                {
+                'floorRooms' => function ($query) use ($request) {
                     if ($request->input('rooms')) {
                         $query->where('rooms', $request->input('rooms'));
                     }
                     if ($request->input('status')) {
                         $query->where('status', $request->input('status'));
+                    }
+                    if ($request->input('area')) {
+                        $area_param = explode('-', $request->input('area'));
+                        $min = $area_param[0];
+                        $max = $area_param[1];
+                        $query->whereBetween('area', [$min, $max]);
                     }
                     if ($request->input('sort')) {
                         $order_param = explode(':', $request->input('sort'));
@@ -62,6 +84,7 @@ class InvestmentController extends Controller
                         $query->orderBy($column, $direction);
                     }
                 },
+                'properties',
                 'plan'
             ));
 
@@ -73,8 +96,7 @@ class InvestmentController extends Controller
          */
         if ($investment->type == 3) {
             $investment_room = $investment->load(array(
-                'houses' => function($query) use ($request)
-                {
+                'houses' => function ($query) use ($request) {
                     if ($request->input('rooms')) {
                         $query->where('rooms', $request->input('rooms'));
                     }
@@ -92,7 +114,14 @@ class InvestmentController extends Controller
 
             $properties = $investment_room->houses;
         }
-        return view('front.investment.show', ['investment' => $investment, 'properties' => $properties]);
-    }
 
+        $page = Page::where('id', 13)->first();
+
+        return view('front.investment.show', [
+            'investment' => $investment,
+            'properties' => $properties,
+            'uniqueRooms' => $this->repository->getUniqueRooms($investment_room->properties),
+            'page' => $page
+        ]);
+    }
 }

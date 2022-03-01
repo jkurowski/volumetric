@@ -3,15 +3,20 @@
 namespace App\Http\Controllers\Admin\Map;
 
 use App\Http\Controllers\Controller;
+
+// CMS
 use App\Http\Requests\MapFormRequest;
-
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Session;
-
+use App\Repositories\MapRepository;
 use App\Models\Map;
 
 class IndexController extends Controller
 {
+    private $repository;
+
+    public function __construct(MapRepository $repository)
+    {
+        $this->repository = $repository;
+    }
 
     public function index()
     {
@@ -28,11 +33,11 @@ class IndexController extends Controller
 
     public function store(MapFormRequest $request)
     {
-        Map::create($request->except(['_token', 'submit']));
+        $this->repository->create($request->validated());
         return redirect(route('admin.map.index'))->with('success', 'Nowy punkt dodany');
     }
 
-    public function edit($id)
+    public function edit(int $id)
     {
         return view('admin.map.form', [
             'entry' => Map::find($id),
@@ -41,17 +46,16 @@ class IndexController extends Controller
         ]);
     }
 
-    public function update(MapFormRequest $request, Map $map)
+    public function update(MapFormRequest $request, int $id)
     {
-        $map->update($request->except(['_token', 'submit']));
+        $map = $this->repository->find($id);
+        $this->repository->update($request->validated(), $map);
         return redirect(route('admin.map.index'))->with('success', 'Punkt zaktualizowany');
     }
 
-    public function destroy($id)
+    public function destroy(int $id)
     {
-        $entry = Map::find($id);
-        $entry->delete();
-        Session::flash('success', 'Wpis usunięty');
-        return response()->json('Deleted', 200);
+        $this->repository->delete($id);
+        return response()->json('Deleted');
     }
 }

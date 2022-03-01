@@ -24,6 +24,7 @@ class ImageFormRequest extends FormRequest
     public function rules()
     {
         return [
+            'name' => 'max:255|nullable',
             'file' => 'image',
             'file_alt' => 'max:255|nullable'
         ];

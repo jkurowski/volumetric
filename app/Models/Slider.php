@@ -6,11 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Slider extends Model
 {
-    const IMG_WIDTH = 1920;
-    const IMG_HEIGHT = 700;
-    const THUMB_WIDTH = 200;
-    const THUMB_HEIGHT = 73;
-
     /**
      * The attributes that are mass assignable.
      *

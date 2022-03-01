@@ -6,9 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Boxes extends Model
 {
-    const IMG_WIDTH = 120;
-    const IMG_HEIGHT = 120;
-
     /**
      * The attributes that are mass assignable.
      *

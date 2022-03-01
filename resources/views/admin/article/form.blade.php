@@ -27,9 +27,22 @@
                     @include('form-elements.html-input-text-count', ['label' => 'Nagłówek strony', 'sublabel'=> 'Meta tag - title', 'name' => 'meta_title', 'value' => $entry->meta_title, 'maxlength' => 60])
                     @include('form-elements.html-input-text-count', ['label' => 'Opis strony', 'sublabel'=> 'Meta tag - description', 'name' => 'meta_description', 'value' => $entry->meta_description, 'maxlength' => 158])
                     @include('form-elements.html-input-text', ['label' => 'Indeksowanie', 'sublabel'=> 'Meta tag - robots', 'name' => 'meta_robots', 'value' => $entry->meta_robots])
-                    @include('form-elements.html-input-file', ['label' => 'Zdjęcie', 'sublabel' => '(wymiary: '.\App\Models\Article::IMG_WIDTH.'px / '.\App\Models\Article::IMG_HEIGHT.'px)', 'name' => 'file'])
-                    @include('form-elements.html-input-file', ['label' => 'Zdjęcie Facebook', 'sublabel' => '(wymiary: 600 px / 314 px)', 'name' => 'file_facebook'])
-                    @include('form-elements.html-input-text', ['label' => 'Atrybut ALT zdjęcia', 'name' => 'file_alt', 'value' => $entry->file_alt])
+                    @include('form-elements.html-input-file', [
+                        'label' => 'Zdjęcie',
+                        'sublabel' => '(wymiary: '.config('images.article.big_width').'px / '.config('images.article.big_height').'px)',
+                        'name' => 'file',
+                        'file' => $entry->file,
+                        'file_preview' => config('images.article.preview_file_path')
+                        ])
+                    @include('form-elements.html-input-file', [
+                    'label' => 'Zdjęcie Facebook',
+                    'sublabel' => '(wymiary: 600 px / 314 px)',
+                    'name' => 'file_facebook',
+                    'file' => $entry->file_facebook,
+                    'file_preview' => config('images.article.facebook_file_path')
+                    ])
+
+                    @include('form-elements.html-input-text-count', ['label' => 'Atrybut ALT zdjęcia', 'name' => 'file_alt', 'value' => $entry->file_alt, 'maxlength' => 100])
                     @include('form-elements.html-input-text', ['label' => 'Wprowadzenie', 'name' => 'content_entry', 'value' => $entry->content_entry, 'required' => 1])
                     @include('form-elements.textarea-fullwidth', ['label' => 'Treść artukułu', 'name' => 'content', 'value' => $entry->content, 'rows' => 11, 'class' => 'tinymce', 'required' => 1])
                 </div>

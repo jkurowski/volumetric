@@ -18,14 +18,18 @@ class ArticleObserver
      */
     public function deleted(Article $article)
     {
-        $file = public_path('uploads/articles/' . $article->file);
-        $file_thumb = public_path('uploads/articles/thumbs/' . $article->file);
+        $file = public_path(config('images.article.file_path') . $article->file);
+        $file_thumb = public_path(config('images.article.thumb_file_path') . $article->file);
+        $facebook_thumb = public_path('uploads/articles/share/' . $article->file_facebook);
 
         if (File::isFile($file)) {
             File::delete($file);
         }
         if (File::isFile($file_thumb)) {
             File::delete($file_thumb);
+        }
+        if (File::isFile($facebook_thumb)) {
+            File::delete($facebook_thumb);
         }
     }
 

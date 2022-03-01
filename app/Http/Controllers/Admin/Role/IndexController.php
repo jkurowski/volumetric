@@ -13,7 +13,8 @@ use Spatie\Permission\Models\Permission;
 
 class IndexController extends Controller
 {
-    function __construct(){
+    public function __construct()
+    {
         $this->middleware('permission:role-list|role-create|role-edit|role-delete', ['only' => ['index','store']]);
         $this->middleware('permission:role-create', ['only' => ['create','store']]);
         $this->middleware('permission:role-edit', ['only' => ['edit','update']]);
@@ -45,15 +46,15 @@ class IndexController extends Controller
         $role = Role::create(['name' => $request->input('name')]);
         $role->syncPermissions($request->input('permission'));
 
-        return redirect()->route('admin.role.index')->with('success','Grupa utworzona');
+        return redirect()->route('admin.role.index')->with('success', 'Grupa utworzona');
     }
 
-    public function edit($id)
+    public function edit(int $id)
     {
 
         $rolePermissions = DB::table("role_has_permissions")
-            ->where("role_has_permissions.role_id",$id)
-            ->pluck('role_has_permissions.permission_id','role_has_permissions.permission_id')
+            ->where("role_has_permissions.role_id", $id)
+            ->pluck('role_has_permissions.permission_id', 'role_has_permissions.permission_id')
             ->all();
 
         return view('admin.role.form', [
@@ -65,7 +66,7 @@ class IndexController extends Controller
         ]);
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, int $id)
     {
         $this->validate($request, [
             'name' => 'required',
@@ -77,10 +78,10 @@ class IndexController extends Controller
 
         $role->syncPermissions($request->input('permission'));
 
-        return redirect()->route('admin.role.index')->with('success','Grupa zapisana');
+        return redirect()->route('admin.role.index')->with('success', 'Grupa zapisana');
     }
 
-    public function destroy($id)
+    public function destroy(int $id)
     {
         $role = Role::find($id);
         $role->delete();

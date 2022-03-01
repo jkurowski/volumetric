@@ -74,72 +74,21 @@
             </div>
             <div class="col-8">
                 <div class="row">
+                    @foreach($boxes as $b)
                     <div class="col-6">
                         <div class="icon-wrapper">
                             <div class="icon">
-                                <i class="las la-chart-line"></i>
+                                @if($b->file)
+                                    <img src="{{asset('uploads/boxes/'.$b->file) }}" alt="{{$b->file_alt}}">
+                                @endif
                             </div>
                             <div class="icon-content">
-                                <h4 class="title">Analiza Rynkowa Inwestycji</h4>
-                                <p class="small-text">Analiza potencjału rynkowego inwestycji oraz profilu potrzeb odbiorców w przełożeniu na założenia do projektu.</p>
+                                <h4 class="title">{{ $b->title }}</h4>
+                                <p class="small-text">{{ $b->text }}</p>
                             </div>
                         </div>
                     </div>
-                    <div class="col-6">
-                        <div class="icon-wrapper">
-                            <div class="icon">
-                                <i class="las la-chess-knight"></i>
-                            </div>
-                            <div class="icon-content">
-                                <h4 class="title">Przygotowanie Strategii Komunikacji</h4>
-                                <p class="small-text">Budowa profilu motywacyjnego klienta, opracowanie analizy SWOT/VRIO i skupienie nad dźwignią strategiczną.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-6">
-                        <div class="icon-wrapper">
-                            <div class="icon">
-                                <i class="las la-user-tie"></i>
-                            </div>
-                            <div class="icon-content">
-                                <h4 class="title">Pełna Obsługa Inwestycji</h4>
-                                <p class="small-text">Stworzenie strony internetowowej, wdrożenie narzędzi i wykorzystanie najskuteczniejszych kanałów dotarcia do właściwych klientów.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-6">
-                        <div class="icon-wrapper">
-                            <div class="icon">
-                                <i class="las la-briefcase"></i>
-                            </div>
-                            <div class="icon-content">
-                                <h4 class="title">Marketing</h4>
-                                <p class="small-text">Obsługa 360*: strategia marketingowa, skuteczne narzędzia, prowadzenie e-kampanii i obecności w social media.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-6">
-                        <div class="icon-wrapper">
-                            <div class="icon">
-                                <i class="las la-share-alt"></i>
-                            </div>
-                            <div class="icon-content">
-                                <h4 class="title">Social Media</h4>
-                                <p class="small-text">Prowadzenie i analiza kont w Social Media.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-6">
-                        <div class="icon-wrapper">
-                            <div class="icon">
-                                <i class="las la-chalkboard-teacher"></i>
-                            </div>
-                            <div class="icon-content">
-                                <h4 class="title">Sprzedaż i Szkolenia</h4>
-                                <p class="small-text">Przygotowanie inwestycji do sprzedaży, budowanie zespołów sprzedażowych i kompleksowe zarządzanie procesem.</p>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>

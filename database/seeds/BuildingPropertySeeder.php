@@ -1,4 +1,5 @@
 <?php
+namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 
@@ -11,12 +12,10 @@ class BuildingPropertySeeder extends Seeder
      */
     public function run()
     {
-        for ($i = 0; $i < 20; $i++)
-        {
+        for ($i = 0; $i < 14; $i++) {
             DB::table('properties')->insert([
                 'investment_id' => 1,
-                'building_id' => 3,
-                'floor_id' => rand(18, 19),
+                'floor_id' => rand(1, 2),
                 'name' => 'Mieszkanie '.rand(3, 10),
                 'rooms' => rand(1, 3),
                 'area' => rand(10, 50),

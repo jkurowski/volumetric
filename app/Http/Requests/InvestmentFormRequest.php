@@ -32,6 +32,7 @@ class InvestmentFormRequest extends FormRequest
             'date_start' => '',
             'date_end' => '',
             'areas_amount' => '',
+            'area_range' => '',
             'office_address' => '',
             'meta_title' => '',
             'meta_description' => '',
@@ -42,6 +43,11 @@ class InvestmentFormRequest extends FormRequest
         ];
     }
 
+    /**
+     * Get the error messages for the defined validation rules.
+     *
+     * @return array
+     */
     public function messages()
     {
         return [

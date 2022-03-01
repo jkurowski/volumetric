@@ -8,9 +8,6 @@ use Intervention\Image\ImageManagerStatic as Image;
 
 class Floor extends Model
 {
-    const PLAN_WIDTH = 1280;
-    const PLAN_HEIGHT = 560;
-
     /**
      * The attributes that are mass assignable.
      *
@@ -21,9 +18,12 @@ class Floor extends Model
         'building_id',
         'name',
         'type',
+        'area_range',
         'html',
         'cords',
-        'file'
+        'file',
+        'meta_title',
+        'meta_description'
     ];
 
     public function properties()
@@ -34,7 +34,7 @@ class Floor extends Model
     public function findNext(int $investment, int $building = null, int $id)
     {
         $next = $this->where('investment_id', $investment)->where('id', '>', $id)->first();
-        if($building && $next) {
+        if ($building && $next) {
             $next->where('building_id', $building);
         }
         return $next;
@@ -43,30 +43,10 @@ class Floor extends Model
     public function findPrev(int $investment, int $building = null, int $id)
     {
         $prev = $this->where('investment_id', $investment)->where('id', '<', $id)->first();
-        if($building && $prev) {
+        if ($building && $prev) {
             $prev->where('building_id', $building);
         }
         return $prev;
-    }
-
-    public function planUpload($title, $file, $delete = null)
-    {
-        if ($delete && $this->file) {
-            $image_path = public_path('investment/floor/' . $this->file);
-            if (file_exists($image_path)) {
-                unlink($image_path);
-            }
-        }
-
-        $name = Str::slug($title, '-') . '_' . Str::random(12) . '.' .$file->getClientOriginalExtension();
-        $file->storeAs('floor', $name, 'investment_uploads');
-
-        $filepath = public_path('investment/floor/' . $name);
-        Image::make($filepath)->resize(self::PLAN_WIDTH, self::PLAN_HEIGHT, function ($constraint) {
-            $constraint->aspectRatio();
-        })->save($filepath);
-
-        $this->update(['file' => $name ]);
     }
 
     public static function boot()

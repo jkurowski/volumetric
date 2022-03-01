@@ -21,12 +21,6 @@
 
         <div class="card mt-3">
             <div class="table-overflow">
-                @if (session('success'))
-                    <div class="alert alert-success border-0 mb-0">
-                        {{ session('success') }}
-                        <script>setTimeout(function(){$(".alert").slideUp(500,function(){$(this).remove()})},3000)</script>
-                    </div>
-                @endif
                 <table class="table mb-0">
                     <thead class="thead-default">
                     <tr>
@@ -44,7 +38,7 @@
                             <td>{{ $p->updated_at }}</td>
                             <td class="option-120">
                                 <div class="btn-group">
-                                    <a href="{{ route('admin.role.edit', $p) }}" class="btn action-button mr-1" data-toggle="tooltip" data-placement="top" title="Edytuj"><i class="fe-edit"></i></a>
+                                    <a href="{{ route('admin.role.edit', $p) }}" class="btn action-button me-1" data-toggle="tooltip" data-placement="top" title="Edytuj"><i class="fe-edit"></i></a>
                                     <form method="POST" action="{{ route('admin.role.destroy', $p) }}">
                                         {{ csrf_field() }}
                                         {{ method_field('DELETE') }}

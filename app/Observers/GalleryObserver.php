@@ -2,6 +2,9 @@
 
 namespace App\Observers;
 
+use Illuminate\Support\Facades\File;
+
+// CMS
 use App\Models\Gallery;
 
 class GalleryObserver
@@ -9,20 +12,22 @@ class GalleryObserver
     /**
      * Handle the gallery "deleted" event.
      *
-     * @param  \App\Models\Gallery  $gallery
+     * @param  Gallery $gallery
      * @return void
      */
     public function deleted(Gallery $gallery)
     {
         foreach ($gallery->photos as $photo) {
             if ($photo->file) {
-                $image_path = public_path('uploads/gallery/images/' . $photo->file);
-                $image_thumb_path = public_path('uploads/gallery/images/thumbs/' . $photo->file);
-                if (file_exists($image_path)) {
-                    unlink($image_path);
+                $image_path = public_path(config('images.gallery.file_path') . $photo->file);
+                $image_thumb_path = public_path(config('images.gallery.thumb_file_path') . $photo->file);
+
+                if (File::isFile($image_path)) {
+                    File::delete($image_path);
                 }
-                if (file_exists($image_thumb_path)) {
-                    unlink($image_thumb_path);
+
+                if (File::isFile($image_thumb_path)) {
+                    File::delete($image_thumb_path);
                 }
             }
         }

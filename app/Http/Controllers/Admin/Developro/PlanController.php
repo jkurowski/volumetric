@@ -27,7 +27,7 @@ class PlanController extends Controller
     public function update(Request $request, Investment $investment)
     {
         if ($request->hasFile('qqfile')) {
-            $this->service->upload($investment, $request->file('qqfile'));
+            $this->service->uploadPlan($investment, $request->file('qqfile'));
         }
         return response()->json(['success' => true]);
     }

@@ -40,6 +40,7 @@
 
 <!-- jQuery -->
 <script src="{{ asset('/js/jquery.min.js') }}" charset="utf-8"></script>
+<script src="{{ asset('/js/bootstrap.bundle.min.js') }}" charset="utf-8"></script>
 <script src="{{ asset('/js/app.js') }}" charset="utf-8"></script>
 
 @stack('scripts')
