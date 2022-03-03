@@ -44,25 +44,6 @@
                         <span> Menu </span>
                     </a>
                 </li>
-                <li class="{{ Request::routeIs('admin.developro.*') ? 'active' : '' }}">
-                    <a href="{{route('admin.developro.index')}}">
-                        <i class="fe-home"></i>
-                        <span> Inwestycje </span>
-                    </a>
-                </li>
-                <li class="{{ Request::routeIs('admin.inbox.*') ? 'active' : '' }}">
-                    <a href="{{route('admin.inbox.index')}}">
-                        <i class="fe-inbox"></i>
-                        <span> Wiadomości </span>
-                    </a>
-                </li>
-                <li class="{{ Request::routeIs('admin.tracker.*') ? 'active' : '' }}">
-                    <a href="{{route('admin.tracker.index')}}">
-                        <i class="fe-activity"></i>
-                        <span> Statystyki </span>
-                    </a>
-                </li>
-
                 -->
                 <li class="{{ Request::routeIs('admin.map.*') ? 'active' : '' }}">
                     <a href="{{route('admin.map.index')}}">

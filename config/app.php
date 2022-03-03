@@ -163,7 +163,6 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         App\Providers\HelperServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
-        PragmaRX\Tracker\Vendor\Laravel\ServiceProvider::class,
         Yajra\DataTables\DataTablesServiceProvider::class,
         /*
          * Package Service Providers...
@@ -230,7 +229,6 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Image' => Intervention\Image\Facades\Image::class,
-        'Tracker' => 'PragmaRX\Tracker\Vendor\Laravel\Facade',
         'DataTables' => Yajra\DataTables\Facades\DataTables::class,
         'OpenGraph' => 'ChrisKonnertz\OpenGraph\OpenGraph'
     ],

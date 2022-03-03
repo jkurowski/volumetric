@@ -1,41 +1,44 @@
 <footer>
     <div id="footer">
         <div class="container">
-            <div class="row footer-header">
-                <div class="col-4">
-                    <div id="flogo">
-                        <a href=""><img src="https://www.developro.pl/wp-content/uploads/2021/07/logo-biale.png" alt=""></a>
-                    </div>
+            <div class="row">
+                <div class="col-3">
+                    <img src="{{asset('images/logo-volumetric.png') }}" alt="Nowe mieszkania deweloperskie Warszawa – Volumetric Polska Sp. z o.o.">
+                    <p>Volumetric Polska Sp. z o. o.</p>
+                    <p>Grup Volumetric SL jest holdingiem, którego wiodącą działalnością jest budownictwo deweloperskie.</p>
                 </div>
-                <div class="col-8 d-flex align-items-center justify-content-end">
-                    <ul class="mb-0 list-unstyled social-list">
-                        <li><a href=""><i class="lab la-facebook-f"></i></a></li>
-                        <li><a href=""><i class="lab la-linkedin-in"></i></a></li>
-                        <li><a href=""><i class="lab la-youtube"></i></a></li>
+                <div class="col"></div>
+                <div class="col-2">
+                    <h5>Menu</h5>
+                    <ul class="mb list-unstyled">
+                        <li><a href="">Strona główna</a></li>
+                        <li><a href="">Poznajmy się</a></li>
+                        <li><a href="">W sprzedaży</a></li>
+                        <li><a href="">W przygotowaniu</a></li>
+                        <li><a href="">Kontakt</a></li>
                     </ul>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-4">
-                    <p>DeveloPro to kompleksowe rozwiązania marketingowo sprzedażowe dla deweloperów, którzy chcą profesjonalnie i efektywniej zaprezentować potencjalnemu nabywcy atrakcyjniejsze rynkowo nieruchomości, które za pomocą innowacyjnych narzędzi skutecznie sprzedają.</p>
+                <div class="col-3 ps-5">
+                    <h5>W sprzedaży</h5>
+                    <ul class="mb list-unstyled">
+                        <li><a href="">Górnośląska 6</a></li>
+                        <li><a href="">Dom na Stawem Koziorożca</a></li>
+                        <li><a href="">Szczęśliwicka 42</a></li>
+                        <li><a href="">Przy Bażantarni</a></li>
+                    </ul>
                 </div>
-                <div class="col-4">
-
-                </div>
-                <div class="col-4">
-                    <p><a href="">biuro@developro.pl</a></p>
-                    <p><a href="">790 398 298</a></p>
-                    <p>&nbsp;</p>
-                    <p>Obywatelska 128/152/7</p>
-                    <p>94-104 Łódź</p>
-                    <p>NIP: 727-284-10-71</p>
+                <div class="col-3">
+                    <h5>Kontakt</h5>
+                    <ul class="mb list-unstyled">
+                        <li><a href="">22 654 38 38</a></li>
+                        <li><a href="">664 130 140</a></li>
+                        <li><a href="">biuro@volumetric.pl</a></li>
+                        <li><a href="">ul. Sienna 39, <br>00-121 Warszawa</a></li>
+                    </ul>
                 </div>
             </div>
         </div>
     </div>
 </footer>
 
-<!-- Google fonts -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">

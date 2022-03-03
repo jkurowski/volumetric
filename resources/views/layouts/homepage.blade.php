@@ -10,131 +10,207 @@
     <meta name="robots" content="{{ settings()->get("page_robots") }}">
     <meta name="author" content="{{ settings()->get("page_author") }}">
 
-
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
     <!-- Styles -->
     <link href="{{ asset('/css/bootstrap.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('/css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('/css/styles.min.css') }}" rel="stylesheet">
 
     @stack('style')
 </head>
 <body class="{{ !empty($body_class) ? $body_class : '' }}">
-<div class="page-header">
-    @include('layouts.partials.header')
+@include('layouts.partials.header')
 
-    @yield('pagheader')
-</div>
-
-<div id="slider" class="clearfix">
-    <ul class="rslides list-unstyled mb-0">
-        @foreach ($sliders as $s)
-            <li>
-                <img src="{{asset('uploads/slider/'.$s->file) }}" alt="{{ $s->title }}">
+<div id="slider">
+    <div class="container h-100">
+        <div class="row h-100">
+            <div class="col-2"></div>
+            <div class="col-8 d-flex align-items-center justify-content-center">
                 <div class="apla">
-                    <h2>{{ $s->title }}<span></span></h2>
+                    <p>Nowe apartamenty na warszawskim Powiślu</p>
+                    <h2>Górnośląska 6</h2>
+                    <a href="" class="bttn">@lang('cms.slider-button')</a>
                 </div>
-            </li>
-        @endforeach
-    </ul>
-</div>
+            </div>
+            <div class="col-2">
 
-<section>
-    <div id="main-about">
-        <div class="container">
-            <div class="row">
-                <div class="col-6 pe-5">
-                    <div class="img-left-offset">
-                        <img src="https://archcode.dexignzone.com/xhtml/images/about/about1.jpg" alt="">
-                    </div>
-                </div>
-                <div class="col-6">
-                    <div class="main-about-header">
-                        <h6 class="sub-title">Kilka słów o nas</h6>
-                        <h2 class="title">DeveloPRO to zespół specjalistów z wieloletnim doświadczeniem w branży nieruchomości.</h2>
-                    </div>
-                    <p>Postanowiliśmy połączyć siły, gdyż wszystkie realizacje przy których współpracowaliśmy osiągnęły założone cele rynkowe. Dzięki nam zrealizujesz swoją inwestycję skutecznie, unikając niepotrzebnych błędów i z budzącym zadowolenie zyskiem. Dzięki eksperckiej wiedzy i doświadczeniu interdyscyplinarnego zespołu nasi klienci efektywniej wdrażają atrakcyjniejsze rynkowo nieruchomości, które za pomocą innowacyjnych narzędzi skutecznie sprzedają.</p>
-                    <a href="" class="bttn mt-4">Czytaj więcej</a>
-                </div>
             </div>
         </div>
     </div>
-</section>
+</div>
 
-<section class="whatwedo" style="background: #f8f8f8 url('https://archcode.dexignzone.com/xhtml/images/background/pattern3.png')">
+<section>
     <div class="container">
         <div class="row">
-            <div class="col-4">
-                <h6 class="sub-title">Co robimy?</h6>
-                <h2 class="title">Bezkonkurencyjna oferta i najwięcej zrealizowanych projektów w Polsce</h2>
-            </div>
-            <div class="col-8">
-                <div class="row">
-                    @foreach($boxes as $b)
-                    <div class="col-6">
-                        <div class="icon-wrapper">
-                            <div class="icon">
-                                @if($b->file)
-                                    <img src="{{asset('uploads/boxes/'.$b->file) }}" alt="{{$b->file_alt}}">
-                                @endif
-                            </div>
-                            <div class="icon-content">
-                                <h4 class="title">{{ $b->title }}</h4>
-                                <p class="small-text">{{ $b->text }}</p>
-                            </div>
-                        </div>
-                    </div>
-                    @endforeach
+            <div class="col-12">
+                <div class="section-header text-center">
+                    <span>OFERTA</span>
+                    <h2>Projekty w sprzedaży</h2>
                 </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <ul class="mb-0 list-unstyled invest-list-nav">
+                    <li><a href="">Górnośląska 6</a></li>
+                    <li class="active"><a href="">Dom nad stawem Koziorożca</a></li>
+                    <li><a href="">Szczęśliwicka 42</a></li>
+                    <li><a href="">Przy bażantarni</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="container invest-list-carousel">
+        <div class="row invest-list-item">
+            <div class="col-6">
+                <a href=""><img src="https://placehold.co/796x450" alt=""></a>
+            </div>
+            <div class="col-3 d-flex align-items-center">
+                <div class="invest-list-desc text-center">
+                    <h3>Dom nad stawem Koziorożca</h3>
+                    <ul class="mb-0 list-unstyled">
+                        <li class="text-uppercase">Termin oddania: kwiecień 2022</li>
+                        <li class="text-uppercase">Nowe Włochy | ul. Globusowa 23</li>
+                        <li>Nowa inwestycja nad Stawem Koziorożca w warszawskich Włochach</li>
+                    </ul>
+                    <a href="" class="bttn">@lang('cms.slider-button')</a>
+                </div>
+            </div>
+            <div class="col-3">
+                <a href=""><img src="https://placehold.co/386x450" alt=""></a>
             </div>
         </div>
     </div>
 </section>
 
 <section>
-    <div id="main-news">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="section-head text-center">
-                        <h6 class="sub-title">Co u nas?</h6>
-                        <h2 class="title">Ostatnie aktualności</h2>
+    <div class="container">
+        <div class="row position-relative">
+            <div class="col-6">
+                <img src="https://placehold.co/796x840" alt="">
+            </div>
+            <div class="col-7 offset-5 position-absolute pl-0 offset-absolute d-flex align-items-center">
+                <div class="offset-apla">
+                    <div class="section-header text-center">
+                        <span>DLACZEGO MY</span>
+                        <h2>Volumetric to</h2>
                     </div>
+                    <ul class="mb-0 list-unstyled">
+                        <li>
+                            <h3>Gwarancja bezpieczeństwa</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim</p>
+                        </li>
+                        <li>
+                            <h3>Najwyższa jakość</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim</p>
+                        </li>
+                        <li>
+                            <h3>Realizacja zawsze na czas</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim</p>
+                        </li>
+                    </ul>
                 </div>
-                @foreach ($articles as $n)
-                    <article class="col-4" id="list-post-{{ $n->id }}" itemscope="" itemtype="http://schema.org/NewsArticle">
-                        <div class="list-post">
-                            <div class="list-post-thumb">
-                                <a href="{{route('front.news.show', $n->slug)}}" title="{{ $n->title }}" itemprop="url"><img src="{{asset('uploads/articles/thumbs/'.$n->file) }}" alt="{{ $n->title }}"></a>
-                            </div>
-                            <div class="list-post-content">
-                                <header>
-                                    @if($n->date)<div class="list-post-date text-muted">Data publikacji: <span itemprop="datePublished" content="{{ $n->date }}">{{ $n->date }}</span></div>@endif
-                                    <h5 class="title"><a href="{{route('front.news.show', $n->slug)}}" itemprop="url"><span itemprop="name headline">{{ $n->title }}</span></a></h5>
-                                </header>
-
-                                <div class="list-post-entry" itemprop="articleBody">
-                                    <p class="small-text">{{ $n->content_entry }}</p>
-                                </div>
-
-                                <footer>
-                                    <a itemprop="url" href="{{route('front.news.show', $n->slug)}}" title="{{ $n->title }}" class="bttn bttn-sm">Czytaj więcej</a>
-                                    <meta itemprop="author" content="DeveloPro">
-                                    <meta itemprop="mainEntityOfPage" content="">
-                                </footer>
-                            </div>
-                        </div>
-                    </article>
-                @endforeach
             </div>
         </div>
     </div>
 </section>
 
+<section id="maincarousel">
+    <div class="container">
+        <div class="row">
+            <div class="col-3">
+                <img src="https://placehold.co/386x464" alt="">
+            </div>
+            <div class="col-3">
+                <img src="https://placehold.co/386x217" alt="">
+                <img src="https://placehold.co/386x217" alt="">
+            </div>
+            <div class="col-3">
+                <img src="https://placehold.co/386x464" alt="">
+            </div>
+            <div class="col-3">
+                <img src="https://placehold.co/386x217" alt="">
+                <img src="https://placehold.co/386x217" alt="">
+            </div>
+            <div class="col-3">
+                <img src="https://placehold.co/386x464" alt="">
+            </div>
+            <div class="col-3">
+                <img src="https://placehold.co/386x217" alt="">
+                <img src="https://placehold.co/386x217" alt="">
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="container">
+        <div class="row flex-row-reverse position-relative">
+            <div class="col-6">
+                <img src="https://placehold.co/796x840" alt="">
+            </div>
+            <div class="col-7 position-absolute pr-0 offset-absolute d-flex align-items-center">
+                <div class="offset-apla">
+                    <div class="section-header text-center">
+                        <span>POZNAJMY SIĘ</span>
+                        <h2>Nowe mieszkania deweloperskie w Warszawie</h2>
+                    </div>
+                    <p>Firma Volumetric koncentruje się głównie na działalności deweloperskiej. Jest częścią Grup Volumetric – rodzinnego holdingu z siedzibą w Mataro nieopodal Barcelony.</p>
+                    <p>&nbsp;</p>
+                    <p>Satysfakcja naszych klientów jest naszym priorytetem. Cały zespół firmy i wszyscy współpracownicy dokładają wszelkich starań, aby zapewnić najwyższą jakość naszych usług. Nasze umiejętności i wiedza sa zawsze do dyspozycji naszych klientów.</p>
+                    <p>&nbsp;</p>
+                    <p>Przez ponad 10 lat działalności w Polsce, udało nam się potwierdzić swoją stabilną pozycję na rynku. Z powodzeniem zrealizowaliśmy dziewięć osiedli lub budynków w Warszawie, Kielcach i Markach. Obecnie przygotowujemy kolejne inwestycje i wciąż poszukujemy nowych gruntów pod zabudowę mieszkaniową.</p>
+
+                    <div class="d-flex justify-content-center">
+                        <a href="" class="bttn">@lang('cms.goformore-button')</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="maincontact">
+    <div class="container">
+        <div class="row d-flex justify-content-center">
+            <div class="col-10">
+                <div class="maincontact">
+                    <div class="container-fluid p-0">
+                        <div class="row no-gutters">
+                            <div class="col-8 ps-5 d-flex align-items-center justify-content-center">
+                                <div class="maincontact-text">
+                                    <div class="section-header text-center">
+                                        <span>KONTAKT</span>
+                                        <h2>Przygotujemy ofertę specjalnie dla Ciebie</h2>
+                                    </div>
+
+                                    <ul class="mb-0 list-unstyled">
+                                        <li><span class="square-icon"><img src="{{asset('svg/phone-icon.svg') }}" class="phone-svg-icon" alt="Numer telefonu"></span><a href="tel:226543838">22 654 38 38</a></li>
+                                        <li><span class="square-icon"><img src="{{asset('svg/phone-icon.svg') }}" class="phone-svg-icon" alt="Numer telefonu"></span><a href="tel:664130140">664 130 140</a></li>
+                                        <li><span class="square-icon"><img src="{{asset('svg/envelope-icon.svg') }}" class="envelope-svg-icon" alt="Numer telefonu"></span><a href="mailto:biuro@volumetric.pl">biuro@volumetric.pl</a></li>
+                                    </ul>
+
+                                    <div class="d-flex justify-content-center">
+                                        <a href="" class="bttn">@lang('cms.gotoform-button')</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-4 ps-5">
+                                <img src="https://placehold.co/400x600" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
 @include('layouts.partials.footer')
 
@@ -142,13 +218,29 @@
 
 <!-- jQuery -->
 <script src="{{ asset('/js/jquery.min.js') }}" charset="utf-8"></script>
+<script src="{{ asset('/js/slick.js') }}" charset="utf-8"></script>
 <script src="{{ asset('/js/app.js') }}" charset="utf-8"></script>
 
 @stack('scripts')
 
 <script type="text/javascript">
     $(document).ready(function(){
-        $("#slider ul").responsiveSlides({auto:true, pager:false, nav:true, timeout:4000, random:false, speed:500});
+        $("#slider ul").responsiveSlides({
+            auto:true,
+            pager:false,
+            nav:true,
+            timeout:4000,
+            random:false,
+            speed:500
+        });
+
+        $("#maincarousel .row").slick({
+            dots: false,
+            infinite: true,
+            speed: 300,
+            slidesToShow: 4,
+            slidesToScroll: 1
+        });
     });
     $(window).load(function() {
         $("#slider ul").show();
