@@ -420,6 +420,105 @@ li:hover img {
 }
 /* Header
 ================================================== */
+.header-holder {
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: 999;
+}
+#lang {
+  padding: 0 30px;
+}
+#lang a {
+  color: rgba(255, 255, 255, 0.5);
+  text-transform: uppercase;
+  display: inline-flex;
+  padding: 0 10px;
+  line-height: normal;
+}
+#lang a:first-child {
+  border-right: 1px solid white;
+}
+#lang a.active,
+#lang a:hover {
+  color: white;
+}
+#lang a.active {
+  font-weight: bold;
+}
+#header {
+  padding: 30px 0;
+  -webkit-transition: all 200ms linear;
+  -moz-transition: all 200ms linear;
+  -o-transition: all 200ms linear;
+  transition: all 200ms linear;
+}
+#header .bttn {
+  background: none;
+  color: white;
+  padding: 15px 20px;
+  -webkit-transition: all 200ms linear;
+  -moz-transition: all 200ms linear;
+  -o-transition: all 200ms linear;
+  transition: all 200ms linear;
+}
+#header .bttn:before {
+  display: none;
+}
+#header .bttn:after {
+  border: 1px solid #fff;
+}
+#header .bttn:hover {
+  background: none;
+  color: white;
+  border: 0;
+}
+#header .bttn:hover:after {
+  border: 1px dashed #bbb;
+}
+#header nav {
+  text-align: center;
+}
+#header nav a {
+  font-size: 16px;
+  color: white;
+  text-transform: uppercase;
+  display: inline-flex;
+  line-height: normal;
+  margin: 0 30px;
+}
+#header #logo {
+  background: white;
+  height: 51px;
+  padding: 0 5px 0 155px;
+  display: flex;
+  align-items: center;
+  -webkit-transition: all 200ms linear;
+  -moz-transition: all 200ms linear;
+  -o-transition: all 200ms linear;
+  transition: all 200ms linear;
+}
+#header #logo img {
+  height: 45px;
+}
+#header.fixed {
+  padding: 0;
+  background: black;
+  z-index: 999;
+  position: fixed;
+  left: 0;
+  right: 0;
+  -webkit-box-shadow: 0 2px 2px 0 rgba(50, 50, 50, 0.14);
+  -moz-box-shadow: 0 2px 2px 0 rgba(50, 50, 50, 0.14);
+  box-shadow: 0 2px 2px 0 rgba(50, 50, 50, 0.14);
+}
+#header.fixed .bttn {
+  padding: 9px 14px;
+  font-size: 13px;
+}
+#header.fixed #logo {
+  height: 60px;
+}
 /* Slider
 ================================================== */
 #slider {
@@ -597,7 +696,7 @@ li:hover img {
 /* Pageheader
 ================================================== */
 #page-header {
-  padding: 120px 0;
+  padding: 200px 0 120px;
   background: #131313;
 }
 #page-header nav {

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\ContactFormRequest;
 
 use App\Models\Page;
+use App\Models\RodoClient;
 use Illuminate\Support\Facades\Mail;
 
 use App\Mail\MailSend;
@@ -47,7 +48,7 @@ class ContactController extends Controller
 
         Mail::to(config('mail.from.address'))->send(new MailSend($request));
 
-        (new \App\Models\RodoClient)->saveOrCreate($request);
+        (new RodoClient)->saveOrCreate($request);
         return redirect()->back()->with(
             'success',
             'Twoja wiadomość została wysłana. W najbliższym czasie skontaktujemy się z Państwem celem omówienia szczegółów!'

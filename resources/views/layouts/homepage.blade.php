@@ -219,7 +219,7 @@
 <!-- jQuery -->
 <script src="{{ asset('/js/jquery.min.js') }}" charset="utf-8"></script>
 <script src="{{ asset('/js/slick.js') }}" charset="utf-8"></script>
-<script src="{{ asset('/js/app.js') }}" charset="utf-8"></script>
+<script src="{{ asset('/js/app.min.js') }}" charset="utf-8"></script>
 
 @stack('scripts')
 
