@@ -21,7 +21,7 @@ class ContactController extends Controller
 {
     function index()
     {
-        $page = Page::where('id', 12)->first();
+        $page = Page::where('id', 4)->first();
 
         return view('front.contact.index', [
             'rules' => RodoRules::orderBy('sort')->whereStatus(1)->get(),

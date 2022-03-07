@@ -11,11 +11,11 @@
                 <div class="col-2">
                     <h5>Menu</h5>
                     <ul class="mb list-unstyled">
-                        <li><a href="">Strona główna</a></li>
+                        <li><a href="/{{ $current_locale }}">Strona główna</a></li>
                         <li><a href="">Poznajmy się</a></li>
-                        <li><a href="">W sprzedaży</a></li>
-                        <li><a href="">W przygotowaniu</a></li>
-                        <li><a href="">Kontakt</a></li>
+                        <li><a href="{{ route('investment.index') }}">W sprzedaży</a></li>
+                        <li><a href="{{ route('planned.index') }}">W przygotowaniu</a></li>
+                        <li><a href="{{ route('contact.index') }}">Kontakt</a></li>
                     </ul>
                 </div>
                 <div class="col-3 ps-5">
@@ -30,10 +30,10 @@
                 <div class="col-3">
                     <h5>Kontakt</h5>
                     <ul class="mb list-unstyled">
-                        <li><a href="">22 654 38 38</a></li>
-                        <li><a href="">664 130 140</a></li>
-                        <li><a href="">biuro@volumetric.pl</a></li>
-                        <li><a href="">ul. Sienna 39, <br>00-121 Warszawa</a></li>
+                        <li><a href="tel:22 654 38 38">22 654 38 38</a></li>
+                        <li><a href="tel:+48664130140">664 130 140</a></li>
+                        <li><a href="mailto:biuro@volumetric.pl">biuro@volumetric.pl</a></li>
+                        <li><a href="https://goo.gl/maps/3z5dJMdUa8L16N117" target="_blank">ul. Sienna 39, <br>00-121 Warszawa</a></li>
                     </ul>
                 </div>
             </div>

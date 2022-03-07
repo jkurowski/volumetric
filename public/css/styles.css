@@ -594,8 +594,58 @@ li:hover img {
   font-size: 21px;
   color: #000;
 }
+/* Pageheader
+================================================== */
+#page-header {
+  padding: 120px 0;
+  background: #131313;
+}
+#page-header nav {
+  display: flex;
+  justify-content: center;
+}
+#page-header nav li,
+#page-header nav a {
+  color: white;
+  font-size: 14px;
+}
+#page-header span,
+#page-header h1 {
+  z-index: 20;
+}
+#page-header h1,
+#page-header .section-header:after {
+  color: white;
+}
+#page-header h1 {
+  font-weight: 700;
+  font-size: 64px;
+  margin: 0;
+  text-transform: uppercase;
+  position: relative;
+}
+#page-header .section-header:after {
+  font-size: 350px;
+  opacity: 0.1;
+  top: -65px;
+  line-height: 290px;
+}
+#page-header .section-header span:after {
+  width: 480px;
+  bottom: -15px;
+  background: #404040;
+}
 /* Page layout
 ================================================== */
+#page {
+  padding: 100px 0;
+}
+.page-contact #page {
+  padding-bottom: 0;
+}
+.page-investment #page {
+  padding: 0;
+}
 section {
   padding: 100px 0;
 }
@@ -779,22 +829,27 @@ div[class*='col-'].slick-slide {
 }
 .form-input.filled label {
   top: 0;
-  font-size: 11px;
-  color: #7479cb;
-  font-weight: normal;
+  font-size: 12px;
+  color: #313131;
+  font-weight: 400;
+  text-transform: none;
 }
 .form-input input,
 .form-input textarea {
   padding: 13px;
   margin-bottom: 0;
   background: #f9f9f9;
+  border: 0;
+  border-bottom: 1px solid black;
 }
 /* Rodo
 ================================================== */
 .rodo-obligation p,
 .rodo-rules label {
   font-size: 13px;
-  line-height: 21px;
+  line-height: 18px;
+  margin: 15px 0 0;
+  color: #696969;
 }
 .rodo-rules p {
   margin: 0;
@@ -897,7 +952,6 @@ select.selectpicker {
   width: 100%;
   text-align: right;
   white-space: nowrap;
-  display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
@@ -983,7 +1037,6 @@ select.selectpicker {
 .bootstrap-select .dropdown-toggle:focus,
 .bootstrap-select > select.mobile-device:focus + .dropdown-toggle {
   outline: thin dotted #333 !important;
-  outline: 5px auto -webkit-focus-ring-color !important;
   outline-offset: -2px;
 }
 .bootstrap-select.form-control {
@@ -1221,9 +1274,7 @@ select.selectpicker {
   height: 1em;
   border-style: solid;
   border-width: 0 0.26em 0.26em 0;
-  -webkit-transform: rotate(45deg);
   -ms-transform: rotate(45deg);
-  -o-transform: rotate(45deg);
   transform: rotate(45deg);
 }
 .bootstrap-select.show-menu-arrow.open > .dropdown-toggle,

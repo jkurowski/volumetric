@@ -73,6 +73,11 @@ class AppServiceProvider extends ServiceProvider
             ]);
         });
 
+        view()->composer('*', function ($view) {
+            $view->with('current_locale', app()->getLocale());
+            $view->with('available_locales', config('app.available_locales'));
+        });
+
         Image::observe(ImageObserver::class);
         Gallery::observe(GalleryObserver::class);
         Article::observe(ArticleObserver::class);
