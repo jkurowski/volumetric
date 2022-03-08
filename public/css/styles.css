@@ -106,6 +106,7 @@ button {
   width: 190px;
   font-size: 10px;
   border: 1px solid #ff9000;
+  line-height: normal;
   padding: 2px 10px 2px 10px;
 }
 .formError .formErrorArrow {
@@ -529,11 +530,22 @@ li:hover img {
 #slider .apla {
   text-align: center;
   position: relative;
+  z-index: 90;
 }
 #slider .apla p,
 #slider .apla h2,
 #slider .apla a {
   color: #fff;
+}
+#slider .apla p,
+#slider .apla h2 {
+  position: relative;
+  -webkit-transition: all 1000ms linear;
+  -moz-transition: all 1000ms linear;
+  -ms-transition: all 1000ms linear;
+  -o-transition: all 1000ms linear;
+  transition: all 1000ms linear;
+  opacity: 0;
 }
 #slider .apla p {
   font-weight: normal;
@@ -541,7 +553,7 @@ li:hover img {
   letter-spacing: 0.2em;
   text-transform: uppercase;
   padding-bottom: 86px;
-  position: relative;
+  top: -40px;
 }
 #slider .apla p:after {
   content: "";
@@ -558,6 +570,10 @@ li:hover img {
 #slider .apla h2 {
   font-weight: bold;
   font-size: 100px;
+  bottom: -80px;
+  position: relative;
+  margin: 0;
+  line-height: 90px;
 }
 #slider .apla .bttn {
   font-weight: normal;
@@ -570,6 +586,12 @@ li:hover img {
   padding: 0;
   align-items: center;
   margin-top: 120px;
+}
+#slider .apla .bttn:after {
+  z-index: -1;
+}
+#slider .apla .bttn:hover {
+  background: rgba(0, 0, 0, 0.6);
 }
 #slider .apla:after {
   content: "V";
@@ -584,6 +606,28 @@ li:hover img {
   top: -122px;
   margin: auto;
   line-height: 523px;
+  z-index: -1;
+}
+#slider .rslides1_on .apla p {
+  opacity: 1;
+  top: 0;
+}
+#slider .rslides1_on .apla h2 {
+  opacity: 1;
+  bottom: 0;
+}
+#slider .container-fluid {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: relative;
+}
+#slider .container-opacity {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
 }
 /* Homepage
 ================================================== */
@@ -595,15 +639,13 @@ li:hover img {
 .invest-list-nav li {
   display: inline-flex;
   padding: 0 30px;
-}
-.invest-list-nav li a {
   font-weight: normal;
   font-size: 16px;
   letter-spacing: 0.2em;
   color: #000;
   text-transform: uppercase;
 }
-.invest-list-nav li.active a {
+.invest-list-nav li.slick-current {
   font-weight: bold;
 }
 .invest-list-carousel {
@@ -631,7 +673,13 @@ li:hover img {
   font-weight: normal;
   font-size: 16px;
   line-height: 24px;
-  margin-bottom: 35px;
+  margin-bottom: 25px;
+}
+.invest-list-nav .slick-track {
+  width: 100% !important;
+  display: flex;
+  justify-content: center;
+  transform: none !important;
 }
 .offset-absolute {
   top: 0;
@@ -763,6 +811,7 @@ section {
   margin-bottom: 39px;
   display: block;
   position: relative;
+  text-transform: uppercase;
 }
 .section-header span:after {
   content: "";
@@ -906,6 +955,9 @@ div[class*='col-'].slick-slide {
 }
 #maincarousel .slick-arrow.slick-prev {
   right: 0;
+}
+.slick-initialized .row.invest-list-item {
+  display: flex !important;
 }
 /* Formularze
 ================================================== */

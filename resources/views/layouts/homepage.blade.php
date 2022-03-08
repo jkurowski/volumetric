@@ -27,21 +27,20 @@
 @include('layouts.partials.header')
 
 <div id="slider">
-    <div class="container h-100">
-        <div class="row h-100">
-            <div class="col-2"></div>
+    @foreach($sliders as $panel)
+    <div class="container-fluid h-100" style="background-image: url('{{ asset('/uploads/slider/'.$panel->file) }}')">
+        <div class="row h-100 d-flex justify-content-center">
             <div class="col-8 d-flex align-items-center justify-content-center">
                 <div class="apla">
-                    <p>Nowe apartamenty na warszawskim Powiślu</p>
-                    <h2>Górnośląska 6</h2>
-                    <a href="" class="bttn">@lang('cms.slider-button')</a>
+                    <p>{{ $panel->subtitle }}</p>
+                    <h2>{{ $panel->title }}</h2>
+                    <a href="{{ $panel->link }}" class="bttn">@lang('cms.slider-button')</a>
                 </div>
             </div>
-            <div class="col-2">
-
-            </div>
         </div>
+        <div class="container-opacity" style="background: rgba(0,0,0, {{ $panel->opacity }})"></div>
     </div>
+    @endforeach
 </div>
 
 <section>
@@ -49,43 +48,45 @@
         <div class="row">
             <div class="col-12">
                 <div class="section-header text-center">
-                    <span>OFERTA</span>
-                    <h2>Projekty w sprzedaży</h2>
+                    <span>@lang('cms.offerbox-title')</span>
+                    <h2>@lang('cms.offerbox-subtitle')</h2>
                 </div>
             </div>
         </div>
         <div class="row">
             <div class="col-12">
                 <ul class="mb-0 list-unstyled invest-list-nav">
-                    <li><a href="">Górnośląska 6</a></li>
-                    <li class="active"><a href="">Dom nad stawem Koziorożca</a></li>
-                    <li><a href="">Szczęśliwicka 42</a></li>
-                    <li><a href="">Przy bażantarni</a></li>
+                    @foreach($investments as $investment)
+                    <li>{{ $investment->name }}</li>
+                    @endforeach
                 </ul>
             </div>
         </div>
     </div>
 
     <div class="container invest-list-carousel">
+
+        @foreach($investments as $investment)
         <div class="row invest-list-item">
             <div class="col-6">
-                <a href=""><img src="https://placehold.co/796x450" alt=""></a>
+                <a href="{{ $investment->url }}"><img src="{{ asset('/uploads/investments/thumbs/'.$investment->file_thumb) }}" alt="{{ $investment->city }} - {{ $investment->name }}"></a>
             </div>
             <div class="col-3 d-flex align-items-center">
                 <div class="invest-list-desc text-center">
                     <h3>Dom nad stawem Koziorożca</h3>
                     <ul class="mb-0 list-unstyled">
-                        <li class="text-uppercase">Termin oddania: kwiecień 2022</li>
-                        <li class="text-uppercase">Nowe Włochy | ul. Globusowa 23</li>
-                        <li>Nowa inwestycja nad Stawem Koziorożca w warszawskich Włochach</li>
+                        <li class="text-uppercase">@lang('cms.deadline-date'): kwiecień 2022</li>
+                        <li class="text-uppercase">{{ $investment->city }} | {{ $investment->address }}</li>
+                        <li>{{ $investment->entry_content }}</li>
                     </ul>
-                    <a href="" class="bttn">@lang('cms.slider-button')</a>
+                    <a href="{{ $investment->url }}" class="bttn" target="_blank">@lang('cms.slider-button')</a>
                 </div>
             </div>
             <div class="col-3">
                 <a href=""><img src="https://placehold.co/386x450" alt=""></a>
             </div>
         </div>
+        @endforeach
     </div>
 </section>
 
@@ -98,8 +99,8 @@
             <div class="col-7 offset-5 position-absolute pl-0 offset-absolute d-flex align-items-center">
                 <div class="offset-apla">
                     <div class="section-header text-center">
-                        <span>DLACZEGO MY</span>
-                        <h2>Volumetric to</h2>
+                        <span>@lang('cms.whyusbox-title')</span>
+                        <h2>@lang('cms.whyusbox-subtitle')</h2>
                     </div>
                     <ul class="mb-0 list-unstyled">
                         <li>
@@ -186,8 +187,8 @@
                             <div class="col-8 ps-5 d-flex align-items-center justify-content-center">
                                 <div class="maincontact-text">
                                     <div class="section-header text-center">
-                                        <span>KONTAKT</span>
-                                        <h2>Przygotujemy ofertę specjalnie dla Ciebie</h2>
+                                        <span>@lang('cms.contactbox-title')</span>
+                                        <h2>@lang('cms.contactbox-subtitle')</h2>
                                     </div>
 
                                     <ul class="mb-0 list-unstyled">
@@ -225,13 +226,31 @@
 
 <script type="text/javascript">
     $(document).ready(function(){
-        $("#slider ul").responsiveSlides({
+        $("#slider").responsiveSlides({
             auto:true,
             pager:false,
             nav:true,
-            timeout:4000,
+            timeout:6000,
             random:false,
-            speed:500
+            speed:1000
+        });
+
+        $(".invest-list-carousel").slick({
+            dots: false,
+            infinite: true,
+            speed: 300,
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            asNavFor: '.invest-list-nav'
+        });
+        $('.invest-list-nav').slick({
+            slidesToShow: 4,
+            slidesToScroll: 1,
+            asNavFor: '.invest-list-carousel',
+            dots: false,
+            centerMode: false,
+            focusOnSelect: true,
+            variableWidth: true
         });
 
         $("#maincarousel .row").slick({

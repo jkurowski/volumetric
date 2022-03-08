@@ -7,49 +7,29 @@
 @stop
 
 @section('content')
+    @foreach($investments as $investment)
     <section>
         <div class="container">
-            <div class="row flex-row-reverse position-relative">
+            <div class="row @if($loop->odd) flex-row-reverse @endif position-relative">
                 <div class="col-7">
-                    <img src="https://placehold.co/940x720" alt="">
+                    <img src="{{ asset('/uploads/investments/thumbs/'.$investment->file_thumb) }}" alt="{{ $investment->city }} - {{ $investment->name }}">
                 </div>
-                <div class="col-6 position-absolute pr-0 offset-absolute d-flex align-items-center">
+                <div class="col-6 position-absolute offset-absolute d-flex align-items-center @if($loop->odd) pr-0 @else offset-6 pl-0 @endif">
                     <div class="offset-apla">
                         <div class="section-header text-center">
-                            <span>MIASTO</span>
-                            <h2>NAZWA INWESTYCJI</h2>
+                            <span>{{ $investment->city }}</span>
+                            <h2>{{ $investment->name }}</h2>
                         </div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In ut porttitor velit. Pellentesque a ultrices lectus. Nullam sodales nulla at metus accumsan laoreet.</p>
+                        <p class="text-center">{{ $investment->entry_content }}</p>
                         <div class="d-flex justify-content-center">
-                            <a href="" class="bttn">@lang('cms.goformore-button')</a>
+                            <a href="{{ $investment->url }}" class="bttn" target="_blank">@lang('cms.goformore-button')</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-
-    <section>
-        <div class="container">
-            <div class="row position-relative">
-                <div class="col-7">
-                    <img src="https://placehold.co/940x720" alt="">
-                </div>
-                <div class="col-6 offset-6 position-absolute pl-0 offset-absolute d-flex align-items-center">
-                    <div class="offset-apla">
-                        <div class="section-header text-center">
-                            <span>MIASTO</span>
-                            <h2>NAZWA INWESTYCJI</h2>
-                        </div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In ut porttitor velit. Pellentesque a ultrices lectus. Nullam sodales nulla at metus accumsan laoreet.</p>
-                        <div class="d-flex justify-content-center">
-                            <a href="" class="bttn">@lang('cms.goformore-button')</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    @endforeach
 @endsection
 
 @push('scripts')

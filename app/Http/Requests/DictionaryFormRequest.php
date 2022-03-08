@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class SliderFormRequest extends FormRequest
+class DictionaryFormRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,13 +24,9 @@ class SliderFormRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|string|min:5|max:100',
-            'subtitle' => 'required|string|min:5|max:50',
-            'file_alt' => 'max:100',
-            'link' => '',
-            'opacity' => '',
-            'active' => '',
-            'sort' => ''
+            'translation' => 'required',
+            'dictionary_slug' => 'required',
+            'dictionary_locale' => 'required'
         ];
     }
 
@@ -42,9 +38,7 @@ class SliderFormRequest extends FormRequest
     public function messages()
     {
         return [
-            'title.required' => 'To pole jest wymagane',
-            'title.max.string' => 'Maksymalna ilość znaków: 100',
-            'title.min.string' => 'Minimalna ilość znaków: 5'
+            'translation.required' => 'To pole jest wymagane'
         ];
     }
 }

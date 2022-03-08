@@ -1,6 +1,6 @@
 @extends('layouts.page', ['body_class' => 'page-contact'])
 
-@section('meta_title', 'Kontakt')
+@section('meta_title', $page->title)
 
 @section('pageheader')
     @include('layouts.partials.page-header', ['page' => $page])
@@ -13,8 +13,8 @@
             <div class="row d-flex justify-content-center">
                 <div class="col-12">
                     <div class="section-header text-center">
-                        <span>MASZ PYTANIA?</span>
-                        <h2>Wyśli do nas wiadomość</h2>
+                        <span>@lang('cms.formbox-title')</span>
+                        <h2>@lang('cms.formbox-subtitle')</h2>
                     </div>
                 </div>
                 <div class="col-8 mt-5 pt-5">
@@ -124,8 +124,8 @@
                                 <div class="col-8 ps-5 d-flex align-items-center justify-content-center">
                                     <div class="maincontact-text">
                                         <div class="section-header text-center">
-                                            <span>KONTAKT</span>
-                                            <h2>Przygotujemy ofertę specjalnie dla Ciebie</h2>
+                                            <span>@lang('cms.contactbox-title')</span>
+                                            <h2>@lang('cms.contactbox-subtitle')</h2>
                                         </div>
 
                                         <ul class="mb-0 list-unstyled">
@@ -150,7 +150,7 @@
 @endsection
 @push('scripts')
     <script src="{{ asset('js/validation.js') }}" charset="utf-8"></script>
-    <script src="{{ asset('js/pl.js') }}" charset="utf-8"></script>
+    <script src="{{ asset('js/'.$current_locale.'.js') }}" charset="utf-8"></script>
     <script type="text/javascript">
         $(document).ready(function(){
             $(".validateForm").validationEngine({

@@ -45,6 +45,12 @@
                     </a>
                 </li>
                 -->
+                <li class="{{ Request::routeIs('admin.developro.*') ? 'active' : '' }}">
+                    <a href="{{route('admin.developro.index')}}">
+                        <i class="fe-home"></i>
+                        <span> Inwestycje </span>
+                    </a>
+                </li>
                 <li class="{{ Request::routeIs('admin.map.*') ? 'active' : '' }}">
                     <a href="{{route('admin.map.index')}}">
                         <i class="fe-map-pin"></i>

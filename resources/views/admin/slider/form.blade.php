@@ -32,11 +32,10 @@
                                 '1.0' => '1',
                             ]])
                             @include('form-elements.html-input-text', ['label' => 'Nazwa', 'name' => 'title', 'value' => $entry->title, 'required' => 1])
+                            @include('form-elements.html-input-text', ['label' => 'Sub-nazwa', 'name' => 'subtitle', 'value' => $entry->subtitle, 'required' => 1])
                             @include('form-elements.html-input-file', ['label' => 'Zdjęcie', 'sublabel' => '(wymiary: '.config('images.slider.big_width').'px / '.config('images.slider.big_height').'px)', 'name' => 'file', 'file' => $entry->file, 'file_preview' => config('images.slider.preview_file_path')])
                             @include('form-elements.html-input-text-count', ['label' => 'Atrybut ALT zdjęcia', 'name' => 'file_alt', 'value' => $entry->file_alt, 'maxlength' => 100])
                             @include('form-elements.html-input-text', ['label' => 'CTA link', 'name' => 'link', 'value' => $entry->link])
-                            @include('form-elements.html-input-text', ['label' => 'CTA button', 'name' => 'link_button', 'value' => $entry->link_button])
-                            @include('form-elements.html-select', ['label' => 'CTA Okno docelowe', 'name' => 'link_target', 'selected' => $entry->link_target, 'select' => ['_self' => 'To samo okno', '_blank' => 'Nowe okno']])
                         </div>
                     </div>
                 </div>

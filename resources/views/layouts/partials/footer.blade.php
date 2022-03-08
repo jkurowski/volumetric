@@ -11,15 +11,16 @@
                 <div class="col-2">
                     <h5>Menu</h5>
                     <ul class="mb list-unstyled">
-                        <li><a href="/{{ $current_locale }}">Strona główna</a></li>
-                        <li><a href="">Poznajmy się</a></li>
-                        <li><a href="{{ route('investment.index') }}">W sprzedaży</a></li>
-                        <li><a href="{{ route('planned.index') }}">W przygotowaniu</a></li>
-                        <li><a href="{{ route('contact.index') }}">Kontakt</a></li>
+                        <li><a href="/{{ $current_locale }}">@lang('cms.menu-homepage')</a></li>
+                        <li><a href="">@lang('cms.menu-aboutus')</a></li>
+                        <li><a href="{{ route('investment.index') }}">@lang('cms.menu-investment')</a></li>
+                        <li><a href="{{ route('planned.index') }}">@lang('cms.menu-planned')</a></li>
+                        <li><a href="{{ route('contact.index') }}">@lang('cms.menu-contact')</a></li>
                     </ul>
                 </div>
+
                 <div class="col-3 ps-5">
-                    <h5>W sprzedaży</h5>
+                    <h5>@lang('cms.menu-investment')</h5>
                     <ul class="mb list-unstyled">
                         <li><a href="">Górnośląska 6</a></li>
                         <li><a href="">Dom na Stawem Koziorożca</a></li>
@@ -28,7 +29,7 @@
                     </ul>
                 </div>
                 <div class="col-3">
-                    <h5>Kontakt</h5>
+                    <h5>@lang('cms.menu-contact')</h5>
                     <ul class="mb list-unstyled">
                         <li><a href="tel:22 654 38 38">22 654 38 38</a></li>
                         <li><a href="tel:+48664130140">664 130 140</a></li>

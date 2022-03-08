@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Slider extends Model
+class Investment extends Model
 {
     /**
      * The attributes that are mass assignable.
@@ -12,13 +12,12 @@ class Slider extends Model
      * @var array
      */
     protected $fillable = [
-        'title',
-        'subtitle',
-        'file',
-        'file_alt',
-        'link',
-        'opacity',
-        'active',
-        'sort'
+        'status',
+        'name',
+        'address',
+        'city',
+        'entry_content',
+        'url',
+        'file_thumb'
     ];
 }

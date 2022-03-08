@@ -20,7 +20,7 @@ Route::middleware(['restrictIp'])->group(function () {
         return '<pre>' . \Artisan::output() . '</pre>';
     });
 
-    Route::group(['prefix' => '{locale?}', 'where' => ['locale' => '[a-z]{2}'],], function() {
+    Route::group(['prefix' => '{locale?}', 'where' => ['locale' => '(?!admin)*[a-z]{2}'],], function() {
         Route::group(['namespace' => 'Front'], function() {
             Route::get('/', 'IndexController@index')->name('index');
             Route::get('kontakt','ContactController@index')->name('contact.index');

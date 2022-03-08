@@ -7,10 +7,12 @@ return [
     | Investments list thumb
     |--------------------------------------------------------------------------
     */
-
-    'investment_thumb' => [
-        'width' => 1180,
-        'height' => 664
+    'investment' => [
+        'thumb_width' => 940,
+        'thumb_height' => 530,
+        'file_path' => 'uploads/investments/',
+        'thumb_file_path' => 'uploads/investments/thumbs/',
+        'preview_file_path' => 'uploads/investments/thumbs/',
     ],
 
     /*
@@ -91,8 +93,8 @@ return [
     'slider' => [
         'big_width' => 1920,
         'big_height' => 1080,
-        'thumb_width' => 200,
-        'thumb_height' => 113,
+        'thumb_width' => 248,
+        'thumb_height' => 140,
         'file_path' => 'uploads/slider/',
         'thumb_file_path' => 'uploads/slider/thumbs/',
         'preview_file_path' => 'uploads/slider/thumbs/',

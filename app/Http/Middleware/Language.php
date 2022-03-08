@@ -23,7 +23,10 @@ class Language
             app()->setLocale($locale);
             URL::defaults(['locale' => $locale]);
         } else {
-            return redirect('/'.app()->getLocale());
+
+            if($locale) {
+                return redirect('/'.app()->getLocale());
+            }
         }
 
         return $next($request);
