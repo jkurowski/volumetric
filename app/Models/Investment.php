@@ -16,6 +16,9 @@ class Investment extends Model
         'name',
         'address',
         'city',
+        'lat',
+        'lng',
+        'zoom',
         'entry_content',
         'url',
         'file_thumb'

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
+use App\Models\Investment;
 use App\Models\Page;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -17,8 +18,10 @@ class PlannedController extends Controller
     public function index()
     {
         $page = Page::where('id', 3)->first();
+        $investments = Investment::where('status', 1)->get();
 
         return view('front.planned.index', [
+            'investments' => $investments,
             'page' => $page
         ]);
     }

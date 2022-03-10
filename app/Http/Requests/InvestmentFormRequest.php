@@ -28,6 +28,9 @@ class InvestmentFormRequest extends FormRequest
             'name' => 'required|string|min:5|max:100',
             'address' => 'required',
             'city' => 'required',
+            'lat' => '',
+            'lng' => '',
+            'zoom' => '',
             'entry_content' => '',
             'url' => 'required'
         ];
