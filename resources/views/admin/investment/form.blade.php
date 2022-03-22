@@ -38,6 +38,8 @@
                             @include('form-elements.html-input-text', ['label' => 'Strona inwestycji', 'name' => 'url', 'value' => $entry->url, 'required' => 1])
                             @include('form-elements.html-input-text', ['label' => 'Krótki opis na liście', 'name' => 'entry_content', 'value' => $entry->entry_content])
                             @include('form-elements.html-input-file', ['label' => 'Miniaturka', 'sublabel' => '(wymiary: '.config('images.investment.thumb_width').'px / '.config('images.investment.thumb_height').'px)', 'name' => 'file_thumb', 'file' => $entry->file_thumb, 'file_preview' => config('images.investment.preview_file_path')])
+
+                            <input type="hidden" name="lang" value="{{$current_locale}}">
                         </div>
                     </div>
                 </div>

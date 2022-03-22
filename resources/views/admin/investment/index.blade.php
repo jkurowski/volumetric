@@ -19,6 +19,7 @@
                     <tr>
                         <th>#</th>
                         <th>Nazwa</th>
+                        <th>Tekst na liście</th>
                         <th class="text-center">Status</th>
                         <th>Data modyfikacji</th>
                         <th></th>
@@ -29,10 +30,13 @@
                         <tr id="recordsArray_{{ $p->id }}">
                             <th class="position" scope="row">{{ $index+1 }}</th>
                             <td>{{ $p->name }}</td>
+                            <td>{{ $p->entry_content }}</td>
                             <td><span class="badge inwest-list-status-{{ $p->status }}">{{ investmentStatus($p->status) }}</span></td>
                             <td>{{ $p->updated_at }}</td>
                             <td class="option-120">
                                 <div class="btn-group">
+                                    <a href="{{route('admin.developro.edit', ['developro' => $p->id, 'lang' => 'en'])}}" class="btn action-button lang-button me-1" data-toggle="tooltip" data-placement="top" title="Edytuj"><img src="{{ asset('/cms/flags/en.png') }}" alt="Tłumaczenie: en"></a>
+
                                     <a href="{{route('admin.developro.edit', $p->id)}}" class="btn action-button me-1" data-toggle="tooltip" data-placement="top" title="Edytuj"><i class="fe-edit"></i></a>
                                     <form method="POST" action="{{route('admin.developro.destroy', $p->id)}}">
                                         {{ csrf_field() }}

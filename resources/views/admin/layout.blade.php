@@ -51,28 +51,10 @@
                         <span> Inwestycje </span>
                     </a>
                 </li>
-                <li class="{{ Request::routeIs('admin.map.*') ? 'active' : '' }}">
-                    <a href="{{route('admin.map.index')}}">
-                        <i class="fe-map-pin"></i>
-                        <span> Mapa </span>
-                    </a>
-                </li>
                 <li class="{{ Request::routeIs('admin.greylist.*') ? 'active' : '' }}">
                     <a href="{{route('admin.greylist.index')}}">
                         <i class="fe-shield"></i>
                         <span> Blokada dostępu </span>
-                    </a>
-                </li>
-                <li class="{{ Request::routeIs('admin.gallery.*') ? 'active' : '' }}">
-                    <a href="{{route('admin.gallery.index')}}">
-                        <i class="fe-image"></i>
-                        <span> Galeria </span>
-                    </a>
-                </li>
-                <li class="{{ Request::routeIs('admin.article.*') ? 'active' : '' }}">
-                    <a href="{{route('admin.article.index')}}">
-                        <i class="fe-book-open"></i>
-                        <span> Aktualności </span>
                     </a>
                 </li>
                 <li class="{{ Request::routeIs('admin.slider.*') ? 'active' : '' }}">

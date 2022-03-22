@@ -4,12 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Activitylog\Traits\LogsActivity;
+use Spatie\Translatable\HasTranslations;
 
 class Article extends Model
 {
-    use LogsActivity;
+    use LogsActivity, HasTranslations;
 
     protected static $logName = 'Aktualności';
+    public $translatable = ['title'];
 
     /**
      * The attributes that are mass assignable.

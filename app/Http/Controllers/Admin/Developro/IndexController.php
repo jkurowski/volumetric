@@ -60,6 +60,11 @@ class IndexController extends Controller
 
     public function edit(int $id)
     {
+
+        if(request()->get('lang')) {
+            app()->setLocale(request()->get('lang'));
+        }
+
         return view('admin.investment.form', [
             'entry' => $this->repository->find($id),
             'cardTitle' => 'Edytuj inwestycję',
@@ -69,6 +74,11 @@ class IndexController extends Controller
 
     public function update(InvestmentFormRequest $request, int $id)
     {
+
+        if(request()->get('lang')) {
+            app()->setLocale(request()->get('lang'));
+        }
+
         $investment = $this->repository->find($id);
         $this->repository->update($request->validated(), $investment);
 

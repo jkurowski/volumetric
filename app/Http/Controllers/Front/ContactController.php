@@ -11,12 +11,10 @@ use Illuminate\Support\Facades\Mail;
 
 use App\Mail\MailSend;
 
-use App\Models\Property;
 use App\Models\Recipient;
 use App\Models\RodoRules;
 
 use App\Notifications\ContactNotification;
-use App\Notifications\PropertyNotification;
 
 class ContactController extends Controller
 {
@@ -28,18 +26,6 @@ class ContactController extends Controller
             'rules' => RodoRules::orderBy('sort')->whereStatus(1)->get(),
             'page' => $page
         ]);
-    }
-
-    function property(ContactFormRequest $request, $id)
-    {
-
-        Property::find($id)->notify(new PropertyNotification($request));
-        Mail::to(config('mail.from.address'))->send(new MailSend($request));
-
-        return redirect()->back()->with(
-            'success',
-            'Twoja wiadomość została wysłana. W najbliższym czasie skontaktujemy się z Państwem celem omówienia szczegółów!'
-        );
     }
 
     function send(ContactFormRequest $request, Recipient $recipient)

@@ -52,10 +52,10 @@ p, li {
 
 }
 h2, h3, h4 {
-    color:#333333;
-    font-weight: 600;
+    color:#000;
+    font-weight: 700;
 }
-h2 {font-size: 36px}
+h2 {font-size: 35px}
 h3 {font-size: 30px}
 h4 {font-size: 24px}
 h1 a, .h1 a, h2 a, .h2 a, h3 a, .h3 a, h4 a, .h4 a, h5 a, .h5 a, h6 a, .h6 a {
@@ -309,11 +309,6 @@ li:hover img {
             letter-spacing: 0.2em;
             text-transform: uppercase;
         }
-        p {
-            font-size: 16px;
-            line-height: 24px;
-            margin: 0;
-        }
         li {
             margin-top: 40px;
             padding-left: 100px;
@@ -325,8 +320,18 @@ li:hover img {
     a.bttn {
         margin:40px auto 0
     }
+    &.right {
+        right: 0;
+    }
 }
-
+.page-about,
+.offset-apla {
+    p {
+        font-size: 18px;
+        line-height: 32px;
+        margin: 0;
+    }
+}
 .page-planned #page {
     padding-bottom: 0;
 }
@@ -498,6 +503,31 @@ section {
     }
 }
 
+#paralaxa {
+    padding: 250px 0;
+    background: #222 url("http://volumetric.test/uploads/slider/222647_gornoslaska-6.jpg") no-repeat fixed center center;
+    background-size: cover;
+    position: relative;
+    p {
+        color:white;
+        font-size: 32px;
+        line-height: 45px;
+        position: relative;
+        z-index: 10;
+    }
+    &:after {
+        content: "";
+        background: rgba(0,0,0,0.8);
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        display: block;
+        z-index: 1;
+    }
+}
+
 /* Map
 ================================================== */
 #map {
@@ -525,10 +555,10 @@ section {
         margin: auto;
         z-index: 20;
         &.slick-next {
-            left:0
+            right:0
         }
         &.slick-prev {
-            right:0
+            left:0
         }
     }
 }

@@ -13,7 +13,7 @@
                     <div class="col-6 d-flex align-items-center justify-content-center">
                         <nav>
                             <a href="/{{ $current_locale }}">@lang('cms.menu-homepage')</a>
-                            <a href="">@lang('cms.menu-aboutus')</a>
+                            <a href="{{ route('about.index') }}">@lang('cms.menu-aboutus')</a>
                             <a href="{{ route('investment.index') }}">@lang('cms.menu-investment')</a>
                             <a href="{{ route('planned.index') }}">@lang('cms.menu-planned')</a>
                             <a href="{{ route('contact.index') }}">@lang('cms.menu-contact')</a>
