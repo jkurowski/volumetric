@@ -136,7 +136,7 @@
                                     </div>
                                 </div>
                                 <div class="col-4 ps-5">
-                                    <img src="https://placehold.co/400x600" alt="">
+                                    <img src="{{asset('images/kontakt.jpg') }}" alt="@lang('cms.contactbox-title')">
                                 </div>
                             </div>
                         </div>

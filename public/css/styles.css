@@ -698,7 +698,14 @@ li:hover img {
 }
 .offset-absolute .offset-apla li {
   margin-top: 40px;
-  padding-left: 100px;
+  padding-left: 120px;
+  position: relative;
+}
+.offset-absolute .offset-apla svg {
+  width: 92px;
+  position: absolute;
+  left: 0;
+  top: 5px;
 }
 .offset-absolute .section-header {
   margin-bottom: 80px;
@@ -709,8 +716,13 @@ li:hover img {
 .offset-absolute.right {
   right: 0;
 }
-.page-about p,
 .offset-apla p {
+  font-size: 16px;
+  line-height: 24px;
+  margin: 0;
+}
+.page-about p,
+.page-about .offset-apla p {
   font-size: 18px;
   line-height: 32px;
   margin: 0;
