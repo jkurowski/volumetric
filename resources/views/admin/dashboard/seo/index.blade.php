@@ -75,8 +75,9 @@
                                     </div>
                                 </div>
                             </div>
-                            @include('form-elements.html-input-file', ['label' => 'Favicon', 'sublabel' => '(wymiary: 16 px / 16 px)', 'name' => 'page_favicon', 'value' => settings()->get("page_favicon")])
-                            @include('form-elements.html-input-file', ['label' => 'Logo', 'sublabel' => '(wymiary: 40 px / 200 px)', 'name' => 'page_logo', 'value' => settings()->get("page_logo")])
+                            @include('form-elements.html-input-file', ['label' => 'Favicon', 'sublabel' => '(wymiary: 16 px / 16 px)', 'name' => 'page_favicon', 'value' => settings()->get("page_favicon"), 'file' => '', 'file_preview' => ''])
+                            @include('form-elements.html-input-file', ['label' => 'Logo', 'sublabel' => '(wymiary: 40 px / 200 px)', 'name' => 'page_logo', 'value' => settings()->get("page_logo"), 'file' => '', 'file_preview' => ''])
+
                             @include('form-elements.input-text', ['label' => 'Logo - atrybut ALT', 'name' => 'page_logo_alt', 'value' => settings()->get("page_logo_alt")])
                             @include('form-elements.input-text', ['label' => 'Logo - atrybut Title', 'name' => 'page_logo_title', 'value' => settings()->get("page_logo_title")])
 

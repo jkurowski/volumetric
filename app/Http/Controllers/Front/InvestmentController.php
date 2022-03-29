@@ -19,10 +19,8 @@ class InvestmentController extends Controller
     public function index()
     {
         $page = Page::where('id', 2)->first();
-        $investments = Investment::where('status', 1)->get();
 
         return view('front.investment.index', [
-            'investments' => $investments,
             'page' => $page
         ]);
     }

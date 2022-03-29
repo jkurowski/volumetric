@@ -37,7 +37,7 @@ class ContactController extends Controller
         (new RodoClient)->saveOrCreate($request);
         return redirect()->back()->with(
             'success',
-            'Twoja wiadomość została wysłana. W najbliższym czasie skontaktujemy się z Państwem celem omówienia szczegółów!'
+            trans('cms.emailsend-thanks')
         );
     }
 }

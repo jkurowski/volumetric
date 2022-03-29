@@ -1,4 +1,4 @@
-<div id="page-header">
+<div id="page-header" @if($page->file) style="background: url({{ asset('/uploads/pages/headers/'.$page->file) }}) no-repeat top center" @endif>
     <div class="container">
         <div class="row">
             <div class="col-12">

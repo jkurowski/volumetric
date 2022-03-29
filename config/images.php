@@ -10,9 +10,13 @@ return [
     'investment' => [
         'thumb_width' => 940,
         'thumb_height' => 530,
+        'carousel_width' => 386,
+        'carousel_height' => 450,
         'file_path' => 'uploads/investments/',
         'thumb_file_path' => 'uploads/investments/thumbs/',
+        'carousel_file_path' => 'uploads/investments/carousel/',
         'preview_file_path' => 'uploads/investments/thumbs/',
+        'preview_carousel_path' => 'uploads/investments/carousel/',
     ],
 
     /*
@@ -108,10 +112,13 @@ return [
     'gallery' => [
         'big_width' => 1820,
         'big_height' => 1150,
-        'thumb_width' => 400,
-        'thumb_height' => 400,
+        'thumb_width' => 386,
+        'thumb_height' => 464,
+        'thumb_width_2' => 386,
+        'thumb_height_2' => 217,
         'file_path' => 'uploads/gallery/images/',
         'thumb_file_path' => 'uploads/gallery/images/thumbs/',
+        'thumb_file_path_2' => 'uploads/gallery/images/thumbs2/',
         'preview_file_path' => 'uploads/gallery/images/thumbs/',
     ],
     /*
@@ -125,5 +132,17 @@ return [
         'height' => 120,
         'file_path' => 'uploads/boxes/',
         'preview_file_path' => 'uploads/boxes/'
+    ],
+    /*
+    |--------------------------------------------------------------------------
+    | Pages
+    |--------------------------------------------------------------------------
+    */
+
+    'page' => [
+        'header_width' => 2560,
+        'header_height' => 470,
+        'file_path' => 'uploads/pages/headers/',
+        'preview_file_path' => 'uploads/pages/headers/'
     ],
 ];

@@ -22,18 +22,23 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-12">
-                            @include('form-elements.html-select', ['label' => 'Status', 'name' => 'active', 'selected' => $entry->active, 'select' => ['1' => 'Aktywny', '2' => 'Nieaktywny']])
-                            @include('form-elements.html-select', ['label' => 'Wyciemnienie zdjęcia', 'name' => 'opacity', 'selected' => $entry->opacity, 'select' => [
-                                '0' => '0',
-                                '0.2' => '0.2',
-                                '0.4' => '0.4',
-                                '0.6' => '0.6',
-                                '0.8' => '0.8',
-                                '1.0' => '1',
-                            ]])
+                            @if(!Request::get('lang'))
+                                @include('form-elements.html-select', ['label' => 'Status', 'name' => 'active', 'selected' => $entry->active, 'select' => ['1' => 'Aktywny', '2' => 'Nieaktywny']])
+                                @include('form-elements.html-select', ['label' => 'Wyciemnienie zdjęcia', 'name' => 'opacity', 'selected' => $entry->opacity, 'select' => [
+                                    '0' => '0',
+                                    '0.2' => '0.2',
+                                    '0.4' => '0.4',
+                                    '0.6' => '0.6',
+                                    '0.8' => '0.8',
+                                    '1.0' => '1',
+                                ]])
+                            @endif
+
                             @include('form-elements.html-input-text', ['label' => 'Nazwa', 'name' => 'title', 'value' => $entry->title, 'required' => 1])
                             @include('form-elements.html-input-text', ['label' => 'Sub-nazwa', 'name' => 'subtitle', 'value' => $entry->subtitle, 'required' => 1])
-                            @include('form-elements.html-input-file', ['label' => 'Zdjęcie', 'sublabel' => '(wymiary: '.config('images.slider.big_width').'px / '.config('images.slider.big_height').'px)', 'name' => 'file', 'file' => $entry->file, 'file_preview' => config('images.slider.preview_file_path')])
+                            @if(!Request::get('lang'))
+                                @include('form-elements.html-input-file', ['label' => 'Zdjęcie', 'sublabel' => '(wymiary: '.config('images.slider.big_width').'px / '.config('images.slider.big_height').'px)', 'name' => 'file', 'file' => $entry->file, 'file_preview' => config('images.slider.preview_file_path')])
+                            @endif
                             @include('form-elements.html-input-text-count', ['label' => 'Atrybut ALT zdjęcia', 'name' => 'file_alt', 'value' => $entry->file_alt, 'maxlength' => 100])
                             @include('form-elements.html-input-text', ['label' => 'CTA link', 'name' => 'link', 'value' => $entry->link])
                         </div>
@@ -41,6 +46,8 @@
                 </div>
             </div>
         </div>
+
+        <input type="hidden" name="lang" value="{{$current_locale}}">
         @include('form-elements.submit', ['name' => 'submit', 'value' => 'Zapisz'])
     </form>
 @endsection

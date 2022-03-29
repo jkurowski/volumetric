@@ -53,7 +53,7 @@
                     @include('form-elements.html-input-text-count', ['label' => '<code class="d-block">og:title</code><span>ilość znaków: 60 - 90</span>', 'name' => 'og_title', 'value' => settings()->get("og_title"), 'maxlength' => 90])
                     @include('form-elements.html-input-text-count', ['label' => '<code class="d-block">og:description</code><span>ilość znaków: 180 - 200</span>', 'name' => 'og_description', 'value' => settings()->get("og_description"), 'maxlength' => 200])
                     @include('form-elements.html-input-text', ['label' => '<code class="d-block">og:type</code><span>website, blog, company</span>', 'name' => 'og_type', 'value' => settings()->get("og_type")])
-                    @include('form-elements.html-input-file', ['label' => '<code class="d-block">og:file</code>', 'sublabel' => '(wymiary: 600 px / 314 px)', 'name' => 'og_file', 'value' => settings()->get("og_file")])
+                    @include('form-elements.html-input-file', ['label' => '<code class="d-block">og:file</code>', 'sublabel' => '(wymiary: 600 px / 314 px)', 'name' => 'og_file', 'value' => settings()->get("og_file"), 'file' => '', 'file_preview' => ''])
                 </div>
 
                 <div class="form-group row">

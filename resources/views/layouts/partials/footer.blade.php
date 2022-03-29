@@ -5,14 +5,15 @@
                 <div class="col-3">
                     <img src="{{asset('images/logo-volumetric.png') }}" alt="Nowe mieszkania deweloperskie Warszawa – Volumetric Polska Sp. z o.o.">
                     <p>Volumetric Polska Sp. z o. o.</p>
-                    <p>Grup Volumetric SL jest holdingiem, którego wiodącą działalnością jest budownictwo deweloperskie.</p>
+                    <p class="small">00-121 Warszawa, ul. Sienna 39, Kapitał podstawowy 12.000.000 PLN, NIP 527-24-89-354, KRS 0000245576, Sąd Rejonowy dla M. St. Warszawy w Warszawie VII Wydział Gospodarczy Krajowego Rejestru Sądowego
+                    </p>
                 </div>
                 <div class="col"></div>
                 <div class="col-2">
                     <h5>Menu</h5>
                     <ul class="mb list-unstyled">
                         <li><a href="/{{ $current_locale }}">@lang('cms.menu-homepage')</a></li>
-                        <li><a href="">@lang('cms.menu-aboutus')</a></li>
+                        <li><a href="{{ route('about.index') }}">@lang('cms.menu-aboutus')</a></li>
                         <li><a href="{{ route('investment.index') }}">@lang('cms.menu-investment')</a></li>
                         <li><a href="{{ route('planned.index') }}">@lang('cms.menu-planned')</a></li>
                         <li><a href="{{ route('contact.index') }}">@lang('cms.menu-contact')</a></li>
@@ -22,10 +23,9 @@
                 <div class="col-3 ps-5">
                     <h5>@lang('cms.menu-investment')</h5>
                     <ul class="mb list-unstyled">
-                        <li><a href="">Górnośląska 6</a></li>
-                        <li><a href="">Dom na Stawem Koziorożca</a></li>
-                        <li><a href="">Szczęśliwicka 42</a></li>
-                        <li><a href="">Przy Bażantarni</a></li>
+                        @foreach($investments as $investment)
+                            <li><a href="{{ $investment->url }}" target="_blank">{{ $investment->name }}</a></li>
+                        @endforeach
                     </ul>
                 </div>
                 <div class="col-3">

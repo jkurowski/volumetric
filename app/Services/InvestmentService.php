@@ -38,4 +38,27 @@ class InvestmentService
 
         $model->update(['file_thumb' => $name]);
     }
+
+    public function uploadCarousel(string $title, UploadedFile $file, object $model, bool $delete = false)
+    {
+
+        if ($delete) {
+            if (File::isFile(public_path(config('images.investment.carousel_file_path') . $model->file_carousel))) {
+                File::delete(public_path(config('images.investment.carousel_file_path') . $model->file_carousel));
+            }
+        }
+
+        $name = date('His').'_'.Str::slug($title).'.' . $file->getClientOriginalExtension();
+        $file->storeAs('investments/carousel', $name, 'public_uploads');
+
+        $filepath = public_path(config('images.investment.carousel_file_path') . $name);
+
+        Image::make($filepath)
+            ->fit(
+                config('images.investment.carousel_width'),
+                config('images.investment.carousel_height')
+            )->save($filepath);
+
+        $model->update(['file_carousel' => $name]);
+    }
 }

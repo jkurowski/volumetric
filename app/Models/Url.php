@@ -4,10 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Kalnoy\Nestedset\NodeTrait;
+use Spatie\Translatable\HasTranslations;
 
 class Url extends Model
 {
     use NodeTrait;
+
+    use HasTranslations;
+    public $translatable = ['title', 'content', 'content_header', 'meta_title', 'meta_description'];
 
     /**
      * The table associated with the model.
@@ -29,6 +33,7 @@ class Url extends Model
         'uri',
         'url',
         'url_target',
+        'file',
         'content_header',
         'meta_title',
         'meta_description',

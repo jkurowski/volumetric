@@ -3,17 +3,6 @@
 @section('content')
     <div class="container-fluid">
         <div class="card">
-            <div class="card-head container-fluid">
-                <div class="row">
-                    <div class="col-6 pl-0">
-                        <h4 class="page-title row"><i class="fe-file-text"></i>Menu</h4>
-                    </div>
-                    <div class="col-6 d-flex justify-content-end align-items-center form-group-submit">
-                        <a href="{{route('admin.page.create')}}" class="me-3 btn btn-primary">Dodaj stronę</a>
-                        <a href="{{route('admin.url.create')}}" class="btn btn-primary">Dodaj link</a>
-                    </div>
-                </div>
-            </div>
             <div class="table-overflow">
                 @if (session('success'))
                     <div class="alert alert-success border-0 mb-0">
@@ -25,6 +14,7 @@
                     <thead class="thead-default">
                     <tr>
                         <th>Nazwa</th>
+                        <th>Nagłówek</th>
                         <th class="text-center">Status</th>
                         <th class="text-center">Typ</th>
                         <th>Ścieżka</th>
@@ -36,6 +26,7 @@
                         @foreach($list as $page)
                             <tr>
                                 <td>{{$page->title}}</td>
+                                <td>@if($page->file)<img src="/uploads/pages/headers/{{ $page->file }}" alt="{{ $page->title }}" style="border-radius: 5px;width: 330px">@endif</td>
                                 <td class="text-center">{!! status($page->active) !!}</td>
                                 <td class="text-center">{!! page_type($page->type) !!}</td>
                                 @if($page->type == 1)
@@ -46,11 +37,12 @@
                                 <td class="text-center">{{$page->created_at->format('Y-m-d H:i')}}</td>
                                 <td class="option-120">
                                     <div class="btn-group">
-                                        @if($page->type == 1)
-                                        <a href="{{ settings()->get("page_url") }}/pl/{{$page->uri}}" class="btn action-button me-1" data-toggle="tooltip" data-placement="top" title="Otwórz stronę" target="_blank"><i class="fe-link"></i></a>
+
+                                    @if($page->type == 1)
+                                        <a href="{{route('admin.page.edit', ['page' => $page->id, 'lang' => 'en'])}}" class="btn action-button lang-button me-1" data-toggle="tooltip" data-placement="top" title="Edytuj"><img src="{{ asset('/cms/flags/en.png') }}" alt="Tłumaczenie: en"></a>
                                         <a href="{{route('admin.page.edit', $page->id)}}" class="btn action-button me-1" data-toggle="tooltip" data-placement="top" title="Edytuj"><i class="fe-edit"></i></a>
                                         @else
-                                        <a href="{{$page->url}}" class="btn action-button me-1" data-toggle="tooltip" data-placement="top" title="Otwórz stronę" target="_blank"><i class="fe-link"></i></a>
+                                        <a href="{{route('admin.url.edit', ['url' => $page->id, 'lang' => 'en'])}}" class="btn action-button lang-button me-1" data-toggle="tooltip" data-placement="top" title="Edytuj"><img src="{{ asset('/cms/flags/en.png') }}" alt="Tłumaczenie: en"></a>
                                         <a href="{{route('admin.url.edit', $page->id)}}" class="btn action-button me-1" data-toggle="tooltip" data-placement="top" title="Edytuj"><i class="fe-edit"></i></a>
                                         @endif
                                         <form method="POST" action="{{route('admin.page.destroy', $page->id)}}">
@@ -67,16 +59,6 @@
                         @endforeach
                     </tbody>
                 </table>
-            </div>
-        </div>
-    </div>
-    <div class="form-group form-group-submit">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-12 d-flex justify-content-end">
-                    <a href="{{route('admin.page.create')}}" class="me-3 btn btn-primary">Dodaj stronę</a>
-                    <a href="{{route('admin.url.create')}}" class="btn btn-primary">Dodaj link</a>
-                </div>
             </div>
         </div>
     </div>

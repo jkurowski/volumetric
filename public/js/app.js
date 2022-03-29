@@ -51,6 +51,8 @@ $(document).ready(function () {
             fi.classList.remove("filled");
         }
     }
+// Lightbox
+    $( '.swipebox' ).swipebox({useSVG : false});
 
 // Menu
     let $header = $('#header');

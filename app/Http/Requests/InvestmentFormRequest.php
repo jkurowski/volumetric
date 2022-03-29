@@ -28,6 +28,8 @@ class InvestmentFormRequest extends FormRequest
             'name' => 'required|string|min:5|max:100',
             'address' => 'required',
             'city' => 'required',
+            'deadline' => '',
+            'start_date' => '',
             'lat' => '',
             'lng' => '',
             'zoom' => '',
@@ -44,6 +46,10 @@ class InvestmentFormRequest extends FormRequest
     public function messages()
     {
         return [
+            'address.required' => 'To pole jest wymagane',
+            'city.required' => 'To pole jest wymagane',
+            'url.required' => 'To pole jest wymagane',
+            'deadline.required' => 'To pole jest wymagane',
             'name.required' => 'To pole jest wymagane',
             'name.max.string' => 'Maksymalna ilość znaków: 100',
             'name.min.string' => 'Minimalna ilość znaków: 5'

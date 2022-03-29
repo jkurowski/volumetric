@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Investment;
 use Request;
 use Illuminate\Support\ServiceProvider;
 use Spatie\Activitylog\Models\Activity;
@@ -76,6 +77,7 @@ class AppServiceProvider extends ServiceProvider
         view()->composer('*', function ($view) {
             $view->with('current_locale', app()->getLocale());
             $view->with('available_locales', config('app.available_locales'));
+            $view->with('investments', Investment::where('status', 1)->get());
         });
 
         Image::observe(ImageObserver::class);

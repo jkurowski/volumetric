@@ -47,7 +47,7 @@
                                 <td>{{ $p->updated_at }}</td>
                                 <td class="option-120">
                                     <div class="btn-group">
-                                        <a href="{{route('admin.inbox.show', $p->id)}}" class="btn action-button mr-1" data-toggle="tooltip"data-placement="top" title="Pokaż wiadomość"><i class="fe-mail"></i></a>
+                                        <a href="{{route('admin.inbox.show', $p->id)}}" class="btn action-button me-1" data-toggle="tooltip"data-placement="top" title="Pokaż wiadomość"><i class="fe-mail"></i></a>
                                         <form method="POST" action="">
                                             {{ csrf_field() }}
                                             {{ method_field('DELETE') }}

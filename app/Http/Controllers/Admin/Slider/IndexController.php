@@ -61,6 +61,11 @@ class IndexController extends Controller
 
     public function edit(int $id)
     {
+
+        if(request()->get('lang')) {
+            app()->setLocale(request()->get('lang'));
+        }
+
         return view('admin.slider.form', [
             'entry' => $this->repository->find($id),
             'cardTitle' => 'Edytuj obrazek',
@@ -70,6 +75,11 @@ class IndexController extends Controller
 
     public function update(SliderFormRequest $request, Slider $slider)
     {
+
+        if(request()->get('lang')) {
+            app()->setLocale(request()->get('lang'));
+        }
+
         $this->repository->update($request->validated(), $slider);
 
         if ($request->hasFile('file')) {

@@ -24,6 +24,7 @@
                     <h2>{{ $investment->name }}</h2>
                 </div>
                 <p class="text-center mb-4">{{ $investment->address }}</p>
+                @if($investment->start_date)<p class="text-center mb-4"><b>{{ $investment->start_date }}</b></p>@endif
                 <p class="text-center">{{ $investment->entry_content }}</p>
             </div>
         </div>

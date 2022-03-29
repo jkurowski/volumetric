@@ -11,7 +11,7 @@
         <div class="container">
             <div class="row flex-row-reverse position-relative">
                 <div class="col-6">
-                    <img src="https://placehold.co/796x840" alt="">
+                    <img src="{{ asset('/uploads/inline/volumetric-to-my.jpg') }}" alt="Zdjęcie grupowe Volumetric">
                 </div>
                 <div class="col-7 position-absolute pr-0 offset-absolute d-flex align-items-center">
                     <div class="offset-apla">
@@ -19,7 +19,8 @@
                             <span>POZNAJMY SIĘ</span>
                             <h2>Volumetric to My</h2>
                         </div>
-                        <p>Nie jesteśmy dużą korporacją – jesteśmy spółką, częścią Grup Volumetric, rodzinnego holdingu z siedzibą w Mataró nieopodal Barcelony.</p>
+                        <p>Nasz warszawski zespół nie jest dużą korporacją – jesteśmy spółką deweloperską, częścią <a
+                                href="https://volumetric.es/" target="_blank" rel="nofollow">Grup Volumetric</a>, rodzinnego holdingu z siedzibą w Mataró nieopodal Barcelony.</p>
                         <p>&nbsp;</p>
                         <p>Wiemy, jak ważna jest dla naszych klientów niezależność oraz własna przestrzeń, dlatego staramy się sprostać ich oczekiwaniom i zapewniamy najwyższą jakość naszych usług.</p>
                     </div>
@@ -32,8 +33,8 @@
         <div class="container">
             <div class="row d-flex justify-content-center">
                 <div class="col-6 text-center">
-                    <h2 class="mb-4">13 lat współpracy</h2>
-                    <p>Specjalizujemy się głównie w budownictwie deweloperskim, a swoją stabilną pozycję na rynku budowaliśmy przez ponad 13 lat. W tym czasie stworzyliśmy już wiele mieszkań i domów dla naszych klientów, między innymi w Warszawie, Kielcach oraz Markach.</p>
+                    <h2 class="mb-4">16 lat współpracy</h2>
+                    <p>Specjalizujemy się głównie w budownictwie mieszkaniowym wielorodzinnym, a swoją stabilną pozycję na rynku budujemy już od 2006 roku. W tym czasie stworzyliśmy już wiele mieszkań i domów dla naszych klientów, między innymi w Warszawie, Kielcach oraz Markach.</p>
                 </div>
             </div>
         </div>
@@ -60,7 +61,7 @@
         <div class="container">
             <div class="row position-relative">
                 <div class="col-6">
-                    <img src="https://placehold.co/796x840" alt="">
+                    <img src="{{ asset('/uploads/inline/nasze-wartosci-volumetric.jpg') }}" alt="Zdjęcie grupowe Volumetric">
                 </div>
                 <div class="col-7 position-absolute right pr-0 offset-absolute d-flex align-items-center">
                     <div class="offset-apla">
@@ -80,7 +81,7 @@
             <div class="container">
                 <div class="row d-flex justify-content-center">
                     <div class="col-7 text-center">
-                        <p>Jesteśmy od kilku lat członkiem Polskiego Związku Firm Deweloperskich i przestrzegamy zasad Kodeksu Dobrych Praktyk, zaakceptowanego przez Urząd Ochrony Konkurencji i Konsumentów.</p>
+                        <p>Jesteśmy członkiem <a href="https://pzfd.pl/strona-glowna/" target="_blank" rel="nofollow">Polskiego Związku Firm Deweloperskich</a> i przestrzegamy zasad Kodeksu Dobrych Praktyk, zaakceptowanego przez Urząd Ochrony Konkurencji i Konsumentów.</p>
                     </div>
                 </div>
             </div>
@@ -89,17 +90,33 @@
 
     <section class="pt-0">
         <div class="container">
-            <div class="row flex-row-reverse position-relative">
-                <div class="col-6">
-                    <img src="https://placehold.co/796x840" alt="">
-                </div>
-                <div class="col-7 position-absolute pr-0 offset-absolute d-flex align-items-center">
-                    <div class="offset-apla">
+            <div class="row d-flex justify-content-center">
+                <div class="col-7">
+                    <div class="offset-apla offset-absolute">
                         <div class="section-header text-center">
                             <span>VOLUMETRIC</span>
                             <h2>Działalność społeczna</h2>
                         </div>
-                        <p>Donec efficitur nisi nisi, ac sagittis neque suscipit et. Nam bibendum velit tortor, non tristique dolor rutrum non. Aenean vehicula libero ac lacus fringilla, at pulvinar dui egestas. Nam malesuada vel quam eu hendrerit. Phasellus scelerisque non ex quis viverra. Nullam faucibus et erat quis gravida. Fusce mollis purus eu nulla faucibus fermentum. Interdum et malesuada fames ac ante ipsum primis in faucibus. Ut in mattis sapien. Duis non felis lacinia purus posuere pulvinar non nec purus.</p>
+                        <div class="text-justify">
+                            <p>Mamy otwarte serca i jesteśmy wrażliwy na potrzeby innych - małych i dużych. W miarę możliwości angażujemy się zarówno jako firma jak i osobiście w akcje wspierające ważne inicjatywy.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-5">
+                <div class="col-4">
+                    <div class="p-4">
+                        <a href="{{ asset('/uploads/inline/ds-1.jpg') }}" class="swipebox"><img src="{{ asset('/uploads/inline/ds-1-thumb.jpg') }}" alt="Pomoc społeczna"></a>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="p-4">
+                        <a href="{{ asset('/uploads/inline/ds-2.jpg') }}" class="swipebox"><img src="{{ asset('/uploads/inline/ds-2-thumb.jpg') }}" alt="Pomoc społeczna"></a>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="p-4">
+                        <a href="{{ asset('/uploads/inline/ds-3.jpg') }}" class="swipebox"><img src="{{ asset('/uploads/inline/ds-3-thumb.jpg') }}" alt="Pomoc społeczna"></a>
                     </div>
                 </div>
             </div>
@@ -125,14 +142,10 @@
                                             <li><span class="square-icon"><img src="{{asset('svg/phone-icon.svg') }}" class="phone-svg-icon" alt="Numer telefonu"></span><a href="tel:664130140">664 130 140</a></li>
                                             <li><span class="square-icon"><img src="{{asset('svg/envelope-icon.svg') }}" class="envelope-svg-icon" alt="Numer telefonu"></span><a href="mailto:biuro@volumetric.pl">biuro@volumetric.pl</a></li>
                                         </ul>
-
-                                        <div class="d-flex justify-content-center">
-                                            <a href="" class="bttn">@lang('cms.gotoform-button')</a>
-                                        </div>
                                     </div>
                                 </div>
                                 <div class="col-4 ps-5">
-                                    <img src="https://placehold.co/400x600" alt="">
+                                    <img src="{{asset('images/kontakt.jpg') }}" alt="@lang('cms.contactbox-title')">
                                 </div>
                             </div>
                         </div>

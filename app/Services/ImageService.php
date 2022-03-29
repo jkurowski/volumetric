@@ -26,17 +26,27 @@ class ImageService
 
         $filepath = public_path(config('images.gallery.file_path') . $name);
         $thumb_filepath = public_path(config('images.gallery.thumb_file_path') . $name);
+        $thumb_filepath_2 = public_path(config('images.gallery.thumb_file_path_2') . $name);
 
         ImageManager::make($filepath)
-            ->fit(
+            ->resize(
                 config('images.gallery.big_width'),
-                config('images.gallery.big_height')
+                config('images.gallery.big_height'), function ($constraint) {
+                $constraint->aspectRatio();
+            }
             )->save($filepath);
+
         ImageManager::make($filepath)
             ->fit(
                 config('images.gallery.thumb_width'),
                 config('images.gallery.thumb_height')
             )->save($thumb_filepath);
+
+        ImageManager::make($filepath)
+            ->fit(
+                config('images.gallery.thumb_width_2'),
+                config('images.gallery.thumb_height_2')
+            )->save($thumb_filepath_2);
 
         $model->update([
             'file' => $name,

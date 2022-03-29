@@ -29,7 +29,6 @@
                                     <img class="img-fluid" src="/uploads/gallery/images/thumbs/{{$p->file}}" alt="{{ $p->name }}">
                                     <div class="card-body">
                                         <div class="btn-group">
-                                            <a href="{{route('admin.image.edit', $p->id)}}" class="btn action-button action-small me-1" data-toggle="tooltip" data-placement="top" title="Edytuj zdjęcie"><i class="fe-edit"></i></a>
                                             <a href="" class="btn action-button move-button action-small me-1"><i class="fe-move"></i></a>
                                             <form method="POST" action="{{route('admin.image.destroy', $p->id)}}">
                                                 {{ csrf_field() }}

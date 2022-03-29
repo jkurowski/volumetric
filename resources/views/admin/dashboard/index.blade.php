@@ -16,7 +16,6 @@
                     <a class="nav-link {{ Request::routeIs('admin.dashboard.seo.index') ? 'active' : '' }}" href="{{ route('admin.dashboard.seo.index') }}"><span class="fe-globe"></span> Główne ustawienia</a>
                     <a class="nav-link {{ Request::routeIs('admin.dashboard.social.index') ? ' active' : '' }}" href="{{ route('admin.dashboard.social.index') }}"><span class="fe-hash"></span> Social Media</a>
                     <a class="nav-link {{ Request::routeIs('admin.logs.*') ? 'active' : '' }}" href="{{route('admin.logs.index')}}"><span class="fe-hard-drive"></span> Logi PA</a>
-                    <a class="nav-link {{ Request::routeIs('admin.tracker.errors') ? 'active' : '' }}" href="{{route('admin.tracker.errors')}}"><span class="fe-alert-circle"></span> Błędy</a>
                 </nav>
             </div>
 

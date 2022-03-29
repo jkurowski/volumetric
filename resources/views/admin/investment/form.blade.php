@@ -19,26 +19,36 @@
                 @include('form-elements.back-route-button')
                 <div class="card-body">
                     <div class="row">
-                        <div class="col-12 pb-5"><div id="map"></div></div>
+                        @if(!Request::get('lang'))
+                            <div class="col-12 pb-5"><div id="map"></div></div>
+                        @endif
                         <div class="col-12">
-                            @include('form-elements.html-select', [
-                                'label' => 'Status inwestycji',
-                                'name' => 'status',
-                                'selected' => $entry->status,
-                                'select' => [
-                                    '1' => 'Inwestycja w sprzedaży',
-                                    '3' => 'Inwestycja planowana'
-                            ]])
+                            @if(!Request::get('lang'))
+                                @include('form-elements.html-select', [
+                                    'label' => 'Status inwestycji',
+                                    'name' => 'status',
+                                    'selected' => $entry->status,
+                                    'select' => [
+                                        '1' => 'Inwestycja w sprzedaży',
+                                        '3' => 'Inwestycja planowana'
+                                ]])
+                            @endif
                             @include('form-elements.html-input-text', ['label' => 'Nazwa inwestycji', 'name' => 'name', 'value' => $entry->name, 'required' => 1])
+                            @include('form-elements.html-input-text', ['label' => 'Termin oddania', 'name' => 'deadline', 'value' => $entry->deadline])
+                            @include('form-elements.html-input-text', ['label' => 'Termin rozpoczęcia', 'name' => 'start_date', 'value' => $entry->start_date])
                             @include('form-elements.html-input-text', ['label' => 'Adres inwestycji', 'name' => 'address', 'value' => $entry->address, 'required' => 1])
-                            @include('form-elements.html-input-text', ['label' => 'Szerokość geograficzna', 'name' => 'lat', 'value' => $entry->lat, 'required' => 1])
-                            @include('form-elements.html-input-text', ['label' => 'Długość geograficzna', 'name' => 'lng', 'value' => $entry->lng, 'required' => 1])
-                            @include('form-elements.html-input-text', ['label' => 'Zoom', 'name' => 'zoom', 'value' => $entry->zoom, 'required' => 1])
+                                @if(!Request::get('lang'))
+                                @include('form-elements.html-input-text', ['label' => 'Szerokość geograficzna', 'name' => 'lat', 'value' => $entry->lat, 'required' => 1])
+                                @include('form-elements.html-input-text', ['label' => 'Długość geograficzna', 'name' => 'lng', 'value' => $entry->lng, 'required' => 1])
+                                @include('form-elements.html-input-text', ['label' => 'Zoom', 'name' => 'zoom', 'value' => $entry->zoom, 'required' => 1])
+                            @endif
                             @include('form-elements.html-input-text', ['label' => 'Miasto inwestycji', 'name' => 'city', 'value' => $entry->city, 'required' => 1])
                             @include('form-elements.html-input-text', ['label' => 'Strona inwestycji', 'name' => 'url', 'value' => $entry->url, 'required' => 1])
                             @include('form-elements.html-input-text', ['label' => 'Krótki opis na liście', 'name' => 'entry_content', 'value' => $entry->entry_content])
-                            @include('form-elements.html-input-file', ['label' => 'Miniaturka', 'sublabel' => '(wymiary: '.config('images.investment.thumb_width').'px / '.config('images.investment.thumb_height').'px)', 'name' => 'file_thumb', 'file' => $entry->file_thumb, 'file_preview' => config('images.investment.preview_file_path')])
-
+                            @if(!Request::get('lang'))
+                                @include('form-elements.html-input-file', ['label' => 'Miniaturka', 'sublabel' => '(wymiary: '.config('images.investment.thumb_width').'px / '.config('images.investment.thumb_height').'px)', 'name' => 'file_thumb', 'file' => $entry->file_thumb, 'file_preview' => config('images.investment.preview_file_path')])
+                                @include('form-elements.html-input-file', ['label' => 'Karuzela', 'sublabel' => '(wymiary: '.config('images.investment.carousel_width').'px / '.config('images.investment.carousel_height').'px)', 'name' => 'file_carousel', 'file' => $entry->file_carousel, 'file_preview' => config('images.investment.preview_carousel_path')])
+                            @endif
                             <input type="hidden" name="lang" value="{{$current_locale}}">
                         </div>
                     </div>

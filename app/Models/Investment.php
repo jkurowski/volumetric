@@ -9,7 +9,7 @@ class Investment extends Model
 {
 
     use HasTranslations;
-    public $translatable = ['name', 'city', 'entry_content'];
+    public $translatable = ['name', 'deadline', 'start_date', 'city', 'entry_content'];
 
     /**
      * The attributes that are mass assignable.
@@ -21,11 +21,14 @@ class Investment extends Model
         'name',
         'address',
         'city',
+        'deadline',
+        'start_date',
         'lat',
         'lng',
         'zoom',
         'entry_content',
         'url',
-        'file_thumb'
+        'file_thumb',
+        'file_carousel'
     ];
 }

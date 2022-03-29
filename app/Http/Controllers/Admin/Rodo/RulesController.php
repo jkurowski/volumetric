@@ -3,14 +3,21 @@
 namespace App\Http\Controllers\Admin\Rodo;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\RodoRulesFormRequest;
 
-use Illuminate\Support\Facades\Session;
-
+// CMS
 use App\Models\RodoRules;
+use App\Http\Requests\RodoRulesFormRequest;
+use App\Repositories\RodoRuleRepository;
 
 class RulesController extends Controller
 {
+    private $repository;
+
+    public function __construct(RodoRuleRepository $repository)
+    {
+        $this->repository = $repository;
+    }
+
     public function index()
     {
         return view('admin.rodo_rules.index', ['list' => RodoRules::all()]);
@@ -26,12 +33,16 @@ class RulesController extends Controller
 
     public function store(RodoRulesFormRequest $request)
     {
-        RodoRules::create($request->except(['_token', 'submit']));
+        $this->repository->create($request->validated());
         return redirect(route('admin.rodo.rules.index'))->with('success', 'Nowa regułka dodana');
     }
 
-    public function edit($id)
+    public function edit(int $id)
     {
+        if(request()->get('lang')) {
+            app()->setLocale(request()->get('lang'));
+        }
+
         return view('admin.rodo_rules.form', [
             'entry' => RodoRules::find($id),
             'cardTitle' => 'Edytuj regułkę',
@@ -39,17 +50,20 @@ class RulesController extends Controller
         ]);
     }
 
-    public function update(RodoRulesFormRequest $request, $id)
+    public function update(RodoRulesFormRequest $request, RodoRules $rule)
     {
-        $rodoRules = RodoRules::find($id);
-        $rodoRules->update($request->except(['_token', 'submit']));
+        if(request()->get('lang')) {
+            app()->setLocale(request()->get('lang'));
+        }
+
+        $this->repository->update($request->validated(), $rule);
+
         return redirect(route('admin.rodo.rules.index'))->with('success', 'Regułka zaktualizowana');
     }
 
-    public function destroy($id)
+    public function destroy(int $id)
     {
-        RodoRules::find($id)->delete();
-        Session::flash('success', 'Regułka usunięta');
-        return response()->json('Deleted', 200);
+        $this->repository->delete($id);
+        return response()->json('Deleted');
     }
 }

@@ -25,4 +25,5 @@
   'offerbox-title' => 'OFERTA',
   'offerbox-subtitle' => 'Projekty w sprzedaży',
   'deadline-date' => 'Termin oddania',
+  'emailsend-thanks' => 'Your message has been sent. We will contact you soon to discuss the details!',
 );

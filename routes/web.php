@@ -31,11 +31,9 @@ Route::middleware(['restrictIp'])->group(function () {
                 Route::get('/w-przygotowaniu', 'PlannedController@index')->name('planned.index');
             });
 
+            Route::post('kontakt', 'ContactController@send')->name('contact.send');
         });
     });
-
-    Route::post('kontakt',
-        'Front\ContactController@send')->name('contact.send');
 
     // Inline
     Route::group(['namespace' => 'Front', 'prefix'=>'/inline/', 'as' => 'front.inline.'], function() {

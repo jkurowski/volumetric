@@ -38,13 +38,20 @@
                     </a>
                 </li>
 
+
+                -->
+                <li class="{{ Request::routeIs('admin.dictionary.*') ? 'active' : '' }}">
+                    <a href="{{route('admin.dictionary.index')}}">
+                        <i class="fe-book"></i>
+                        <span> Tłumaczenie </span>
+                    </a>
+                </li>
                 <li class="{{ Request::routeIs('admin.page.*') ? 'active' : '' }}">
                     <a href="{{route('admin.page.index')}}">
                         <i class="fe-file-text"></i>
                         <span> Menu </span>
                     </a>
                 </li>
-                -->
                 <li class="{{ Request::routeIs('admin.developro.*') ? 'active' : '' }}">
                     <a href="{{route('admin.developro.index')}}">
                         <i class="fe-home"></i>
@@ -63,10 +70,22 @@
                         <span> Slider </span>
                     </a>
                 </li>
+                <li class="{{ Request::routeIs('admin.gallery.*') ? 'active' : '' }}">
+                    <a href="{{route('admin.gallery.index')}}">
+                        <i class="fe-image"></i>
+                        <span> Galeria </span>
+                    </a>
+                </li>
                 <li class="{{ Request::routeIs('admin.box.*') ? 'active' : '' }}">
                     <a href="{{route('admin.box.index')}}">
                         <i class="fe-grid"></i>
                         <span> Boksy </span>
+                    </a>
+                </li>
+                <li class="{{ Request::routeIs('admin.inbox.*') ? 'active' : '' }}">
+                    <a href="{{route('admin.inbox.index')}}">
+                        <i class="fe-inbox"></i>
+                        <span> Wiadomości </span>
                     </a>
                 </li>
             </ul>
