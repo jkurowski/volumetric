@@ -939,6 +939,56 @@ section {
 #paralaxa a:hover {
   border-bottom: 1px white solid;
 }
+.time-line {
+  position: relative;
+}
+.time-line .row {
+  position: relative;
+}
+.time-line .row span.deadline {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 70px;
+  background: #000;
+  color: white;
+  z-index: 30;
+  top: 40px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 22px;
+  padding: 0;
+  line-height: normal;
+  letter-spacing: 0;
+}
+.time-line img {
+  padding: 20px;
+  right: -100px;
+  z-index: 10;
+  background: white;
+  position: relative;
+  margin: 40px 0;
+}
+.time-line:after {
+  content: "";
+  width: 2px;
+  background: #ccc;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  display: block;
+  top: 40px;
+  bottom: 0;
+}
+.time-line .flex-row-reverse img {
+  right: auto;
+  left: -100px;
+}
 /* Map
 ================================================== */
 #map {

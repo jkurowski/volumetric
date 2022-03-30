@@ -38,22 +38,25 @@
                 </div>
             </div>
         </div>
-        <div id="maincarousel" class="container">
-            <div class="row planned-list pt-5">
-                @foreach($investments as $investment)
-                    <div class="col-6">
-                        <img src="{{ asset('/uploads/investments/thumbs/'.$investment->file_thumb) }}" alt="{{ $investment->city }} - {{ $investment->name }}">
-                        <div class="offset-apla">
-                            <div class="section-header text-center">
-                                <span>{{ $investment->city }}</span>
-                                <h2>{{ $investment->name }}</h2>
-                            </div>
-                            <p class="text-center mb-4">{{ $investment->address }}</p>
-                            <p class="text-center">{{ $investment->entry_content }}</p>
+        <div class="container pt-5 time-line">
+            @foreach($about_investments as $investment)
+            <div class="@if ($loop->even) row @elseif ($loop->odd) row flex-row-reverse @endif">
+                <span class="deadline">{{ $investment->deadline }}</span>
+                <div class="col-6">
+                    <img src="{{ asset('/uploads/investments/thumbs/'.$investment->file_thumb) }}" alt="{{ $investment->city }} - {{ $investment->name }}">
+                </div>
+                <div class="col-6 d-flex align-items-center justify-content-center">
+                    <div class="offset-apla">
+                        <div class="section-header text-center">
+                            <span>{{ $investment->city }}</span>
+                            <h2>{{ $investment->name }}</h2>
                         </div>
+                        <p class="text-center mb-4">{{ $investment->address }}</p>
+                        <p class="text-center">{{ $investment->entry_content }}</p>
                     </div>
-                @endforeach
+                </div>
             </div>
+            @endforeach
         </div>
     </section>
 

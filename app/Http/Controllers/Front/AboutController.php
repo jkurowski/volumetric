@@ -10,12 +10,9 @@ class AboutController extends Controller
 {
     public function index()
     {
-        $page = Page::where('id', 1)->first();
-        $investments = Investment::where('status', 1)->get();
-
         return view('front.about.index', [
-            'investments' => $investments,
-            'page' => $page
+            'about_investments' => Investment::where('status', '!=' , 2)->get(),
+            'page' => Page::where('id', 1)->first()
         ]);
     }
 
