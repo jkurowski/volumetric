@@ -30,6 +30,7 @@
                                     'selected' => $entry->status,
                                     'select' => [
                                         '1' => 'Inwestycja w sprzedaży',
+                                        '2' => 'Inwestycja zrealizowana',
                                         '3' => 'Inwestycja planowana'
                                 ]])
                             @endif
