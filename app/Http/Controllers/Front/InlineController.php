@@ -8,16 +8,11 @@ use Illuminate\Http\Request;
 
 class InlineController extends Controller
 {
-    public function index()
-    {
-        return view('front.inline.index', ['array' => Inline::getElements(1)]);
-    }
-
     public function show(Inline $inline)
     {
         if($inline)
         {
-            return response()->json($inline);
+            return $inline;
         } else {
             return response()->json([
                 'error' => 'Brak wpisu w bazie',
@@ -28,6 +23,10 @@ class InlineController extends Controller
     public function update(Request $request, Inline $inline)
     {
         if ($request->ajax()) {
+
+            if($request->get('locale')) {
+                app()->setLocale($request->get('locale'));
+            }
 
             if ($request->hasFile('file')) {
                 $inline->upload($request->file_alt, $request->file('file'), $request->obrazek_width, $request->obrazek_height);

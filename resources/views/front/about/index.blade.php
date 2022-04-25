@@ -9,34 +9,34 @@
 @section('content')
     <section class="pt-0">
         <div class="container">
-            <div class="row flex-row-reverse position-relative">
+            <div class="row flex-row-reverse position-relative inline inline-tc">
                 <div class="col-6">
-                    <img src="{{ asset('/uploads/inline/volumetric-to-my.jpg') }}" alt="Zdjęcie grupowe Volumetric">
+                    <img src="{{ getInline($array, 1, 'file') }}" alt="{{ getInline($array, 1, 'file_alt') }}" data-img="1">
                 </div>
                 <div class="col-7 position-absolute pr-0 offset-absolute d-flex align-items-center">
                     <div class="offset-apla">
                         <div class="section-header text-center">
-                            <span>POZNAJMY SIĘ</span>
-                            <h2>Volumetric to My</h2>
+                            <span data-modaleditor="1">{{ getInline($array, 1, 'modaleditor') }}</span>
+                            <h2 data-modaltytul="1">{{ getInline($array, 1, 'modaltytul') }}</h2>
                         </div>
-                        <p>Nasz warszawski zespół nie jest dużą korporacją – jesteśmy spółką deweloperską, częścią <a
-                                href="https://volumetric.es/" target="_blank" rel="nofollow">Grup Volumetric</a>, rodzinnego holdingu z siedzibą w Mataró nieopodal Barcelony.</p>
-                        <p>&nbsp;</p>
-                        <p>Wiemy, jak ważna jest dla naszych klientów niezależność oraz własna przestrzeń, dlatego staramy się sprostać ich oczekiwaniom i zapewniamy najwyższą jakość naszych usług.</p>
+                        <div data-modaleditortext="1">{!! getInline($array, 1, 'modaleditortext') !!}</div>
                     </div>
                 </div>
+
+                <div class="inline-btn"><button type="button" class="btn btn-primary btn-modal btn-sm" data-bs-toggle="modal" data-bs-target="#inlineModal" data-inline="1" data-hideinput="modallink,modallinkbutton" data-method="update" data-imgwidth="796" data-imgheight="738"></button></div>
             </div>
         </div>
     </section>
 
     <section>
-        <div class="container">
+        <div class="container inline inline-tc">
             <div class="row d-flex justify-content-center">
                 <div class="col-6 text-center">
-                    <h2 class="mb-4">16 lat współpracy</h2>
-                    <p>Specjalizujemy się głównie w budownictwie mieszkaniowym wielorodzinnym, a swoją stabilną pozycję na rynku budujemy już od 2006 roku. W tym czasie stworzyliśmy już wiele mieszkań i domów dla naszych klientów, między innymi w Warszawie, Kielcach oraz Markach.</p>
+                    <h2 data-modaltytul="2" class="mb-4">{{ getInline($array, 2, 'modaltytul') }}</h2>
+                    <div data-modaleditortext="2">{!! getInline($array, 2, 'modaleditortext') !!}</div>
                 </div>
             </div>
+            <div class="inline-btn"><button type="button" class="btn btn-primary btn-modal btn-sm" data-bs-toggle="modal" data-bs-target="#inlineModal" data-inline="2" data-hideinput="modaleditor,modallink,modallinkbutton,file,file_alt" data-method="update" data-imgwidth="796" data-imgheight="738"></button></div>
         </div>
         <div class="container pt-5 time-line">
             @foreach($about_investments as $investment)
@@ -62,19 +62,20 @@
 
     <section class="pt-0">
         <div class="container">
-            <div class="row position-relative">
+            <div class="row position-relative inline inline-tc">
                 <div class="col-6">
-                    <img src="{{ asset('/uploads/inline/nasze-wartosci-volumetric.jpg') }}" alt="Zdjęcie grupowe Volumetric">
+                    <img src="{{ getInline($array, 3, 'file') }}" alt="{{ getInline($array, 3, 'file_alt') }}" data-img="3">
                 </div>
                 <div class="col-7 position-absolute right pr-0 offset-absolute d-flex align-items-center">
                     <div class="offset-apla">
                         <div class="section-header text-center">
-                            <span>VOLUMETRIC</span>
-                            <h2>Nasze wartości</h2>
+                            <span data-modaleditor="3">{{ getInline($array, 3, 'modaleditor') }}</span>
+                            <h2 data-modaltytul="3">{{ getInline($array, 3, 'modaltytul') }}</h2>
                         </div>
-                        <p>Wiemy, jak ważne dla nas wszystkich jest poczucie komfortu i bezpieczeństwa. Wiemy też, że życie we współczesnym świecie, może być niezwykle trudne. Stres może powodować, że wolimy spędzać cały wolny czas we własnym mieszkaniu, czy też w innym miejscu, gdzie możemy załatwiać wszystkie swoje, mniej lub bardziej pilne potrzeby.</p>
+                        <div data-modaleditortext="3">{!! getInline($array, 3, 'modaleditortext') !!}</div>
                     </div>
                 </div>
+                <div class="inline-btn"><button type="button" class="btn btn-primary btn-modal btn-sm" data-bs-toggle="modal" data-bs-target="#inlineModal" data-inline="3" data-hideinput="modallink,modallinkbutton" data-method="update" data-imgwidth="796" data-imgheight="738"></button></div>
             </div>
         </div>
     </section>
@@ -82,10 +83,11 @@
     <section>
         <div id="paralaxa">
             <div class="container">
-                <div class="row d-flex justify-content-center">
+                <div class="row d-flex justify-content-center inline inline-tc">
                     <div class="col-7 text-center">
-                        <p>Jesteśmy członkiem <a href="https://pzfd.pl/strona-glowna/" target="_blank" rel="nofollow">Polskiego Związku Firm Deweloperskich</a> i przestrzegamy zasad Kodeksu Dobrych Praktyk, zaakceptowanego przez Urząd Ochrony Konkurencji i Konsumentów.</p>
+                        <div data-modaleditortext="4">{!! getInline($array, 4, 'modaleditortext') !!}</div>
                     </div>
+                    <div class="inline-btn"><button type="button" class="btn btn-primary btn-modal btn-sm" data-bs-toggle="modal" data-bs-target="#inlineModal" data-inline="4" data-hideinput="modaltytul,modaleditor,modallink,modallinkbutton,file,file_alt" data-method="update" data-imgwidth="796" data-imgheight="738"></button></div>
                 </div>
             </div>
         </div>
@@ -93,18 +95,19 @@
 
     <section class="pt-0">
         <div class="container">
-            <div class="row d-flex justify-content-center">
+            <div class="row d-flex justify-content-center inline inline-tc">
                 <div class="col-7">
                     <div class="offset-apla offset-absolute">
                         <div class="section-header text-center">
-                            <span>VOLUMETRIC</span>
-                            <h2>Działalność społeczna</h2>
+                            <span data-modaleditor="5">{{ getInline($array, 5, 'modaleditor') }}</span>
+                            <h2 data-modaltytul="5">{{ getInline($array, 5, 'modaltytul') }}</h2>
                         </div>
-                        <div class="text-justify">
-                            <p>Mamy otwarte serca i jesteśmy wrażliwy na potrzeby innych - małych i dużych. W miarę możliwości angażujemy się zarówno jako firma jak i osobiście w akcje wspierające ważne inicjatywy.</p>
+                        <div class="text-center">
+                            <div data-modaleditortext="5">{!! getInline($array, 5, 'modaleditortext') !!}</div>
                         </div>
                     </div>
                 </div>
+                <div class="inline-btn"><button type="button" class="btn btn-primary btn-modal btn-sm" data-bs-toggle="modal" data-bs-target="#inlineModal" data-inline="5" data-hideinput="modallink,modallinkbutton,file,file_alt" data-method="update" data-imgwidth="796" data-imgheight="738"></button></div>
             </div>
             <div class="row mt-5">
                 <div class="col-4">
@@ -158,18 +161,3 @@
         </div>
     </section>
 @endsection
-
-@push('scripts')
-    <script src="{{ asset('/js/slick.js') }}" charset="utf-8"></script>
-    <script type="text/javascript">
-        $(document).ready(function(){
-            $("#maincarousel .row").slick({
-                dots: false,
-                infinite: true,
-                speed: 300,
-                slidesToShow: 2,
-                slidesToScroll: 1
-            });
-        });
-    </script>
-@endpush

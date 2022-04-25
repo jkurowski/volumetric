@@ -151,27 +151,23 @@
 
 <section>
     <div class="container">
-        <div class="row flex-row-reverse position-relative">
+        <div class="row flex-row-reverse position-relative inline inline-tc">
             <div class="col-6" data-aos="fade-left" data-aos-offset="0" data-aos-delay="700">
-                <img src="{{asset('images/nasza-oferta.jpg') }}" alt="">
+                <img src="{{ getInline($array, 6, 'file') }}" alt="{{ getInline($array, 6, 'file_alt') }}" data-img="6">
             </div>
             <div class="col-7 position-absolute pr-0 offset-absolute d-flex align-items-center" data-aos="fade-right" data-aos-offset="0" data-aos-delay="700">
                 <div class="offset-apla">
                     <div class="section-header text-center">
-                        <span>POZNAJMY SIĘ</span>
-                        <h2>Nowe mieszkania deweloperskie w Warszawie</h2>
+                        <span data-modaleditor="6">{{ getInline($array, 6, 'modaleditor') }}</span>
+                        <h2 data-modaltytul="6">{{ getInline($array, 6, 'modaltytul') }}</h2>
                     </div>
-                    <p>Firma Volumetric koncentruje się głównie na działalności deweloperskiej. Jest częścią Grup Volumetric – rodzinnego holdingu z siedzibą w Mataro nieopodal Barcelony.</p>
-                    <p>&nbsp;</p>
-                    <p>Satysfakcja naszych klientów jest naszym priorytetem. Cały zespół firmy i wszyscy współpracownicy dokładają wszelkich starań, aby zapewnić najwyższą jakość naszych usług. Nasze umiejętności i wiedza sa zawsze do dyspozycji naszych klientów.</p>
-                    <p>&nbsp;</p>
-                    <p>Przez ponad 10 lat działalności w Polsce, udało nam się potwierdzić swoją stabilną pozycję na rynku. Z powodzeniem zrealizowaliśmy dziewięć osiedli lub budynków w Warszawie, Kielcach i Markach. Obecnie przygotowujemy kolejne inwestycje i wciąż poszukujemy nowych gruntów pod zabudowę mieszkaniową.</p>
-
+                    <div data-modaleditortext="6">{!! getInline($array, 6, 'modaleditortext') !!}</div>
                     <div class="d-flex justify-content-center">
                         <a href="{{ route('investment.index') }}" class="bttn">@lang('cms.goformore-button')</a>
                     </div>
                 </div>
             </div>
+            <div class="inline-btn"><button type="button" class="btn btn-primary btn-modal btn-sm" data-bs-toggle="modal" data-bs-target="#inlineModal" data-inline="6" data-hideinput="modallink,modallinkbutton" data-method="update" data-imgwidth="796" data-imgheight="738"></button></div>
         </div>
     </div>
 </section>
@@ -218,9 +214,12 @@
 
 <!-- jQuery -->
 <script src="{{ asset('/js/jquery.min.js') }}" charset="utf-8"></script>
+<script src="{{ asset('/js/bootstrap.bundle.min.js') }}" charset="utf-8"></script>
 <script src="{{ asset('/js/slick.js') }}" charset="utf-8"></script>
 <script src="{{ asset('/js/app.min.js') }}" charset="utf-8"></script>
 <script src="{{ asset('/js/aos.min.js') }}" charset="utf-8"></script>
+
+@include('layouts.partials.inline')
 
 @stack('scripts')
 

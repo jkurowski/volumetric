@@ -22,8 +22,8 @@
   'formbox-subtitle' => 'Send us a message',
   'whyusbox-title' => 'DLACZEGO MY',
   'whyusbox-subtitle' => 'Volumetric to',
-  'offerbox-title' => 'OFERTA',
-  'offerbox-subtitle' => 'Projekty w sprzedaży',
+  'offerbox-title' => 'Our offer',
+  'offerbox-subtitle' => 'Investments in sale',
   'deadline-date' => 'Termin oddania',
   'emailsend-thanks' => 'Your message has been sent. We will contact you soon to discuss the details!',
 );

@@ -5,11 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 use Intervention\Image\ImageManagerStatic as Image;
+use Spatie\Translatable\HasTranslations;
 
 class Inline extends Model
 {
+    use HasTranslations;
+
     const UPDATED_AT = null;
     const CREATED_AT = null;
+
+    public $translatable = ['modaltytul', 'modaleditor', 'modaleditortext', 'modallink', 'modallinkbutton', 'file_alt'];
 
     /**
      * The attributes that are mass assignable.
@@ -41,9 +46,6 @@ class Inline extends Model
 
         if($oldFile) {
             $img = public_path('uploads/inline/' . $oldFile);
-
-            //dd($img);
-
             if (file_exists($img)) {
                 unlink($img);
             }

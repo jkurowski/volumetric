@@ -15,42 +15,42 @@ function makeWidget(){$('body').append('<div id="viewport" style="z-index:9999;p
 // makeWidget();
 
 $(document).ready(function () {
-    let elmSelect = document.getElementById('filtr-sort');
-
-    if (!!elmSelect) {
-        elmSelect.addEventListener('change', e => {
-            let choice = e.target.value;
-            if (!choice) return;
-
-            let url = new URL(window.location.href);
-            url.searchParams.set('sort', choice);
-            window.location.href = url;
-        });
-    }
-
-    document.querySelectorAll('.form-control').forEach(function(el) {
-        el.addEventListener("focus", myFocusFunction);
-        el.addEventListener("focusout", myBlurFunction);
-    });
-    const elements = document.querySelectorAll('.form-control');
-    elements.forEach( el => {
-        if(el.value.length > 0) {
-            const fi = el.closest(".form-input");
-            fi.classList.add("filled");
-        }
-    });
-
-    function myFocusFunction(event) {
-        const fi = event.target.closest(".form-input");
-        fi.classList.add("filled");
-    }
-
-    function myBlurFunction(event) {
-        if(event.target.value.length === 0) {
-            const fi = event.target.closest(".form-input");
-            fi.classList.remove("filled");
-        }
-    }
+    // let elmSelect = document.getElementById('filtr-sort');
+    //
+    // if (!!elmSelect) {
+    //     elmSelect.addEventListener('change', e => {
+    //         let choice = e.target.value;
+    //         if (!choice) return;
+    //
+    //         let url = new URL(window.location.href);
+    //         url.searchParams.set('sort', choice);
+    //         window.location.href = url;
+    //     });
+    // }
+    //
+    // document.querySelectorAll('.form-control').forEach(function(el) {
+    //     el.addEventListener("focus", myFocusFunction);
+    //     el.addEventListener("focusout", myBlurFunction);
+    // });
+    // const elements = document.querySelectorAll('.form-control');
+    // elements.forEach( el => {
+    //     if(el.value.length > 0) {
+    //         const fi = el.closest(".form-input");
+    //         fi.classList.add("filled");
+    //     }
+    // });
+    //
+    // function myFocusFunction(event) {
+    //     const fi = event.target.closest(".form-input");
+    //     fi.classList.add("filled");
+    // }
+    //
+    // function myBlurFunction(event) {
+    //     if(event.target.value.length === 0) {
+    //         const fi = event.target.closest(".form-input");
+    //         fi.classList.remove("filled");
+    //     }
+    // }
 // Lightbox
     $( '.swipebox' ).swipebox({useSVG : false});
 
