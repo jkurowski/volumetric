@@ -62,19 +62,6 @@
                                 </div>
                             </div>
 
-                            <div class="col-12 mt-2">
-                                <div class="form-input">
-                                    <label for="form_subject">@lang('cms.form-subject') <span class="text-danger">*</span></label>
-                                    <input name="form_subject" id="form_subject" class="validate[required] form-control @error('form_subject') is-invalid @enderror" type="text" value="{{ old('form_subject') }}">
-
-                                    @error('subject')
-                                    <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                                    @enderror
-                                </div>
-                            </div>
-
                             <div class="col-12 mt-3">
                                 <div class="form-input">
                                     <label for="form_message">@lang('cms.form-message') <span class="text-danger">*</span></label>
