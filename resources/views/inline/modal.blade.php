@@ -55,7 +55,6 @@
             </div>
         </div>
     </div>
-
     <script type="text/javascript">
         function process_response(obj) {
             const f = $("#inlineModal form");
