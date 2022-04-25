@@ -71,7 +71,7 @@
 
         function cleanModal(){$("#inlineForm, #inlineForm .form-group, .progress").removeAttr("style");$("#inlineForm")[0].reset();$("#file").val("");$("#id_element").val("");$("label[for='file']").text("Obrazek");$(".modal h5").text("Edytuj");$(".alert").remove()}
 
-        const baseURL = 'https://volumetric.test/';
+        const baseURL = 'https://volumetric.4dl.pl/';
         const myModal = document.getElementById('inlineModal');
         const is_editor_active = function (b) {
             if (typeof tinyMCE == "undefined") {
