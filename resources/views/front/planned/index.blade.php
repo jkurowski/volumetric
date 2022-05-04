@@ -15,7 +15,7 @@
     </div>
 
     <div class="row planned-list">
-        @foreach($investments as $investment)
+        @foreach($planned as $investment)
         <div class="col-6">
             <img src="{{ asset('/uploads/investments/thumbs/'.$investment->file_thumb) }}" alt="{{ $investment->city }} - {{ $investment->name }}">
             <div class="offset-apla">

@@ -85,6 +85,7 @@
             <div class="container">
                 <div class="row d-flex justify-content-center inline inline-tc">
                     <div class="col-7 text-center">
+                        <img src="{{ asset('/uploads/inline/pzfd.png') }}" alt="Logo organizacji Polski Związek Firm Deweloperskich">
                         <div data-modaleditortext="4">{!! getInline($array, 4, 'modaleditortext') !!}</div>
                     </div>
                     <div class="inline-btn"><button type="button" class="btn btn-primary btn-modal btn-sm" data-bs-toggle="modal" data-bs-target="#inlineModal" data-inline="4" data-hideinput="modaltytul,modaleditor,modallink,modallinkbutton,file,file_alt" data-method="update" data-imgwidth="796" data-imgheight="738"></button></div>

@@ -1,4 +1,4 @@
-<?php 
+<?php
 
  return array (
   'menu-homepage' => 'Homepage',
@@ -6,7 +6,7 @@
   'menu-planned' => 'In preparation ',
   'menu-contact' => 'Contact',
   'menu-aboutus' => 'About Us',
-  'slider-button' => 'ZOBACZ INWESTYCJĘ',
+  'slider-button' => 'INVESTMENT',
   'goformore-button' => 'SEE MORE',
   'gotoform-button' => 'CONTACT FORM',
   'sendform-button' => 'SEND MESSAGE',
@@ -20,10 +20,10 @@
   'contactbox-subtitle' => 'We will prepare an offer just for you',
   'formbox-title' => 'HAVE ANY QUESTIONS?',
   'formbox-subtitle' => 'Send us a message',
-  'whyusbox-title' => 'DLACZEGO MY',
-  'whyusbox-subtitle' => 'Volumetric to',
+  'whyusbox-title' => 'WHY US?',
+  'whyusbox-subtitle' => 'Volumetric',
   'offerbox-title' => 'Our offer',
   'offerbox-subtitle' => 'Investments in sale',
-  'deadline-date' => 'Termin oddania',
+  'deadline-date' => 'Deadline',
   'emailsend-thanks' => 'Your message has been sent. We will contact you soon to discuss the details!',
 );

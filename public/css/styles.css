@@ -909,6 +909,12 @@ section {
   background-size: cover;
   position: relative;
 }
+#paralaxa img {
+  width: 250px;
+  margin: 0 auto 30px;
+  position: relative;
+  z-index: 3;
+}
 #paralaxa p {
   color: white;
   font-size: 32px;
