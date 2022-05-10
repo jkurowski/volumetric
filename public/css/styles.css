@@ -739,9 +739,6 @@ li:hover img {
   line-height: 32px;
   margin: 0;
 }
-.page-planned #page {
-  padding-bottom: 0;
-}
 .planned-list .section-header:after {
   z-index: -1;
 }

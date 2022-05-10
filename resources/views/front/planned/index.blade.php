@@ -25,7 +25,7 @@
         @endforeach
     </div>
     <div class="row">
-        <div class="col-12 pt-5">
+        <div class="col-12">
             <div id="map"></div>
         </div>
     </div>
