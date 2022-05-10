@@ -8,12 +8,6 @@
 
 @section('content')
 <div class="container">
-    <div class="row">
-        <div class="col-12 pb-5">
-            <div id="map"></div>
-        </div>
-    </div>
-
     <div class="row planned-list">
         @foreach($planned as $investment)
         <div class="col-6">
@@ -29,6 +23,11 @@
             </div>
         </div>
         @endforeach
+    </div>
+    <div class="row">
+        <div class="col-12 pt-5">
+            <div id="map"></div>
+        </div>
     </div>
 </div>
 @endsection
