@@ -42,7 +42,7 @@
         });
 
         const featureGroup = L.featureGroup([
-            @foreach($investments as $i)
+            @foreach($planned as $i)
             L.marker([{{ $i->lat }}, {{ $i->lng }}]).bindPopup('<h4>{{ $i->name }}</h4><p>{{ $i->city }} | {{ $i->address }}</p>'),
             @endforeach
         ]);
