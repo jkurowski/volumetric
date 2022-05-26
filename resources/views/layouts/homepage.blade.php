@@ -68,7 +68,7 @@
 
     <div class="container invest-list-carousel">
         @foreach($investments as $investment)
-        <div class="row invest-list-item @if($investments->count() > 1)mt-3@endif">
+        <div class="row invest-list-item @if($investments->count() > 1) mt-3 @endif">
             <div class="col-6">
                 <a href="{{ $investment->url }}" target="_blank"><img src="{{ asset('/uploads/investments/thumbs/'.$investment->file_thumb) }}" alt="{{ $investment->city }} - {{ $investment->name }}"></a>
             </div>
