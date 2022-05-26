@@ -53,6 +53,7 @@
                 </div>
             </div>
         </div>
+        @if($investments->count > 1)
         <div class="row">
             <div class="col-12">
                 <ul class="mb-0 list-unstyled invest-list-nav">
@@ -62,6 +63,7 @@
                 </ul>
             </div>
         </div>
+        @endif
     </div>
 
     <div class="container invest-list-carousel">
