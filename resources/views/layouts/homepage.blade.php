@@ -53,7 +53,7 @@
                 </div>
             </div>
         </div>
-        @if($investments->count > 1)
+        @if($investments->count() > 1)
         <div class="row">
             <div class="col-12">
                 <ul class="mb-0 list-unstyled invest-list-nav">
