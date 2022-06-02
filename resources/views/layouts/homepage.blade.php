@@ -133,7 +133,7 @@
         </div>
     </div>
 </section>
-
+@if($gallery->photos->count() > 0)
 <section id="maincarousel">
     <div class="container">
         <div class="row">
@@ -156,7 +156,7 @@
         </div>
     </div>
 </section>
-
+@endif
 <section>
     <div class="container">
         <div class="row flex-row-reverse position-relative inline inline-tc">
@@ -195,8 +195,8 @@
                                     </div>
 
                                     <ul class="mb-0 list-unstyled">
-                                        <li><span class="square-icon"><img src="{{asset('svg/phone-icon.svg') }}" class="phone-svg-icon" alt="Numer telefonu"></span><a href="tel:226543838">22 654 38 38</a></li>
                                         <li><span class="square-icon"><img src="{{asset('svg/phone-icon.svg') }}" class="phone-svg-icon" alt="Numer telefonu"></span><a href="tel:664130140">664 130 140</a></li>
+                                        <li><span class="square-icon"><img src="{{asset('svg/phone-icon.svg') }}" class="phone-svg-icon" alt="Numer telefonu"></span><a href="tel:226543838">22 654 38 38</a></li>
                                         <li><span class="square-icon"><img src="{{asset('svg/envelope-icon.svg') }}" class="envelope-svg-icon" alt="Numer telefonu"></span><a href="mailto:biuro@volumetric.pl">biuro@volumetric.pl</a></li>
                                     </ul>
 

@@ -22,7 +22,7 @@
                         </div>
                         <p class="text-center">{{ $investment->entry_content }}</p>
                         <div class="d-flex justify-content-center">
-                            <a href="{{ $investment->url }}" class="bttn" target="_blank">@lang('cms.goformore-button')</a>
+                            <a href="{{ $investment->url }}" class="bttn @if(!$investment->entry_content) mt-0 @endif " target="_blank">@lang('cms.goformore-button')</a>
                         </div>
                     </div>
                 </div>

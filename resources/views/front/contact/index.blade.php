@@ -11,13 +11,13 @@
     <section id="contact-form" class="pt-0">
         <div class="container">
             <div class="row d-flex justify-content-center">
-                <div class="col-12">
+                <div class="col-12 d-none">
                     <div class="section-header text-center">
                         <span>@lang('cms.formbox-title')</span>
                         <h2>@lang('cms.formbox-subtitle')</h2>
                     </div>
                 </div>
-                <div class="col-8 mt-5 pt-5">
+                <div class="col-8">
                     @if (session('success'))
                         <div class="alert alert-success border-0">
                             {{ session('success') }}
@@ -45,8 +45,8 @@
                             </div>
                             <div class="col-4">
                                 <div class="form-input">
-                                    <label for="form_email">@lang('cms.form-email') <span class="text-danger">*</span></label>
-                                    <input name="form_email" id="form_email" class="validate[required] form-control @error('form_email') is-invalid @enderror" type="text" value="{{ old('form_email') }}">
+                                    <label for="form_email">@lang('cms.form-email')</label>
+                                    <input name="form_email" id="form_email" class="validate[groupRequired[phonemail]] form-control @error('form_email') is-invalid @enderror" type="text" value="{{ old('form_email') }}">
 
                                     @error('form_email')
                                     <span class="invalid-feedback" role="alert">
@@ -58,7 +58,7 @@
                             <div class="col-4">
                                 <div class="form-input">
                                     <label for="form_phone">@lang('cms.form-phone')</label>
-                                    <input name="form_phone" id="form_phone" class="form-control" type="text" value="{{ old('form_phone') }}">
+                                    <input name="form_phone" id="form_phone" class="validate[groupRequired[phonemail]] form-control" type="text" value="{{ old('form_phone') }}">
                                 </div>
                             </div>
 
@@ -75,13 +75,18 @@
                                 </div>
                             </div>
                             <div class="col-12 rodo-obligation">
-                                <p>Na podstawie z art. 13 ogólnego rozporządzenia o ochronie danych osobowych z dnia 27 kwietnia 2016 r. (Dz. Urz. UE L 119 z 04.05.2016) informujemy, iż przesyłając wiadomość za pomocą formularza kontaktowego wyrażacie Państwo zgodę na (<a href="" target="_blank">polityka informacyjna</a>):</p>
+                                <p>Podając powyższe dane, równocześnie oświadczam, że jestem osobą uprawnioną do ich używania, zapoznałem/zapoznałam się z <a href="https://www.gandhi5.pl/karta-informacyjna.pdf" target="_blank">Kartą Informacyjną</a> oraz wyrażam zgodę na przetwarzanie moich danych osobowych we wskazanym tam celu:</p>
                             </div>
 
                             <div class="col-12 rodo-rules pt-1">
-                                @foreach ($rules as $r)
-                                    <label for="zgoda_{{$r->id}}" class="rules-text"><input name="rule_{{$r->id}}" id="rule_{{$r->id}}" value="1" type="checkbox" @if($r->required === 1) class="validate[required]" @endif data-prompt-position="topLeft:0">{!! $r->text !!}</label>
-                                @endforeach
+                                <label for="zgoda_1" class="rules-text">
+                                    <input name="rule_1" id="rule_1" value="1" type="checkbox" class="validate[condRequired[form_phone]] inputbox-error" data-prompt-position="topLeft:0">
+                                    <p>Wyrażam zgodę na otrzymywanie przeze mnie drogą telefoniczną, na podany numer telefonu, informacji handlowych, w tym marketingowych, dotyczących produktów i usług oferowanych przez Volumetric Polska sp. z o.o. w postaci połączeń głosowych.</p>
+                                </label>
+                                <label for="zgoda_4" class="rules-text">
+                                    <input name="rule_4" id="rule_4" value="1" type="checkbox" class="validate[condRequired[form_email]] inputbox-error" data-prompt-position="topLeft:0">
+                                    <p>Wyrażam zgodę na otrzymywanie przeze mnie drogą elektroniczną, na podany adres e-mail, informacji handlowych, w tym marketingowych dotyczących produktów i usług oferowanych przez Volumetric Polska sp. z o.o.</p>
+                                </label>
                             </div>
                         </div>
                         <div class="row row-form-submit">
@@ -116,8 +121,8 @@
                                         </div>
 
                                         <ul class="mb-0 list-unstyled">
-                                            <li><span class="square-icon"><img src="{{asset('svg/phone-icon.svg') }}" class="phone-svg-icon" alt="Numer telefonu"></span><a href="tel:226543838">22 654 38 38</a></li>
                                             <li><span class="square-icon"><img src="{{asset('svg/phone-icon.svg') }}" class="phone-svg-icon" alt="Numer telefonu"></span><a href="tel:664130140">664 130 140</a></li>
+                                            <li><span class="square-icon"><img src="{{asset('svg/phone-icon.svg') }}" class="phone-svg-icon" alt="Numer telefonu"></span><a href="tel:226543838">22 654 38 38</a></li>
                                             <li><span class="square-icon"><img src="{{asset('svg/envelope-icon.svg') }}" class="envelope-svg-icon" alt="Numer telefonu"></span><a href="mailto:biuro@volumetric.pl">biuro@volumetric.pl</a></li>
                                         </ul>
                                     </div>

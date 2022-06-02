@@ -5,7 +5,7 @@
                 <div class="col-3">
                     <img src="{{asset('images/logo-volumetric.png') }}" alt="Nowe mieszkania deweloperskie Warszawa – Volumetric Polska Sp. z o.o.">
                     <p>Volumetric Polska Sp. z o. o.</p>
-                    <p class="small">00-121 Warszawa, ul. Sienna 39 <br>NIP 527-24-89-354 <br>KRS 0000245576 <br>Kapitał zakładowy 25.000.000 PLN</p>
+                    <p class="small">ul. Sienna 39 <br>00-121 Warszawa, <br>NIP 527-24-89-354 <br>KRS 0000245576 <br>Kapitał zakładowy 25.000.000 PLN</p>
                 </div>
                 <div class="col"></div>
                 <div class="col-2">
@@ -33,7 +33,6 @@
                         <li><a href="tel:+48664130140">664 130 140</a></li>
                         <li><a href="tel:22 654 38 38">22 654 38 38</a></li>
                         <li><a href="mailto:biuro@volumetric.pl">biuro@volumetric.pl</a></li>
-                        <li><a href="https://goo.gl/maps/3z5dJMdUa8L16N117" target="_blank">ul. Sienna 39 <br>00-121 Warszawa</a></li>
                     </ul>
                 </div>
             </div>
