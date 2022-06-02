@@ -52,7 +52,7 @@
                             <h2>{{ $investment->name }}</h2>
                         </div>
                         <p class="text-center mb-4">{{ $investment->address }}</p>
-                        <p class="text-center">{{ $investment->entry_content }}</p>
+                        <p class="text-center">{!! $investment->entry_content !!}</p>
                     </div>
                 </div>
             </div>
