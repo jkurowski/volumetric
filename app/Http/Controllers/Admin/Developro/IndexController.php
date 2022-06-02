@@ -9,6 +9,7 @@ use App\Http\Requests\InvestmentFormRequest;
 use App\Models\Investment;
 use App\Repositories\InvestmentRepository;
 use App\Services\InvestmentService;
+use Illuminate\Http\Request;
 
 class IndexController extends Controller
 {
@@ -36,7 +37,7 @@ class IndexController extends Controller
 
     public function index()
     {
-        return view('admin.investment.index', ['list' => $this->repository->all()]);
+        return view('admin.investment.index', ['list' => $this->repository->allSort('ASC')]);
     }
 
     public function create()
@@ -99,5 +100,10 @@ class IndexController extends Controller
     {
         $this->repository->delete($id);
         return response()->json('Deleted');
+    }
+
+    public function sort(Request $request)
+    {
+        $this->repository->updateOrder($request->get('recordsArray'));
     }
 }

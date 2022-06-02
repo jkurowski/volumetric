@@ -35,6 +35,7 @@ Route::group([
         Route::post('gallery/set', 'Gallery\IndexController@sort')->name('gallery.sort');
         Route::post('image/set', 'Gallery\ImageController@sort')->name('image.sort');
         Route::post('box/set', 'Box\IndexController@sort')->name('box.sort');
+        Route::post('developro/set', 'Developro\IndexController@sort')->name('developro.sort');
 
 
     // Gallery

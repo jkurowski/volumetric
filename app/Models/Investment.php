@@ -29,6 +29,7 @@ class Investment extends Model
         'entry_content',
         'url',
         'file_thumb',
-        'file_carousel'
+        'file_carousel',
+        'sort'
     ];
 }
