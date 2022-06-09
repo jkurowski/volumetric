@@ -72,7 +72,7 @@
             <div class="col-6">
                 <a href="{{ $investment->url }}" target="_blank"><img src="{{ asset('/uploads/investments/thumbs/'.$investment->file_thumb) }}" alt="{{ $investment->city }} - {{ $investment->name }}"></a>
             </div>
-            <div class="col-3 d-flex align-items-center">
+            <div class="col-3 d-flex align-items-center justify-content-center">
                 <div class="invest-list-desc text-center">
                     <h3>{{ $investment->name }}</h3>
                     <ul class="mb-0 list-unstyled">
