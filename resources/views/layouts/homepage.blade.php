@@ -42,7 +42,7 @@
     </div>
     @endforeach
 </div>
-
+@if($investments->count() > 0)
 <section>
     <div class="container">
         <div class="row">
@@ -90,7 +90,7 @@
         @endforeach
     </div>
 </section>
-
+@endif
 <section>
     <div class="container">
         <div class="row position-relative">
