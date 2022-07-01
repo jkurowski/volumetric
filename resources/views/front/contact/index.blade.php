@@ -109,7 +109,7 @@
     <section id="maincontact" class="pt-0">
         <div class="container">
             <div class="row d-flex justify-content-center">
-                <div class="col-10">
+                <div class="col-12 col-sm-10">
                     <div class="maincontact">
                         <div class="container-fluid p-0">
                             <div class="row no-gutters">

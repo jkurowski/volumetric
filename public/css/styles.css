@@ -1531,6 +1531,13 @@ html.swipebox-html.swipebox-touch {
   .homepage .offset-absolute .section-header {
     margin-bottom: 30px;
   }
+  #maincontact .maincontact-text ul li {
+    height: 59px;
+    margin: 70px 15px 60px;
+  }
+  #maincontact .maincontact-text ul li a {
+    font-size: 17px;
+  }
 }
 @media (max-width: 1530px) {
   #header .col-3 {
@@ -1553,7 +1560,7 @@ html.swipebox-html.swipebox-touch {
 }
 /* end of 1640 */
 /* end of 1479.98 */
-@media (max-width: 1389.98px) {
+@media (max-width: 1399.98px) {
   .time-line img {
     right: -20px;
   }
@@ -1570,6 +1577,29 @@ html.swipebox-html.swipebox-touch {
   }
   #header nav a {
     margin: 0 9px;
+  }
+  #maincontact .maincontact-text ul li {
+    height: 59px;
+    margin: 30px 15px 30px;
+  }
+  #maincontact .ps-5 {
+    padding-left: 2rem !important;
+  }
+  #maincontact .maincontact-text {
+    padding: 10px 0 0;
+  }
+  #maincontact .section-header h2 {
+    font-size: 30px;
+  }
+  #maincontact .square-icon {
+    width: 34px;
+    height: 34px;
+    margin-right: 15px;
+  }
+  .square-icon .envelope-svg-icon,
+  .square-icon .phone-svg-icon {
+    height: 20px;
+    width: 22px;
   }
 }
 /* end of 1359.98 */
@@ -1668,6 +1698,24 @@ html.swipebox-html.swipebox-touch {
     bottom: -80px;
     line-height: 70px;
   }
+  #maincontact .col-4 {
+    display: none !important;
+  }
+  #maincontact .col-8 {
+    width: 100%;
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+  }
+  #maincontact .maincontact-text {
+    padding: 50px 0 0;
+  }
+  .homepage #maincontact .maincontact-text {
+    padding: 50px 0;
+  }
+  #maincontact .maincontact-text ul li {
+    height: 59px;
+    margin: 60px 15px 30px;
+  }
 }
 /* end of 1199.98 */
 @media (max-width: 991.98px) {
@@ -1707,6 +1755,18 @@ html.swipebox-html.swipebox-touch {
   }
   .homepage section {
     padding: 40px 0;
+  }
+  #maincontact .maincontact-text ul {
+    flex-wrap: wrap;
+  }
+  #maincontact .maincontact-text ul li {
+    width: 100%;
+    height: 53px;
+    margin: 0 0 30px;
+    justify-content: center;
+  }
+  #maincontact .maincontact-text ul li:first-child {
+    margin-top: 40px;
   }
 }
 /* end of 991.98 */
@@ -1851,6 +1911,10 @@ html.swipebox-html.swipebox-touch {
   }
   #slider .apla:after {
     font-size: 413px;
+  }
+  #maincontact .bttn {
+    font-size: 14px;
+    padding: 16px 15px;
   }
 }
 /* end of 575.98 */
