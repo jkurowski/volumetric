@@ -198,6 +198,7 @@ body {
   line-height: 33px;
   color: black;
   font-size: 17px;
+  overflow-x: hidden;
 }
 a,
 a:hover {
@@ -1520,6 +1521,17 @@ html.swipebox-html.swipebox-touch {
 #triggermenu {
   display: none;
 }
+@media (max-width: 1639.98px) {
+  .homepage .offset-absolute .offset-apla {
+    padding: 0 40px 50px;
+  }
+  .homepage section {
+    padding: 80px 0;
+  }
+  .homepage .offset-absolute .section-header {
+    margin-bottom: 30px;
+  }
+}
 @media (max-width: 1530px) {
   #header .col-3 {
     flex: 0 0 auto;
@@ -1680,16 +1692,21 @@ html.swipebox-html.swipebox-touch {
     padding: 30px 0;
     margin-bottom: 40px;
   }
-  .page-about .position-absolute {
+  .page-about .position-absolute,
+  .homepage .position-absolute {
     position: static !important;
   }
   .flex-row-reverse .offset-absolute .offset-apla,
   .offset-absolute .offset-apla {
     padding: 50px 0 40px;
   }
-  .page-about .offset-apla {
+  .page-about .offset-apla,
+  .homepage .offset-apla {
     padding: 50px 0 0 !important;
     margin-bottom: 0 !important;
+  }
+  .homepage section {
+    padding: 40px 0;
   }
 }
 /* end of 991.98 */
@@ -1728,6 +1745,9 @@ html.swipebox-html.swipebox-touch {
   }
   #page {
     padding: 25px 10px;
+  }
+  .homepage section {
+    padding: 30px 15px;
   }
   .page-contact #page {
     padding-bottom: 25px;
@@ -1799,6 +1819,38 @@ html.swipebox-html.swipebox-touch {
   }
   .openmenu #header.fixed .col-6.d-none {
     top: 45px;
+  }
+  .offset-absolute .offset-apla li {
+    margin-top: 40px;
+    padding-left: 0;
+    padding-top: 100px;
+    position: relative;
+    text-align: center !important;
+  }
+  .offset-absolute .offset-apla svg {
+    width: 72px;
+    right: 0;
+    margin: auto;
+  }
+  #slider .apla h2 {
+    font-size: 40px;
+    bottom: -80px;
+    line-height: 40px;
+  }
+  #slider .apla .bttn {
+    margin-top: 30px;
+  }
+  #slider .apla p {
+    font-size: 14px;
+    padding-bottom: 20px;
+    line-height: 18px;
+  }
+  #slider .apla p:after {
+    height: 1px;
+    bottom: -1px;
+  }
+  #slider .apla:after {
+    font-size: 413px;
   }
 }
 /* end of 575.98 */

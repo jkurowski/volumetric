@@ -94,10 +94,10 @@
 <section>
     <div class="container">
         <div class="row position-relative">
-            <div class="col-6" data-aos="fade-right" data-aos-offset="300">
+            <div class="col-12 col-lg-6" data-aos="fade-right" data-aos-offset="300">
                 <img src="{{asset('images/dlaczego-my.jpg') }}" alt="@lang('cms.whyusbox-subtitle')">
             </div>
-            <div class="col-7 offset-5 position-absolute pl-0 offset-absolute d-flex align-items-center" data-aos="fade-left" data-aos-offset="300">
+            <div class="col-12 col-lg-7 offset-0 offset-lg-5 position-absolute pl-0 offset-absolute d-flex align-items-center" data-aos="fade-left" data-aos-offset="300">
                 <div class="offset-apla">
                     <div class="section-header text-center">
                         <span>@lang('cms.whyusbox-title')</span>
@@ -160,10 +160,10 @@
 <section>
     <div class="container">
         <div class="row flex-row-reverse position-relative inline inline-tc">
-            <div class="col-6" data-aos="fade-left" data-aos-offset="0" data-aos-delay="700">
+            <div class="col-12 col-lg-6" data-aos="fade-left" data-aos-offset="0" data-aos-delay="700">
                 <img src="{{ getInline($array, 6, 'file') }}" alt="{{ getInline($array, 6, 'file_alt') }}" data-img="6">
             </div>
-            <div class="col-7 position-absolute pr-0 offset-absolute d-flex align-items-center" data-aos="fade-right" data-aos-offset="0" data-aos-delay="700">
+            <div class="col-12 col-lg-7 position-absolute pr-3 pr-lg-0 offset-absolute d-flex align-items-center" data-aos="fade-right" data-aos-offset="0" data-aos-delay="700">
                 <div class="offset-apla">
                     <div class="section-header text-center">
                         <span data-modaleditor="6">{{ getInline($array, 6, 'modaleditor') }}</span>
