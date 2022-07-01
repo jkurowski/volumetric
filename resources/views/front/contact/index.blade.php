@@ -17,7 +17,7 @@
                         <h2>@lang('cms.formbox-subtitle')</h2>
                     </div>
                 </div>
-                <div class="col-8">
+                <div class="col-12 col-lg-8">
                     @if (session('success'))
                         <div class="alert alert-success border-0">
                             {{ session('success') }}
@@ -31,7 +31,7 @@
                     <form method="post" action="{{route('contact.send')}}" class="validateForm">
                         {{ csrf_field() }}
                         <div class="row">
-                            <div class="col-4">
+                            <div class="col-12 col-sm-4">
                                 <div class="form-input">
                                     <label for="form_name">@lang('cms.form-name') <span class="text-danger">*</span></label>
                                     <input name="form_name" id="form_name" class="validate[required] form-control @error('form_name') is-invalid @enderror" type="text" value="{{ old('form_name') }}">
@@ -43,7 +43,7 @@
                                     @enderror
                                 </div>
                             </div>
-                            <div class="col-4">
+                            <div class="col-12 col-sm-4">
                                 <div class="form-input">
                                     <label for="form_email">@lang('cms.form-email')</label>
                                     <input name="form_email" id="form_email" class="validate[groupRequired[phonemail]] form-control @error('form_email') is-invalid @enderror" type="text" value="{{ old('form_email') }}">
@@ -55,7 +55,7 @@
                                     @enderror
                                 </div>
                             </div>
-                            <div class="col-4">
+                            <div class="col-12 col-sm-4">
                                 <div class="form-input">
                                     <label for="form_phone">@lang('cms.form-phone')</label>
                                     <input name="form_phone" id="form_phone" class="validate[groupRequired[phonemail]] form-control" type="text" value="{{ old('form_phone') }}">

@@ -10,7 +10,7 @@
 <div class="container">
     <div class="row planned-list">
         @foreach($planned as $investment)
-        <div class="col-6">
+        <div class="col-12 col-lg-6">
             <img src="{{ asset('/uploads/investments/thumbs/'.$investment->file_thumb) }}" alt="{{ $investment->city }} - {{ $investment->name }}">
             <div class="offset-apla">
                 <div class="section-header text-center">

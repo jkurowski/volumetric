@@ -10,10 +10,10 @@
     <section class="pt-0">
         <div class="container">
             <div class="row flex-row-reverse position-relative inline inline-tc">
-                <div class="col-6">
+                <div class="col-12 col-lg-6">
                     <img src="{{ getInline($array, 1, 'file') }}" alt="{{ getInline($array, 1, 'file_alt') }}" data-img="1">
                 </div>
-                <div class="col-7 position-absolute pr-0 offset-absolute d-flex align-items-center">
+                <div class="col-12 col-lg-7 position-absolute pr-3 pr-lg-0 offset-absolute d-flex align-items-center">
                     <div class="offset-apla">
                         <div class="section-header text-center">
                             <span data-modaleditor="1">{{ getInline($array, 1, 'modaleditor') }}</span>
@@ -31,7 +31,7 @@
     <section>
         <div class="container inline inline-tc">
             <div class="row d-flex justify-content-center">
-                <div class="col-6 text-center">
+                <div class="col-12 col-lg-9 col-xl-6 text-center">
                     <h2 data-modaltytul="2" class="mb-4">{{ getInline($array, 2, 'modaltytul') }}</h2>
                     <div data-modaleditortext="2">{!! getInline($array, 2, 'modaleditortext') !!}</div>
                 </div>
@@ -42,10 +42,10 @@
             @foreach($about_investments as $investment)
             <div class="@if ($loop->even) row @elseif ($loop->odd) row flex-row-reverse @endif">
                 <span class="deadline">{{ $investment->deadline }}</span>
-                <div class="col-6">
+                <div class="col-12 col-lg-6">
                     <img src="{{ asset('/uploads/investments/thumbs/'.$investment->file_thumb) }}" alt="{{ $investment->city }} - {{ $investment->name }}">
                 </div>
-                <div class="col-6 d-flex align-items-center justify-content-center">
+                <div class="col-12 col-lg-6 d-flex align-items-center justify-content-center">
                     <div class="offset-apla">
                         <div class="section-header text-center">
                             <span>{{ $investment->city }}</span>
@@ -63,10 +63,10 @@
     <section class="pt-0">
         <div class="container">
             <div class="row position-relative inline inline-tc">
-                <div class="col-6">
+                <div class="col-12 col-lg-6">
                     <img src="{{ getInline($array, 3, 'file') }}" alt="{{ getInline($array, 3, 'file_alt') }}" data-img="3">
                 </div>
-                <div class="col-7 position-absolute right pr-0 offset-absolute d-flex align-items-center">
+                <div class="col-12 col-lg-7 position-absolute right pr-0 offset-absolute d-flex align-items-center">
                     <div class="offset-apla">
                         <div class="section-header text-center">
                             <span data-modaleditor="3">{{ getInline($array, 3, 'modaleditor') }}</span>
@@ -84,7 +84,7 @@
         <div id="paralaxa">
             <div class="container">
                 <div class="row d-flex justify-content-center inline inline-tc">
-                    <div class="col-7 text-center">
+                    <div class="col-12 col-xl-7 text-center">
                         <img src="{{ asset('/uploads/inline/pzfd.png') }}" alt="Logo organizacji Polski Związek Firm Deweloperskich">
                         <div data-modaleditortext="4">{!! getInline($array, 4, 'modaleditortext') !!}</div>
                     </div>
@@ -97,7 +97,7 @@
     <section class="pt-0">
         <div class="container">
             <div class="row d-flex justify-content-center inline inline-tc">
-                <div class="col-7">
+                <div class="col-12 col-md-9 col-xl-7">
                     <div class="offset-apla offset-absolute">
                         <div class="section-header text-center">
                             <span data-modaleditor="5">{{ getInline($array, 5, 'modaleditor') }}</span>
@@ -110,19 +110,19 @@
                 </div>
                 <div class="inline-btn"><button type="button" class="btn btn-primary btn-modal btn-sm" data-bs-toggle="modal" data-bs-target="#inlineModal" data-inline="5" data-hideinput="modallink,modallinkbutton,file,file_alt" data-method="update" data-imgwidth="796" data-imgheight="738"></button></div>
             </div>
-            <div class="row mt-5">
+            <div class="row mt-3 mt-sm-5">
                 <div class="col-4">
-                    <div class="p-4">
+                    <div class="p-0 p-md-4">
                         <a href="{{ asset('/uploads/inline/ds-1.jpg') }}" class="swipebox"><img src="{{ asset('/uploads/inline/ds-1-thumb.jpg') }}" alt="Pomoc społeczna"></a>
                     </div>
                 </div>
                 <div class="col-4">
-                    <div class="p-4">
+                    <div class="p-0 p-md-4">
                         <a href="{{ asset('/uploads/inline/ds-2.jpg') }}" class="swipebox"><img src="{{ asset('/uploads/inline/ds-2-thumb.jpg') }}" alt="Pomoc społeczna"></a>
                     </div>
                 </div>
                 <div class="col-4">
-                    <div class="p-4">
+                    <div class="p-0 p-md-4">
                         <a href="{{ asset('/uploads/inline/ds-3.jpg') }}" class="swipebox"><img src="{{ asset('/uploads/inline/ds-3-thumb.jpg') }}" alt="Pomoc społeczna"></a>
                     </div>
                 </div>

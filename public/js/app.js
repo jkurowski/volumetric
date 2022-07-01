@@ -75,6 +75,11 @@ $(document).ready(function () {
         $('.header-holder').addClass('fixedholder');
         $('#header').animate({'top': '0px'}, {duration: 300});
     }
+// Menu
+    $("#triggermenu").click(function(b){
+        b.preventDefault();
+        $('body').toggleClass('openmenu');
+    });
 
 // Ruchoma galeria
     $('.col-gallery-thumb').each( function() { $(this).hoverdir(); } );
