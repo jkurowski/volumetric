@@ -267,7 +267,7 @@
             slidesToShow: 4,
             slidesToScroll: 1
         });
-        AOS.init();
+        AOS.init({disable:'mobile'});
     });
     $(window).load(function() {
         $("#slider ul").show();
