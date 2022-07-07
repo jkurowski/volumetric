@@ -490,7 +490,7 @@ li:hover img {
   text-transform: uppercase;
   display: inline-flex;
   line-height: normal;
-  margin: 0 30px;
+  margin: 0 15px;
 }
 #header #logo {
   background: white;
@@ -1542,17 +1542,21 @@ html.swipebox-html.swipebox-touch {
 @media (max-width: 1530px) {
   #header .col-3 {
     flex: 0 0 auto;
-    width: 27%;
+    width: 25%;
   }
   #header .col-6 {
     flex: 0 0 auto;
-    width: 46%;
+    width: 50%;
   }
   #header nav a {
-    margin: 0 15px;
+    margin: 0 8px;
+    font-size: 15px;
   }
   #header #logo {
     padding: 0 5px 0 135px;
+  }
+  #header .bttn {
+    padding: 15px 12px;
   }
   #lang {
     padding: 0 15px;
@@ -1576,7 +1580,8 @@ html.swipebox-html.swipebox-touch {
     letter-spacing: 1px;
   }
   #header nav a {
-    margin: 0 9px;
+    margin: 0 7px;
+    font-size: 14px;
   }
   #maincontact .maincontact-text ul li {
     height: 59px;
