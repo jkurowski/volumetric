@@ -28,38 +28,6 @@
         </div>
     </section>
 
-    <section>
-        <div class="container inline inline-tc">
-            <div class="row d-flex justify-content-center">
-                <div class="col-12 col-lg-9 col-xl-6 text-center">
-                    <h2 data-modaltytul="2" class="mb-4">{{ getInline($array, 2, 'modaltytul') }}</h2>
-                    <div data-modaleditortext="2">{!! getInline($array, 2, 'modaleditortext') !!}</div>
-                </div>
-            </div>
-            <div class="inline-btn"><button type="button" class="btn btn-primary btn-modal btn-sm" data-bs-toggle="modal" data-bs-target="#inlineModal" data-inline="2" data-hideinput="modaleditor,modallink,modallinkbutton,file,file_alt" data-method="update" data-imgwidth="796" data-imgheight="738"></button></div>
-        </div>
-        <div class="container pt-5 time-line">
-            @foreach($about_investments as $investment)
-            <div class="@if ($loop->even) row @elseif ($loop->odd) row flex-row-reverse @endif">
-                <span class="deadline">{{ $investment->deadline }}</span>
-                <div class="col-12 col-lg-6">
-                    <img src="{{ asset('/uploads/investments/thumbs/'.$investment->file_thumb) }}" alt="{{ $investment->city }} - {{ $investment->name }}">
-                </div>
-                <div class="col-12 col-lg-6 d-flex align-items-center justify-content-center">
-                    <div class="offset-apla">
-                        <div class="section-header text-center">
-                            <span>{{ $investment->city }}</span>
-                            <h2>{{ $investment->name }}</h2>
-                        </div>
-                        <p class="text-center mb-4">{{ $investment->address }}</p>
-                        <p class="text-center">{!! $investment->entry_content !!}</p>
-                    </div>
-                </div>
-            </div>
-            @endforeach
-        </div>
-    </section>
-
     <section class="pt-0">
         <div class="container">
             <div class="row position-relative inline inline-tc">

@@ -6,6 +6,7 @@
   'menu-planned' => 'In preparation ',
   'menu-contact' => 'Contact',
   'menu-aboutus' => 'About Us',
+  'menu-completed' => 'Completed',
   'slider-button' => 'INVESTMENT',
   'goformore-button' => 'SEE MORE',
   'gotoform-button' => 'CONTACT FORM',

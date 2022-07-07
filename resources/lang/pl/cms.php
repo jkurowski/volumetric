@@ -6,6 +6,7 @@ return array (
     'menu-planned' => 'W przygotowaniu',
     'menu-contact' => 'Kontakt',
     'menu-aboutus' => 'Poznajmy się',
+    'menu-completed' => 'Zrealizowane',
     'slider-button' => 'ZOBACZ INWESTYCJĘ',
     'goformore-button' => 'ZOBACZ WIĘCEJ',
     'gotoform-button' => 'FORMULARZ KONTAKTOWY',

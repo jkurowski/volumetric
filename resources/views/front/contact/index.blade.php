@@ -17,7 +17,14 @@
                         <h2>@lang('cms.formbox-subtitle')</h2>
                     </div>
                 </div>
-                <div class="col-12 col-lg-8">
+                <div class="col-12 col-lg-4 col-xxl-3">
+                    <div class="text-center text-lg-start contact-text pe-3 pe-lg-5">
+                        <img src="{{asset('images/logo-volumetric.png') }}" alt="Nowe mieszkania deweloperskie Warszawa – Volumetric Polska Sp. z o.o." class="m-auto mt-lg-5 mb-4">
+                        <p><b>Volumetric Polska Sp. z o. o.</b></p>
+                        <p class="small">ul. Sienna 39 <br>00-121 Warszawa, <br>NIP 527-24-89-354 <br>KRS 0000245576 <br>Kapitał zakładowy 25.000.000 PLN</p>
+                    </div>
+                </div>
+                <div class="col-12 col-lg-8 col-xxl-9">
                     @if (session('success'))
                         <div class="alert alert-success border-0">
                             {{ session('success') }}
@@ -75,7 +82,7 @@
                                 </div>
                             </div>
                             <div class="col-12 rodo-obligation">
-                                <p>Podając powyższe dane, równocześnie oświadczam, że jestem osobą uprawnioną do ich używania, zapoznałem/zapoznałam się z <a href="https://www.gandhi5.pl/karta-informacyjna.pdf" target="_blank">Kartą Informacyjną</a> oraz wyrażam zgodę na przetwarzanie moich danych osobowych we wskazanym tam celu:</p>
+                                <p>Podając powyższe dane, równocześnie oświadczam, że jestem osobą uprawnioną do ich używania, zapoznałem/zapoznałam się z <a href="{{ asset('/uploads/karta-informacyjna.pdf') }}" target="_blank">Kartą Informacyjną</a> oraz wyrażam zgodę na przetwarzanie moich danych osobowych we wskazanym tam celu:</p>
                             </div>
 
                             <div class="col-12 rodo-rules pt-1">

@@ -25,6 +25,7 @@ Route::middleware(['restrictIp'])->group(function () {
             Route::get('/', 'IndexController@index')->name('index');
             Route::get('kontakt','ContactController@index')->name('contact.index');
             Route::get('poznajmy-sie','AboutController@index')->name('about.index');
+            Route::get('zrealizowane','CompletedController@index')->name('completed.index');
 
             Route::group(['prefix'=>'/inwestycje/'], function() {
                 Route::get('/w-sprzedazy', 'InvestmentController@index')->name('investment.index');

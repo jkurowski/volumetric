@@ -16,6 +16,7 @@
                             <a href="{{ route('about.index') }}">@lang('cms.menu-aboutus')</a>
                             <!--<a href="{{ route('investment.index') }}">@lang('cms.menu-investment')</a>-->
                             <a href="{{ route('planned.index') }}">@lang('cms.menu-planned')</a>
+                            <a href="{{ route('completed.index') }}">@lang('cms.menu-completed')</a>
                             <a href="{{ route('contact.index') }}">@lang('cms.menu-contact')</a>
                         </nav>
                     </div>
