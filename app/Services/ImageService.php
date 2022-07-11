@@ -33,6 +33,7 @@ class ImageService
                 config('images.gallery.big_width'),
                 config('images.gallery.big_height'), function ($constraint) {
                 $constraint->aspectRatio();
+                $constraint->upsize();
             }
             )->save($filepath);
 

@@ -25,7 +25,12 @@
                         <div class="time-line-img">
                             <img src="{{ asset('/uploads/investments/thumbs/'.$investment->file_thumb) }}" alt="{{ $investment->city }} - {{ $investment->name }}">
                             @if($investment->gallery_id)
-                                <a href="{{ asset('/uploads/gallery/images/'.$images->first()->file) }}" class="bttn bttn-sm swipebox" rel="gallery-{{ $investment->gallery_id }}">POKAŻ GALERIĘ</a>
+                                @foreach($images as $image)
+                                    @if($image->gallery_id == $investment->gallery_id)
+                                        <a href="{{ asset('/uploads/gallery/images/'.$image->file) }}" class="bttn bttn-sm swipebox" rel="gallery-{{ $investment->gallery_id }}">POKAŻ GALERIĘ</a>
+                                    @endif
+                                    @break
+                                @endforeach
                                 @foreach($images as $int => $image)
                                     @if($image->gallery_id == $investment->gallery_id && $int > 0)
                                         <a href="{{ asset('/uploads/gallery/images/'.$image->file) }}" class="swipebox" rel="gallery-{{ $investment->gallery_id }}"></a>
