@@ -14,7 +14,7 @@ class CompletedController extends Controller
     public function index()
     {
         return view('front.completed.index', [
-            'about_investments' => Investment::where('status', '=' , 2)->orderBy('sort', 'ASC')->get(),
+            'about_investments' => Investment::with('photos')->where('status', '=' , 2)->orderBy('sort', 'ASC')->get(),
             'images' => Image::all(),
             'page' => Page::where('id', 5)->first(),
             'array' => Inline::getElements(1)

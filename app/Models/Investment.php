@@ -33,4 +33,9 @@ class Investment extends Model
         'file_carousel',
         'sort'
     ];
+
+    public function photos()
+    {
+        return $this->hasMany('App\Models\Image', 'gallery_id', 'gallery_id')->orderBy('sort');
+    }
 }
