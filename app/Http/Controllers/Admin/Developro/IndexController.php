@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 
 // CMS
 use App\Http\Requests\InvestmentFormRequest;
+use App\Models\Gallery;
 use App\Models\Investment;
 use App\Repositories\InvestmentRepository;
 use App\Services\InvestmentService;
@@ -44,6 +45,7 @@ class IndexController extends Controller
     {
         return view('admin.investment.form', [
             'cardTitle' => 'Dodaj inwestycje',
+            'galleries' => Gallery::pluck('name', 'id')->prepend('Brak', 0),
             'backButton' => route('admin.developro.index')
         ])->with('entry', Investment::make());
     }
@@ -71,6 +73,7 @@ class IndexController extends Controller
 
         return view('admin.investment.form', [
             'entry' => $this->repository->find($id),
+            'galleries' => Gallery::pluck('name', 'id')->prepend('Brak', 0),
             'cardTitle' => 'Edytuj inwestycję',
             'backButton' => route('admin.developro.index')
         ]);

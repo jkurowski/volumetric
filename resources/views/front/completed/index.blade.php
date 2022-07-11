@@ -22,7 +22,18 @@
                 <div class="@if ($loop->even) row @elseif ($loop->odd) row flex-row-reverse @endif">
                     <span class="deadline">{{ $investment->deadline }}</span>
                     <div class="col-12 col-lg-6">
-                        <img src="{{ asset('/uploads/investments/thumbs/'.$investment->file_thumb) }}" alt="{{ $investment->city }} - {{ $investment->name }}">
+                        <div class="time-line-img">
+                            <img src="{{ asset('/uploads/investments/thumbs/'.$investment->file_thumb) }}" alt="{{ $investment->city }} - {{ $investment->name }}">
+                            @if($investment->gallery_id)
+                                <a href="{{ asset('/uploads/gallery/images/'.$images->first()->file) }}" class="bttn bttn-sm swipebox" rel="gallery-{{ $investment->gallery_id }}">POKAŻ GALERIĘ</a>
+                                @foreach($images as $int => $image)
+                                    @if($image->gallery_id == $investment->gallery_id && $int > 0)
+                                        <a href="{{ asset('/uploads/gallery/images/'.$image->file) }}" class="swipebox" rel="gallery-{{ $investment->gallery_id }}"></a>
+                                    @endif
+                                @endforeach
+                            @endif
+                        </div>
+
                     </div>
                     <div class="col-12 col-lg-6 d-flex align-items-center justify-content-center">
                         <div class="offset-apla">

@@ -3,6 +3,16 @@
 @section('content')
     <div class="container-fluid">
         <div class="card">
+            <div class="card-head container-fluid">
+                <div class="row">
+                    <div class="col-6 pl-0">
+                        <h4 class="page-title row"><i class="fe-image"></i>Galeria</h4>
+                    </div>
+                    <div class="col-6 d-flex justify-content-end align-items-center form-group-submit">
+                        <a href="{{route('admin.gallery.create')}}" class="btn btn-primary">Dodaj galerię</a>
+                    </div>
+                </div>
+            </div>
             <div class="table-overflow">
                 <table id="sortable" class="table mb-0">
                     <thead class="thead-default">
@@ -26,6 +36,15 @@
                     @endforeach
                     </tbody>
                 </table>
+            </div>
+        </div>
+    </div>
+    <div class="form-group form-group-submit">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12 d-flex justify-content-end">
+                    <a href="{{route('admin.gallery.create')}}" class="btn btn-primary">Dodaj galerię</a>
+                </div>
             </div>
         </div>
     </div>

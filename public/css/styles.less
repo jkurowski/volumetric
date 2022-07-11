@@ -618,7 +618,48 @@ section {
         right: auto;
         left: -100px;
     }
+    .time-line-img {
+        position: relative;
+        a.bttn {
+            color: #fff;
+            position: absolute;
+            border: 1px solid #fff;
+            z-index: 30;
+            padding: 14px 20px;
+            background: rgba(0,0,0,0.6);
+            font-size: 14px;
+            display: block;
+            letter-spacing: 1px;
+            &:hover {
+                border:1px solid rgba(0,0,0,0.6)
+            }
+            &:after {
+                border: 1px solid #fff
+            }
+            &:before {
+                text-align: center;
+                left: 0;
+                right: 0;
+                top: -7px
+            }
+            &:hover:after {
+                border: 1px dashed #bbb
+            }
+        }
+    }
+    .row a.bttn {
+        bottom: 40px;
+        left: 140px;
+    }
+    .flex-row-reverse {
+        a.bttn {
+            bottom: 40px;
+            right: 140px;
+            left: auto;
+        }
+    }
 }
+
 
 /* Map
 ================================================== */

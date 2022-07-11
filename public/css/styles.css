@@ -993,6 +993,44 @@ section {
   right: auto;
   left: -100px;
 }
+.time-line .time-line-img {
+  position: relative;
+}
+.time-line .time-line-img a.bttn {
+  color: #fff;
+  position: absolute;
+  border: 1px solid #fff;
+  z-index: 30;
+  padding: 14px 20px;
+  background: rgba(0, 0, 0, 0.6);
+  font-size: 14px;
+  display: block;
+  letter-spacing: 1px;
+}
+.time-line .time-line-img a.bttn:hover {
+  border: 1px solid rgba(0, 0, 0, 0.6);
+}
+.time-line .time-line-img a.bttn:after {
+  border: 1px solid #fff;
+}
+.time-line .time-line-img a.bttn:before {
+  text-align: center;
+  left: 0;
+  right: 0;
+  top: -7px;
+}
+.time-line .time-line-img a.bttn:hover:after {
+  border: 1px dashed #bbb;
+}
+.time-line .row a.bttn {
+  bottom: 40px;
+  left: 140px;
+}
+.time-line .flex-row-reverse a.bttn {
+  bottom: 40px;
+  right: 140px;
+  left: auto;
+}
 /* Map
 ================================================== */
 #map {

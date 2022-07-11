@@ -33,6 +33,12 @@
                                         '2' => 'Inwestycja zrealizowana',
                                         '3' => 'Inwestycja planowana'
                                 ]])
+                                @include('form-elements.html-select', [
+                                    'label' => 'Galeria',
+                                    'name' => 'gallery_id',
+                                    'selected' => $entry->gallery_id,
+                                    'select' => $galleries
+                                    ])
                             @endif
                             @include('form-elements.html-input-text', ['label' => 'Nazwa inwestycji', 'name' => 'name', 'value' => $entry->name, 'required' => 1])
                             @include('form-elements.html-input-text', ['label' => 'Termin oddania', 'name' => 'deadline', 'value' => $entry->deadline])

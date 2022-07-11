@@ -17,6 +17,7 @@ class Investment extends Model
      * @var array
      */
     protected $fillable = [
+        'gallery_id',
         'status',
         'name',
         'address',
