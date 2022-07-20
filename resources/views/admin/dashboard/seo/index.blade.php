@@ -75,13 +75,6 @@
                                     </div>
                                 </div>
                             </div>
-                            @include('form-elements.html-input-file', ['label' => 'Favicon', 'sublabel' => '(wymiary: 16 px / 16 px)', 'name' => 'page_favicon', 'value' => settings()->get("page_favicon"), 'file' => '', 'file_preview' => ''])
-                            @include('form-elements.html-input-file', ['label' => 'Logo', 'sublabel' => '(wymiary: 40 px / 200 px)', 'name' => 'page_logo', 'value' => settings()->get("page_logo"), 'file' => '', 'file_preview' => ''])
-
-                            @include('form-elements.input-text', ['label' => 'Logo - atrybut ALT', 'name' => 'page_logo_alt', 'value' => settings()->get("page_logo_alt")])
-                            @include('form-elements.input-text', ['label' => 'Logo - atrybut Title', 'name' => 'page_logo_title', 'value' => settings()->get("page_logo_title")])
-
-                            @include('form-elements.input-text', ['label' => 'Klucz Google Maps', 'name' => 'google_maps_api', 'value' => settings()->get("google_maps_api")])
                             @include('form-elements.textarea', ['label' => 'Kod w <code>&lt;head&gt;</code>', 'name' => 'scripts_head', 'value' => settings()->get("scripts_head"), 'rows' => 7])
                             @include('form-elements.textarea', ['label' => 'Kod po otworzeniu <code>&lt;body&gt;</code>', 'name' => 'scripts_afterbody', 'value' => settings()->get("scripts_afterbody"), 'rows' => 7])
                             @include('form-elements.textarea', ['label' => 'Kod przed zamknięciem <code>&lt;body&gt;</code>', 'name' => 'scripts_beforebody', 'value' => settings()->get("scripts_beforebody"), 'rows' => 7])
