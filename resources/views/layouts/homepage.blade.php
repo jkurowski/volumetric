@@ -1,6 +1,8 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
+    {!! settings()->get("scripts_head") !!}
+
     <title>{{ settings()->get("page_title") }}</title>
 
     <meta charset="utf-8">
@@ -24,6 +26,7 @@
     @stack('style')
 </head>
 <body class="{{ !empty($body_class) ? $body_class : '' }}">
+{!! settings()->get("scripts_afterbody") !!}
 @include('layouts.partials.header')
 
 <div id="slider">
@@ -281,6 +284,8 @@
         $(".rslides_nav").show();
     });
 </script>
+
+{!! settings()->get("scripts_beforebody") !!}
 
 </body>
 </html>
