@@ -15,7 +15,9 @@
                     <div data-modaleditortext="2">{!! getInline($array, 2, 'modaleditortext') !!}</div>
                 </div>
             </div>
+            @auth
             <div class="inline-btn"><button type="button" class="btn btn-primary btn-modal btn-sm" data-bs-toggle="modal" data-bs-target="#inlineModal" data-inline="2" data-hideinput="modaleditor,modallink,modallinkbutton,file,file_alt" data-method="update" data-imgwidth="796" data-imgheight="738"></button></div>
+            @endauth
         </div>
         <div class="container pt-5 time-line">
             @foreach($about_investments as $investment)
