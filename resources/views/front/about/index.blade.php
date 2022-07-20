@@ -22,8 +22,9 @@
                         <div data-modaleditortext="1">{!! getInline($array, 1, 'modaleditortext') !!}</div>
                     </div>
                 </div>
-
+                @auth
                 <div class="inline-btn"><button type="button" class="btn btn-primary btn-modal btn-sm" data-bs-toggle="modal" data-bs-target="#inlineModal" data-inline="1" data-hideinput="modallink,modallinkbutton" data-method="update" data-imgwidth="796" data-imgheight="738"></button></div>
+                @endauth
             </div>
         </div>
     </section>
@@ -43,7 +44,9 @@
                         <div data-modaleditortext="3">{!! getInline($array, 3, 'modaleditortext') !!}</div>
                     </div>
                 </div>
+                @auth
                 <div class="inline-btn"><button type="button" class="btn btn-primary btn-modal btn-sm" data-bs-toggle="modal" data-bs-target="#inlineModal" data-inline="3" data-hideinput="modallink,modallinkbutton" data-method="update" data-imgwidth="796" data-imgheight="738"></button></div>
+                @endauth
             </div>
         </div>
     </section>
@@ -56,7 +59,9 @@
                         <img src="{{ asset('/uploads/inline/pzfd.png') }}" alt="Logo organizacji Polski Związek Firm Deweloperskich">
                         <div data-modaleditortext="4">{!! getInline($array, 4, 'modaleditortext') !!}</div>
                     </div>
+                    @auth
                     <div class="inline-btn"><button type="button" class="btn btn-primary btn-modal btn-sm" data-bs-toggle="modal" data-bs-target="#inlineModal" data-inline="4" data-hideinput="modaltytul,modaleditor,modallink,modallinkbutton,file,file_alt" data-method="update" data-imgwidth="796" data-imgheight="738"></button></div>
+                    @endauth
                 </div>
             </div>
         </div>
@@ -76,7 +81,9 @@
                         </div>
                     </div>
                 </div>
+                @auth
                 <div class="inline-btn"><button type="button" class="btn btn-primary btn-modal btn-sm" data-bs-toggle="modal" data-bs-target="#inlineModal" data-inline="5" data-hideinput="modallink,modallinkbutton,file,file_alt" data-method="update" data-imgwidth="796" data-imgheight="738"></button></div>
+                @endauth
             </div>
             <div class="row mt-3 mt-sm-5">
                 <div class="col-4">
