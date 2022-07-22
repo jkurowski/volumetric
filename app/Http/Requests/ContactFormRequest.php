@@ -27,7 +27,7 @@ class ContactFormRequest extends FormRequest
             'form_name' => 'required',
             'form_email' => 'required|email:rfc',
             'form_message' => 'required',
-            'form_subject' => 'required'
+            'form_phone' => 'nullable'
         ];
     }
 
@@ -40,10 +40,8 @@ class ContactFormRequest extends FormRequest
     {
         return [
             'form_name.required' => 'To pole jest wymagane',
-            'form_email.required' => 'To pole jest wymagane',
             'form_email.email' => 'Nieprawidłowy adres e-mail',
             'form_message.required' => 'To pole jest wymagane',
-            'form_subject.required' => 'To pole jest wymagane'
         ];
     }
 }

@@ -27,7 +27,6 @@
                         <p><b>Imię:</b> {{ $request->form_name }}</p>
                         <p><b>E-mail:</b> {{ $request->form_email }}</p>
                         @isset($request->form_phone)<p style="margin:0"><b>Telefon:</b> {{ $request->form_phone }}</p>@endisset
-                        <p><b>Temat:</b> {{ $request->form_subject }}</p>
                         <hr style="border:0;border-bottom:1px solid #ececec" />
                         <p>{{ $request->form_message }}</p>
                     </td>

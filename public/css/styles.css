@@ -808,6 +808,9 @@ li:hover img {
   font-size: 21px;
   color: #000;
 }
+.alert {
+  line-height: normal;
+}
 /* Pageheader
 ================================================== */
 #page-header {

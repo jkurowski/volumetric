@@ -53,7 +53,7 @@
                             <div class="col-12 col-sm-4">
                                 <div class="form-input">
                                     <label for="form_email">@lang('cms.form-email')</label>
-                                    <input name="form_email" id="form_email" class="validate[groupRequired[phonemail]] form-control @error('form_email') is-invalid @enderror" type="text" value="{{ old('form_email') }}">
+                                    <input name="form_email" id="form_email" class="validate[required] form-control @error('form_email') is-invalid @enderror" type="text" value="{{ old('form_email') }}">
 
                                     @error('form_email')
                                     <span class="invalid-feedback" role="alert">
@@ -65,7 +65,7 @@
                             <div class="col-12 col-sm-4">
                                 <div class="form-input">
                                     <label for="form_phone">@lang('cms.form-phone')</label>
-                                    <input name="form_phone" id="form_phone" class="validate[groupRequired[phonemail]] form-control" type="text" value="{{ old('form_phone') }}">
+                                    <input name="form_phone" id="form_phone" class="form-control" type="text" value="{{ old('form_phone') }}">
                                 </div>
                             </div>
 

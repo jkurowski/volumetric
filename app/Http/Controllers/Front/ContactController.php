@@ -30,6 +30,7 @@ class ContactController extends Controller
 
     function send(ContactFormRequest $request, Recipient $recipient)
     {
+
         $recipient->notify(new ContactNotification($request));
 
         Mail::to(config('mail.from.address'))->send(new MailSend($request));
